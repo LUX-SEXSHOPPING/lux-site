@@ -1,2 +1,1 @@
-# lux-site
-https://seuusuario.github.io/lux-site
+https://github.com/LUX-SEXSHOPPING/lux-site
