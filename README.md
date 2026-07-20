@@ -4,9 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta lux="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LUX | Exclusividade • Poder • Liberdade</title>
+<title>LUX | desejo • Poder • Liberdade</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
 
@@ -22,7 +22,7 @@ font-family:Montserrat,sans-serif;
 body{
 
 background:#050505;
-color:white;
+color:green;
 
 }
 
@@ -30,12 +30,9 @@ header{
 
 height:100vh;
 
-background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.8)),url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80');
-
-background-size:cover;
 
 background-position:center;
-
+color:green
 display:flex;
 
 justify-content:center;
@@ -211,12 +208,6 @@ Transforme sua imagem em renda e faça parte da agência premium que está mudan
 <a href="https://wa.me/5551980612941" class="btn">
 
 QUERO FAZER PARTE
-
-</a>
-
-</div>
-
-</header>
 
 <section>
 
