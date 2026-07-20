@@ -1,10 +1,7 @@
-# LUX Site Oficial
-## 🛠️ Tecnologias
-
-- HTML5
-- CSS3
-- JavaScript
-
----
+#site oficial github
+     LUXO,DESEJO,PRAZER 
+            LUX ...
+garotas disponiveis através do 
+telefone:51980612941
 
 © LUX Sexshopping - Todos os direitos reservados.
