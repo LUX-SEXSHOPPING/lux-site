@@ -11,11 +11,11 @@
             --dourado: #c9a227;
             --dourado-claro: #e6c86e;
             --texto-claro: #f8f3f6;
-            --texto-suave: #e0d8dc;
-            --fundo-escuro: #0f0a0f;
-            --fundo-semitransp: rgba(8,6,8,.6);
+            --texto-suave: #e8e0e6;
+            /* Sobreposição leve para fundo ficar visível mas o texto legível */
+            --sobreposicao-fundo: rgba(10, 6, 12, 0.60);
+            --sobreposicao-card: rgba(0, 0, 0, 0.55);
             --whatsapp-verde: #25d366;
-            /* Cores fixas — sem imagem */
             --azul-masc: #1e40af;
             --azul-fundo: #101b36;
             --rosa-fem: #9d4e7c;
@@ -25,11 +25,17 @@
         body {
             font-family: 'Segoe UI', sans-serif;
             color: var(--texto-claro);
-            background: var(--fundo-escuro); /* Fundo SÓ cor, sem imagem */
+            /* ✅ FUNDO: capa.png + sobreposição SUAVE → IMAGEM BEM VISÍVEL */
+            background: 
+                linear-gradient(var(--sobreposicao-fundo), var(--sobreposicao-fundo)),
+                url('capa.png');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
             min-height: 100vh;
         }
         header {
-            background: var(--fundo-semitransp);
+            background: rgba(8,6,8,.65);
             border-bottom: 1px solid rgba(201,162,39,.18);
             padding: 1.2rem 2rem;
             display: flex;
@@ -63,14 +69,15 @@
             text-align: center;
             font-size: 2.2rem;
             margin-bottom: .5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,.6);
         }
         .subtitulo {
             text-align: center;
             color: var(--texto-suave);
             margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,.5);
         }
 
-        /* Botões de seleção */
         .seletor {
             display: flex;
             justify-content: center;
@@ -94,16 +101,17 @@
             background: linear-gradient(145deg, var(--azul-fundo), var(--azul-masc));
             color: #bfdbfe;
             border: 2px solid #3b82f6;
+            box-shadow: 0 4px 14px rgba(0,0,0,.4);
         }
         .botao-fem {
             background: linear-gradient(145deg, var(--rosa-fundo), var(--rosa-fem));
             color: #fbcfe8;
             border: 2px solid #ec4899;
+            box-shadow: 0 4px 14px rgba(0,0,0,.4);
         }
-        .botao-secao:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,.4); }
+        .botao-secao:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,.5); }
         .botao-secao.ativo { outline: 3px solid var(--dourado); outline-offset: 3px; }
 
-        /* Seções */
         .secao { display: none; }
         .secao.mostrar { display: block; animation: aparece .4s ease; }
         @keyframes aparece {
@@ -111,17 +119,20 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ✅ Blocos com OPACIDADE CONTROLADA → fundo aparece + conteúdo legível */
         .conteudo-masc {
-            background: linear-gradient(145deg, var(--azul-fundo), var(--azul-masc));
+            background: linear-gradient(145deg, rgba(16,27,54,.85), rgba(30,64,175,.85));
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid rgba(59, 130, 246, .3);
+            border: 1px solid rgba(59, 130, 246, .4);
+            box-shadow: 0 8px 24px rgba(0,0,0,.45);
         }
         .conteudo-fem {
-            background: linear-gradient(145deg, var(--rosa-fundo), var(--rosa-fem));
+            background: linear-gradient(145deg, rgba(48,24,40,.85), rgba(157,78,124,.85));
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid rgba(236, 72, 153, .3);
+            border: 1px solid rgba(236, 72, 153, .4);
+            box-shadow: 0 8px 24px rgba(0,0,0,.45);
         }
 
         .titulo-secao {
@@ -133,24 +144,48 @@
             align-items: center;
             justify-content: center;
             gap: .6rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,.5);
         }
         .grade {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
         }
         .card {
-            background: rgba(0,0,0,.35);
+            background: var(--sobreposicao-card);
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
-            border: 1px solid rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.15);
             transition: transform .3s;
         }
         .card:hover { transform: translateY(-5px); }
         .icone { font-size: 3rem; margin-bottom: 1rem; }
-        .nome { font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; }
-        .desc { font-size: .95rem; opacity: .85; margin-bottom: 1.2rem; }
+        .nome { font-size: 1.2rem; font-weight: 700; margin-bottom: .8rem; }
+
+        .dados {
+            font-size: .9rem;
+            color: #eee;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .dados span { display: inline-flex; align-items: center; gap: .4rem; }
+
+        .descricao {
+            background: rgba(255,255,255,.1);
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: .95rem;
+            line-height: 1.6;
+            color: #f0f0f0;
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+        .descricao strong { color: var(--dourado-claro); }
+
         .botao-whats {
             display: inline-flex;
             align-items: center;
@@ -173,6 +208,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,.5);
         }
         .voltar a:hover { color: var(--dourado-claro); }
 
@@ -189,14 +225,14 @@
             justify-content: center;
             color: #fff;
             font-size: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,.4);
+            box-shadow: 0 4px 14px rgba(0,0,0,.5);
             z-index: 999;
         }
         footer {
             text-align: center;
             padding: 1.5rem;
-            color: #887c80;
-            background: var(--fundo-semitransp);
+            color: #b8b0b3;
+            background: rgba(8,6,8,.65);
             border-top: 1px solid rgba(201,162,39,.1);
             margin-top: 2rem;
         }
@@ -218,7 +254,6 @@
     <h1>Catálogo de Perfis</h1>
     <p class="subtitulo">Escolha a seção que deseja explorar</p>
 
-    <!-- Seleção -->
     <div class="seletor">
         <button class="botao-secao botao-masc" onclick="mostrarSecao('masculino')">
             <i class="fa-solid fa-mars fa-lg"></i> Modelos Masculinos
@@ -228,7 +263,7 @@
         </button>
     </div>
 
-    <!-- Masculino — AZUL -->
+    <!-- 🟦 MASCULINO -->
     <div id="masculino" class="secao">
         <div class="conteudo-masc">
             <h2 class="titulo-secao" style="color:#bfdbfe;">
@@ -238,16 +273,31 @@
                 <div class="card">
                     <i class="fa-solid fa-user-tie icone" style="color:#93c5fd;"></i>
                     <h3 class="nome">Perfil M 01</h3>
-                    <p class="desc">Presença marcante • Em breve</p>
-                    <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Modelo%20M01" target="_blank">
+                    <div class="dados">
+                        <span><i class="fa-solid fa-birthday-cake"></i> 28 anos</span>
+                        <span><i class="fa-solid fa-location-dot"></i> Porto Alegre — RS</span>
+                    </div>
+                    <div class="descricao">
+                        <strong>Sobre ele:</strong><br>
+                        Homem elegante, educado e extremamente discreto. Possui porte físico atlético, postura confiante e trato refinado. Ideal para acompanhamento em eventos sociais, jantares e momentos que exigem sofisticação.
+                    </div>
+                    <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Perfil%20M01" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i> Contatar
                     </a>
                 </div>
+
                 <div class="card">
                     <i class="fa-solid fa-user-tie icone" style="color:#93c5fd;"></i>
                     <h3 class="nome">Perfil M 02</h3>
-                    <p class="desc">Elegância e discrição • Em breve</p>
-                    <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Modelo%20M02" target="_blank">
+                    <div class="dados">
+                        <span><i class="fa-solid fa-birthday-cake"></i> 25 anos</span>
+                        <span><i class="fa-solid fa-location-dot"></i> Porto Alegre — RS</span>
+                    </div>
+                    <div class="descricao">
+                        <strong>Sobre ele:</strong><br>
+                        Jovem, carismático e cheio de energia. Personalidade leve, simpática e descontraída. Fisicamente atlético e bem-apessoado. Alta discrição, pontualidade e educação em primeiro lugar.
+                    </div>
+                    <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Perfil%20M02" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i> Contatar
                     </a>
                 </div>
@@ -255,7 +305,7 @@
         </div>
     </div>
 
-    <!-- Feminino — ROSA -->
+    <!-- 🟪 FEMININO -->
     <div id="feminino" class="secao">
         <div class="conteudo-fem">
             <h2 class="titulo-secao" style="color:#fbcfe8;">
@@ -265,16 +315,31 @@
                 <div class="card">
                     <i class="fa-solid fa-user icone" style="color:#f9a8d4;"></i>
                     <h3 class="nome">Perfil F 01</h3>
-                    <p class="desc">Sofisticação e charme • Em breve</p>
-                    <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Modelo%20F01" target="_blank">
+                    <div class="dados">
+                        <span><i class="fa-solid fa-birthday-cake"></i> 24 anos</span>
+                        <span><i class="fa-solid fa-location-dot"></i> Porto Alegre — RS</span>
+                    </div>
+                    <div class="descricao">
+                        <strong>Sobre ela:</strong><br>
+                        Mulher de beleza natural, charme envolvente e presença marcante. Sofisticada, elegante e com postura impecável. Educada, discreta e com conversa agradável. Experiência única e memorável.
+                    </div>
+                    <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Perfil%20F01" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i> Contatar
                     </a>
                 </div>
+
                 <div class="card">
                     <i class="fa-solid fa-user icone" style="color:#f9a8d4;"></i>
                     <h3 class="nome">Perfil F 02</h3>
-                    <p class="desc">Beleza e exclusividade • Em breve</p>
-                    <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Modelo%20F02" target="_blank">
+                    <div class="dados">
+                        <span><i class="fa-solid fa-birthday-cake"></i> 26 anos</span>
+                        <span><i class="fa-solid fa-location-dot"></i> Porto Alegre — RS</span>
+                    </div>
+                    <div class="descricao">
+                        <strong>Sobre ela:</strong><br>
+                        Simpatia, elegância e beleza em harmonia. Com traços delicados e trato fino, encanta pela educação e naturalidade. Versátil e comunicativa. Total discrição, pontualidade e compromisso.
+                    </div>
+                    <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Perfil%20F02" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i> Contatar
                     </a>
                 </div>
