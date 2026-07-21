@@ -1,279 +1,113 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUX — Sensualidade & Sofisticação</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --dourado: #c9a227;
-            --dourado-claro: #e6c86e;
-            --dourado-escuro: #b58f1f;
-            --texto-claro: #f0e9ec;
-            --texto-suave: #e0d8dc;
-            --whatsapp-verde: #25d366;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-            color: var(--texto-claro);
-            line-height: 1.6;
-            background: linear-gradient(rgba(8,6,8,0.4), rgba(15,8,15,0.45)), url('banner.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
-        header {
-            background: rgba(8,6,8,.6);
-            border-bottom: 1px solid rgba(201,162,39,.1);
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        /* ✅ Logo LUX realçada */
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--dourado-claro);
-            letter-spacing: 4px;
-            text-shadow: 0 0 12px rgba(201,162,39,.6), 0 0 24px rgba(201,162,39,.3);
-        }
-        nav { margin-top: .5rem; }
-        nav a { color: var(--texto-suave); text-decoration: none; margin: 0 .6rem; font-size: .9rem; font-weight: 500; transition: color .3s; }
-        nav a:hover { color: var(--dourado-claro); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUX</title>
 
-        /* ✅ Vídeo maior e em destaque */
-        .video-banner {
-            width: 100%;
-            max-height: 72vh;
-            object-fit: cover;
-            display: block;
-            background: #000;
-            border-bottom: 2px solid rgba(201,162,39,.25);
-            box-shadow: 0 8px 25px rgba(0,0,0,.4);
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* ✅ Bem-vindo: texto menor e limpo */
-        .hero {
-            background: rgba(10,8,10,.35);
-            text-align: center;
-            padding: 2.2rem 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(201,162,39,.04), transparent 60%); pointer-events: none; }
-        .hero > * { position: relative; z-index: 1; }
-        .hero h2 {
-            color: var(--dourado);
-            font-size: 1.6rem;
-            margin-bottom: .6rem;
-            letter-spacing: 2px;
-        }
-        .hero p {
-            font-size: .98rem;
-            color: var(--texto-suave);
-            max-width: 580px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
+body{
+    font-family:Arial, sans-serif;
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-        /* ✅ Calcinha rosa realista */
-        .calcinha-rosa {
-            display: inline-block;
-            width: 26px;
-            height: 22px;
-            background: linear-gradient(180deg, #ff80b0 0%, #ff4d94 40%, #e6005c 100%);
-            border-radius: 48% 48% 42% 42% / 28% 28% 65% 65%;
-            position: relative;
-            box-shadow: inset 0 -4px 8px rgba(255,255,255,.35), inset 0 4px 8px rgba(0,0,0,.15), 0 2px 4px rgba(0,0,0,.2);
-        }
-        .calcinha-rosa::before, .calcinha-rosa::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            width: 6px;
-            height: 14px;
-            background: linear-gradient(90deg, #ff3385, #ff66a3);
-            border-radius: 3px;
-            box-shadow: inset 0 0 5px rgba(0,0,0,.15);
-        }
-        .calcinha-rosa::before { left: 3px; }
-        .calcinha-rosa::after  { right: 3px; }
-        .calcinha-rosa span {
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, #ffb3d1, transparent 70%);
-            border-radius: 50%;
-            opacity: .6;
-        }
+.video-banner{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
 
-        section {
-            padding: 2.5rem 1rem;
-            max-width: 900px;
-            margin: 0 auto 1rem;
-            background: rgba(0,0,0,.1);
-            border-radius: 8px;
-        }
-        section h2 {
-            color: var(--dourado);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            padding-bottom: .25rem;
-            border-bottom: 1px solid rgba(201,162,39,.15);
-            display: inline-block;
-        }
-        /* ✅ Texto Sobre com estilo poético */
-        .texto-sensual {
-            color: var(--texto-suave);
-            font-size: 1rem;
-            line-height: 1.8;
-            text-align: center;
-            font-style: italic;
-        }
+.video-banner video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    min-width:100%;
+    min-height:100%;
+    width:auto;
+    height:auto;
+    transform:translate(-50%,-50%);
+    object-fit:cover;
+    z-index:-1;
+}
 
-        .botao {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--dourado), #a67c00);
-            color: #000;
-            padding: .8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,.25);
-            transition: all .3s;
-            margin: .5rem;
-        }
-        .botao:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.35); }
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+}
 
-        .contato-bloco {
-            background: rgba(0,0,0,.15);
-            border-radius: 10px;
-            padding: 1.5rem;
-            border-left: 2px solid rgba(201,162,39,.25);
-            margin-top: 1rem;
-        }
-        footer {
-            background: rgba(8,6,8,.5);
-            text-align: center;
-            padding: 1.5rem;
-            color: #998c90;
-            border-top: 1px solid rgba(201,162,39,.06);
-            font-size: .9rem;
-        }
-        .rodape-frase { color: var(--dourado-claro); margin-top: .5rem; font-style: italic; }
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,.35);
-            z-index: 9999;
-            text-decoration: none;
-            transition: all .3s;
-        }
-        .whatsapp-float:hover { transform: scale(1.15); box-shadow: 0 6px 20px rgba(37,211,102,.4); }
-        @media (max-width: 480px) {
-            header { flex-direction: column; text-align: center; }
-            .logo { font-size: 1.6rem; }
-            nav a { margin: 0 .4rem; font-size: .85rem; }
-            .hero h2 { font-size: 1.4rem; }
-            .hero p { font-size: .92rem; }
-            .hero, section { padding: 2rem 1rem; }
-            .whatsapp-float { width: 52px; height: 52px; font-size: 26px; bottom: 15px; right: 15px; }
-            body { background-attachment: scroll; }
-            .video-banner { max-height: 55vh; }
-        }
-    </style>
+.conteudo{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    font-size:48px;
+    color:#FFD700;
+}
+
+p{
+    margin-top:15px;
+    font-size:20px;
+}
+
+.botao{
+    margin-top:30px;
+    background:#FFD700;
+    color:#000;
+    padding:15px 35px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.botao:hover{
+    background:#fff;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-    <div class="logo">LUX</div>
-    <nav>
-        <a href="#inicio">💎 Início</a>
-        <a href="#sobre">💎 Sobre</a>
-        <a href="#vip">💎 Modelos</a>
-        <a href="#contato">💎 Contato</a>
-    </nav>
-</header>
+<section class="video-banner">
 
-<!-- ✅ Vídeo maior e em destaque -->
-<video class="video-banner" src="videobanner.mp4" autoplay muted loop playsinline preload="metadata">
-    Seu navegador não suporta vídeo.
+<video autoplay muted loop playsinline>
+    <source src="videobanner.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos.
 </video>
 
-<section id="inicio" class="hero">
-    <h2>Bem-vindo à LUX</h2>
-    <p>Onde o desejo encontra a elegância. Descubra um universo de fascínio e mistério.</p>
+<div class="overlay"></div>
+
+<div class="conteudo">
+    <h1>LUX</h1>
+    <p>Modelos • Conteúdo Exclusivo • Atendimento Premium</p>
+
+    <a class="botao" href="https://wa.me/SEUNUMERO">
+        Fale Conosco
+    </a>
+</div>
+
 </section>
-
-<section id="sobre">
-    <h2>✨ Sobre Nós</h2>
-    <p class="texto-sensual">
-        O que você procura está aqui — bem-vindo ao <strong>Jardim de Éden</strong>, onde cada olhar é um segredo e cada presença, uma poesia viva.<br><br>
-        Aqui, a sensualidade não se grita: ela se revela em silêncio, como pétalas que se abrem ao entardecer. É o brilho suave nos olhos, o perfume que paira no ar, a promessa de um momento que se torna inesquecível.<br><br>
-        Somos o refúgio dos sentidos, onde o luxo veste discrição e o encontro se transforma em arte. Deixe-se envolver. O extraordinário está à sua espera.
-    </p>
-</section>
-
-<section id="vip">
-    <h2>💎 Selecione sua preferência</h2>
-    <p style="color: var(--texto-suave);">Exclusividade, charme e sofisticação. Escolha entre nossas modelos femininas ou masculinas.</p>
-    <div style="margin-top:1rem;">
-        <a class="botao" href="modelos-femininos.html">
-            <span class="calcinha-rosa"><span></span></span>
-            Modelos Femininas
-        </a>
-        <a class="botao" href="modelos-masculinos.html">
-            💎
-            Modelos Masculinos
-        </a>
-    </div>
-</section>
-
-<section id="contato">
-    <h2>Contato</h2>
-    <div class="contato-bloco">
-        <p>📞 WhatsApp: (51) 98061-2941</p>
-        <p>📸 Instagram: @lux.oficial</p>
-        <p>🌍 Atuação: <strong>Brasil • Europa</strong></p>
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 LUX — Todos os direitos reservados. Proibido para menores de 18 anos.</p>
-    <p class="rodape-frase"><strong>LUX:</strong> Todos os direitos pertencem exclusivamente à marca. Nenhuma parte deste portal pode ser reproduzida, copiada ou utilizada sem autorização formal da diretoria.</p>
-</footer>
-
-<a href="https://wa.me/5551980612941?text=Olá!%20Vi%20o%20site%20da%20LUX%20e%20gostaria%20de%20mais%20informações." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<script>
-document.querySelectorAll('nav a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();const d=document.querySelector(l.getAttribute('href'));if(d)d.scrollIntoView({behavior:'smooth',block:'start'});});});
-</script>
 
 </body>
 </html>
