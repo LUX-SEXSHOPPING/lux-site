@@ -12,7 +12,6 @@
             --texto-claro: #f0e9ec;
             --texto-suave: #e0d8dc;
             --whatsapp-verde: #25d366;
-            --fundo-filtro: rgba(0,0,0,.25);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -61,19 +60,16 @@
             text-align: center;
             margin-bottom: 2rem;
         }
-        /* Ícone decorativo azul para masculino */
         .icone-masculino {
             display: inline-block;
             width: 22px;
             height: 22px;
             background: linear-gradient(180deg, #4a90e2 0%, #2563eb 40%, #1d4ed8 100%);
             border-radius: 50%;
-            position: relative;
-            box-shadow: inset 0 -3px 6px rgba(255,255,255,.3), inset 0 3px 6px rgba(0,0,0,.15);
+            box-shadow: inset 0 -3px 6px rgba(255,255,255,.3);
             vertical-align: middle;
             margin-right: 8px;
         }
-
         .galeria {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -90,13 +86,13 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0,0,0,.3);
         }
-        /* ✅ Vídeo igual ao feminino */
-        .card video {
+        /* ✅ Foto */
+        .card img {
             width: 100%;
             height: 340px;
             object-fit: cover;
             display: block;
-            background: #000;
+            background: #111;
         }
         .card p {
             text-align: center;
@@ -112,7 +108,6 @@
             color: #aaa;
             padding: 0 .5rem .8rem;
         }
-        /* ✅ Botão WhatsApp */
         .botao-whats-modelo {
             display: flex;
             align-items: center;
@@ -132,12 +127,6 @@
             background: #1fb855;
             transform: scale(1.05);
         }
-        .aviso {
-            text-align: center;
-            color: #aaa;
-            margin: 2rem 0;
-            font-size: .9rem;
-        }
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -154,7 +143,7 @@
         @media (max-width: 600px) {
             .galeria { grid-template-columns: 1fr; }
             header { flex-direction: column; gap: 1rem; }
-            .card video { height: 300px; }
+            .card img { height: 300px; }
         }
     </style>
 </head>
@@ -171,53 +160,45 @@
     <div class="galeria">
         <!-- ✅ Modelo 1 -->
         <div class="card">
-            <video src="video.garota" controls playsinline preload="metadata">
-                Seu navegador não suporta vídeo.
-            </video>
+            <img src="garoto1.jpg" alt="Leonardo">
             <p>Leonardo</p>
             <small>Carisma • Presença • Estilo</small>
             <a class="botao-whats-modelo"
-               href="https://wa.me/5551980612941?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20modelo%20*Leonardo*%20da%20LUX.%20Pode%20me%20enviar%20mais%20informações?"
-               target="_blank" rel="noopener noreferrer">
+               href="https://wa.me/5551980612941?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20modelo%20*Leonardo*%20da%20LUX."
+               target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> Falar com Leonardo
             </a>
         </div>
 
         <!-- ✅ Modelo 2 -->
         <div class="card">
-            <video src="video.garota" controls playsinline preload="metadata">
-                Seu navegador não suporta vídeo.
-            </video>
+            <img src="garoto2.jpg" alt="Thiago">
             <p>Thiago</p>
             <small>Força • Beleza • Sofisticação</small>
             <a class="botao-whats-modelo"
-               href="https://wa.me/5551980612941?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20modelo%20*Thiago*%20da%20LUX.%20Pode%20me%20enviar%20mais%20informações?"
-               target="_blank" rel="noopener noreferrer">
+               href="https://wa.me/5551980612941?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20modelo%20*Thiago*%20da%20LUX."
+               target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> Falar com Thiago
             </a>
         </div>
 
         <!-- ✅ Modelo 3 -->
         <div class="card">
-            <video src="video.garota" controls playsinline preload="metadata">
-                Seu navegador não suporta vídeo.
-            </video>
+            <img src="garoto3.jpg" alt="Rodrigo">
             <p>Rodrigo</p>
             <small>Elegância • Charme • Discrição</small>
             <a class="botao-whats-modelo"
-               href="https://wa.me/5551980612941?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20modelo%20*Rodrigo*%20da%20LUX.%20Pode%20me%20enviar%20mais%20informações?"
-               target="_blank" rel="noopener noreferrer">
+               href="https://wa.me/5551980612941?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20modelo%20*Rodrigo*%20da%20LUX."
+               target="_blank">
                 <i class="fa-brands fa-whatsapp"></i> Falar com Rodrigo
             </a>
         </div>
     </div>
-
-    <p class="aviso">💎 Fundo: <strong>banner.png</strong> • Vídeo: <strong>video.garota</strong> • WhatsApp: <strong>(51) 98061-2941</strong></p>
 </main>
 
 <footer>
     <p>© 2026 LUX — Proibido para menores de 18 anos.</p>
-    <p class="rodape-frase"><strong>LUX:</strong> Todos os direitos pertencem exclusivamente à marca. Nenhuma parte deste portal pode ser reproduzida, copiada ou utilizada sem autorização formal da diretoria.</p>
+    <p class="rodape-frase"><strong>LUX:</strong> Todos os direitos pertencem exclusivamente à marca.</p>
 </footer>
 
 </body>
