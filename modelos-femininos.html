@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos Femininas — LUX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dourado: #c9a227;
+            --texto-claro: #f0e9ec;
+            --texto-suave: #e0d8dc;
+            --fundo-filtro: rgba(0,0,0,.25);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--texto-claro);
+            /* ✅ Fundo: banner3.jpg */
+            background: linear-gradient(rgba(8,6,8,.4), rgba(15,8,15,.45)), url('banner3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        header {
+            background: rgba(8,6,8,.6);
+            border-bottom: 1px solid rgba(201,162,39,.1);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dourado);
+            letter-spacing: 2px;
+        }
+        nav a {
+            color: var(--texto-suave);
+            text-decoration: none;
+            margin: 0 .6rem;
+            font-weight: 500;
+        }
+        nav a:hover { color: var(--dourado); }
+        main {
+            padding: 2rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--dourado);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        /* ✅ Calcinha rosa realista */
+        .calcinha-rosa {
+            display: inline-block;
+            width: 22px;
+            height: 18px;
+            background: linear-gradient(180deg, #ff80b0 0%, #ff4d94 40%, #e6005c 100%);
+            border-radius: 48% 48% 42% 42% / 28% 28% 65% 65%;
+            position: relative;
+            box-shadow: inset 0 -3px 6px rgba(255,255,255,.3), inset 0 3px 6px rgba(0,0,0,.15);
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .calcinha-rosa::before, .calcinha-rosa::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            width: 5px;
+            height: 11px;
+            background: #ff3385;
+            border-radius: 3px;
+        }
+        .calcinha-rosa::before { left: 2px; }
+        .calcinha-rosa::after  { right: 2px; }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+        .card {
+            background: rgba(0,0,0,.25);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(201,162,39,.15);
+            transition: transform .3s, box-shadow .3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,.3);
+        }
+        .card img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+        .card p {
+            text-align: center;
+            padding: 1rem;
+            color: var(--texto-suave);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        .card small {
+            display: block;
+            text-align: center;
+            color: #aaa;
+            padding-bottom: 1rem;
+        }
+        .aviso {
+            text-align: center;
+            color: #aaa;
+            margin: 2rem 0;
+            font-size: .9rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #887c80;
+            font-size: .9rem;
+            background: rgba(8,6,8,.5);
+            border-top: 1px solid rgba(201,162,39,.06);
+        }
+        .rodape-frase {
+            color: #b89a2f;
+            margin-top: .5rem;
+            font-style: italic;
+        }
+        @media (max-width: 600px) {
+            .galeria { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><span class="calcinha-rosa"></span>Modelos Femininas</div>
+    <nav><a href="index.html">← Voltar ao Início</a></nav>
+</header>
+
+<main>
+    <h1><span class="calcinha-rosa"></span>Garotas Selecionadas</h1>
+
+    <!-- ✅ 3 MODELOS FOTOS: garota1.jpg garota2.jpg garota3.jpg -->
+    <div class="galeria">
+        <!-- Garota 1 -->
+        <div class="card">
+            <img src="garota1.jpg" alt="Modelo">
+            <p>(Name)</p>
+            <small>Exclusividade • Charme</small>
+        </div>
+
+        <!-- Garota 2 -->
+        <div class="card">
+            <img src="garota2.jpg" alt="Modelo">
+            <p>(Name)</p>
+            <small>Sofisticação • Beleza</small>
+        </div>
+
+        <!-- Garota 3 -->
+        <div class="card">
+            <img src="garota3.jpg" alt="Modelo">
+            <p>(Name)</p>
+            <small>Elegância • Sensualidade</small>
+        </div>
+    </div>
+
+    <p class="aviso">💎 Fundo: <strong>banner3.jpg</strong> • Fotos: <strong>garota1.jpg, garota2.jpg, garota3.jpg</strong></p>
+</main>
+
+<footer>
+    <p>© 2026 LUX — Proibido para menores de 18 anos.</p>
+    <p class="rodape-frase"><strong>LUX:</strong> Todos os direitos pertencem exclusivamente à marca. Nenhuma parte deste portal pode ser reproduzida, copiada ou utilizada sem autorização formal da diretoria.</p>
+</footer>
+
+</body>
+</html>
