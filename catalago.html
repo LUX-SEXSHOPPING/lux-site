@@ -46,7 +46,6 @@
         }
         .subtitulo { text-align: center; color: var(--texto-suave); margin-bottom: 2.5rem; }
 
-        /* ✅ ABAS DE ESCOLHA INICIAL */
         .seletor {
             display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap;
         }
@@ -59,17 +58,14 @@
         .botao-secao:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,.35); }
         .botao-secao.ativo { outline: 3px solid var(--dourado); outline-offset: 3px; }
 
-        /* ✅ CONTEÚDO DAS SEÇÕES */
         .secao { display: none; }
         .secao.mostrar { display: block; animation: aparece .4s ease; }
         @keyframes aparece { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ✅ ESTILO SEÇÃO MASCULINA */
         .conteudo-masc {
             background: linear-gradient(145deg, var(--azul-fundo), var(--azul-masc));
             border-radius: 16px; padding: 2rem; border: 1px solid rgba(59, 130, 246, .3);
         }
-        /* ✅ ESTILO SEÇÃO FEMININA */
         .conteudo-fem {
             background: linear-gradient(145deg, var(--rosa-fundo), var(--rosa-fem));
             border-radius: 16px; padding: 2rem; border: 1px solid rgba(236, 72, 153, .3);
@@ -130,7 +126,6 @@
     <h1>Catálogo de Perfis</h1>
     <p class="subtitulo">Escolha a seção que deseja explorar</p>
 
-    <!-- ✅ TELA INICIAL — ESCOLHA -->
     <div class="seletor">
         <button class="botao-secao botao-masc" onclick="mostrarSecao('masculino')">
             <i class="fa-solid fa-mars fa-lg"></i> Modelos Masculinos
@@ -140,7 +135,6 @@
         </button>
     </div>
 
-    <!-- ✅ SEÇÃO MASCULINA -->
     <div id="masculino" class="secao">
         <div class="conteudo-masc">
             <h2 class="titulo-secao" style="color:#bfdbfe;">
@@ -150,7 +144,7 @@
                 <div class="card">
                     <i class="fa-solid fa-user-tie icone" style="color:#93c5fd;"></i>
                     <h3 class="nome">Perfil M 01</h3>
-                    <p class="desc">Presença marcante e estilo • Em breve</p>
+                    <p class="desc">Presença marcante • Em breve</p>
                     <a class="botao-whats" href="https://wa.me/5551980612941?text=Interessei%20no%20Modelo%20M01" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i> Contatar
                     </a>
@@ -167,7 +161,6 @@
         </div>
     </div>
 
-    <!-- ✅ SEÇÃO FEMININA -->
     <div id="feminino" class="secao">
         <div class="conteudo-fem">
             <h2 class="titulo-secao" style="color:#fbcfe8;">
@@ -202,13 +195,9 @@
 <footer><p>© 2026 LUX — Proibido para menores de 18 anos. Todos os direitos reservados.</p></footer>
 
 <script>
-// ✅ MOSTRA A SEÇÃO ESCOLHIDA
 function mostrarSecao(id) {
-    // Esconde todas
     document.querySelectorAll('.secao').forEach(s => s.classList.remove('mostrar'));
-    // Mostra a escolhida
     document.getElementById(id).classList.add('mostrar');
-    // Destaque no botão
     document.querySelectorAll('.botao-secao').forEach(b => b.classList.remove('ativo'));
     event.target.closest('.botao-secao').classList.add('ativo');
 }
