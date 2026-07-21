@@ -19,24 +19,91 @@
             font-family: 'Segoe UI', Roboto, Arial, sans-serif;
             color: var(--texto-claro);
             line-height: 1.6;
-            /* ✅ Fundo: banner.jpg */
             background: linear-gradient(rgba(8,6,8,0.4), rgba(15,8,15,0.45)), url('banner.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
         }
-        header { background: rgba(8,6,8,.6); border-bottom: 1px solid rgba(201,162,39,.1); padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+        header {
+            background: rgba(8,6,8,.6);
+            border-bottom: 1px solid rgba(201,162,39,.1);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
         .logo { font-size: 1.7rem; font-weight: 700; color: var(--dourado); letter-spacing: 3px; }
         nav { margin-top: .5rem; }
         nav a { color: var(--texto-suave); text-decoration: none; margin: 0 .6rem; font-size: .9rem; font-weight: 500; transition: color .3s; }
         nav a:hover { color: var(--dourado-claro); }
-        .titulo-sensual { font-family: 'Playfair Display', serif; font-style: italic; color: var(--dourado); font-size: 1.6rem; margin-bottom: 1rem; padding-bottom: .25rem; border-bottom: 1px solid rgba(201,162,39,.15); display: inline-block; }
-        .hero { background: rgba(10,8,10,.35); text-align: center; padding: 3.5rem 1rem; position: relative; overflow: hidden; }
+
+        /* ✅ VÍDEO BEM MAIOR — ocupa até 70% da tela */
+        .video-banner {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: cover;
+            display: block;
+            background: #000;
+            border-bottom: 2px solid rgba(201,162,39,.2);
+        }
+
+        /* ✅ BEM-VINDO — SEM BOTÕES */
+        .hero {
+            background: rgba(10,8,10,.35);
+            text-align: center;
+            padding: 3.5rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
         .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(201,162,39,.04), transparent 60%); pointer-events: none; }
         .hero > * { position: relative; z-index: 1; }
-        .hero h2 { color: var(--dourado); font-size: 1.9rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.05rem; color: var(--texto-suave); max-width: 600px; margin: 0 auto 1.5rem; padding: 0 1rem; }
+        .hero h2 { color: var(--dourado); font-size: 2rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; color: var(--texto-suave); max-width: 650px; margin: 0 auto; padding: 0 1rem; }
+
+        /* ✅ Calcinha rosa realista */
+        .calcinha-rosa {
+            display: inline-block;
+            width: 26px;
+            height: 22px;
+            background: linear-gradient(180deg, #ff80b0 0%, #ff4d94 40%, #e6005c 100%);
+            border-radius: 48% 48% 42% 42% / 28% 28% 65% 65%;
+            position: relative;
+            box-shadow: inset 0 -4px 8px rgba(255,255,255,.35), inset 0 4px 8px rgba(0,0,0,.15), 0 2px 4px rgba(0,0,0,.2);
+        }
+        .calcinha-rosa::before, .calcinha-rosa::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            width: 6px;
+            height: 14px;
+            background: linear-gradient(90deg, #ff3385, #ff66a3);
+            border-radius: 3px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,.15);
+        }
+        .calcinha-rosa::before { left: 3px; }
+        .calcinha-rosa::after  { right: 3px; }
+        .calcinha-rosa span {
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffb3d1, transparent 70%);
+            border-radius: 50%;
+            opacity: .6;
+        }
+
+        section { padding: 2.5rem 1rem; max-width: 900px; margin: 0 auto 1rem; background: rgba(0,0,0,.1); border-radius: 8px; }
+        section h2 { color: var(--dourado); font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: .25rem; border-bottom: 1px solid rgba(201,162,39,.15); display: inline-block; }
+        section p { color: var(--texto-suave); font-size: 1rem; }
+
+        /* ✅ Botões de modelos movidos apenas para a seção VIP */
         .botao {
             display: inline-flex;
             align-items: center;
@@ -53,49 +120,6 @@
         }
         .botao:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.35); }
 
-        /* ✅ CALCINHA ROSA REALISTA */
-        .calcinha-rosa {
-            display: inline-block;
-            width: 26px;
-            height: 22px;
-            background: linear-gradient(180deg, #ff80b0 0%, #ff4d94 40%, #e6005c 100%);
-            border-radius: 48% 48% 42% 42% / 28% 28% 65% 65%;
-            position: relative;
-            box-shadow:
-                inset 0 -4px 8px rgba(255,255,255,.35),
-                inset 0 4px 8px rgba(0,0,0,.15),
-                0 2px 4px rgba(0,0,0,.2);
-        }
-        /* Lados laterais da calcinha */
-        .calcinha-rosa::before,
-        .calcinha-rosa::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            width: 6px;
-            height: 14px;
-            background: linear-gradient(90deg, #ff3385, #ff66a3);
-            border-radius: 3px;
-            box-shadow: inset 0 0 5px rgba(0,0,0,.15);
-        }
-        .calcinha-rosa::before { left: 3px; }
-        .calcinha-rosa::after  { right: 3px; }
-        /* Brilho central */
-        .calcinha-rosa span {
-            position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, #ffb3d1, transparent 70%);
-            border-radius: 50%;
-            opacity: .6;
-        }
-
-        section { padding: 2.5rem 1rem; max-width: 900px; margin: 0 auto 1rem; background: rgba(0,0,0,.1); border-radius: 8px; }
-        section h2 { color: var(--dourado); font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: .25rem; border-bottom: 1px solid rgba(201,162,39,.15); display: inline-block; }
-        section p { color: var(--texto-suave); font-size: 1rem; }
         .contato-bloco { background: rgba(0,0,0,.15); border-radius: 10px; padding: 1.5rem; border-left: 2px solid rgba(201,162,39,.25); margin-top: 1rem; }
         footer { background: rgba(8,6,8,.5); text-align: center; padding: 1.5rem; color: #998c90; border-top: 1px solid rgba(201,162,39,.06); font-size: .9rem; }
         .rodape-frase { color: var(--dourado-claro); margin-top: .5rem; font-style: italic; }
@@ -105,11 +129,12 @@
             header { flex-direction: column; text-align: center; }
             .logo { font-size: 1.5rem; }
             nav a { margin: 0 .4rem; font-size: .85rem; }
-            .hero h2 { font-size: 1.6rem; }
-            .titulo-sensual { font-size: 1.4rem; }
+            .hero h2 { font-size: 1.7rem; }
+            .hero p { font-size: 1rem; }
             .hero, section { padding: 2rem 1rem; }
             .whatsapp-float { width: 52px; height: 52px; font-size: 26px; bottom: 15px; right: 15px; }
             body { background-attachment: scroll; }
+            .video-banner { max-height: 55vh; }
         }
     </style>
 </head>
@@ -125,20 +150,15 @@
     </nav>
 </header>
 
+<!-- ✅ VÍDEO MAIOR: videobanner.mp4 -->
+<video class="video-banner" src="videobanner.mp4" autoplay muted loop playsinline preload="metadata">
+    Seu navegador não suporta vídeo.
+</video>
+
 <section id="inicio" class="hero">
+    <!-- ✅ BEM-VINDO — SÓ TEXTO, SEM BOTÕES -->
     <h2>Bem-vindo à LUX</h2>
     <p>Sensualidade. Mistério. Sofisticação. Uma experiência que desperta os sentidos.</p>
-
-    <a class="botao" href="modelos-femininos.html">
-        <!-- ✅ Calcinha rosa realista -->
-        <span class="calcinha-rosa"><span></span></span>
-        Modelos Femininas
-    </a>
-
-    <a class="botao" href="modelos-masculinos.html">
-        💎
-        Modelos Masculinos
-    </a>
 </section>
 
 <section id="sobre">
@@ -147,7 +167,7 @@
 </section>
 
 <section id="vip">
-    <h2 class="titulo-sensual">💎 Selecione sua preferência</h2>
+    <h2>💎 Selecione sua preferência</h2>
     <p>Exclusividade, charme e sofisticação. Escolha entre nossas modelos femininas ou masculinas.</p>
     <div style="margin-top:1rem;">
         <a class="botao" href="modelos-femininos.html">
@@ -180,13 +200,7 @@
 </a>
 
 <script>
-document.querySelectorAll('nav a[href^="#"]').forEach(l=>{
-    l.addEventListener('click',e=>{
-        e.preventDefault();
-        const d=document.querySelector(l.getAttribute('href'));
-        if(d) d.scrollIntoView({behavior:'smooth',block:'start'});
-    });
-});
+document.querySelectorAll('nav a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();const d=document.querySelector(l.getAttribute('href'));if(d)d.scrollIntoView({behavior:'smooth',block:'start'});});});
 </script>
 
 </body>
