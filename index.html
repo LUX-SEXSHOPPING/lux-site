@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUX — Sensualidade & Sofisticação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --preto-fundo: #080608;
+            --preto-card: #120e12;
+            --cinza-forte: #1a151a;
+            --dourado: #c9a227;
+            --dourado-claro: #e6c86e;
+            --vinho-profundo: #3b1222;
+            --texto-claro: #f0e9ec;
+            --texto-suave: #b8aeb2;
+            --whatsapp-verde: #25d366;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            color: var(--texto-claro);
+            line-height: 1.6;
+
+            /* ✅ AQUI COLOCAMOS A IMAGEM DE FUNDO */
+            background:
+                linear-gradient(rgba(8, 6, 8, 0.85), rgba(20, 10, 20, 0.88)),
+                /* ↑ essa camada escura protege o texto ↑ */
+                url('banner.jpg');
+            background-size: cover;       /* cobre tudo */
+            background-position: center;  /* centraliza a foto */
+            background-attachment: fixed; /* efeito fixo elegante */
+            background-repeat: no-repeat;
+        }
+
+        header { background: rgba(8,6,8,.85); border-bottom: 1px solid rgba(201,162,39,.15); padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.7rem; font-weight: 700; color: var(--dourado); letter-spacing: 3px; }
+        nav { margin-top: .5rem; }
+        nav a { color: var(--texto-suave); text-decoration: none; margin: 0 .6rem; font-size: .9rem; font-weight: 500; transition: color .3s; }
+        nav a:hover { color: var(--dourado-claro); }
+
+        .hero { background: linear-gradient(145deg, rgba(18,14,18,.7), rgba(26,21,26,.7), rgba(59,18,34,.7)); text-align: center; padding: 3.5rem 1rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(201,162,39,.07), transparent 60%); pointer-events: none; }
+        .hero > * { position: relative; z-index: 1; }
+        .hero h2 { color: var(--dourado); font-size: 1.9rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.05rem; color: var(--texto-suave); max-width: 600px; margin: 0 auto 1.5rem; padding: 0 1rem; }
+        .botao { display: inline-block; background: linear-gradient(135deg, var(--dourado), #a67c00); color: var(--preto-fundo); padding: .8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 18px rgba(201,162,39,.25); transition: all .3s; }
+        .botao:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(201,162,39,.4); }
+
+        section { padding: 2.5rem 1rem; max-width: 900px; margin: 0 auto; background: rgba(0,0,0,.2); border-radius: 8px; margin-bottom: 1rem; }
+        section h2 { color: var(--dourado); font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: .4rem; border-bottom: 2px solid rgba(201,162,39,.25); display: inline-block; }
+        section p { color: var(--texto-suave); font-size: 1rem; }
+        .contato-bloco { background: rgba(26,21,26,.7); border-radius: 10px; padding: 1.5rem; border-left: 3px solid var(--dourado); margin-top: 1rem; }
+
+        footer { background: rgba(18,14,18,.85); text-align: center; padding: 1.5rem; color: #665c60; border-top: 1px solid rgba(201,162,39,.1); font-size: .9rem; }
+
+        /* Botão WhatsApp */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background-color: var(--whatsapp-verde); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,.4); z-index: 9999; transition: all .3s; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.15); box-shadow: 0 6px 20px rgba(37,211,102,.6); }
+
+        @media (max-width: 480px) {
+            header { flex-direction: column; text-align: center; }
+            .logo { font-size: 1.5rem; }
+            nav a { margin: 0 .4rem; font-size: .85rem; }
+            .hero h2 { font-size: 1.6rem; }
+            .hero { padding: 2.5rem 1rem; }
+            section { padding: 2rem 1rem; }
+            .whatsapp-float { width: 52px; height: 52px; font-size: 26px; bottom: 15px; right: 15px; }
+            body { background-attachment: scroll; } /* melhor desempenho no celular */
+        }
+    </style>
+</head>
+<body>
+
+<header><div class="logo">LUX</div><nav>
+<a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#galeria">Galeria</a><a href="#contato">Contato</a>
+</nav></header>
+
+<section id="inicio" class="hero">
+<h2>Bem-vindo à LUX</h2>
+<p>Sensualidade. Mistério. Sofisticação. Uma experiência que desperta os sentidos.</p>
+<a class="botao" href="#contato">Fale Conosco</a>
+</section>
+
+<section id="sobre">
+<h2>Sobre Nós</h2>
+<p>A LUX foi criada para quem busca um ambiente exclusivo, envolvente e marcante. Um espaço onde o luxo encontra a sensualidade com discrição, profissionalismo e elegância em cada detalhe.</p>
+</section>
+
+<section id="galeria">
+<h2>Galeria</h2>
+<p>Em breve: um olhar sobre o ambiente, os detalhes e a atmosfera única da LUX.</p>
+</section>
+
+<section id="contato">
+<h2>Contato</h2>
+<div class="contato-bloco">
+<p>📞 WhatsApp: (51) 98061-2941</p>
+<p>📸 Instagram: @lux.oficial</p>
+<rio. Rio Grande do Sul</p>
+</div>
+</section>
+
+<footer><p>© 2026 LUX — Todos os direitos reservados. Proibido para menores de 18 anos.</p></footer>
+
+<a href="https://wa.me/5551980612941?text=Olá!%20Vi%20o%20site%20da%20LUX%20e%20gostaria%20de%20mais%20informações." 
+   class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const destino = document.querySelector(link.getAttribute('href'));
+        if (destino) destino.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+});
+</script>
+
+</body>
+</html>
