@@ -10,6 +10,7 @@
         :root {
             --dourado: #c9a227;
             --dourado-claro: #e6c86e;
+            --dourado-escuro: #b58f1f;
             --texto-claro: #f0e9ec;
             --texto-suave: #e0d8dc;
             --whatsapp-verde: #25d366;
@@ -37,33 +38,52 @@
             top: 0;
             z-index: 100;
         }
-        .logo { font-size: 1.7rem; font-weight: 700; color: var(--dourado); letter-spacing: 3px; }
+        /* ✅ Logo LUX realçada */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dourado-claro);
+            letter-spacing: 4px;
+            text-shadow: 0 0 12px rgba(201,162,39,.6), 0 0 24px rgba(201,162,39,.3);
+        }
         nav { margin-top: .5rem; }
         nav a { color: var(--texto-suave); text-decoration: none; margin: 0 .6rem; font-size: .9rem; font-weight: 500; transition: color .3s; }
         nav a:hover { color: var(--dourado-claro); }
 
-        /* ✅ VÍDEO BEM MAIOR — ocupa até 70% da tela */
+        /* ✅ Vídeo maior e em destaque */
         .video-banner {
             width: 100%;
-            max-height: 70vh;
+            max-height: 72vh;
             object-fit: cover;
             display: block;
             background: #000;
-            border-bottom: 2px solid rgba(201,162,39,.2);
+            border-bottom: 2px solid rgba(201,162,39,.25);
+            box-shadow: 0 8px 25px rgba(0,0,0,.4);
         }
 
-        /* ✅ BEM-VINDO — SEM BOTÕES */
+        /* ✅ Bem-vindo: texto menor e limpo */
         .hero {
             background: rgba(10,8,10,.35);
             text-align: center;
-            padding: 3.5rem 1rem;
+            padding: 2.2rem 1rem;
             position: relative;
             overflow: hidden;
         }
         .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(201,162,39,.04), transparent 60%); pointer-events: none; }
         .hero > * { position: relative; z-index: 1; }
-        .hero h2 { color: var(--dourado); font-size: 2rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.1rem; color: var(--texto-suave); max-width: 650px; margin: 0 auto; padding: 0 1rem; }
+        .hero h2 {
+            color: var(--dourado);
+            font-size: 1.6rem;
+            margin-bottom: .6rem;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: .98rem;
+            color: var(--texto-suave);
+            max-width: 580px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
         /* ✅ Calcinha rosa realista */
         .calcinha-rosa {
@@ -99,11 +119,30 @@
             opacity: .6;
         }
 
-        section { padding: 2.5rem 1rem; max-width: 900px; margin: 0 auto 1rem; background: rgba(0,0,0,.1); border-radius: 8px; }
-        section h2 { color: var(--dourado); font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: .25rem; border-bottom: 1px solid rgba(201,162,39,.15); display: inline-block; }
-        section p { color: var(--texto-suave); font-size: 1rem; }
+        section {
+            padding: 2.5rem 1rem;
+            max-width: 900px;
+            margin: 0 auto 1rem;
+            background: rgba(0,0,0,.1);
+            border-radius: 8px;
+        }
+        section h2 {
+            color: var(--dourado);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: .25rem;
+            border-bottom: 1px solid rgba(201,162,39,.15);
+            display: inline-block;
+        }
+        /* ✅ Texto Sobre com estilo poético */
+        .texto-sensual {
+            color: var(--texto-suave);
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: center;
+            font-style: italic;
+        }
 
-        /* ✅ Botões de modelos movidos apenas para a seção VIP */
         .botao {
             display: inline-flex;
             align-items: center;
@@ -120,17 +159,47 @@
         }
         .botao:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.35); }
 
-        .contato-bloco { background: rgba(0,0,0,.15); border-radius: 10px; padding: 1.5rem; border-left: 2px solid rgba(201,162,39,.25); margin-top: 1rem; }
-        footer { background: rgba(8,6,8,.5); text-align: center; padding: 1.5rem; color: #998c90; border-top: 1px solid rgba(201,162,39,.06); font-size: .9rem; }
+        .contato-bloco {
+            background: rgba(0,0,0,.15);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 2px solid rgba(201,162,39,.25);
+            margin-top: 1rem;
+        }
+        footer {
+            background: rgba(8,6,8,.5);
+            text-align: center;
+            padding: 1.5rem;
+            color: #998c90;
+            border-top: 1px solid rgba(201,162,39,.06);
+            font-size: .9rem;
+        }
         .rodape-frase { color: var(--dourado-claro); margin-top: .5rem; font-style: italic; }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #25d366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,.35); z-index: 9999; text-decoration: none; transition: all .3s; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.35);
+            z-index: 9999;
+            text-decoration: none;
+            transition: all .3s;
+        }
         .whatsapp-float:hover { transform: scale(1.15); box-shadow: 0 6px 20px rgba(37,211,102,.4); }
         @media (max-width: 480px) {
             header { flex-direction: column; text-align: center; }
-            .logo { font-size: 1.5rem; }
+            .logo { font-size: 1.6rem; }
             nav a { margin: 0 .4rem; font-size: .85rem; }
-            .hero h2 { font-size: 1.7rem; }
-            .hero p { font-size: 1rem; }
+            .hero h2 { font-size: 1.4rem; }
+            .hero p { font-size: .92rem; }
             .hero, section { padding: 2rem 1rem; }
             .whatsapp-float { width: 52px; height: 52px; font-size: 26px; bottom: 15px; right: 15px; }
             body { background-attachment: scroll; }
@@ -150,25 +219,28 @@
     </nav>
 </header>
 
-<!-- ✅ VÍDEO MAIOR: videobanner.mp4 -->
+<!-- ✅ Vídeo maior e em destaque -->
 <video class="video-banner" src="videobanner.mp4" autoplay muted loop playsinline preload="metadata">
     Seu navegador não suporta vídeo.
 </video>
 
 <section id="inicio" class="hero">
-    <!-- ✅ BEM-VINDO — SÓ TEXTO, SEM BOTÕES -->
     <h2>Bem-vindo à LUX</h2>
-    <p>Sensualidade. Mistério. Sofisticação. Uma experiência que desperta os sentidos.</p>
+    <p>Onde o desejo encontra a elegância. Descubra um universo de fascínio e mistério.</p>
 </section>
 
 <section id="sobre">
-    <h2>Sobre Nós</h2>
-    <p>A LUX foi criada para quem busca um ambiente exclusivo, envolvente e marcante. Um espaço onde o luxo encontra a sensualidade com discrição, profissionalismo e elegância em cada detalhe.</p>
+    <h2>✨ Sobre Nós</h2>
+    <p class="texto-sensual">
+        O que você procura está aqui — bem-vindo ao <strong>Jardim de Éden</strong>, onde cada olhar é um segredo e cada presença, uma poesia viva.<br><br>
+        Aqui, a sensualidade não se grita: ela se revela em silêncio, como pétalas que se abrem ao entardecer. É o brilho suave nos olhos, o perfume que paira no ar, a promessa de um momento que se torna inesquecível.<br><br>
+        Somos o refúgio dos sentidos, onde o luxo veste discrição e o encontro se transforma em arte. Deixe-se envolver. O extraordinário está à sua espera.
+    </p>
 </section>
 
 <section id="vip">
     <h2>💎 Selecione sua preferência</h2>
-    <p>Exclusividade, charme e sofisticação. Escolha entre nossas modelos femininas ou masculinas.</p>
+    <p style="color: var(--texto-suave);">Exclusividade, charme e sofisticação. Escolha entre nossas modelos femininas ou masculinas.</p>
     <div style="margin-top:1rem;">
         <a class="botao" href="modelos-femininos.html">
             <span class="calcinha-rosa"><span></span></span>
