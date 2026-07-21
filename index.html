@@ -19,10 +19,12 @@
             font-family: 'Segoe UI', Roboto, Arial, sans-serif;
             color: var(--texto-claro);
             line-height: 1.6;
-            background: linear-gradient(rgba(8,6,8,0.4), rgba(15,8,15,0.45)), url('banner.png');
+            /* ✅ Fundo: banner.jpg */
+            background: linear-gradient(rgba(8,6,8,0.4), rgba(15,8,15,0.45)), url('banner.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            background-repeat: no-repeat;
         }
         header { background: rgba(8,6,8,.6); border-bottom: 1px solid rgba(201,162,39,.1); padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 1.7rem; font-weight: 700; color: var(--dourado); letter-spacing: 3px; }
@@ -35,8 +37,62 @@
         .hero > * { position: relative; z-index: 1; }
         .hero h2 { color: var(--dourado); font-size: 1.9rem; margin-bottom: 1rem; }
         .hero p { font-size: 1.05rem; color: var(--texto-suave); max-width: 600px; margin: 0 auto 1.5rem; padding: 0 1rem; }
-        .botao { display: inline-block; background: linear-gradient(135deg, var(--dourado), #a67c00); color: #000; padding: .8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,.25); transition: all .3s; margin: .5rem; }
+        .botao {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--dourado), #a67c00);
+            color: #000;
+            padding: .8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,.25);
+            transition: all .3s;
+            margin: .5rem;
+        }
         .botao:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.35); }
+
+        /* ✅ CALCINHA ROSA REALISTA */
+        .calcinha-rosa {
+            display: inline-block;
+            width: 26px;
+            height: 22px;
+            background: linear-gradient(180deg, #ff80b0 0%, #ff4d94 40%, #e6005c 100%);
+            border-radius: 48% 48% 42% 42% / 28% 28% 65% 65%;
+            position: relative;
+            box-shadow:
+                inset 0 -4px 8px rgba(255,255,255,.35),
+                inset 0 4px 8px rgba(0,0,0,.15),
+                0 2px 4px rgba(0,0,0,.2);
+        }
+        /* Lados laterais da calcinha */
+        .calcinha-rosa::before,
+        .calcinha-rosa::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            width: 6px;
+            height: 14px;
+            background: linear-gradient(90deg, #ff3385, #ff66a3);
+            border-radius: 3px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,.15);
+        }
+        .calcinha-rosa::before { left: 3px; }
+        .calcinha-rosa::after  { right: 3px; }
+        /* Brilho central */
+        .calcinha-rosa span {
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffb3d1, transparent 70%);
+            border-radius: 50%;
+            opacity: .6;
+        }
+
         section { padding: 2.5rem 1rem; max-width: 900px; margin: 0 auto 1rem; background: rgba(0,0,0,.1); border-radius: 8px; }
         section h2 { color: var(--dourado); font-size: 1.4rem; margin-bottom: 1rem; padding-bottom: .25rem; border-bottom: 1px solid rgba(201,162,39,.15); display: inline-block; }
         section p { color: var(--texto-suave); font-size: 1rem; }
@@ -59,46 +115,64 @@
 </head>
 <body>
 
-<header><div class="logo">LUX</div><nav>
-<a href="#inicio">💎 Início</a>
-<a href="#sobre">💎 Sobre</a>
-<a href="#vip">💎 Modelos</a>
-<a href="#contato">💎 Contato</a>
-</nav></header>
+<header>
+    <div class="logo">LUX</div>
+    <nav>
+        <a href="#inicio">💎 Início</a>
+        <a href="#sobre">💎 Sobre</a>
+        <a href="#vip">💎 Modelos</a>
+        <a href="#contato">💎 Contato</a>
+    </nav>
+</header>
 
 <section id="inicio" class="hero">
-<h2>Bem-vindo à LUX</h2>
-<p>Sensualidade. Mistério. Sofisticação. Uma experiência que desperta os sentidos.</p>
-<a class="botao" href="modelos-femininos.html">💎 Modelos Femininas</a>
-<a class="botao" href="modelos-masculinos.html">💎 Modelos Masculinos</a>
+    <h2>Bem-vindo à LUX</h2>
+    <p>Sensualidade. Mistério. Sofisticação. Uma experiência que desperta os sentidos.</p>
+
+    <a class="botao" href="modelos-femininos.html">
+        <!-- ✅ Calcinha rosa realista -->
+        <span class="calcinha-rosa"><span></span></span>
+        Modelos Femininas
+    </a>
+
+    <a class="botao" href="modelos-masculinos.html">
+        💎
+        Modelos Masculinos
+    </a>
 </section>
 
 <section id="sobre">
-<h2>Sobre Nós</h2>
-<p>A LUX foi criada para quem busca um ambiente exclusivo, envolvente e marcante. Um espaço onde o luxo encontra a sensualidade com discrição, profissionalismo e elegância em cada detalhe.</p>
+    <h2>Sobre Nós</h2>
+    <p>A LUX foi criada para quem busca um ambiente exclusivo, envolvente e marcante. Um espaço onde o luxo encontra a sensualidade com discrição, profissionalismo e elegância em cada detalhe.</p>
 </section>
 
 <section id="vip">
-<h2 class="titulo-sensual">💎 Selecione sua preferência</h2>
-<p>Exclusividade, charme e sofisticação. Escolha entre nossas modelos femininas ou masculinas.</p>
-<div style="margin-top:1rem;">
-<a class="botao" href="modelos-femininos.html">💎 Femininas</a>
-<a class="botao" href="modelos-masculinos.html">💎 Masculinos</a>
-</div>
+    <h2 class="titulo-sensual">💎 Selecione sua preferência</h2>
+    <p>Exclusividade, charme e sofisticação. Escolha entre nossas modelos femininas ou masculinas.</p>
+    <div style="margin-top:1rem;">
+        <a class="botao" href="modelos-femininos.html">
+            <span class="calcinha-rosa"><span></span></span>
+            Modelos Femininas
+        </a>
+        <a class="botao" href="modelos-masculinos.html">
+            💎
+            Modelos Masculinos
+        </a>
+    </div>
 </section>
 
 <section id="contato">
-<h2>Contato</h2>
-<div class="contato-bloco">
-<p>📞 WhatsApp: (51) 98061-2941</p>
-<p>📸 Instagram: @lux.oficial</p>
-<p>🌍 Atuação: <strong>Brasil • Europa</strong></p>
-</div>
+    <h2>Contato</h2>
+    <div class="contato-bloco">
+        <p>📞 WhatsApp: (51) 98061-2941</p>
+        <p>📸 Instagram: @lux.oficial</p>
+        <p>🌍 Atuação: <strong>Brasil • Europa</strong></p>
+    </div>
 </section>
 
 <footer>
-<p>© 2026 LUX — Todos os direitos reservados. Proibido para menores de 18 anos.</p>
-<p class="rodape-frase"><strong>LUX:</strong> Todos os direitos pertencem exclusivamente à marca. Nenhuma parte deste portal pode ser reproduzida, copiada ou utilizada sem autorização formal da diretoria.</p>
+    <p>© 2026 LUX — Todos os direitos reservados. Proibido para menores de 18 anos.</p>
+    <p class="rodape-frase"><strong>LUX:</strong> Todos os direitos pertencem exclusivamente à marca. Nenhuma parte deste portal pode ser reproduzida, copiada ou utilizada sem autorização formal da diretoria.</p>
 </footer>
 
 <a href="https://wa.me/5551980612941?text=Olá!%20Vi%20o%20site%20da%20LUX%20e%20gostaria%20de%20mais%20informações." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
@@ -106,7 +180,13 @@
 </a>
 
 <script>
-document.querySelectorAll('nav a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();const d=document.querySelector(l.getAttribute('href'));if(d)d.scrollIntoView({behavior:'smooth',block:'start'});});});
+document.querySelectorAll('nav a[href^="#"]').forEach(l=>{
+    l.addEventListener('click',e=>{
+        e.preventDefault();
+        const d=document.querySelector(l.getAttribute('href'));
+        if(d) d.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+});
 </script>
 
 </body>
