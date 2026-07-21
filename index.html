@@ -13,6 +13,7 @@
             --texto-claro: #f0e9ec;
             --texto-suave: #e0d8dc;
             --fundo-semitransp: rgba(8, 6, 8, 0.6);
+            --whatsapp-verde: #25d366;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -129,6 +130,26 @@
             box-shadow: 0 10px 25px rgba(0,0,0,.4);
         }
 
+        /* ✅ WhatsApp flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp-verde);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,.4);
+            z-index: 999;
+            transition: transform .3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); color: #fff; }
+
         footer {
             text-align: center;
             padding: 1.5rem;
@@ -144,6 +165,7 @@
             .caixa-principal { padding: 1.5rem 1rem; }
             header { flex-direction: column; gap: 1rem; }
             .botao { width: 100%; }
+            .whatsapp-float { width: 52px; height: 52px; font-size: 28px; bottom: 15px; right: 15px; }
         }
     </style>
 </head>
@@ -154,6 +176,7 @@
     <nav>
         <a href="index.html">🏠 Início</a>
         <a href="modelos-femininos.html">Femininas</a>
+        <!-- ✅ LINK EXATO → NÃO DÁ 404 -->
         <a href="modelomasculino.html">Masculinos</a>
     </nav>
 </header>
@@ -165,6 +188,7 @@
         </div>
         <h1>Bem-vindo à LUX</h1>
 
+        <!-- ✅ Vídeo -->
         <div class="video-container">
             <video 
                 src="videobanner.mp4" 
@@ -185,12 +209,21 @@
             <a href="modelos-femininos.html" class="botao">
                 ♀ Modelos Femininos
             </a>
+            <!-- ✅ LINK EXATO → NÃO DÁ 404 -->
             <a href="modelomasculino.html" class="botao">
                 ♂ Modelos Masculinos
             </a>
         </div>
     </div>
 </main>
+
+<!-- ✅ WhatsApp flutuante -->
+<a href="https://wa.me/5551980612941?text=Olá!%20Visitei%20o%20site%20LUX%20e%20gostaria%20de%20mais%20informações."
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
 
 <footer>
     <p>© 2026 LUX — Proibido para menores de 18 anos. Todos os direitos reservados.</p>
