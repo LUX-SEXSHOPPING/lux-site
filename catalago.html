@@ -196,9 +196,9 @@
 
 <script>
 function mostrarSecao(id) {
-    document.querySelectorAll('.secao').forEach(s => s.classList.remove('mostrar'));
+    document.querySelectorAll('.secao').forEach(function(s){ s.classList.remove('mostrar'); });
     document.getElementById(id).classList.add('mostrar');
-    document.querySelectorAll('.botao-secao').forEach(b => b.classList.remove('ativo'));
+    document.querySelectorAll('.botao-secao').forEach(function(b){ b.classList.remove('ativo'); });
     event.target.closest('.botao-secao').classList.add('ativo');
 }
 </script>
