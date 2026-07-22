@@ -29,7 +29,7 @@
             min-height: 100vh;
         }
 
-        /* ✅ Cabeçalho — Transparente para o fundo aparecer */
+        /* ✅ Cabeçalho */
         header {
             position: sticky;
             top: 0;
@@ -105,7 +105,7 @@
             transform: scale(1.15);
         }
 
-        /* ✅ Conteúdo Principal — Transparente para o fundo aparecer */
+        /* ✅ Conteúdo Principal */
         main {
             padding: 3rem 4%;
             background-color: rgba(0, 0, 0, 0.15);
@@ -165,7 +165,7 @@
             background: linear-gradient(90deg, transparent, var(--dourado-suave), transparent);
         }
 
-        /* ✅ Carrossel VIPs */
+        /* ✅ CARROSSEL VIPs — DESLIZAR + PONTOS */
         .carrossel-vips {
             max-width: 900px;
             margin: 0 auto 4rem auto;
@@ -179,6 +179,7 @@
             border-radius: 16px;
             padding: 1.2rem 1.2rem 2rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            touch-action: pan-y; /* ✅ Permite deslizar */
         }
         .moldura-foto {
             width: 280px;
@@ -195,7 +196,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.7s ease-in-out;
+            transition: opacity 0.5s ease-in-out;
         }
         .moldura-foto img.visivel { opacity: 1; }
         .nome-nick {
@@ -204,33 +205,26 @@
             color: var(--dourado-claro);
             letter-spacing: 0.1rem;
         }
-        .controle-navega {
-            margin-top: 1.5rem;
+        /* ✅ Pontinhos indicadores em vez de botões */
+        .pontos {
+            margin-top: 1.2rem;
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
+            gap: 0.6rem;
         }
-        .controle-navega button {
-            background: rgba(15, 11, 18, 0.85);
-            border: 1px solid var(--dourado-suave);
-            color: var(--dourado-claro);
-            width: 44px;
-            height: 44px;
+        .ponto {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            font-size: 1rem;
+            background: rgba(255,255,255,0.25);
+            border: none;
             cursor: pointer;
             transition: all .3s ease;
         }
-        .controle-navega button:hover {
-            background: var(--dourado-suave);
-            color: #000;
-        }
-        .contador {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.95rem;
-            color: var(--texto-suave);
-            letter-spacing: 0.1rem;
+        .ponto.ativo {
+            background: var(--neon-rosa);
+            box-shadow: 0 0 10px var(--neon-rosa), 0 0 20px var(--neon-rosa);
+            transform: scale(1.2);
         }
 
         /* ✅ Sobre */
@@ -328,9 +322,9 @@
         <h3>VIPs</h3>
     </div>
 
-    <!-- ✅ VIPs: vip1.png ... vip4.png -->
+    <!-- ✅ VIPs — DESLIZAR + PONTOS NEON -->
     <section class="carrossel-vips">
-        <div class="caixa-exclusiva">
+        <div class="caixa-exclusiva" id="areaDeslizar">
             <div class="moldura-foto">
                 <img src="vip1.png" alt="VIP 1" class="visivel" data-nick="(nick)">
                 <img src="vip2.png" alt="VIP 2" data-nick="(nick)">
@@ -339,11 +333,8 @@
             </div>
             <div class="nome-nick" id="nomeNick">(nick)</div>
         </div>
-        <div class="controle-navega">
-            <button onclick="voltar()"><i class="fa-solid fa-chevron-left"></i></button>
-            <span class="contador" id="contador">1 / 4</span>
-            <button onclick="avancar()"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
+        <!-- ✅ Pontinhos em vez de botões -->
+        <div class="pontos" id="pontos"></div>
     </section>
 
     <div class="sobre">
@@ -368,23 +359,47 @@
     </p>
 </footer>
 
-<!-- ✅ Script -->
+<!-- ✅ Script: DESLIZAR + Pontos + Automático -->
 <script>
 const imagens = document.querySelectorAll('.moldura-foto img');
-const contadorEl = document.getElementById('contador');
 const nickEl = document.getElementById('nomeNick');
+const caixa = document.getElementById('areaDeslizar');
+const pontosEl = document.getElementById('pontos');
 let atual = 0;
 const total = imagens.length;
+
+// ✅ Cria os pontinhos dinamicamente
+for (let i = 0; i < total; i++) {
+    const p = document.createElement('button');
+    p.classList.add('ponto');
+    if (i === 0) p.classList.add('ativo');
+    p.addEventListener('click', () => irPara(i));
+    pontosEl.appendChild(p);
+}
+const pontos = document.querySelectorAll('.ponto');
 
 function atualizarTela() {
     imagens.forEach(img => img.classList.remove('visivel'));
     imagens[atual].classList.add('visivel');
     nickEl.textContent = imagens[atual].dataset.nick;
-    contadorEl.textContent = `${atual + 1} / ${total}`;
+    pontos.forEach((p, i) => p.classList.toggle('ativo', i === atual));
 }
+function irPara(n) { atual = n; atualizarTela(); }
 function avancar() { atual = (atual + 1) % total; atualizarTela(); }
 function voltar() { atual = (atual - 1 + total) % total; atualizarTela(); }
 
+// ✅ Deslizar com o dedo
+let xInicio = null;
+caixa.addEventListener('touchstart', e => xInicio = e.touches[0].clientX, { passive: true });
+caixa.addEventListener('touchend', e => {
+    if (xInicio === null) return;
+    const xFim = e.changedTouches[0].clientX;
+    const diff = xInicio - xFim;
+    if (Math.abs(diff) > 40) diff > 0 ? avancar() : voltar();
+    xInicio = null;
+}, { passive: true });
+
+// ✅ Continua automático
 setInterval(avancar, 4500);
 </script>
 
