@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUX — Acompanhantes de Luxo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,600&family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-rosa: #ff1493;
-            --neon-claro: #ff69b4;
-            --fundo-escuro: rgba(8, 5, 10, 0.85);
-            --texto-claro: #f0e9ec;
             --dourado: #c9a227;
             --dourado-claro: #e6c86e;
+            --texto-claro: #f8f3f6;
+            --texto-suave: #e0d8dc;
             --fundo-semitransp: rgba(8, 6, 8, 0.6);
             --whatsapp-verde: #25d366;
         }
@@ -27,113 +25,38 @@
             background-attachment: fixed;
             min-height: 100vh;
         }
-
-        /* ✅ CABEÇALHO COM NEON */
-        .header-lux {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        header {
+            background: var(--fundo-semitransp);
+            border-bottom: 1px solid rgba(201,162,39,.18);
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 4%;
-            min-height: 100px;
-            background: 
-                linear-gradient(var(--fundo-escuro), var(--fundo-escuro)),
-                url('capabanner.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-bottom: 2px solid rgba(255, 20, 147, 0.3);
-            box-shadow: 0 4px 25px rgba(255, 20, 147, 0.2);
             flex-wrap: wrap;
-            gap: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-
-        .logo-neon {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3.8rem;
-            font-weight: 900;
-            letter-spacing: 0.6rem;
-            color: #ffffff;
-            text-shadow:
-                0 0 4px #fff,
-                0 0 10px var(--neon-rosa),
-                0 0 20px var(--neon-rosa),
-                0 0 40px var(--neon-rosa),
-                0 0 80px var(--neon-rosa),
-                0 0 120px var(--neon-claro);
-            animation: pulsar-neon 1.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulsar-neon {
-            0% {
-                text-shadow:
-                    0 0 4px #fff,
-                    0 0 12px var(--neon-rosa),
-                    0 0 25px var(--neon-rosa),
-                    0 0 50px var(--neon-rosa);
-            }
-            100% {
-                text-shadow:
-                    0 0 6px #fff,
-                    0 0 18px var(--neon-rosa),
-                    0 0 35px var(--neon-rosa),
-                    0 0 70px var(--neon-claro);
-            }
-        }
-
-        .menu-navegacao {
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--dourado);
+            letter-spacing: 3px;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: .5rem;
         }
-
-        .menu-navegacao a {
-            font-family: 'Segoe UI', sans-serif;
-            color: var(--texto-claro);
+        nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; }
+        nav a {
+            color: var(--texto-suave);
             text-decoration: none;
-            margin: 0 0.8rem;
+            padding: .4rem .7rem;
             font-weight: 600;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+            transition: color .3s, transform .2s;
+            border-radius: 4px;
         }
+        nav a:hover { color: var(--dourado-claro); transform: translateY(-2px); }
 
-        .menu-navegacao a i {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .menu-navegacao a:hover {
-            color: var(--neon-rosa);
-            text-shadow: 0 0 12px var(--neon-rosa);
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .header-lux {
-                padding: 1.2rem 1rem;
-                justify-content: center;
-            }
-            .logo-neon {
-                font-size: 2.8rem;
-                letter-spacing: 0.4rem;
-            }
-            .menu-navegacao {
-                justify-content: center;
-            }
-            .menu-navegacao a {
-                margin: 0 0.4rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* ✅ CONTEÚDO PRINCIPAL */
         main { padding: 2.5rem 1.5rem; max-width: 900px; margin: 0 auto; }
         .caixa-principal {
             background: rgba(0,0,0,.28);
@@ -151,7 +74,7 @@
             font-size: 2.2rem;
             margin-bottom: 1rem;
         }
-        .subtitulo { color: var(--texto-claro); font-size: 1.1rem; margin-bottom: 2rem; }
+        .subtitulo { color: var(--texto-suave); font-size: 1.1rem; margin-bottom: 2rem; }
 
         .video-container {
             width: 100%;
@@ -189,6 +112,7 @@
         }
         .botao:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(201,162,39,.3); }
 
+        /* ✅ WhatsApp flutuante */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -220,6 +144,7 @@
 
         @media (max-width: 600px) {
             h1 { font-size: 1.7rem; }
+            header { justify-content: center; gap: 1rem; }
             .caixa-principal { padding: 1.5rem 1rem; }
             .botao { width: 100%; }
             .whatsapp-float { width: 52px; height: 52px; font-size: 28px; bottom: 18px; right: 18px; }
@@ -228,15 +153,13 @@
 </head>
 <body>
 
-<!-- ✅ CABEÇALHO INTEGRADO -->
-<header class="header-lux">
-    <div class="logo-neon">LUX</div>
-    <nav class="menu-navegacao">
-        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="catalago.html"><i class="fa-solid fa-th-large"></i> Catálogo</a>
-        <a href="modelos-femininos.html"><i class="fa-solid fa-person-dress"></i> Feminino</a>
-        <a href="modelos-masculinos.html"><i class="fa-solid fa-person"></i> Masculino</a>
-        <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
+<header>
+    <div class="logo"><i class="fa-solid fa-gem"></i> LUX</div>
+    <nav>
+        <a href="index.html">🏠 Início</a>
+        <a href="catalago.html">📋 Catálogo</a>
+        <a href="pre-cadastro.html">📝 Pré-Cadastro</a>
+        <a href="termos.html">⚖️ Termos</a>
     </nav>
 </header>
 
@@ -246,6 +169,7 @@
         <h1>Bem-vindo à LUX</h1>
         <p class="subtitulo">Exclusividade, elegância e discrição — catálogo em preparação</p>
 
+        <!-- ✅ Vídeo de fundo -->
         <div class="video-container">
             <video 
                 src="videobanner.mp4" 
@@ -259,7 +183,7 @@
             </video>
         </div>
 
-        <p style="color: var(--texto-claro); line-height: 1.7;">
+        <p style="color: var(--texto-suave); line-height: 1.7;">
             Um espaço de sofisticação e curadoria cuidadosa. Estamos organizando os perfis para oferecer a melhor experiência.
         </p>
 
@@ -267,13 +191,14 @@
             <a href="catalago.html" class="botao">
                 <i class="fa-solid fa-images"></i> Ver Catálogo
             </a>
-            <a href="modelos-femininos.html" class="botao">
+            <a href="pre-cadastro.html" class="botao">
                 <i class="fa-solid fa-user-plus"></i> Quero ser Modelo
             </a>
         </div>
     </div>
 </main>
 
+<!-- ✅ WhatsApp flutuante -->
 <a href="https://wa.me/5551980612941?text=Olá!%20Visitei%20o%20site%20LUX%20e%20gostaria%20de%20mais%20informações."
    class="whatsapp-float"
    target="_blank"
