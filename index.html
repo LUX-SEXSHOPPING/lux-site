@@ -179,7 +179,7 @@
             border-radius: 16px;
             padding: 1.2rem 1.2rem 2rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            touch-action: pan-y; /* ✅ Permite deslizar */
+            touch-action: pan-y;
         }
         .moldura-foto {
             width: 280px;
@@ -205,7 +205,7 @@
             color: var(--dourado-claro);
             letter-spacing: 0.1rem;
         }
-        /* ✅ Pontinhos indicadores em vez de botões */
+        /* ✅ Pontinhos neon */
         .pontos {
             margin-top: 1.2rem;
             display: flex;
@@ -299,7 +299,7 @@
         <a href="termos.html"><i class="fa-solid fa-file-contract"></i> Termos</a>
         <a href="pre-cadastro.html"><i class="fa-solid fa-user-plus"></i> Cadastro</a>
         <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="catalago.html"><i class="fa-solid fa-user-group"></i> Modelos</a>
+        <a href="catalogo.html"><i class="fa-solid fa-user-group"></i> Modelos</a>
         <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
     </nav>
 </header>
@@ -322,24 +322,23 @@
         <h3>VIPs</h3>
     </div>
 
-    <!-- ✅ VIPs — DESLIZAR + PONTOS NEON -->
+    <!-- ✅ VIPs COM NOMES -->
     <section class="carrossel-vips">
         <div class="caixa-exclusiva" id="areaDeslizar">
             <div class="moldura-foto">
-                <img src="vip1.png" alt="VIP 1" class="visivel" data-nick="(nick)">
-                <img src="vip2.png" alt="VIP 2" data-nick="(nick)">
-                <img src="vip3.png" alt="VIP 3" data-nick="(nick)">
-                <img src="vip4.png" alt="VIP 4" data-nick="(nick)">
+                <img src="vip1.png" alt="Eduarda Souza" class="visivel" data-nick="Eduarda Souza">
+                <img src="vip2.png" alt="Sarah Coutinho" data-nick="Sarah Coutinho">
+                <img src="vip3.png" alt="Larissa Hoffman" data-nick="Larissa Hoffman">
+                <img src="vip4.png" alt="Vitoria Amaral" data-nick="Vitoria Amaral">
             </div>
-            <div class="nome-nick" id="nomeNick">(nick)</div>
+            <div class="nome-nick" id="nomeNick">Eduarda Souza</div>
         </div>
-        <!-- ✅ Pontinhos em vez de botões -->
         <div class="pontos" id="pontos"></div>
     </section>
 
     <div class="sobre">
         <h3>Sobre Nós</h3>
-        <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pe[...]
+        <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pensado para sua melhor experiência.</p>
     </div>
 </main>
 
@@ -359,7 +358,7 @@
     </p>
 </footer>
 
-<!-- ✅ Script: DESLIZAR + Pontos + Automático -->
+<!-- ✅ Script: Deslizar + Pontos + Automático -->
 <script>
 const imagens = document.querySelectorAll('.moldura-foto img');
 const nickEl = document.getElementById('nomeNick');
@@ -368,7 +367,7 @@ const pontosEl = document.getElementById('pontos');
 let atual = 0;
 const total = imagens.length;
 
-// ✅ Cria os pontinhos dinamicamente
+// Cria os pontinhos
 for (let i = 0; i < total; i++) {
     const p = document.createElement('button');
     p.classList.add('ponto');
@@ -388,7 +387,7 @@ function irPara(n) { atual = n; atualizarTela(); }
 function avancar() { atual = (atual + 1) % total; atualizarTela(); }
 function voltar() { atual = (atual - 1 + total) % total; atualizarTela(); }
 
-// ✅ Deslizar com o dedo
+// Deslizar com o dedo
 let xInicio = null;
 caixa.addEventListener('touchstart', e => xInicio = e.touches[0].clientX, { passive: true });
 caixa.addEventListener('touchend', e => {
@@ -399,7 +398,7 @@ caixa.addEventListener('touchend', e => {
     xInicio = null;
 }, { passive: true });
 
-// ✅ Continua automático
+// Trocando sozinho
 setInterval(avancar, 4500);
 </script>
 
