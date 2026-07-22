@@ -6,18 +6,23 @@
     <title>LUX — Sensualidade & Sofisticação</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600&display=swap');
 
         :root {
             --neon-rosa: #ff1493;
-            --neon-claro: #ff69b4;
-            --neon-brilho: 0 0 5px #fff, 0 0 12px #ff1493, 0 0 25px #ff1493;
+            --neon-rosa-claro: #ff69b4;
+            --neon-rosa-forte: #ff0080;
+            --dourado-suave: #b8962c;
+            --dourado-claro: #d4b46a;
             --fundo-escuro: #08050a;
-            --texto-claro: #f0e9ec;
+            --fundo-caixa: #0f0b12;
+            --texto-claro: #f8f2f5;
+            --texto-suave: #b8b0b3;
+            --borda-suave: rgba(184, 150, 44, 0.25);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ✅ Cabeçalho com capabanner.png */
+        /* ✅ Cabeçalho — Fundo do menu inicial: banner.jpg */
         header {
             position: sticky;
             top: 0;
@@ -25,56 +30,76 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 4%;
-            min-height: 110px;
+            padding: 1.2rem 4%;
+            min-height: 100px;
             background:
-                linear-gradient(rgba(8,5,10,0.75), rgba(8,5,10,0.75)),
-                url('capabanner.png');
+                linear-gradient(rgba(8,5,10,0.8), rgba(8,5,10,0.8)),
+                url('banner.jpg');
             background-size: cover;
             background-position: center;
-            box-shadow: 0 4px 25px rgba(255,20,147,0.15);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
             flex-wrap: wrap;
             gap: 1rem;
         }
 
-        /* ✅ Logo LUX — GROSSA + Neon */
+        /* ✅ LOGO LUX — BONITA, NEON ROSA PULSANTE */
         .logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 4rem;
-            letter-spacing: 0.6rem;
-            color: #fff;
-            text-shadow: var(--neon-brilho);
-            animation: pulsar 1.5s ease-in-out infinite alternate;
+            font-size: 4.2rem;
+            letter-spacing: 0.7rem;
+            color: #ffffff;
+            text-shadow:
+                0 0 4px #fff,
+                0 0 12px var(--neon-rosa),
+                0 0 24px var(--neon-rosa),
+                0 0 48px var(--neon-rosa-forte),
+                0 0 96px var(--neon-rosa-forte);
+            animation: brilhoLogo 2s ease-in-out infinite alternate;
         }
-        @keyframes pulsar {
-            0% { text-shadow: 0 0 4px #fff, 0 0 12px var(--neon-rosa), 0 0 25px var(--neon-rosa), 0 0 50px var(--neon-rosa); }
-            100% { text-shadow: 0 0 6px #fff, 0 0 18px var(--neon-rosa), 0 0 35px var(--neon-rosa), 0 0 70px var(--neon-claro); }
+        @keyframes brilhoLogo {
+            0% { text-shadow: 0 0 4px #fff, 0 0 14px var(--neon-rosa), 0 0 28px var(--neon-rosa), 0 0 56px var(--neon-rosa-forte); }
+            100% { text-shadow: 0 0 6px #fff, 0 0 20px var(--neon-rosa-claro), 0 0 40px var(--neon-rosa), 0 0 80px var(--neon-rosa-forte); }
         }
 
-        /* ✅ MENU — FONTE E ÍCONES EM NEON */
+        /* ✅ MENU — ÍCONES EM NEON ROSA */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+        }
         nav a {
-            font-family: 'Bebas Neue', sans-serif; /* Fonte grossa igual logo */
-            font-size: 1.2rem;
-            letter-spacing: 0.15rem;
-            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--texto-claro);
             text-decoration: none;
-            margin: 0 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            /* Efeito NEON */
-            text-shadow: var(--neon-brilho);
+            padding: 0.5rem 0.9rem;
+            border-radius: 4px;
+            letter-spacing: 0.05rem;
+            transition: all .3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        nav a i {
+            margin-right: 0.4rem;
+            color: var(--neon-rosa-claro);
+            text-shadow:
+                0 0 6px var(--neon-rosa),
+                0 0 12px var(--neon-rosa);
             transition: all .3s ease;
         }
-        /* ✅ Ícones brilham também */
-        nav a i {
-            font-size: 1.1rem;
-            filter: drop-shadow(0 0 6px var(--neon-rosa));
-        }
         nav a:hover {
+            color: var(--neon-rosa-claro);
+            border-bottom: 2px solid var(--neon-rosa);
+            background: rgba(255, 20, 147, 0.08);
+        }
+        nav a:hover i {
             color: #fff;
-            text-shadow: 0 0 8px #fff, 0 0 20px var(--neon-rosa), 0 0 40px var(--neon-rosa);
-            transform: translateY(-2px);
+            text-shadow:
+                0 0 8px #fff,
+                0 0 16px var(--neon-rosa),
+                0 0 32px var(--neon-rosa-forte);
+            transform: scale(1.15);
         }
 
         /* ✅ Conteúdo Principal */
@@ -82,36 +107,138 @@
             padding: 3rem 4%;
             background: linear-gradient(180deg, #0b080e, #08050a);
             color: #ddd;
-            min-height: calc(100vh - 220px);
+            min-height: calc(100vh - 200px);
         }
 
-        /* ✅ Seção de Boas-Vindas */
+        /* ✅ Seção Bem-vindo */
         .bem-vindo {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
         .bem-vindo h2 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 3rem;
             letter-spacing: 0.3rem;
             color: #fff;
-            text-shadow: var(--neon-brilho);
             margin-bottom: 2rem;
         }
 
-        /* ✅ VÍDEO CENTRALIZADO */
+        /* ✅ Vídeo Centralizado */
         .video-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         .video-container video {
             width: 90%;
             max-width: 850px;
             border-radius: 8px;
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.25);
-            border: 2px solid rgba(255, 20, 147, 0.2);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--borda-suave);
+        }
+
+        /* ✅ TÍTULO VIPs */
+        .titulo-vips {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .titulo-vips h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            letter-spacing: 0.25rem;
+            color: var(--dourado-claro);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.8rem;
+        }
+        .titulo-vips h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--dourado-suave), transparent);
+        }
+
+        /* ✅ CARROSSEL VIPs — DESLIZE + (nick) */
+        .carrossel-vips {
+            max-width: 900px;
+            margin: 0 auto 4rem auto;
+            text-align: center;
+        }
+
+        .caixa-exclusiva {
+            position: relative;
+            display: inline-block;
+            background: var(--fundo-caixa);
+            border: 1px solid var(--borda-suave);
+            border-radius: 16px;
+            padding: 1.2rem 1.2rem 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+        }
+
+        /* ✅ Moldura da foto */
+        .moldura-foto {
+            width: 280px;
+            height: 380px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 1rem;
+        }
+        .moldura-foto img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out;
+        }
+        .moldura-foto img.visivel {
+            opacity: 1;
+        }
+
+        /* ✅ NOME: (nick) embaixo da foto */
+        .nome-nick {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--dourado-claro);
+            letter-spacing: 0.1rem;
+        }
+
+        /* ✅ Controles */
+        .controle-navega {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .controle-navega button {
+            background: transparent;
+            border: 1px solid var(--dourado-suave);
+            color: var(--dourado-claro);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .controle-navega button:hover {
+            background: var(--dourado-suave);
+            color: #000;
+        }
+        .contador {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.95rem;
+            color: var(--texto-suave);
+            letter-spacing: 0.1rem;
         }
 
         /* ✅ Sobre */
@@ -121,14 +248,15 @@
             text-align: center;
         }
         .sobre h3 {
-            color: var(--neon-claro);
+            font-family: 'Playfair Display', serif;
+            color: var(--dourado-claro);
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            text-shadow: 0 0 10px var(--neon-rosa);
         }
         .sobre p {
             line-height: 1.8;
             font-size: 1.1rem;
+            color: var(--texto-suave);
         }
 
         /* ✅ WhatsApp Flutuante */
@@ -145,7 +273,7 @@
             justify-content: center;
             color: #fff;
             font-size: 30px;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             z-index: 999;
             text-decoration: none;
         }
@@ -162,30 +290,31 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.8rem;
             color: #fff;
-            text-shadow: var(--neon-brilho);
             margin-bottom: 0.5rem;
         }
 
         /* ✅ Responsivo */
         @media (max-width: 768px) {
             header { padding: 1rem; justify-content: center; }
-            .logo { font-size: 2.8rem; letter-spacing: 0.3rem; }
-            nav a { font-size: 1.1rem; margin: 0 0.4rem; }
-            .bem-vindo h2 { font-size: 2rem; }
+            .logo { font-size: 3rem; letter-spacing: 0.4rem; }
+            nav a { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
+            .bem-vindo h2, .titulo-vips h3 { font-size: 1.8rem; }
             .video-container video { width: 100%; }
+            .moldura-foto { width: 220px; height: 300px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ✅ Cabeçalho com capabanner.png -->
+<!-- ✅ Cabeçalho — Fundo: banner.jpg -->
 <header>
     <div class="logo">LUX</div>
     <nav>
+        <a href="termos.html"><i class="fa-solid fa-file-contract"></i> Termos</a>
+        <a href="pré-cadastro.html"><i class="fa-solid fa-user-plus"></i> Pré-Cadastro</a>
         <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="catalogo.html"><i class="fa-solid fa-th-large"></i> Catálogo</a>
-        <a href="catalogo.html#feminino"><i class="fa-solid fa-person-dress"></i> Feminino</a>
-        <a href="catalogo.html#masculino"><i class="fa-solid fa-person"></i> Masculino</a>
+        <a href="catalogo-feminino.html"><i class="fa-solid fa-person-dress"></i> Femininas</a>
+        <a href="catalogo-masculino.html"><i class="fa-solid fa-person"></i> Masculinos</a>
         <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
     </nav>
 </header>
@@ -195,36 +324,83 @@
     <section class="bem-vindo">
         <h2>Bem-vindo à LUX</h2>
 
+        <!-- ✅ Vídeo: videobanner.mp4 -->
         <div class="video-container">
             <video autoplay muted loop playsinline>
                 <source src="videobanner.mp4" type="video/mp4">
             </video>
         </div>
 
-        <p style="font-size: 1.2rem; color: #ddd; max-width: 700px; margin: 0 auto;">
+        <p style="font-size: 1.2rem; color: var(--texto-suave); max-width: 700px; margin: 0 auto;">
             Onde a sofisticação encontra o desejo. Elegância, discrição e exclusividade.
         </p>
     </section>
 
+    <!-- ✅ TÍTULO VIPs -->
+    <div class="titulo-vips">
+        <h3>VIPs</h3>
+    </div>
+
+    <!-- ✅ CARROSSEL VIPs — Imagens: vip1.png, vip2.png, vip3.png, vip4.png -->
+    <section class="carrossel-vips">
+        <div class="caixa-exclusiva">
+            <div class="moldura-foto">
+                <img src="vip1.png" alt="VIP 1" class="visivel" data-nick="(nick)">
+                <img src="vip2.png" alt="VIP 2" data-nick="(nick)">
+                <img src="vip3.png" alt="VIP 3" data-nick="(nick)">
+                <img src="vip4.png" alt="VIP 4" data-nick="(nick)">
+            </div>
+            <div class="nome-nick" id="nomeNick">(nick)</div>
+        </div>
+        <div class="controle-navega">
+            <button onclick="voltar()"><i class="fa-solid fa-chevron-left"></i></button>
+            <span class="contador" id="contador">1 / 4</span>
+            <button onclick="avancar()"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- ✅ Sobre Nós -->
     <div class="sobre">
         <h3>Sobre Nós</h3>
         <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pensado para sua melhor experiência.</p>
     </div>
 </main>
 
+<!-- ✅ WhatsApp Flutuante -->
 <a href="https://wa.me/5551980612941?text=Olá!%20Vim%20pelo%20site%20LUX%20e%20gostaria%20de%20mais%20informações." target="_blank" class="whatsapp-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
+<!-- ✅ Rodapé -->
 <footer>
     <div class="logo-pequena">LUX</div>
     <p>© 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação</p>
     <p style="margin-top:.5rem;">
-        <a href="https://wa.me/5551980612941" target="_blank" style="color:#ff1493; text-decoration:none; text-shadow: 0 0 8px #ff1493;">
+        <a href="https://wa.me/5551980612941" target="_blank" style="color:var(--dourado-claro); text-decoration:none;">
             <i class="fa-brands fa-whatsapp"></i> (51) 98061-2941
         </a>
     </p>
 </footer>
+
+<!-- ✅ Script Deslize + Atualiza Nick -->
+<script>
+const imagens = document.querySelectorAll('.moldura-foto img');
+const contadorEl = document.getElementById('contador');
+const nickEl = document.getElementById('nomeNick');
+let atual = 0;
+const total = imagens.length;
+
+function atualizarTela() {
+    imagens.forEach(img => img.classList.remove('visivel'));
+    imagens[atual].classList.add('visivel');
+    nickEl.textContent = imagens[atual].dataset.nick;
+    contadorEl.textContent = `${atual + 1} / ${total}`;
+}
+function avancar() { atual = (atual + 1) % total; atualizarTela(); }
+function voltar() { atual = (atual - 1 + total) % total; atualizarTela(); }
+
+setInterval(avancar, 4500);
+</script>
 
 </body>
 </html>
