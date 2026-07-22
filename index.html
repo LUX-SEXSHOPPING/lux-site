@@ -22,7 +22,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ✅ Cabeçalho — Fundo do menu inicial: banner.jpg */
+        /* ✅ Cabeçalho — Fundo: banner.jpg */
         header {
             position: sticky;
             top: 0;
@@ -42,7 +42,7 @@
             gap: 1rem;
         }
 
-        /* ✅ LOGO LUX — BONITA, NEON ROSA PULSANTE */
+        /* ✅ LOGO LUX — Neon rosa pulsante */
         .logo {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 4.2rem;
@@ -61,7 +61,7 @@
             100% { text-shadow: 0 0 6px #fff, 0 0 20px var(--neon-rosa-claro), 0 0 40px var(--neon-rosa), 0 0 80px var(--neon-rosa-forte); }
         }
 
-        /* ✅ MENU — ÍCONES EM NEON ROSA */
+        /* ✅ MENU — Ícones neon rosa */
         nav {
             display: flex;
             flex-wrap: wrap;
@@ -110,7 +110,7 @@
             min-height: calc(100vh - 200px);
         }
 
-        /* ✅ Seção Bem-vindo */
+        /* ✅ Bem-vindo */
         .bem-vindo {
             text-align: center;
             margin-bottom: 3rem;
@@ -123,7 +123,7 @@
             margin-bottom: 2rem;
         }
 
-        /* ✅ Vídeo Centralizado */
+        /* ✅ Vídeo */
         .video-container {
             display: flex;
             justify-content: center;
@@ -138,7 +138,7 @@
             border: 1px solid var(--borda-suave);
         }
 
-        /* ✅ TÍTULO VIPs */
+        /* ✅ Título VIPs */
         .titulo-vips {
             text-align: center;
             margin-bottom: 2rem;
@@ -163,13 +163,12 @@
             background: linear-gradient(90deg, transparent, var(--dourado-suave), transparent);
         }
 
-        /* ✅ CARROSSEL VIPs — DESLIZE + (nick) */
+        /* ✅ Carrossel VIPs */
         .carrossel-vips {
             max-width: 900px;
             margin: 0 auto 4rem auto;
             text-align: center;
         }
-
         .caixa-exclusiva {
             position: relative;
             display: inline-block;
@@ -178,10 +177,7 @@
             border-radius: 16px;
             padding: 1.2rem 1.2rem 2rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            overflow: hidden;
         }
-
-        /* ✅ Moldura da foto */
         .moldura-foto {
             width: 280px;
             height: 380px;
@@ -199,19 +195,13 @@
             opacity: 0;
             transition: opacity 0.7s ease-in-out;
         }
-        .moldura-foto img.visivel {
-            opacity: 1;
-        }
-
-        /* ✅ NOME: (nick) embaixo da foto */
+        .moldura-foto img.visivel { opacity: 1; }
         .nome-nick {
             font-family: 'Playfair Display', serif;
             font-size: 1.1rem;
             color: var(--dourado-claro);
             letter-spacing: 0.1rem;
         }
-
-        /* ✅ Controles */
         .controle-navega {
             margin-top: 1.5rem;
             display: flex;
@@ -306,42 +296,37 @@
 </head>
 <body>
 
-<!-- ✅ Cabeçalho — Fundo: banner.jpg -->
+<!-- ✅ Cabeçalho -->
 <header>
     <div class="logo">LUX</div>
     <nav>
         <a href="termos.html"><i class="fa-solid fa-file-contract"></i> Termos</a>
-        <a href="pré-cadastro.html"><i class="fa-solid fa-user-plus"></i> Pré-Cadastro</a>
+        <a href="pre-cadastro.html"><i class="fa-solid fa-user-plus"></i> Cadastro</a>
         <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="catalogo-feminino.html"><i class="fa-solid fa-person-dress"></i> Femininas</a>
-        <a href="catalogo-masculino.html"><i class="fa-solid fa-person"></i> Masculinos</a>
+        <a href="catalogo.html"><i class="fa-solid fa-user-group"></i> Modelos</a>
         <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
     </nav>
 </header>
 
-<!-- ✅ Conteúdo Principal -->
+<!-- ✅ Conteúdo -->
 <main>
     <section class="bem-vindo">
         <h2>Bem-vindo à LUX</h2>
-
-        <!-- ✅ Vídeo: videobanner.mp4 -->
         <div class="video-container">
             <video autoplay muted loop playsinline>
                 <source src="videobanner.mp4" type="video/mp4">
             </video>
         </div>
-
         <p style="font-size: 1.2rem; color: var(--texto-suave); max-width: 700px; margin: 0 auto;">
             Onde a sofisticação encontra o desejo. Elegância, discrição e exclusividade.
         </p>
     </section>
 
-    <!-- ✅ TÍTULO VIPs -->
     <div class="titulo-vips">
         <h3>VIPs</h3>
     </div>
 
-    <!-- ✅ CARROSSEL VIPs — Imagens: vip1.png, vip2.png, vip3.png, vip4.png -->
+    <!-- ✅ VIPs: vip1.png ... vip4.png -->
     <section class="carrossel-vips">
         <div class="caixa-exclusiva">
             <div class="moldura-foto">
@@ -359,14 +344,13 @@
         </div>
     </section>
 
-    <!-- ✅ Sobre Nós -->
     <div class="sobre">
         <h3>Sobre Nós</h3>
         <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pensado para sua melhor experiência.</p>
     </div>
 </main>
 
-<!-- ✅ WhatsApp Flutuante -->
+<!-- ✅ WhatsApp -->
 <a href="https://wa.me/5551980612941?text=Olá!%20Vim%20pelo%20site%20LUX%20e%20gostaria%20de%20mais%20informações." target="_blank" class="whatsapp-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -382,7 +366,7 @@
     </p>
 </footer>
 
-<!-- ✅ Script Deslize + Atualiza Nick -->
+<!-- ✅ Script -->
 <script>
 const imagens = document.querySelectorAll('.moldura-foto img');
 const contadorEl = document.getElementById('contador');
