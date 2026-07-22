@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabeçalho — LUX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+        :root {
+            --neon-rosa: #ff1493;
+            --neon-claro: #ff69b4;
+            --fundo-escuro: rgba(8, 5, 10, 0.85);
+            --texto-claro: #f0e9ec;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Cabeçalho com imagem de fundo capabanner.png */
+        .header-lux {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4%;
+            min-height: 100px;
+
+            /* ✅ Imagem de fundo + sobreposição para legibilidade */
+            background: 
+                linear-gradient(var(--fundo-escuro), var(--fundo-escuro)),
+                url('capabanner.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            border-bottom: 2px solid rgba(255, 20, 147, 0.3);
+            box-shadow: 0 4px 25px rgba(255, 20, 147, 0.2);
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        /* ✅ Logo LUX — LETRA SUPER GROSSA + NEON CHAMATIVO */
+        .logo-neon {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 900;
+            letter-spacing: 0.6rem;
+            color: #ffffff;
+            /* Brilho neon forte e alargado */
+            text-shadow:
+                0 0 4px #fff,
+                0 0 10px var(--neon-rosa),
+                0 0 20px var(--neon-rosa),
+                0 0 40px var(--neon-rosa),
+                0 0 80px var(--neon-rosa),
+                0 0 120px var(--neon-claro);
+            animation: pulsar-neon 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Animação pulsante estilo boate */
+        @keyframes pulsar-neon {
+            0% {
+                text-shadow:
+                    0 0 4px #fff,
+                    0 0 12px var(--neon-rosa),
+                    0 0 25px var(--neon-rosa),
+                    0 0 50px var(--neon-rosa);
+            }
+            100% {
+                text-shadow:
+                    0 0 6px #fff,
+                    0 0 18px var(--neon-rosa),
+                    0 0 35px var(--neon-rosa),
+                    0 0 70px var(--neon-claro);
+            }
+        }
+
+        /* Menu com ícones modernos */
+        .menu-navegacao {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .menu-navegacao a {
+            font-family: 'Segoe UI', sans-serif;
+            color: var(--texto-claro);
+            text-decoration: none;
+            margin: 0 0.8rem;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+        }
+
+        .menu-navegacao a i {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .menu-navegacao a:hover {
+            color: var(--neon-rosa);
+            text-shadow: 0 0 12px var(--neon-rosa);
+            transform: translateY(-2px);
+        }
+
+        /* Responsivo para celular */
+        @media (max-width: 768px) {
+            .header-lux {
+                padding: 1.2rem 1rem;
+                justify-content: center;
+            }
+            .logo-neon {
+                font-size: 2.8rem;
+                letter-spacing: 0.4rem;
+            }
+            .menu-navegacao {
+                justify-content: center;
+            }
+            .menu-navegacao a {
+                margin: 0 0.4rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header-lux">
+    <!-- Logo LUX em Neon -->
+    <div class="logo-neon">LUX</div>
+
+    <!-- Navegação com ícones modernos -->
+    <nav class="menu-navegacao">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="catalogo.html"><i class="fa-solid fa-th-large"></i> Catálogo</a>
+        <a href="catalogo.html#feminino"><i class="fa-solid fa-person-dress"></i> Feminino</a>
+        <a href="catalogo.html#masculino"><i class="fa-solid fa-person"></i> Masculino</a>
+        <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
+    </nav>
+</header>
+
+</body>
+</html>
