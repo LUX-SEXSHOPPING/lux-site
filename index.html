@@ -204,14 +204,20 @@
             flex-shrink: 0;
         }
         .moldura-foto img {
+            display: block !important;
             position: absolute;
             width: 100%;
             height: 100%;
             object-fit: cover;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
+            top: 0;
+            left: 0;
         }
-        .moldura-foto img.visivel { opacity: 1; }
+        .moldura-foto img.visivel { 
+            opacity: 1 !important;
+            z-index: 10;
+        }
 
         /* ✅ Nome + Idade */
         .nome-nick {
@@ -353,7 +359,7 @@
     <!-- ✅ VIPs — Nome + Idade + Cidade -->
     <section class="carrossel-vips">
         <div class="caixa-exclusiva" id="areaDeslizar">
-            <div class="moldura-foto">
+            <div class="moldura-foto" id="moldura">
                 <img src="vip1.png" alt="Eduarda Souza" class="visivel" data-nome="Eduarda Souza" data-idade="21 anos">
                 <img src="vip2.png" alt="Sarah Coutinho" data-nome="Sarah Coutinho" data-idade="27 anos">
                 <img src="vip3.png" alt="Larissa Hoffman" data-nome="Larissa Hoffman" data-idade="20 anos">
@@ -389,47 +395,75 @@
 
 <!-- ✅ Script: Deslizar + Pontos + Automático -->
 <script>
-const imagens = document.querySelectorAll('.moldura-foto img');
-const nomeIdadeEl = document.getElementById('nomeIdade');
-const caixa = document.getElementById('areaDeslizar');
-const pontosEl = document.getElementById('pontos');
-let atual = 0;
-const total = imagens.length;
+window.addEventListener('load', function() {
+    const imagens = document.querySelectorAll('.moldura-foto img');
+    const nomeIdadeEl = document.getElementById('nomeIdade');
+    const caixa = document.getElementById('areaDeslizar');
+    const moldura = document.getElementById('moldura');
+    const pontosEl = document.getElementById('pontos');
+    let atual = 0;
+    const total = imagens.length;
 
-// Cria os pontinhos
-for (let i = 0; i < total; i++) {
-    const p = document.createElement('button');
-    p.classList.add('ponto');
-    if (i === 0) p.classList.add('ativo');
-    p.addEventListener('click', () => irPara(i));
-    pontosEl.appendChild(p);
-}
-const pontos = document.querySelectorAll('.ponto');
+    console.log('Total de imagens:', total);
+    imagens.forEach((img, i) => {
+        console.log(`Imagem ${i}:`, img.src);
+    });
 
-function atualizarTela() {
-    imagens.forEach(img => img.classList.remove('visivel'));
-    imagens[atual].classList.add('visivel');
-    const imgAtual = imagens[atual];
-    nomeIdadeEl.textContent = `${imgAtual.dataset.nome} — ${imgAtual.dataset.idade}`;
-    pontos.forEach((p, i) => p.classList.toggle('ativo', i === atual));
-}
-function irPara(n) { atual = n; atualizarTela(); }
-function avancar() { atual = (atual + 1) % total; atualizarTela(); }
-function voltar() { atual = (atual - 1 + total) % total; atualizarTela(); }
+    // Cria os pontinhos
+    for (let i = 0; i < total; i++) {
+        const p = document.createElement('button');
+        p.classList.add('ponto');
+        if (i === 0) p.classList.add('ativo');
+        p.addEventListener('click', () => irPara(i));
+        pontosEl.appendChild(p);
+    }
+    const pontos = document.querySelectorAll('.ponto');
 
-// Deslizar com o dedo
-let xInicio = null;
-caixa.addEventListener('touchstart', e => xInicio = e.touches[0].clientX, { passive: true });
-caixa.addEventListener('touchend', e => {
-    if (xInicio === null) return;
-    const xFim = e.changedTouches[0].clientX;
-    const diff = xInicio - xFim;
-    if (Math.abs(diff) > 40) diff > 0 ? avancar() : voltar();
-    xInicio = null;
-}, { passive: true });
+    function atualizarTela() {
+        imagens.forEach((img, i) => {
+            img.classList.remove('visivel');
+            if (i === atual) {
+                img.classList.add('visivel');
+                console.log('Mostrando:', img.src);
+            }
+        });
+        const imgAtual = imagens[atual];
+        nomeIdadeEl.textContent = `${imgAtual.dataset.nome} — ${imgAtual.dataset.idade}`;
+        pontos.forEach((p, i) => p.classList.toggle('ativo', i === atual));
+    }
 
-// Trocando sozinho
-setInterval(avancar, 4500);
+    function irPara(n) { 
+        atual = n; 
+        atualizarTela(); 
+    }
+
+    function avancar() { 
+        atual = (atual + 1) % total; 
+        atualizarTela(); 
+    }
+
+    function voltar() { 
+        atual = (atual - 1 + total) % total; 
+        atualizarTela(); 
+    }
+
+    // Inicializa primeira imagem
+    atualizarTela();
+
+    // Deslizar com o dedo
+    let xInicio = null;
+    moldura.addEventListener('touchstart', e => xInicio = e.touches[0].clientX, { passive: true });
+    moldura.addEventListener('touchend', e => {
+        if (xInicio === null) return;
+        const xFim = e.changedTouches[0].clientX;
+        const diff = xInicio - xFim;
+        if (Math.abs(diff) > 40) diff > 0 ? avancar() : voltar();
+        xInicio = null;
+    }, { passive: true });
+
+    // Trocando sozinho
+    setInterval(avancar, 4500);
+});
 </script>
 
 </body>
