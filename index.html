@@ -14,15 +14,22 @@
             --neon-rosa-forte: #ff0080;
             --dourado-suave: #b8962c;
             --dourado-claro: #d4b46a;
-            --fundo-escuro: #08050a;
-            --fundo-caixa: #0f0b12;
             --texto-claro: #f8f2f5;
-            --texto-suave: #b8b0b3;
+            --texto-suave: #e0d8dc;
             --borda-suave: rgba(184, 150, 44, 0.25);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ✅ Cabeçalho — Fundo: banner.jpg */
+        /* ✅ BANNER EM TODA A PÁGINA — VISÍVEL */
+        body {
+            background:
+                linear-gradient(rgba(8, 5, 10, 0.65), rgba(8, 5, 10, 0.65)),
+                url('banner.jpg') center / cover no-repeat fixed;
+            color: #ddd;
+            min-height: 100vh;
+        }
+
+        /* ✅ Cabeçalho — Transparente para o fundo aparecer */
         header {
             position: sticky;
             top: 0;
@@ -32,12 +39,8 @@
             align-items: center;
             padding: 1.2rem 4%;
             min-height: 100px;
-            background:
-                linear-gradient(rgba(8,5,10,0.8), rgba(8,5,10,0.8)),
-                url('banner.jpg');
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.4);
             flex-wrap: wrap;
             gap: 1rem;
         }
@@ -91,7 +94,7 @@
         nav a:hover {
             color: var(--neon-rosa-claro);
             border-bottom: 2px solid var(--neon-rosa);
-            background: rgba(255, 20, 147, 0.08);
+            background: rgba(255, 20, 147, 0.12);
         }
         nav a:hover i {
             color: #fff;
@@ -102,11 +105,10 @@
             transform: scale(1.15);
         }
 
-        /* ✅ Conteúdo Principal */
+        /* ✅ Conteúdo Principal — Transparente para o fundo aparecer */
         main {
             padding: 3rem 4%;
-            background: linear-gradient(180deg, #0b080e, #08050a);
-            color: #ddd;
+            background-color: rgba(0, 0, 0, 0.15);
             min-height: calc(100vh - 200px);
         }
 
@@ -172,7 +174,7 @@
         .caixa-exclusiva {
             position: relative;
             display: inline-block;
-            background: var(--fundo-caixa);
+            background: rgba(15, 11, 18, 0.75);
             border: 1px solid var(--borda-suave);
             border-radius: 16px;
             padding: 1.2rem 1.2rem 2rem;
@@ -210,7 +212,7 @@
             gap: 1.5rem;
         }
         .controle-navega button {
-            background: transparent;
+            background: rgba(15, 11, 18, 0.85);
             border: 1px solid var(--dourado-suave);
             color: var(--dourado-claro);
             width: 44px;
@@ -271,10 +273,10 @@
 
         /* ✅ Rodapé */
         footer {
-            background: var(--fundo-escuro);
+            background-color: rgba(0, 0, 0, 0.25);
             padding: 2rem 4%;
             text-align: center;
-            color: #777;
+            color: #b0a8ac;
         }
         .logo-pequena {
             font-family: 'Bebas Neue', sans-serif;
