@@ -11,11 +11,13 @@
         :root {
             --neon-rosa: #ff1493;
             --neon-claro: #ff69b4;
+            --neon-brilho: 0 0 5px #fff, 0 0 12px #ff1493, 0 0 25px #ff1493;
+            --fundo-escuro: #08050a;
             --texto-claro: #f0e9ec;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ✅ CABEÇALHO COM capabanner.png */
+        /* ✅ Cabeçalho com capabanner.png */
         header {
             position: sticky;
             top: 0;
@@ -25,30 +27,23 @@
             align-items: center;
             padding: 1.5rem 4%;
             min-height: 110px;
-            /* Imagem de fundo + sombra para legibilidade */
             background:
                 linear-gradient(rgba(8,5,10,0.75), rgba(8,5,10,0.75)),
                 url('capabanner.png');
             background-size: cover;
             background-position: center;
-            border-bottom: 2px solid rgba(255,20,147,0.3);
             box-shadow: 0 4px 25px rgba(255,20,147,0.15);
             flex-wrap: wrap;
             gap: 1rem;
         }
 
-        /* ✅ Logo LUX — LETRA GROSSA + NEON */
+        /* ✅ Logo LUX — GROSSA + Neon */
         .logo {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 4rem;
             letter-spacing: 0.6rem;
             color: #fff;
-            text-shadow:
-                0 0 4px #fff,
-                0 0 10px var(--neon-rosa),
-                0 0 20px var(--neon-rosa),
-                0 0 40px var(--neon-rosa),
-                0 0 80px var(--neon-rosa);
+            text-shadow: var(--neon-brilho);
             animation: pulsar 1.5s ease-in-out infinite alternate;
         }
         @keyframes pulsar {
@@ -56,58 +51,134 @@
             100% { text-shadow: 0 0 6px #fff, 0 0 18px var(--neon-rosa), 0 0 35px var(--neon-rosa), 0 0 70px var(--neon-claro); }
         }
 
-        /* ✅ Menu com ícones modernos */
+        /* ✅ MENU — FONTE E ÍCONES EM NEON */
         nav a {
-            font-family: 'Segoe UI', sans-serif;
-            color: var(--texto-claro);
+            font-family: 'Bebas Neue', sans-serif; /* Fonte grossa igual logo */
+            font-size: 1.2rem;
+            letter-spacing: 0.15rem;
+            color: #ffffff;
             text-decoration: none;
             margin: 0 0.8rem;
-            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: .3s;
+            /* Efeito NEON */
+            text-shadow: var(--neon-brilho);
+            transition: all .3s ease;
+        }
+        /* ✅ Ícones brilham também */
+        nav a i {
+            font-size: 1.1rem;
+            filter: drop-shadow(0 0 6px var(--neon-rosa));
         }
         nav a:hover {
-            color: var(--neon-rosa);
+            color: #fff;
+            text-shadow: 0 0 8px #fff, 0 0 20px var(--neon-rosa), 0 0 40px var(--neon-rosa);
+            transform: translateY(-2px);
+        }
+
+        /* ✅ Conteúdo Principal */
+        main {
+            padding: 3rem 4%;
+            background: linear-gradient(180deg, #0b080e, #08050a);
+            color: #ddd;
+            min-height: calc(100vh - 220px);
+        }
+
+        /* ✅ Seção de Boas-Vindas */
+        .bem-vindo {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .bem-vindo h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 0.3rem;
+            color: #fff;
+            text-shadow: var(--neon-brilho);
+            margin-bottom: 2rem;
+        }
+
+        /* ✅ VÍDEO CENTRALIZADO */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        .video-container video {
+            width: 90%;
+            max-width: 850px;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.25);
+            border: 2px solid rgba(255, 20, 147, 0.2);
+        }
+
+        /* ✅ Sobre */
+        .sobre {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .sobre h3 {
+            color: var(--neon-claro);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
             text-shadow: 0 0 10px var(--neon-rosa);
         }
-
-        /* Conteúdo principal */
-        main {
-            padding: 2rem 4%;
-            min-height: calc(100vh - 220px);
-            background: #0b080e;
-            color: #ddd;
+        .sobre p {
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
-        /* Rodapé */
+        /* ✅ WhatsApp Flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 30px;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* ✅ Rodapé */
         footer {
-            background: #08050a;
-            border-top: 2px solid rgba(255,20,147,0.3);
+            background: var(--fundo-escuro);
             padding: 2rem 4%;
             text-align: center;
-            color: #999;
+            color: #777;
         }
-        footer .logo-pequena {
+        .logo-pequena {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.8rem;
             color: #fff;
-            text-shadow: 0 0 8px var(--neon-rosa);
+            text-shadow: var(--neon-brilho);
             margin-bottom: 0.5rem;
         }
 
-        /* Responsivo */
+        /* ✅ Responsivo */
         @media (max-width: 768px) {
             header { padding: 1rem; justify-content: center; }
             .logo { font-size: 2.8rem; letter-spacing: 0.3rem; }
-            nav a { margin: 0 0.4rem; font-size: 0.9rem; }
+            nav a { font-size: 1.1rem; margin: 0 0.4rem; }
+            .bem-vindo h2 { font-size: 2rem; }
+            .video-container video { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-<!-- ✅ Cabeçalho direto aqui -->
+<!-- ✅ Cabeçalho com capabanner.png -->
 <header>
     <div class="logo">LUX</div>
     <nav>
@@ -119,18 +190,37 @@
     </nav>
 </header>
 
-<!-- ✅ Conteúdo da página -->
+<!-- ✅ Conteúdo Principal -->
 <main>
-    <h2 style="color:#ff69b4; margin-bottom:1rem;">Bem-vindo à LUX</h2>
-    <p>Espaço de sofisticação, discrição e elegância. Explore nosso catálogo.</p>
+    <section class="bem-vindo">
+        <h2>Bem-vindo à LUX</h2>
+
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="videobanner.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <p style="font-size: 1.2rem; color: #ddd; max-width: 700px; margin: 0 auto;">
+            Onde a sofisticação encontra o desejo. Elegância, discrição e exclusividade.
+        </p>
+    </section>
+
+    <div class="sobre">
+        <h3>Sobre Nós</h3>
+        <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pensado para sua melhor experiência.</p>
+    </div>
 </main>
 
-<!-- ✅ Rodapé direto -->
+<a href="https://wa.me/5551980612941?text=Olá!%20Vim%20pelo%20site%20LUX%20e%20gostaria%20de%20mais%20informações." target="_blank" class="whatsapp-float">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
 <footer>
     <div class="logo-pequena">LUX</div>
     <p>© 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação</p>
     <p style="margin-top:.5rem;">
-        <a href="https://wa.me/5551980612941" target="_blank" style="color:#ff1493; text-decoration:none;">
+        <a href="https://wa.me/5551980612941" target="_blank" style="color:#ff1493; text-decoration:none; text-shadow: 0 0 8px #ff1493;">
             <i class="fa-brands fa-whatsapp"></i> (51) 98061-2941
         </a>
     </p>
