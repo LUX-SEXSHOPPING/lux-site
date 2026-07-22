@@ -132,13 +132,16 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 4rem;
+            height: 500px;
         }
         .video-container video {
             width: 90%;
             max-width: 850px;
+            height: 100%;
             border-radius: 8px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.5);
             border: 1px solid var(--borda-suave);
+            object-fit: cover;
         }
 
         /* ✅ Título VIPs */
@@ -166,30 +169,39 @@
             background: linear-gradient(90deg, transparent, var(--dourado-suave), transparent);
         }
 
-        /* ✅ CARROSSEL VIPs — CAIXA MAIOR */
+        /* ✅ CARROSSEL VIPs — CAIXA MAIOR (PROPORÇÃO 1:1 COM VÍDEO) */
         .carrossel-vips {
             max-width: 1000px;
             margin: 0 auto 4rem auto;
             text-align: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .caixa-exclusiva {
             position: relative;
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             background: rgba(15, 11, 18, 0.75);
             border: 1px solid var(--borda-suave);
             border-radius: 20px;
             padding: 1.8rem 1.8rem 2.5rem;
             box-shadow: 0 12px 50px rgba(0,0,0,0.6);
             touch-action: pan-y;
+            height: 100%;
         }
         .moldura-foto {
-            width: 340px;
+            width: 380px;
             height: 460px;
             position: relative;
             border-radius: 12px;
             overflow: hidden;
             background: #000;
             margin-bottom: 1.2rem;
+            flex-shrink: 0;
         }
         .moldura-foto img {
             position: absolute;
@@ -299,8 +311,10 @@
             .logo { font-size: 3rem; letter-spacing: 0.4rem; }
             nav a { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
             .bem-vindo h2, .titulo-vips h3 { font-size: 1.8rem; }
+            .video-container { height: 350px; }
             .video-container video { width: 100%; }
-            .moldura-foto { width: 270px; height: 370px; }
+            .carrossel-vips { height: 350px; }
+            .moldura-foto { width: 280px; height: 340px; }
         }
     </style>
 </head>
@@ -353,7 +367,7 @@
 
     <div class="sobre">
         <h3>Sobre Nós</h3>
-        <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pensado para sua melhor experiência.</p>
+        <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pensado para sua satisfação.</p>
     </div>
 </main>
 
