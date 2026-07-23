@@ -9,23 +9,22 @@
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600&display=swap');
 
         :root {
-            --dourado: #c9a227;
-            --dourado-claro: #e6c86e;
-            --rosa-fundo: #4b1b3a;
-            --rosa-borda: #9d4b8c;
-            --rosa-claro: #d87fc8;
-            --azul-botao: #1e3a8a;
-            --azul-borda: #3b82f6;
-            --verde-whats: #25d366;
-            --texto-claro: #f3eef0;
+            --neon-rosa: #ff1493;
+            --neon-rosa-claro: #ff69b4;
+            --neon-rosa-forte: #ff0080;
+            --dourado-suave: #b8962c;
+            --dourado-claro: #d4b46a;
+            --texto-claro: #f8f2f5;
             --texto-suave: #e0d8dc;
+            --texto-cidade: #c9c0c4;
+            --borda-suave: rgba(184, 150, 44, 0.25);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ✅ Fundo */
+        /* ✅ BANNER EM TODA A PÁGINA — VISÍVEL */
         body {
             background:
-                linear-gradient(rgba(8, 5, 10, 0.75), rgba(8, 5, 10, 0.75)),
+                linear-gradient(rgba(8, 5, 10, 0.65), rgba(8, 5, 10, 0.65)),
                 url('banner.jpg') center / cover no-repeat fixed;
             color: #ddd;
             min-height: 100vh;
@@ -33,112 +32,249 @@
 
         /* ✅ Cabeçalho */
         header {
-            background: rgba(0,0,0,0.4);
-            padding: 1rem 4%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.2rem 4%;
+            min-height: 100px;
+            background-color: rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.4);
             flex-wrap: wrap;
             gap: 1rem;
         }
+
+        /* ✅ LOGO LUX — Neon rosa pulsante */
         .logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--dourado-claro);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
+            font-size: 4.2rem;
+            letter-spacing: 0.7rem;
+            color: #ffffff;
+            text-shadow:
+                0 0 4px #fff,
+                0 0 12px var(--neon-rosa),
+                0 0 24px var(--neon-rosa),
+                0 0 48px var(--neon-rosa-forte),
+                0 0 96px var(--neon-rosa-forte);
+            animation: brilhoLogo 2s ease-in-out infinite alternate;
         }
+        @keyframes brilhoLogo {
+            0% { text-shadow: 0 0 4px #fff, 0 0 14px var(--neon-rosa), 0 0 28px var(--neon-rosa), 0 0 56px var(--neon-rosa-forte); }
+            100% { text-shadow: 0 0 6px #fff, 0 0 20px var(--neon-rosa-claro), 0 0 40px var(--neon-rosa), 0 0 80px var(--neon-rosa-forte); }
+        }
+
+        /* ✅ MENU — Ícones neon rosa */
         nav {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 0.6rem;
         }
         nav a {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
             color: var(--texto-claro);
             text-decoration: none;
-            padding: 0.4rem 0.7rem;
+            padding: 0.5rem 0.9rem;
             border-radius: 4px;
-            font-size: 0.9rem;
-            transition: all .3s;
+            letter-spacing: 0.05rem;
+            transition: all .3s ease;
+            border-bottom: 2px solid transparent;
         }
-        nav a:hover { background: rgba(255,255,255,0.1); color: var(--dourado-claro); }
+        nav a i {
+            margin-right: 0.4rem;
+            color: var(--neon-rosa-claro);
+            text-shadow:
+                0 0 6px var(--neon-rosa),
+                0 0 12px var(--neon-rosa);
+            transition: all .3s ease;
+        }
+        nav a:hover {
+            color: var(--neon-rosa-claro);
+            border-bottom: 2px solid var(--neon-rosa);
+            background: rgba(255, 20, 147, 0.12);
+        }
+        nav a:hover i {
+            color: #fff;
+            text-shadow:
+                0 0 8px #fff,
+                0 0 16px var(--neon-rosa),
+                0 0 32px var(--neon-rosa-forte);
+            transform: scale(1.15);
+        }
 
-        /* ✅ Seção Principal */
+        /* ✅ Conteúdo Principal */
         main {
             padding: 3rem 4%;
-            max-width: 1100px;
-            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.15);
+            min-height: calc(100vh - 200px);
         }
-        .hero {
+
+        /* ✅ Bem-vindo */
+        .bem-vindo {
             text-align: center;
             margin-bottom: 3rem;
         }
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--dourado-claro);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--texto-suave);
-            max-width: 700px;
-            margin: 0 auto;
+        .bem-vindo h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 0.3rem;
+            color: #fff;
+            margin-bottom: 2rem;
         }
 
-        /* ✅ Botões de Acesso */
-        .acesso-secoes {
+        /* ✅ Vídeo */
+        .video-container {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-        .btn-secao {
-            padding: 1rem 1.6rem;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
-            transition: transform .3s, box-shadow .3s;
+            margin-bottom: 4rem;
+            height: 500px;
         }
-        .btn-secao:hover { transform: translateY(-3px); }
+        .video-container video {
+            width: 90%;
+            max-width: 850px;
+            height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            border: 1px solid var(--borda-suave);
+            object-fit: cover;
+        }
 
-        .btn-masc {
-            background: var(--azul-botao);
-            color: #fff;
-            border: 2px solid var(--azul-borda);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        /* ✅ Título VIPs */
+        .titulo-vips {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        .btn-fem {
-            background: var(--rosa-fundo);
-            color: #fff;
-            border: 2px solid var(--rosa-claro);
-            box-shadow: 0 4px 15px rgba(216, 127, 200, 0.3);
+        .titulo-vips h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            letter-spacing: 0.25rem;
+            color: var(--dourado-claro);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.8rem;
+        }
+        .titulo-vips h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--dourado-suave), transparent);
+        }
+
+        /* ✅ CARROSSEL VIPs — CAIXA MAIOR (PROPORÇÃO 1:1 COM VÍDEO) */
+        .carrossel-vips {
+            max-width: 1000px;
+            margin: 0 auto 4rem auto;
+            text-align: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .caixa-exclusiva {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(15, 11, 18, 0.75);
+            border: 1px solid var(--borda-suave);
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2.5rem;
+            box-shadow: 0 12px 50px rgba(0,0,0,0.6);
+            touch-action: pan-y;
+            height: 100%;
+        }
+        .moldura-foto {
+            width: 380px;
+            height: 460px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 1.2rem;
+            flex-shrink: 0;
+        }
+        .moldura-foto img {
+            display: block !important;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            top: 0;
+            left: 0;
+        }
+        .moldura-foto img.visivel { 
+            opacity: 1 !important;
+            z-index: 10;
+        }
+
+        /* ✅ Nome + Idade */
+        .nome-nick {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--dourado-claro);
+            letter-spacing: 0.12rem;
+            margin-bottom: 0.5rem;
+        }
+        /* ✅ Cidade com Ícone */
+        .cidade {
+            font-size: 1rem;
+            color: var(--texto-cidade);
+        }
+        .cidade i {
+            color: var(--neon-rosa-claro);
+            margin-right: 0.4rem;
+        }
+
+        /* ✅ Pontinhos neon */
+        .pontos {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 0.7rem;
+        }
+        .ponto {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            border: none;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .ponto.ativo {
+            background: var(--neon-rosa);
+            box-shadow: 0 0 10px var(--neon-rosa), 0 0 20px var(--neon-rosa);
+            transform: scale(1.2);
         }
 
         /* ✅ Sobre */
         .sobre {
-            background: rgba(15, 11, 18, 0.75);
-            border: 1px solid var(--rosa-borda);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
-        .sobre h2 {
+        .sobre h3 {
             font-family: 'Playfair Display', serif;
             color: var(--dourado-claro);
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
         .sobre p {
+            line-height: 1.8;
+            font-size: 1.1rem;
             color: var(--texto-suave);
-            line-height: 1.7;
         }
 
         /* ✅ WhatsApp Flutuante */
@@ -148,7 +284,7 @@
             right: 25px;
             width: 60px;
             height: 60px;
-            background: var(--verde-whats);
+            background: #25d366;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -163,62 +299,172 @@
 
         /* ✅ Rodapé */
         footer {
-            background: rgba(0,0,0,0.4);
-            padding: 1.5rem 4%;
+            background-color: rgba(0, 0, 0, 0.25);
+            padding: 2rem 4%;
             text-align: center;
-            font-size: 0.9rem;
-            color: #aaa;
+            color: #b0a8ac;
+        }
+        .logo-pequena {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
         }
 
         /* ✅ Responsivo */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .acesso-secoes { flex-direction: column; align-items: center; }
-            .btn-secao { width: 100%; max-width: 300px; justify-content: center; }
+            header { padding: 1rem; justify-content: center; }
+            .logo { font-size: 3rem; letter-spacing: 0.4rem; }
+            nav a { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
+            .bem-vindo h2, .titulo-vips h3 { font-size: 1.8rem; }
+            .video-container { height: 350px; }
+            .video-container video { width: 100%; }
+            .carrossel-vips { height: 350px; }
+            .moldura-foto { width: 280px; height: 340px; }
         }
     </style>
 </head>
 <body>
 
+<!-- ✅ Cabeçalho -->
 <header>
-    <div class="logo"><span style="color:var(--dourado);">⬡</span> LUX</div>
+    <div class="logo">LUX</div>
     <nav>
+        <a href="termos.html"><i class="fa-solid fa-file-contract"></i> Termos</a>
+        <a href="pre-cadastro.html"><i class="fa-solid fa-user-plus"></i> Cadastro</a>
         <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="modelos-femininos.html"><i class="fa-solid fa-venus"></i> Modelos Femininos</a>
-        <a href="modelos-masculinos.html"><i class="fa-solid fa-mars"></i> Modelos Masculinos</a>
+        <a href="catalago.html"><i class="fa-solid fa-user-group"></i> Modelos</a>
         <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
     </nav>
 </header>
 
+<!-- ✅ Conteúdo -->
 <main>
-    <section class="hero">
-        <h1>Bem-vindo à LUX</h1>
-        <p>Uma experiência sofisticada, elegante e envolvente. Descubra o catálogo e encontre a companhia perfeita para cada momento.</p>
+    <section class="bem-vindo">
+        <h2>Bem-vindo à LUX</h2>
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="videobanner.mp4" type="video/mp4">
+            </video>
+        </div>
+        <p style="font-size: 1.2rem; color: var(--texto-suave); max-width: 700px; margin: 0 auto;">
+            Onde a sofisticação encontra o desejo. Elegância, discrição e exclusividade.
+        </p>
     </section>
 
-    <section class="acesso-secoes">
-        <a href="modelos-masculinos.html" class="btn-secao btn-masc">
-            <i class="fa-solid fa-mars"></i> Modelos Masculinos
-        </a>
-        <a href="modelos-femininos.html" class="btn-secao btn-fem">
-            <i class="fa-solid fa-venus"></i> Modelos Femininos
-        </a>
+    <div class="titulo-vips">
+        <h3>VIPs</h3>
+    </div>
+
+    <!-- ✅ VIPs — Nome + Idade + Cidade -->
+    <section class="carrossel-vips">
+        <div class="caixa-exclusiva" id="areaDeslizar">
+            <div class="moldura-foto" id="moldura">
+                <img src="vip1.png" alt="Eduarda Souza" class="visivel" data-nome="Eduarda Souza" data-idade="21 anos">
+                <img src="vip2.png" alt="Sarah Coutinho" data-nome="Sarah Coutinho" data-idade="27 anos">
+                <img src="vip3.png" alt="Larissa Hoffman" data-nome="Larissa Hoffman" data-idade="20 anos">
+                <img src="vip4.png" alt="Vitoria Amaral" data-nome="Vitoria Amaral" data-idade="24 anos">
+            </div>
+            <div class="nome-nick" id="nomeIdade">Eduarda Souza — 21 anos</div>
+            <div class="cidade"><i class="fa-solid fa-location-dot"></i> Gravataí — RS</div>
+        </div>
+        <div class="pontos" id="pontos"></div>
     </section>
 
-    <section class="sobre">
-        <h2>Sobre a LUX</h2>
-        <p>Um jardim de prazer e sedução onde cada detalhe foi pensado para sua satisfação. Aqui a paixão encontra a elegância, e o desejo se transforma em realidade. Somos a porta de entrada para experiências únicas, com discrição, sofisticação e um catálogo selecionado de acompanhantes de Gravataí — RS. <br><br>
-        <em>Seja bem-vindo ao mundo onde fantasia e realidade se encontram em perfeita harmonia.</em></p>
-    </section>
+    <div class="sobre">
+        <h3>Sobre Nós</h3>
+        <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pensado para sua satisfação.</p>
+    </div>
 </main>
 
-<a href="https://wa.me/5551980612941?text=Olá!%20Bem-vindo%20à%20LUX%20—%20gostaria%20de%20conhecer%20nosso%20catálogo." target="_blank" class="whatsapp-float">
+<!-- ✅ WhatsApp -->
+<a href="https://wa.me/5551980612941?text=Olá!%20Vim%20pelo%20site%20LUX%20e%20gostaria%20de%20mais%20informações." target="_blank" class="whatsapp-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
+<!-- ✅ Rodapé -->
 <footer>
-    © 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação. Proibido para menores de 18 anos.
+    <div class="logo-pequena">LUX</div>
+    <p>© 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação</p>
+    <p style="margin-top:.5rem;">
+        <a href="https://wa.me/5551980612941" target="_blank" style="color:var(--dourado-claro); text-decoration:none;">
+            <i class="fa-brands fa-whatsapp"></i> (51) 98061-2941
+        </a>
+    </p>
 </footer>
+
+<!-- ✅ Script: Deslizar + Pontos + Automático -->
+<script>
+window.addEventListener('load', function() {
+    const imagens = document.querySelectorAll('.moldura-foto img');
+    const nomeIdadeEl = document.getElementById('nomeIdade');
+    const caixa = document.getElementById('areaDeslizar');
+    const moldura = document.getElementById('moldura');
+    const pontosEl = document.getElementById('pontos');
+    let atual = 0;
+    const total = imagens.length;
+
+    console.log('Total de imagens:', total);
+    imagens.forEach((img, i) => {
+        console.log(`Imagem ${i}:`, img.src);
+    });
+
+    // Cria os pontinhos
+    for (let i = 0; i < total; i++) {
+        const p = document.createElement('button');
+        p.classList.add('ponto');
+        if (i === 0) p.classList.add('ativo');
+        p.addEventListener('click', () => irPara(i));
+        pontosEl.appendChild(p);
+    }
+    const pontos = document.querySelectorAll('.ponto');
+
+    function atualizarTela() {
+        imagens.forEach((img, i) => {
+            img.classList.remove('visivel');
+            if (i === atual) {
+                img.classList.add('visivel');
+                console.log('Mostrando:', img.src);
+            }
+        });
+        const imgAtual = imagens[atual];
+        nomeIdadeEl.textContent = `${imgAtual.dataset.nome} — ${imgAtual.dataset.idade}`;
+        pontos.forEach((p, i) => p.classList.toggle('ativo', i === atual));
+    }
+
+    function irPara(n) { 
+        atual = n; 
+        atualizarTela(); 
+    }
+
+    function avancar() { 
+        atual = (atual + 1) % total; 
+        atualizarTela(); 
+    }
+
+    function voltar() { 
+        atual = (atual - 1 + total) % total; 
+        atualizarTela(); 
+    }
+
+    // Inicializa primeira imagem
+    atualizarTela();
+
+    // Deslizar com o dedo
+    let xInicio = null;
+    moldura.addEventListener('touchstart', e => xInicio = e.touches[0].clientX, { passive: true });
+    moldura.addEventListener('touchend', e => {
+        if (xInicio === null) return;
+        const xFim = e.changedTouches[0].clientX;
+        const diff = xInicio - xFim;
+        if (Math.abs(diff) > 40) diff > 0 ? avancar() : voltar();
+        xInicio = null;
+    }, { passive: true });
+
+    // Trocando sozinho
+    setInterval(avancar, 4500);
+});
+</script>
 
 </body>
 </html>
