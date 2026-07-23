@@ -109,13 +109,18 @@
             gap: 1.8rem;
             align-items: flex-start;
         }
+
+        /* ✅ Espaço da Foto */
         .foto {
             width: 280px;
             height: 380px;
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            border: 2px solid var(--borda-suave);
+            background: rgba(0,0,0,0.3);
         }
+
         .info {
             flex: 1;
             min-width: 280px;
@@ -134,6 +139,7 @@
         .dados i {
             color: var(--neon-rosa-claro);
             width: 20px;
+            margin-right: 0.5rem;
         }
         .descricao {
             font-size: 1.05rem;
@@ -146,7 +152,7 @@
             font-style: normal;
         }
 
-        /* ✅ WhatsApp Flutuante */
+        /* ✅ WhatsApp */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -198,13 +204,13 @@
 <main>
     <h2>Modelos em Destaque</h2>
 
-    <!-- ✅ EDUARDA SOUZA — vip1.png -->
+    <!-- ✅ EDUARDA SOUZA — vip1.png | Gravataí-RS -->
     <div class="cartao">
         <img src="vip1.png" alt="Eduarda Souza" class="foto">
         <div class="info">
             <h3 class="nome">Eduarda Souza — 21 anos</h3>
             <div class="dados">
-                <p><i class="fa-solid fa-location-dot"></i> Gravataí — RS</p>
+                <p><i class="fa-solid fa-location-dot"></i> Gravataí — Rio Grande do Sul</p>
             </div>
             <p class="descricao">
                 Uma mulher que carrega o <em>fogo da paixão</em> em cada olhar. Eduarda é a combinação perfeita entre doçura e desejo, com uma presença que envolve e seduz sem esforço. Sua elegância natural desperta a curiosidade e acende a imaginação — uma companhia onde cada momento se transforma em uma <em>memória inesquecível</em>, repleta de calor, intimidade e aquela tensão deliciosa que só a paixão verdadeira consegue criar.
@@ -212,13 +218,13 @@
         </div>
     </div>
 
-    <!-- ✅ LARISSA HOFFMAN — vip3.png -->
+    <!-- ✅ LARISSA HOFFMAN — vip3.png | Gravataí-RS -->
     <div class="cartao">
         <img src="vip3.png" alt="Larissa Hoffman" class="foto">
         <div class="info">
             <h3 class="nome">Larissa Hoffman — 20 anos</h3>
             <div class="dados">
-                <p><i class="fa-solid fa-location-dot"></i> Gravataí — RS</p>
+                <p><i class="fa-solid fa-location-dot"></i> Gravataí — Rio Grande do Sul</p>
             </div>
             <p class="descricao">
                 Jovem, misteriosa e envolvente. Larissa traz consigo o <em>ardor de um amor proibido</em> e a leveza de quem sabe como encantar. Com um sorriso que promete segredos e um olhar que convida ao mergulho, ela transforma o encontro em uma <em>jornada de prazer e descoberta</em>. Intensa e autêntica, é a definição de paixão que se renova a cada instante — sofisticada, cativante e absolutamente inesquecível.
@@ -227,8 +233,8 @@
     </div>
 </main>
 
-<!-- ✅ WhatsApp -->
-<a href="https://wa.me/5551980612941?text=Olá!%20Vi%20Eduarda%20e%20Larissa%20na%20LUX%20e%20gostaria%20de%20saber%20mais." target="_blank" class="whatsapp-float">
+<!-- ✅ WhatsApp Flutuante -->
+<a href="https://wa.me/5551980612941?text=Olá!%20Vi%20Eduarda%20e%20Larissa%20da%20LUX%20em%20Gravataí%20e%20gostaria%20de%20saber%20mais." target="_blank" class="whatsapp-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
