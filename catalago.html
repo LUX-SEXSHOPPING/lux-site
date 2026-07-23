@@ -93,7 +93,7 @@
 
         .grade-catalogo {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -108,12 +108,17 @@
             transform: translateY(-6px);
             box-shadow: 0 10px 30px rgba(255, 20, 147, 0.25);
         }
+        /* ✅ FOTO UM POUCO MAIOR */
         .foto-catalogo {
             width: 100%;
-            height: 360px;
+            height: 400px; /* Antes 360px — aumentei */
             object-fit: cover;
             background: rgba(0,0,0,0.3);
+            cursor: pointer; /* 👆 Indica que clica para ampliar */
+            transition: opacity .3s;
         }
+        .foto-catalogo:hover { opacity: 0.85; }
+
         .info-cartao {
             padding: 1.5rem;
         }
@@ -152,6 +157,51 @@
         }
         .botao-whats:hover { transform: scale(1.05); }
 
+        /* ✅ MODAL — ZOOM DA FOTO AO CLICAR */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal.aberto { display: flex; }
+        .modal-fechar {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color .2s;
+        }
+        .modal-fechar:hover { color: var(--neon-rosa); }
+        .modal-foto {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.15);
+        }
+        .modal-nome {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 1rem;
+        }
+
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -179,7 +229,7 @@
 
         @media (max-width: 768px) {
             .grade-catalogo { grid-template-columns: 1fr; }
-            .foto-catalogo { height: 300px; }
+            .foto-catalogo { height: 340px; } /* Ajuste no celular */
             h1 { font-size: 1.8rem; }
         }
     </style>
@@ -214,7 +264,7 @@
     <div class="grade-catalogo">
         <!-- VIP 1 — Eduarda -->
         <div class="cartao">
-            <img src="vip1.png" alt="Eduarda Souza" class="foto-catalogo">
+            <img src="vip1.png" alt="Eduarda Souza" class="foto-catalogo" onclick="abrirModal(this.src, 'Eduarda Souza')">
             <div class="info-cartao">
                 <h2 class="nome-cartao">Eduarda Souza</h2>
                 <div class="dados-cartao">
@@ -232,7 +282,7 @@
 
         <!-- VIP 3 — Larissa -->
         <div class="cartao">
-            <img src="vip3.png" alt="Larissa Hoffman" class="foto-catalogo">
+            <img src="vip3.png" alt="Larissa Hoffman" class="foto-catalogo" onclick="abrirModal(this.src, 'Larissa Hoffman')">
             <div class="info-cartao">
                 <h2 class="nome-cartao">Larissa Hoffman</h2>
                 <div class="dados-cartao">
@@ -250,6 +300,13 @@
     </div>
 </main>
 
+<!-- ✅ MODAL DE ZOOM -->
+<div id="modalFoto" class="modal">
+    <span class="modal-fechar" onclick="fecharModal()">&times;</span>
+    <img src="" alt="Ampliada" class="modal-foto" id="fotoAmpliada">
+    <div class="modal-nome" id="nomeModal"></div>
+</div>
+
 <a href="https://wa.me/5551980612941" target="_blank" class="whatsapp-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
@@ -257,6 +314,24 @@
 <footer>
     © 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação. Proibido para menores de 18 anos.
 </footer>
+
+<script>
+// ✅ Funções do Modal
+function abrirModal(caminho, nome) {
+    document.getElementById('fotoAmpliada').src = caminho;
+    document.getElementById('nomeModal').textContent = nome;
+    document.getElementById('modalFoto').classList.add('aberto');
+    document.body.style.overflow = 'hidden'; // Trava rolagem de fundo
+}
+function fecharModal() {
+    document.getElementById('modalFoto').classList.remove('aberto');
+    document.body.style.overflow = '';
+}
+// Fecha ao clicar fora da foto
+document.getElementById('modalFoto').addEventListener('click', function(e) {
+    if (e.target === this) fecharModal();
+});
+</script>
 
 </body>
 </html>
