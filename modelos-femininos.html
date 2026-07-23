@@ -3,240 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelos Femininos — LUX</title>
+    <title>LUX — Modelos Femininos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600&display=swap');
 
         :root {
-            --neon-rosa: #ff1493;
-            --neon-rosa-claro: #ff69b4;
-            --neon-rosa-forte: #ff0080;
-            --dourado-suave: #b8962c;
-            --dourado-claro: #d4b46a;
-            --texto-claro: #f8f2f5;
+            --dourado: #c9a227;
+            --dourado-claro: #e6c86e;
+            --rosa-fundo: #4b1b3a;
+            --rosa-borda: #9d4b8c;
+            --rosa-claro: #d87fc8;
+            --azul-botao: #1e3a8a;
+            --azul-borda: #3b82f6;
+            --verde-whats: #25d366;
+            --texto-claro: #f3eef0;
             --texto-suave: #e0d8dc;
-            --borda-suave: rgba(184, 150, 44, 0.25);
+            --fundo-card: rgba(45, 20, 35, 0.85);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-        /* ✅ Fundo */
         body {
             background:
-                linear-gradient(rgba(8, 5, 10, 0.70), rgba(8, 5, 10, 0.70)),
+                linear-gradient(rgba(8, 5, 10, 0.75), rgba(8, 5, 10, 0.75)),
                 url('banner.jpg') center / cover no-repeat fixed;
             color: #ddd;
             min-height: 100vh;
         }
 
-        /* ✅ Cabeçalho */
+        /* Cabeçalho */
         header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: rgba(0,0,0,0.4);
+            padding: 1rem 4%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 4%;
-            min-height: 90px;
-            background-color: rgba(0, 0, 0, 0.25);
-            box-shadow: 0 4px 25px rgba(0,0,0,0.4);
             flex-wrap: wrap;
             gap: 1rem;
         }
         .logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 0.5rem;
-            color: #ffffff;
-            text-shadow:
-                0 0 4px #fff,
-                0 0 12px var(--neon-rosa),
-                0 0 24px var(--neon-rosa);
+            font-size: 1.8rem;
+            color: var(--dourado-claro);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         nav {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
             gap: 0.6rem;
         }
         nav a {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
             color: var(--texto-claro);
             text-decoration: none;
-            padding: 0.5rem 0.9rem;
+            padding: 0.4rem 0.7rem;
             border-radius: 4px;
-            border-bottom: 2px solid transparent;
-            transition: all .3s ease;
+            font-size: 0.9rem;
         }
-        nav a i {
-            margin-right: 0.4rem;
-            color: var(--neon-rosa-claro);
-        }
-        nav a:hover {
-            color: var(--neon-rosa-claro);
-            border-bottom: 2px solid var(--neon-rosa);
-            background: rgba(255, 20, 147, 0.12);
-        }
+        nav a:hover { background: rgba(255,255,255,0.1); }
 
-        /* ✅ Conteúdo */
-        main {
-            padding: 3rem 4%;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+        /* Título */
+        .titulo {
             text-align: center;
-            color: var(--dourado-claro);
-            margin-bottom: 3rem;
-            letter-spacing: 0.2rem;
+            padding: 2rem 4% 1rem;
         }
-
-        /* ✅ Perfil */
-        .perfil {
-            background: rgba(15, 11, 18, 0.75);
-            border: 1px solid var(--borda-suave);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 12px 45px rgba(0,0,0,0.5);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: flex-start;
-        }
-        .foto-perfil {
-            width: 300px;
-            height: 400px;
-            border-radius: 14px;
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-            border: 2px solid var(--borda-suave);
-            background: rgba(0,0,0,0.3);
-        }
-        .conteudo-perfil {
-            flex: 1;
-            min-width: 280px;
-        }
-        .nome-perfil {
+        .titulo h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
             color: var(--dourado-claro);
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
-        .dados-perfil {
-            font-size: 1rem;
-            color: var(--texto-suave);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+        .titulo p { color: var(--texto-suave); }
+
+        /* Botões de seção */
+        .botoes-secao {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
-        .dados-perfil i {
-            color: var(--neon-rosa-claro);
-            width: 25px;
-            margin-right: 0.5rem;
-        }
-        .descricao-perfil {
-            font-size: 1.05rem;
-            line-height: 1.75;
-            color: #d8d0d4;
-            text-align: justify;
-            margin-bottom: 1.8rem;
-        }
-        .descricao-perfil em {
-            color: var(--neon-rosa-claro);
-            font-style: normal;
-        }
-        .botao-whats {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: #25d366;
-            color: #fff;
-            font-weight: 600;
+        .btn-secao {
             padding: 0.8rem 1.4rem;
             border-radius: 8px;
+            border: none;
+            font-weight: 600;
             text-decoration: none;
-            transition: all .3s ease;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .botao-whats:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        .btn-masc {
+            background: var(--azul-botao);
+            color: #fff;
+            border: 2px solid var(--azul-borda);
+        }
+        .btn-fem {
+            background: var(--rosa-fundo);
+            color: #fff;
+            border: 2px solid var(--rosa-claro);
+            box-shadow: 0 0 12px rgba(216, 127, 200, 0.4);
         }
 
-        /* ✅ Rodapé */
-        footer {
-            background-color: rgba(0, 0, 0, 0.25);
-            padding: 2rem 4%;
+        /* Container dos perfis */
+        .container-perfis {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 4% 3rem;
+            background: rgba(75, 27, 58, 0.4);
+            border-radius: 16px;
+            border: 1px solid var(--rosa-borda);
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .container-perfis > h2 {
             text-align: center;
-            color: #b0a8ac;
+            color: var(--rosa-claro);
+            margin-bottom: 2rem;
+            font-size: 1.3rem;
         }
 
-        /* ✅ Responsivo */
+        /* Grade dos perfis */
+        .grade-perfis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        /* Cartão de perfil */
+        .cartao {
+            background: var(--fundo-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(157, 75, 140, 0.4);
+            display: flex;
+            flex-direction: column;
+        }
+        .foto-cartao {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background: rgba(0,0,0,0.3);
+        }
+        .corpo-cartao {
+            padding: 1rem;
+        }
+        .nome-cartao {
+            font-family: 'Playfair Display', serif;
+            color: var(--dourado-claro);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .dados-cartao {
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .dados-cartao i { color: var(--rosa-claro); width: 16px; }
+        .sobre-cartao {
+            background: rgba(0,0,0,0.25);
+            border-radius: 6px;
+            padding: 0.8rem;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #d8d0d4;
+            margin-bottom: 1rem;
+        }
+        .sobre-cartao strong { color: var(--dourado-claro); }
+        .rodape-cartao {
+            text-align: center;
+        }
+        .btn-contato {
+            background: var(--verde-whats);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.6rem 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-contato:hover { transform: translateY(-2px); }
+
+        /* Voltar */
+        .voltar {
+            text-align: center;
+            margin: 1rem 0 2rem;
+        }
+        .voltar a {
+            color: var(--dourado-claro);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background: rgba(0,0,0,0.4);
+            padding: 1.5rem 4%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsivo */
         @media (max-width: 768px) {
-            .foto-perfil { width: 100%; height: auto; aspect-ratio: 3/4; }
-            .perfil { padding: 1.5rem; justify-content: center; }
-            h2 { font-size: 1.7rem; }
-            .nome-perfil { font-size: 1.5rem; }
+            .grade-perfis { grid-template-columns: 1fr; }
+            .foto-cartao { height: 220px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">LUX</div>
+    <div class="logo"><span style="color:var(--dourado);">⬡</span> LUX — Catálogo</div>
     <nav>
         <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="modelos-femininos.html"><i class="fa-solid fa-person-dress"></i> Femininos</a>
-        <a href="modelos-masculinos.html"><i class="fa-solid fa-person"></i> Masculinos</a>
-        <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
+        <a href="modelos-femininos.html"><i class="fa-solid fa-file-list"></i> Catálogo</a>
+        <a href="#"><i class="fa-solid fa-user-plus"></i> Pré-Cadastro</a>
+        <a href="#"><i class="fa-solid fa-scale-balanced"></i> Termos</a>
     </nav>
 </header>
 
-<main>
-    <h2>Modelos Femininos — LUX</h2>
+<section class="titulo">
+    <h1>Catálogo de Perfis</h1>
+    <p>Escolha a seção que deseja explorar</p>
+</section>
 
-    <!-- ✅ EDUARDA — vip1.png | Gravataí-RS -->
-    <section class="perfil">
-        <img src="vip1.png" alt="Eduarda Souza" class="foto-perfil">
-        <div class="conteudo-perfil">
-            <h3 class="nome-perfil">Eduarda Souza — 21 anos</h3>
-            <div class="dados-perfil">
-                <p><i class="fa-solid fa-location-dot"></i> Gravataí — Rio Grande do Sul</p>
-            </div>
-            <p class="descricao-perfil">
-                Uma mulher que carrega o <em>fogo da paixão</em> em cada olhar. Eduarda é a combinação perfeita entre doçura e desejo, com uma presença que envolve e seduz sem esforço. Sua elegância natural desperta a curiosidade e acende a imaginação — uma companhia onde cada momento se transforma em uma <em>memória inesquecível</em>, repleta de calor, intimidade e aquela tensão deliciosa que só a paixão verdadeira consegue criar.
-            </p>
-            <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Eduarda%20da%20LUX" target="_blank" class="botao-whats">
-                <i class="fa-brands fa-whatsapp"></i> Contatar Eduarda
-            </a>
-        </div>
-    </section>
+<section class="botoes-secao">
+    <a href="modelos-masculinos.html" class="btn-secao btn-masc">
+        <i class="fa-solid fa-rotate"></i> Modelos Masculinos
+    </a>
+    <a href="modelos-femininos.html" class="btn-secao btn-fem">
+        <i class="fa-solid fa-venus"></i> Modelos Femininos
+    </a>
+</section>
 
-    <!-- ✅ LARISSA — vip3.png | Gravataí-RS -->
-    <section class="perfil">
-        <img src="vip3.png" alt="Larissa Hoffman" class="foto-perfil">
-        <div class="conteudo-perfil">
-            <h3 class="nome-perfil">Larissa Hoffman — 20 anos</h3>
-            <div class="dados-perfil">
-                <p><i class="fa-solid fa-location-dot"></i> Gravataí — Rio Grande do Sul</p>
+<section class="container-perfis">
+    <h2><i class="fa-solid fa-venus" style="color:var(--rosa-claro);"></i> Modelos Femininos</h2>
+
+    <div class="grade-perfis">
+
+        <!-- PERFIL 1 — Eduarda | vip1.png | Gravataí-RS -->
+        <div class="cartao">
+            <img src="vip1.png" alt="Eduarda" class="foto-cartao">
+            <div class="corpo-cartao">
+                <h3 class="nome-cartao">Eduarda Souza</h3>
+                <div class="dados-cartao">
+                    <span><i class="fa-solid fa-calendar"></i> 21 anos</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Gravataí — RS</span>
+                </div>
+                <div class="sobre-cartao">
+                    <strong>Sobre ela:</strong> Uma mulher que carrega o <em>fogo da paixão</em> em cada olhar. Combina doçura e desejo, com presença que envolve e seduz sem esforço. Elegância natural que desperta curiosidade e acende a imaginação — companhia para <em>memória inesquecível</em>.
+                </div>
+                <div class="rodape-cartao">
+                    <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20saber%20sobre%20a%20Eduarda%20da%20LUX" target="_blank" class="btn-contato">
+                        <i class="fa-brands fa-whatsapp"></i> Contatar
+                    </a>
+                </div>
             </div>
-            <p class="descricao-perfil">
-                Jovem, misteriosa e envolvente. Larissa traz consigo o <em>ardor de um amor proibido</em> e a leveza de quem sabe como encantar. Com um sorriso que promete segredos e um olhar que convida ao mergulho, ela transforma o encontro em uma <em>jornada de prazer e descoberta</em>. Intensa e autêntica, é a definição de paixão que se renova a cada instante — sofisticada, cativante e absolutamente inesquecível.
-            </p>
-            <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Larissa%20da%20LUX" target="_blank" class="botao-whats">
-                <i class="fa-brands fa-whatsapp"></i> Contatar Larissa
-            </a>
         </div>
-    </section>
-</main>
+
+        <!-- PERFIL 2 — Larissa | vip3.png | Gravataí-RS -->
+        <div class="cartao">
+            <img src="vip3.png" alt="Larissa" class="foto-cartao">
+            <div class="corpo-cartao">
+                <h3 class="nome-cartao">Larissa Hoffman</h3>
+                <div class="dados-cartao">
+                    <span><i class="fa-solid fa-calendar"></i> 20 anos</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Gravataí — RS</span>
+                </div>
+                <div class="sobre-cartao">
+                    <strong>Sobre ela:</strong> Jovem, misteriosa e envolvente. Traz o <em>ardor de um amor proibido</em> e leveza de quem sabe encantar. Sorriso que promete segredos, olhar que convida ao mergulho — transforma encontro em <em>jornada de prazer</em>.
+                </div>
+                <div class="rodape-cartao">
+                    <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20saber%20sobre%20a%20Larissa%20da%20LUX" target="_blank" class="btn-contato">
+                        <i class="fa-brands fa-whatsapp"></i> Contatar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="voltar">
+    <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Início</a>
+</div>
 
 <footer>
-    <p>© 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação</p>
+    © 2026 LUX — Proibido para menores de 18 anos. Todos os direitos reservados. Brasil • Europa.
 </footer>
 
 </body>
