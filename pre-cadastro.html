@@ -82,6 +82,10 @@
             <label>Idade</label>
             <input type="number" id="idade" min="18" max="65" required>
 
+            <!-- ✅ CAMPO NOVO: ALTURA -->
+            <label>Altura (ex.: 1.65)</label>
+            <input type="text" id="altura" placeholder="ex.: 1.70" required>
+
             <label>Cidade / Estado</label>
             <input type="text" id="cidade" placeholder="ex.: Gravataí — RS" required>
 
@@ -96,7 +100,7 @@
             </select>
 
             <label>Descrição curta / Apresentação</label>
-            <textarea id="descricao" rows="4" placeholder="Altura, características, disponibilidade..."></textarea>
+            <textarea id="descricao" rows="4" placeholder="Características, estilo, disponibilidade..."></textarea>
 
             <button type="submit"><i class="fab fa-whatsapp"></i> Enviar para Análise</button>
         </form>
@@ -105,24 +109,24 @@
     </div>
 
     <script>
-        const SEU_NUMERO = "5551980612941"; // com código do país 55, sem + e sem espaços
+        const SEU_NUMERO = "5551980612941"; // seu número
 
         document.getElementById("formCadastro").addEventListener("submit", function(e) {
-            e.preventDefault(); // impede recarregamento da página[[__LINK_ICON]](https://github.com/matheuscostadesign/enviar-para-whatsapp/?f_link_type=f_linkinlinenote&flow_extra=eyJpbmxpbmVfZGlzcGxheV9wb3NpdGlvbiI6MCwiZG9jX3Bvc2l0aW9uIjowLCJkb2NfaWQiOiI4YTdjNWY5Njg2ZTNlNTgxLTNmOWJjNTg5ZTdmMDg0MjMifQ%3D%3D "[__LINK_ICON]")
+            e.preventDefault();
 
-            // pega os campos
             const nome     = document.getElementById("nome").value.trim();
             const idade     = document.getElementById("idade").value;
+            const altura    = document.getElementById("altura").value.trim(); // ✅ captura altura
             const cidade    = document.getElementById("cidade").value.trim();
             const telefone  = document.getElementById("telefone").value.trim();
             const perfil    = document.getElementById("perfil").value;
             const descricao = document.getElementById("descricao").value.trim() || "—";
 
-            // monta a mensagem formatada como relatório
             const mensagem = `📋 *NOVO PRÉ-CADASTRO — LUX*
 ━━━━━━━━━━━━━━━
 👤 *Nome/Apelido:* ${nome}
 🎂 *Idade:* ${idade} anos
+📏 *Altura:* ${altura}m         ✅ NOVO
 📍 *Cidade/UF:* ${cidade}
 📞 *WhatsApp:* ${telefone}
 ⚧ *Perfil:* ${perfil}
@@ -132,7 +136,6 @@ ${descricao}
 ━━━━━━━━━━━━━━━
 Enviado do formulário de pré-cadastro LUX`;
 
-            // codifica e abre o WhatsApp
             const url = `https://wa.me/${SEU_NUMERO}?text=${encodeURIComponent(mensagem)}`;
             window.open(url, '_blank');
         });
