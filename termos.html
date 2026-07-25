@@ -5,83 +5,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Termos e Privacidade — LUX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root { --dourado: #c9a227; --dourado-claro: #e6c86e; --texto-claro: #f8f3f6; --texto-suave: #e0d8dc; --fundo-semitransp: rgba(8,6,8,.55); }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', sans-serif; color: var(--texto-claro);
-            background: linear-gradient(rgba(8,6,8,.5), rgba(15,8,15,.5)), url('banner.png');
-            background-size: cover; background-position: center; background-attachment: fixed;
+        :root {
+            --dourado: #c9a227;
+            --dourado-claro: #e6c86e;
+            --escuro: #0b0b0f;
+            --fundo-card: rgba(20, 20, 28, 0.88);
+            --texto-claro: #f8f5f7;
+            --texto-suave: #d9d2d6;
+            --borda: rgba(201, 162, 39, 0.35);
+            --erro: #ff6b6b;
         }
-        header { background: var(--fundo-semitransp); border-bottom: 1px solid rgba(201,162,39,.18); padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--dourado); letter-spacing: 3px; }
-        nav a { color: #e0d8dc; text-decoration: none; margin: 0 .7rem; font-weight: 600; }
-        nav a:hover { color: var(--dourado-claro); }
-
-        main { padding: 2.5rem 1.5rem; max-width: 900px; margin: 0 auto; }
-        h1 { font-family: 'Playfair Display', serif; font-style: italic; color: var(--dourado-claro); text-align: center; font-size: 2rem; margin-bottom: 2rem; }
-
-        .caixa { background: rgba(0,0,0,.35); border: 1px solid rgba(201,162,39,.2); border-radius: 16px; padding: 2rem; line-height: 1.7; color: #ddd; }
-        h2 { color: var(--dourado); font-size: 1.2rem; margin: 1.5rem 0 .8rem; }
-        ul { padding-left: 1.2rem; margin: 0; }
-        li { margin-bottom: .7rem; }
-        .destaque { color: #ff9494; font-weight: 600; }
-        .voltar { text-align: center; margin-top: 2rem; }
-        .voltar a { color: var(--dourado); text-decoration: none; font-weight: 600; }
-        footer { text-align: center; padding: 1.5rem; color: #887c80; background: var(--fundo-semitransp); margin-top: 2rem; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--escuro) url('banner.jpg') center/cover no-repeat fixed;
+            color: var(--texto-claro);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background: radial-gradient(circle at top, rgba(201,162,39,.12), transparent 55%),
+                        rgba(11,11,15,.80);
+            z-index: -1;
+        }
+        .container {
+            max-width: 620px;
+            margin: 0 auto;
+            background: var(--fundo-card);
+            border-radius: 16px;
+            padding: 2.2rem;
+            border: 1px solid var(--borda);
+            box-shadow: 0 10px 35px rgba(0,0,0,.4);
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dourado);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .bloco { margin-bottom: 1.4rem; }
+        h3 { color: var(--dourado-claro); margin: 1rem 0 .5rem; font-size: 1rem; }
+        p, li { color: var(--texto-suave); font-size: .95rem; }
+        ul { padding-left: 1.2rem; margin: .5rem 0; }
+        .aceite {
+            margin-top: 1.6rem;
+            padding: 1.2rem;
+            background: rgba(201,162,39,.08);
+            border: 1px solid var(--borda);
+            border-radius: 10px;
+        }
+        label.aceite-label {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .aviso-erro {
+            display: none;
+            color: var(--erro);
+            font-size: .85rem;
+            margin-top: .5rem;
+        }
+        button {
+            width: 100%; padding: .95rem; margin-top: 1.4rem;
+            background: linear-gradient(135deg, var(--dourado), #b08c1f);
+            color: #000; font-weight: 600; border: none; border-radius: 10px;
+            cursor: pointer; font-size: 1rem; transition: transform .2s, box-shadow .2s;
+        }
+        button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+        button:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(201,162,39,.35); }
+        .voltar {
+            display: block; text-align: center; margin-top: 1.4rem;
+            color: var(--dourado-claro); text-decoration: none; font-size: .95rem;
+        }
+        .voltar:hover { color: var(--dourado); }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1><i class="fas fa-scroll"></i> Termos & Privacidade — LUX</h1>
 
-<header>
-    <div class="logo"><i class="fa-solid fa-gem"></i> LUX</div>
-    <nav>
-        <a href="index.html">🏠 Início</a>
-        <a href="catalogo.html">Catálogo</a>
-        <a href="pre-cadastro.html">Pré-Cadastro</a>
-        <a href="termos.html">Termos</a>
-    </nav>
-</header>
+        <div class="bloco">
+            <h3>1. Aceite e Finalidade</h3>
+            <p>Este site pertence à marca <strong>LUX</strong>, plataforma de conexão para acompanhantes e clientes maiores de 18 anos. Ao acessar, cadastrar ou navegar, você concorda integralmente com estes termos.</p>
+        </div>
 
-<main>
-    <h1>Termos e Condições • Política de Privacidade</h1>
-    <div class="caixa">
-        <h2><i class="fa-solid fa-gem" style="color:var(--dourado)"></i> 1. Aceite e Elegibilidade</h2>
-        <ul>
-            <li>Ao acessar este site você declara ter <span class="destaque">18 anos ou mais</span>. Proibido para menores.</li>
-            <li>Este é um espaço de <span class="destaque">divulgação</span> de perfis e não agência de emprego.</li>
-        </ul>
+        <div class="bloco">
+            <h3>2. Requisito de Idade</h3>
+            <p>É estritamente proibido para menores de 18 anos. O usuário declara ter idade igual ou superior à maioridade civil sob sua responsabilidade exclusiva.</p>
+        </div>
 
-        <h2><i class="fa-solid fa-lock" style="color:var(--dourado)"></i> 2. Privacidade e Proteção de Dados</h2>
-        <ul>
-            <li>Seus dados pessoais são <span class="destaque">armazenados de forma segura</span> e não compartilhados com terceiros.</li>
-            <li>Não publicamos nem coletamos fotos sem autorização expressa do perfil.</li>
-            <li>Comunicação oficial apenas por canal próprio; preservamos <span class="destaque">discrição total</span>.</li>
-        </ul>
+        <div class="bloco">
+            <h3>3. Privacidade e Proteção de Dados</h3>
+            <ul>
+                <li>Seus dados (nome, telefone, cidade, idade) são usados <strong>apenas</strong> para contato, análise de cadastro e operação da plataforma.</li>
+                <li>Não vendemos, alugamos ou divulgamos seus dados a terceiros para fins comerciais externos.</li>
+                <li>Comunicação prioritária pelo WhatsApp, com canal seguro e discreto.</li>
+            </ul>
+        </div>
 
-        <h2><i class="fa-solid fa-balance-scale" style="color:var(--dourado)"></i> 3. Conduta e Responsabilidade</h2>
-        <ul>
-            <li>Respeito e educação são obrigatórios. Qualquer conduta abusiva resulta em bloqueio imediato.</li>
-            <li>O site <span class="destaque">não intermedia encontros</span> — apenas facilita contato entre partes livres e consentientes.</li>
-            <li>Não toleramos discriminação, assédio ou uso de imagens sem consentimento.</li>
-        </ul>
+        <div class="bloco">
+            <h3>4. Compromisso com a LUX</h3>
+            <ul>
+                <li>Manter informações verídicas e atualizadas.</li>
+                <li>Agir com respeito, discrição e ética com todos os participantes.</li>
+                <li>Não reproduzir, copiar ou distribuir fotos, perfis e conteúdos do site sem autorização escrita.</li>
+                <li>Abster-se de qualquer atividade ilegal, ofensiva ou que viole direitos de terceiros.</li>
+            </ul>
+        </div>
 
-        <h2><i class="fa-solid fa-user-shield" style="color:var(--dourado)"></i> 4. Perfis e Cadastros</h2>
-        <ul>
-            <li>Perfis passam por verificação. A publicação é feita apenas com <span class="destaque">autorização do próprio</span>.</li>
-            <li>Quem se cadastra garante ser maior de idade e os dados informados verdadeiros.</li>
-        </ul>
+        <div class="bloco">
+            <h3>5. Conduta e Responsabilidade</h3>
+            <p>A LUX atua como canal de apresentação e divulgação. Não garante contratação, não intermedia pagamentos diretos e não se responsabiliza por acordos particulares entre as partes. Reservamo-nos o direito de recusar, bloquear ou remover perfis que descumpram estes termos.</p>
+        </div>
 
-        <h2><i class="fa-solid fa-pen" style="color:var(--dourado)"></i> 5. Alterações</h2>
-        <ul>
-            <li>Estes termos podem ser atualizados. A continuidade de uso implica aceitação.</li>
-        </ul>
+        <div class="bloco">
+            <h3>6. Uso de Imagens</h3>
+            <p>Ao enviar fotos, você declara ser o titular dos direitos de imagem e autoriza a exibição exclusiva na plataforma LUX, mantendo o respeito à privacidade e à imagem pessoal.</p>
+        </div>
+
+        <div class="aceite">
+            <label class="aceite-label">
+                <input type="checkbox" id="aceite" required>
+                <span>Li e concordo com os <strong>Termos, Política de Privacidade e Compromisso com a LUX</strong>, sendo maior de 18 anos.</span>
+            </label>
+            <div class="aviso-erro" id="aviso">⚠️ É necessário aceitar os termos para continuar.</div>
+        </div>
+
+        <button id="btnContinuar" disabled><i class="fas fa-check-circle"></i> Continuar no Site</button>
+
+        <a href="index.html" class="voltar"><i class="fas fa-arrow-left"></i> Voltar ao Início</a>
     </div>
 
-    <div class="voltar"><a href="index.html">← Voltar ao Início</a></div>
-</main>
+    <script>
+        const aceite = document.getElementById('aceite');
+        const btn = document.getElementById('btnContinuar');
+        const aviso = document.getElementById('aviso');
 
-<footer><p>© 2026 LUX — Todos os direitos reservados.</p></footer>
+        aceite.addEventListener('change', () => {
+            if (aceite.checked) {
+                btn.disabled = false;
+                aviso.style.display = 'none';
+            } else {
+                btn.disabled = true;
+            }
+        });
+
+        btn.addEventListener('click', () => {
+            if (!aceite.checked) {
+                aviso.style.display = 'block';
+                return;
+            }
+            // Aqui você pode redirecionar para onde quiser
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
 </html>
