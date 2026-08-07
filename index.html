@@ -102,7 +102,7 @@
             margin: 0 12px;
         }
 
-        /* === ROLETA — COMO ESTAVA NO INÍCIO DE HOJE === */
+        /* === ROLETA */
         .carrossel {
             position: relative;
             overflow: hidden;
@@ -120,6 +120,8 @@
             min-width: 100%;
             padding: 10px;
             flex-shrink: 0;
+            display: flex;
+            justify-content: center; /* centraliza o conteúdo do card */
         }
         .perfil {
             background: rgba(0,0,0,0.55);
@@ -127,16 +129,23 @@
             padding: 20px;
             text-align: center;
             border: 1px solid rgba(255,215,0,0.3);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 320px;
         }
 
-        /* === STATUS: DISPONÍVEL OU OFFLINE === */
+        /* === STATUS === */
         .status {
             display: inline-block;
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
         }
         .disponivel {
             background: linear-gradient(90deg, #00a86b, #2ecc71);
@@ -147,18 +156,21 @@
             color: #ccc;
         }
 
-        /* === FOTOS — TAMANHO FIXO COMO NO INÍCIO === */
+        /* === FOTOS — centralizadas e com object-position no centro */
         .foto-modelo {
             width: 100%;
             max-width: 240px;
             height: 320px;
-            object-fit: cover; /* ← CORTA BONITO, NÃO DEFORMA */
-            object-position: center top;
+            object-fit: cover; /* corta sem deformar */
+            object-position: center center; /* centraliza o rosto */
             border-radius: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 2px solid rgba(255,215,0,0.25);
+            display: block;
+            margin-left: auto;
+            margin-right: auto; /* garante centralização */
         }
         .foto-modelo:hover {
             transform: scale(1.05);
@@ -258,6 +270,13 @@
             font-size: 13px;
             border-top: 1px solid rgba(255,215,0,0.2);
             margin-top: 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 420px) {
+            .carrossel { max-width: 340px; }
+            .perfil { max-width: 300px; }
+            .foto-modelo { max-width: 200px; height: 270px; }
         }
     </style>
 </head>
@@ -362,52 +381,70 @@
     </a>
 
     <script>
-        let pagina = 0;
-        const total = 4;
+        // pega a roleta e conta dinamicamente quantos cards existem
         const roleta = document.getElementById('areaRoleta');
+        let pagina = 0;
+        let total = document.querySelectorAll('.card-vip').length || 4; // fallback
 
-        // ✅ SETAS + LOOP INFINITO
+        // atualiza a largura do container interno para refletir o número de cards
+        function ajustarLarguraCarrossel() {
+            const interno = document.querySelector('.carrossel-interno');
+            if (!interno) return;
+            interno.style.width = `${total * 100}%`;
+            // garante que cada card ocupe 100% do viewport do carrossel
+            document.querySelectorAll('.card-vip').forEach(card => {
+                card.style.width = `${100 / total}%`;
+                card.style.minWidth = `${100 / total}%`;
+            });
+            // reposiciona conforme a página atual (útil após resize)
+            interno.style.transform = `translateX(-${pagina * (100 / total)}%)`;
+        }
+
+        // SETAS + LOOP INFINITO
         function deslizar(direcao) {
             pagina += direcao;
             if (pagina >= total) pagina = 0;
             if (pagina < 0) pagina = total - 1;
-            roleta.style.transform = `translateX(-${pagina * 100}%)`;
+            const interno = document.querySelector('.carrossel-interno');
+            interno.style.transform = `translateX(-${pagina * (100 / total)}%)`;
         }
 
-        // ✅ DESLIZAR NO CELULAR
+        // DESLIZAR NO CELULAR (touch)
         let inicioX = 0;
         let arrastando = false;
 
-        roleta.addEventListener('touchstart', (e) => {
-            inicioX = e.touches[0].clientX;
-            arrastando = true;
-        });
+        if (roleta) {
+            roleta.addEventListener('touchstart', (e) => {
+                inicioX = e.touches[0].clientX;
+                arrastando = true;
+            });
 
-        roleta.addEventListener('touchend', () => {
-            arrastando = false;
-        });
+            roleta.addEventListener('touchend', () => {
+                arrastando = false;
+            });
 
-        roleta.addEventListener('touchmove', (e) => {
-            if (!arrastando) return;
-            const atualX = e.touches[0].clientX;
-            const diferenca = inicioX - atualX;
+            roleta.addEventListener('touchmove', (e) => {
+                if (!arrastando) return;
+                const atualX = e.touches[0].clientX;
+                const diferenca = inicioX - atualX;
 
-            if (diferenca > 50) { deslizar(1); arrastando = false; }
-            else if (diferenca < -50) { deslizar(-1); arrastando = false; }
-        });
+                if (diferenca > 50) { deslizar(1); arrastando = false; }
+                else if (diferenca < -50) { deslizar(-1); arrastando = false; }
+            });
+        }
 
-        // ✅ WHATSAPP
+        // WHATSAPP
         function contratar(nome, detalhes) {
-            const mensagem = `💛 *SOLICITAÇÃO — LUX*
-━━━━━━━━━━━━━━━━━━
-Tenho interesse em contratar:
-✨ ${nome}
-📋 ${detalhes}
-
-Gostaria de saber disponibilidade e informações.
-━━━━━━━━━━━━━━━━━━`;
+            const mensagem = `💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de saber disponibilidade e informações.\n━━━━━━━━━━━━━━━━━━`;
             window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`);
         }
+
+        // Ajusta ao carregar e ao redimensionar
+        window.addEventListener('load', () => {
+            total = document.querySelectorAll('.card-vip').length || total;
+            ajustarLarguraCarrossel();
+        });
+        window.addEventListener('resize', ajustarLarguraCarrossel);
     </script>
 </body>
 </html>
