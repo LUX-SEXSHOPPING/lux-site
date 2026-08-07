@@ -106,7 +106,7 @@
             position: relative;
             overflow: hidden;
             margin: 0 auto;
-            max-width: 360px;
+            max-width: 340px;
             width: 100%;
             touch-action: pan-y;
         }
@@ -117,68 +117,65 @@
         }
         .card-vip {
             min-width: 100%;
-            padding: 10px;
+            padding: 8px;
             flex-shrink: 0;
         }
         .perfil {
             background: rgba(0,0,0,0.55);
             border-radius: 16px;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
             border: 1px solid rgba(255,215,0,0.3);
         }
         .status {
             display: inline-block;
-            padding: 5px 15px;
+            padding: 4px 14px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .disponivel {
             background: linear-gradient(90deg, #00a86b, #2ecc71);
             color: white;
         }
 
-        /* === FOTOS AJUSTADAS PERFEITAMENTE === */
+        /* === FOTOS SEM CORTES + TEXTO ALINHADO === */
         .foto-modelo {
             width: 100%;
-            max-width: 260px; /* ← Um pouquinho maior e elegante */
-            height: 320px; /* ← Altura fixa = todas IGUAIS */
-            object-fit: cover; /* ← CORTA BONITO, NÃO DEFORMA */
-            object-position: center top; /* ← Foca no rosto da modelo */
-            border-radius: 14px; /* ← Cantos suaves */
-            margin-bottom: 14px;
+            max-width: 280px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 12px;
             cursor: pointer;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
             border: 2px solid rgba(255,215,0,0.25);
         }
         .foto-modelo:hover {
-            transform: scale(1.03); /* ← Aumenta levemente */
-            box-shadow: 0 0 25px rgba(255,215,0,0.35);
-            border-color: rgba(255,215,0,0.6);
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(255,215,0,0.35);
         }
 
         .perfil h3 {
             color: var(--dourado-claro);
-            font-size: 20px;
+            font-size: 19px;
             margin-bottom: 4px;
         }
         .perfil .idade {
             font-size: 14px;
             color: #999;
-            margin-left: 6px;
+            margin-left: 5px;
         }
         .perfil .cidade {
             color: #ccc;
             font-size: 14px;
-            margin: 6px 0;
+            margin: 5px 0;
         }
         .perfil .desc {
             color: #ddd;
             font-style: italic;
             font-size: 14px;
-            margin-bottom: 8px;
+            margin: 8px 0;
             line-height: 1.5;
         }
         .dica-clique {
@@ -287,6 +284,7 @@
             </div>
 
             <div class="carrossel-interno" id="areaRoleta">
+                <!-- VIP 1 ✅ COMPLETO -->
                 <div class="card-vip">
                     <div class="perfil">
                         <span class="status disponivel">● DISPONÍVEL</span>
@@ -298,6 +296,7 @@
                         <span class="dica-clique">👆 Clique na foto para contratar</span>
                     </div>
                 </div>
+                <!-- VIP 2 ✅ COMPLETO -->
                 <div class="card-vip">
                     <div class="perfil">
                         <span class="status disponivel">● DISPONÍVEL</span>
@@ -309,6 +308,7 @@
                         <span class="dica-clique">👆 Clique na foto para contratar</span>
                     </div>
                 </div>
+                <!-- VIP 3 ✅ COMPLETO -->
                 <div class="card-vip">
                     <div class="perfil">
                         <span class="status disponivel">● DISPONÍVEL</span>
@@ -320,6 +320,7 @@
                         <span class="dica-clique">👆 Clique na foto para contratar</span>
                     </div>
                 </div>
+                <!-- VIP 4 ✅ COMPLETO -->
                 <div class="card-vip">
                     <div class="perfil">
                         <span class="status disponivel">● DISPONÍVEL</span>
@@ -356,7 +357,7 @@
         const total = 4;
         const roleta = document.getElementById('areaRoleta');
 
-        // ✅ SETAS COM LOOP INFINITO
+        // ✅ SETAS + LOOP INFINITO
         function deslizar(direcao) {
             pagina += direcao;
             if (pagina >= total) pagina = 0;
@@ -364,7 +365,7 @@
             roleta.style.transform = `translateX(-${pagina * 100}%)`;
         }
 
-        // ✅ DESLIZAR ARRASTANDO NO CELULAR
+        // ✅ DESLIZAR NO CELULAR
         let inicioX = 0;
         let arrastando = false;
 
@@ -382,16 +383,11 @@
             const atualX = e.touches[0].clientX;
             const diferenca = inicioX - atualX;
 
-            if (diferenca > 50) {
-                deslizar(1);
-                arrastando = false;
-            } else if (diferenca < -50) {
-                deslizar(-1);
-                arrastando = false;
-            }
+            if (diferenca > 50) { deslizar(1); arrastando = false; }
+            else if (diferenca < -50) { deslizar(-1); arrastando = false; }
         });
 
-        // ✅ CONTRATAR
+        // ✅ CLICA NA FOTO → ABRE WHATSAPP COM DADOS CERTOS
         function contratar(nome, detalhes) {
             const mensagem = `💛 *SOLICITAÇÃO — LUX*
 ━━━━━━━━━━━━━━━━━━
