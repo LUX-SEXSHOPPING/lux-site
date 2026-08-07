@@ -107,22 +107,18 @@
             object-fit: cover;
             /* centraliza verticalmente o foco (ajuste se necessário) */
             object-position: center 40%;
-            /* deixa a foto um pouco mais transparente para destacar a mulher */
-            opacity: 0.86;
-            filter: 
-                contrast(1.02) 
-                brightness(0.94)
-                saturate(0.95);
+            /* deixa a foto em preto e branco e mais viva (contraste local) */
+            opacity: 0.82; /* mais translúcida conforme solicitado */
+            filter: grayscale(100%) contrast(1.18) brightness(1.02) saturate(0);
+            -webkit-filter: grayscale(100%) contrast(1.18) brightness(1.02) saturate(0);
             background: transparent;
         }
 
         .banner-ilustrativo:hover {
-            opacity: 0.9;
+            opacity: 0.88;
             transform: scale(1.01);
-            filter: 
-                contrast(1.04) 
-                brightness(0.96)
-                saturate(0.98);
+            filter: grayscale(100%) contrast(1.22) brightness(1.04) saturate(0);
+            -webkit-filter: grayscale(100%) contrast(1.22) brightness(1.04) saturate(0);
         }
 
         /* Overlay: vinheta suave para escurecer as bordas e focar o centro (mulher no pole dance) */
@@ -133,8 +129,20 @@
             border-radius: 12px;
             pointer-events: none;
             /* vinheta radial: centro mais claro, bordas mais escuras */
-            background: radial-gradient(ellipse at center, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 100%);
+            background: radial-gradient(circle at 50% 40%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.55) 100%);
             mix-blend-mode: multiply;
+            opacity: 0.95;
+        }
+
+        /* Highlight central: clareia levemente a área onde a mulher/pole está, deixando-a mais \"viva\" no P&B */
+        .container-imagem-ilustrativa::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 12px;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.02) 30%, rgba(255,255,255,0) 45%);
+            mix-blend-mode: screen; /* ilumina o centro sem alterar as bordas escuras */
             opacity: 0.9;
         }
 
@@ -345,6 +353,7 @@
             .banner-ilustrativo {
                 opacity: 0.86;
                 object-position: center 45%;
+                filter: grayscale(100%) contrast(1.15) brightness(1.02) saturate(0);
             }
         }
     </style>
@@ -501,7 +510,7 @@
 
         // ✅ WHATSAPP
         function contratar(nome, detalhes) {
-            const mensagem = `💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de saber disponibilidade e informações.\n━━━━━━━━━━━━━━━━━━`;
+            const mensagem = `💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de sab[...]
             window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`);
         }
     </script>
