@@ -188,6 +188,9 @@
             flex: 0 0 100%; /* cada card ocupa 100% do carrossel (1 slide) */
             padding: 10px;
             box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .perfil {
             background: rgba(0,0,0,0.55);
@@ -195,6 +198,10 @@
             padding: 20px;
             text-align: center;
             border: 1px solid rgba(255,215,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
 
         /* === STATUS === */
@@ -217,13 +224,14 @@
 
         /* === FOTOS === */
         .foto-modelo {
+            display: block;
+            margin: 0 auto 12px;
             width: 100%;
             max-width: 240px;
             height: 320px;
             object-fit: cover;
             object-position: center top;
             border-radius: 12px;
-            margin-bottom: 12px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             border: 2px solid rgba(255,215,0,0.25);
@@ -513,7 +521,7 @@
 
         // ✅ WHATSAPP
         function contratar(nome, detalhes) {
-            const mensagem = `💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de sab[...]
+            const mensagem = `💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de saber mais!`;
             window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`);
         }
     </script>
