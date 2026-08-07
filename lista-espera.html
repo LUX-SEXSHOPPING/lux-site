@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Espera — LUX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body {
+            background: url('banner.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .fundo-sobreposto {
+            background: rgba(0,0,0,0.65);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+        }
+        .conteudo { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
+        .voltar {
+            display: inline-block;
+            color: #d4af37;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .voltar:hover { text-decoration: underline; }
+        h2 {
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 22px;
+        }
+        .subtitulo {
+            color: #ccc;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        form {
+            background: rgba(0,0,0,0.55);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(212,175,55,0.3);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(212,175,55,0.4);
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            background: linear-gradient(90deg, #d4af37, #f0c929);
+            color: #000;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+    <div class="fundo-sobreposto"></div>
+    <div class="conteudo">
+        <a href="index.html" class="voltar"><i class="fas fa-chevron-left"></i> ← Voltar à página inicial</a>
+
+        <h2>📋 Lista de Espera</h2>
+        <p class="subtitulo">A modelo que você deseja está ocupada? Deixe seus dados e avisaremos quando ela estiver disponível!</p>
+
+        <form onsubmit="enviarListaEspera(event)">
+            <input type="text" id="nomeCliente" placeholder="Seu nome" required>
+            <input type="tel" id="telefoneCliente" placeholder="Seu WhatsApp com DDD" required>
+            <input type="text" id="nomeModelo" placeholder="Qual modelo você deseja?" required>
+            <textarea id="mensagemEspera" placeholder="Observações (horário, detalhes...)" rows="4"></textarea>
+            <button type="submit">📩 Entrar na Lista de Espera</button>
+        </form>
+    </div>
+
+    <script>
+        function enviarListaEspera(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nomeCliente').value;
+            const tel = document.getElementById('telefoneCliente').value;
+            const modelo = document.getElementById('nomeModelo').value;
+            const obs = document.getElementById('mensagemEspera').value || 'Sem observações';
+
+            const texto = `📋 *LISTA DE ESPERA — LUX*
+━━━━━━━━━━━━━━━━━━━━
+👤 Cliente: ${nome}
+📱 WhatsApp: ${tel}
+💛 Modelo desejada: ${modelo}
+📝 Observações: ${obs}
+━━━━━━━━━━━━━━━━━━━━
+Avisar quando ela estiver disponível!`;
+
+            window.open(`https://wa.me/51980612941?text=${encodeURIComponent(texto)}`);
+        }
+    </script>
+</body>
+</html>
