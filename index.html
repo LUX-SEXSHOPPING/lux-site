@@ -69,7 +69,7 @@
             text-shadow: 0 0 6px var(--dourado);
         }
 
-        /* === VÍDEO AUMENTADO === */
+        /* === VÍDEO — DIMINUÍDO SÓ UM POUQUINHO === */
         .video-container {
             max-width: 800px;
             width: 95%;
@@ -82,7 +82,7 @@
         .video-container video {
             width: 100%;
             display: block;
-            height: 280px;
+            height: 240px; /* ← Diminuí de 280 → 240 */
             object-fit: cover;
         }
 
@@ -106,20 +106,23 @@
             margin: 0 12px;
         }
 
-        /* === ROLETA === */
+        /* === ROLETA — DESLIZA SUAVE E TROCA === */
         .carrossel {
             position: relative;
             overflow: hidden;
             margin: 0 auto;
             max-width: 360px;
+            touch-action: pan-y; /* ← Permite deslizar no celular */
         }
         .carrossel-interno {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease-out; /* ← Deslize suave */
+            width: 400%; /* ← 4 modelos = 4x a largura */
         }
         .card-vip {
-            min-width: 100%;
+            width: 25%; /* ← Cada modelo ocupa 1/4 da largura */
             padding: 10px;
+            flex-shrink: 0;
         }
         .perfil {
             background: rgba(0,0,0,0.55);
@@ -177,6 +180,8 @@
             font-size: 11px;
             opacity: 0.8;
         }
+
+        /* === BOTÕES DE DESLIZAR === */
         .botoes-navegacao {
             display: flex;
             justify-content: space-between;
@@ -198,6 +203,8 @@
             margin: 0 5px;
             pointer-events: auto;
         }
+
+        /* === WHATSAPP FLUTUANTE === */
         .whatsapp-flutuante {
             position: fixed;
             bottom: 25px;
@@ -214,6 +221,8 @@
             z-index: 999;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
+
+        /* === SOBRE NÓS === */
         .sobre {
             background: rgba(0,0,0,0.55);
             border-radius: 16px;
@@ -232,6 +241,8 @@
             font-style: italic;
             text-align: center;
         }
+
+        /* === RODAPÉ === */
         footer {
             text-align: center;
             padding: 20px;
@@ -248,7 +259,6 @@
 
         <header>
             <div class="logo-lux">LUX</div>
-            <!-- ✅ LINKS CORRIGIDOS PARA OS ARQUIVOS QUE JÁ EXISTEM -->
             <nav>
                 <a href="index.html">Início</a>
                 <a href="modelos-femininos.html">Femininas</a>
@@ -260,17 +270,16 @@
             </nav>
         </header>
 
-        <!-- VÍDEO -->
+        <!-- VÍDEO UM POUQUINHO MENOR -->
         <div class="video-container">
             <video src="videobanner.mp4" autoplay muted loop playsinline></video>
         </div>
 
-        <!-- TÍTULO -->
         <div class="titulo-vips">
             <h2>Vips em Destaque</h2>
         </div>
 
-        <!-- ROLETA -->
+        <!-- ROLETA QUE DESLIZA E TROCA -->
         <div class="carrossel">
             <div class="botoes-navegacao">
                 <button class="btn-carrossel" onclick="deslizar(-1)">‹</button>
@@ -278,6 +287,7 @@
             </div>
 
             <div class="carrossel-interno" id="areaRoleta">
+                <!-- VIP 1 -->
                 <div class="card-vip">
                     <div class="perfil">
                         <span class="status disponivel">● DISPONÍVEL</span>
@@ -289,6 +299,7 @@
                         <span class="dica-clique">👆 Clique na foto para contratar</span>
                     </div>
                 </div>
+                <!-- VIP 2 -->
                 <div class="card-vip">
                     <div class="perfil">
                         <span class="status disponivel">● DISPONÍVEL</span>
@@ -300,6 +311,7 @@
                         <span class="dica-clique">👆 Clique na foto para contratar</span>
                     </div>
                 </div>
+                <!-- VIP 3 -->
                 <div class="card-vip">
                     <div class="perfil">
                         <span class="status disponivel">● DISPONÍVEL</span>
@@ -311,6 +323,7 @@
                         <span class="dica-clique">👆 Clique na foto para contratar</span>
                     </div>
                 </div>
+                <!-- VIP 4 -->
                 <div class="card-vip">
                     <div class="perfil">
                         <span class="status disponivel">● DISPONÍVEL</span>
@@ -349,12 +362,16 @@
         let pagina = 0;
         const total = 4;
         const roleta = document.getElementById('areaRoleta');
+
+        // ✅ DESLIZA E TROCA A MODELO
         function deslizar(direcao) {
             pagina += direcao;
             if (pagina < 0) pagina = total - 1;
             if (pagina >= total) pagina = 0;
-            roleta.style.transform = `translateX(-${pagina * 100}%)`;
+            roleta.style.transform = `translateX(-${pagina * 25}%)`; // ← 25% por modelo
         }
+
+        // ✅ CLICA NA FOTO → CONTRATA
         function contratar(nome, detalhes) {
             const mensagem = `💛 *SOLICITAÇÃO — LUX*
 ━━━━━━━━━━━━━━━━━━
