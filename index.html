@@ -176,21 +176,22 @@
             max-width: 360px;
             width: 100%;
             display: flex;
-            justify-content: center; /* garante que o carrossel fique centralizado */
+            justify-content: center;
             touch-action: pan-y;
         }
         .carrossel-interno {
             display: flex;
             transition: transform 0.35s ease-out;
-            width: 100%; /* será ajustado pelo JS para (nº slides * 100%) */
+            flex-wrap: nowrap;
         }
         .card-vip {
-            flex: 0 0 100%; /* cada card ocupa 100% do carrossel (1 slide) */
+            flex: 0 0 100%; /* cada card ocupa exatamente 100% da largura do carrossel */
             padding: 10px;
             box-sizing: border-box;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-width: 100%;
         }
         .perfil {
             background: rgba(0,0,0,0.55);
@@ -278,6 +279,7 @@
             right: 0;
             transform: translateY(-50%);
             pointer-events: none;
+            z-index: 10;
         }
         .btn-carrossel {
             background: rgba(0,0,0,0.6);
@@ -480,42 +482,59 @@
     <script>
         let pagina = 0;
         const roleta = document.getElementById('areaRoleta');
+        const carrosselContainer = document.querySelector('.carrossel');
         let total = roleta ? roleta.children.length : 0;
 
-        // ajusta a largura do container interno para que 100% = 1 slide
-        if (roleta) {
-            roleta.style.width = `${total * 100}%`;
+        // Calcula a largura necessária baseada no número de slides
+        function atualizarCarrossel() {
+            if (roleta) {
+                const larguraSlide = carrosselContainer.offsetWidth;
+                roleta.style.width = `${total * 100}%`;
+                roleta.style.transform = `translateX(-${pagina * 100}%)`;
+            }
         }
+
+        // Inicializa o carrossel
+        atualizarCarrossel();
+        window.addEventListener('resize', atualizarCarrossel);
 
         // ✅ SETAS + LOOP INFINITO
         function deslizar(direcao) {
             pagina += direcao;
             if (pagina >= total) pagina = 0;
             if (pagina < 0) pagina = total - 1;
-            if (roleta) roleta.style.transform = `translateX(-${pagina * 100}%)`;
+            if (roleta) {
+                roleta.style.transform = `translateX(-${pagina * 100}%)`;
+            }
         }
 
         // ✅ DESLIZAR NO CELULAR
         let inicioX = 0;
         let arrastando = false;
 
-        if (roleta) {
-            roleta.addEventListener('touchstart', (e) => {
+        if (carrosselContainer) {
+            carrosselContainer.addEventListener('touchstart', (e) => {
                 inicioX = e.touches[0].clientX;
                 arrastando = true;
             });
 
-            roleta.addEventListener('touchend', () => {
+            carrosselContainer.addEventListener('touchend', () => {
                 arrastando = false;
             });
 
-            roleta.addEventListener('touchmove', (e) => {
+            carrosselContainer.addEventListener('touchmove', (e) => {
                 if (!arrastando) return;
                 const atualX = e.touches[0].clientX;
                 const diferenca = inicioX - atualX;
 
-                if (diferenca > 50) { deslizar(1); arrastando = false; }
-                else if (diferenca < -50) { deslizar(-1); arrastando = false; }
+                if (diferenca > 50) { 
+                    deslizar(1); 
+                    arrastando = false; 
+                }
+                else if (diferenca < -50) { 
+                    deslizar(-1); 
+                    arrastando = false; 
+                }
             });
         }
 
