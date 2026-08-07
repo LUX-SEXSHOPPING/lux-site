@@ -27,7 +27,7 @@
         }
         .conteudo { position: relative; z-index: 1; padding: 15px 25px; max-width: 1100px; margin: 0 auto; }
 
-        /* === CABEÇALHO — LUX ESQUERDA SUPERIOR EM NEON === */
+        /* === CABEÇALHO === */
         header {
             display: flex;
             justify-content: space-between;
@@ -48,6 +48,8 @@
                 0 0 20px var(--neon-dourado),
                 0 0 40px var(--neon-dourado);
         }
+
+        /* === MENU CORRIGIDO === */
         nav {
             display: flex;
             flex-wrap: wrap;
@@ -67,7 +69,7 @@
             text-shadow: 0 0 6px var(--dourado);
         }
 
-        /* === VÍDEO — AUMENTADO === */
+        /* === VÍDEO AUMENTADO === */
         .video-container {
             max-width: 800px;
             width: 95%;
@@ -84,7 +86,7 @@
             object-fit: cover;
         }
 
-        /* === TÍTULO: VIPS EM DESTAQUE === */
+        /* === TÍTULO === */
         .titulo-vips {
             text-align: center;
             margin: 30px 0 18px;
@@ -246,9 +248,11 @@
 
         <header>
             <div class="logo-lux">LUX</div>
+            <!-- ✅ LINKS CORRIGIDOS PARA OS ARQUIVOS QUE JÁ EXISTEM -->
             <nav>
                 <a href="index.html">Início</a>
-                <a href="modelos.html">Modelos</a>
+                <a href="modelos-femininos.html">Femininas</a>
+                <a href="modelos-masculinos.html">Masculinos</a>
                 <a href="#sobre">Sobre Nós</a>
                 <a href="pre-cadastro.html">Pré-Cadastro</a>
                 <a href="lista-espera.html">Agendar Horário</a>
@@ -256,15 +260,17 @@
             </nav>
         </header>
 
-        <!-- VÍDEO AUMENTADO -->
+        <!-- VÍDEO -->
         <div class="video-container">
             <video src="videobanner.mp4" autoplay muted loop playsinline></video>
         </div>
 
+        <!-- TÍTULO -->
         <div class="titulo-vips">
             <h2>Vips em Destaque</h2>
         </div>
 
+        <!-- ROLETA -->
         <div class="carrossel">
             <div class="botoes-navegacao">
                 <button class="btn-carrossel" onclick="deslizar(-1)">‹</button>
@@ -319,6 +325,7 @@
             </div>
         </div>
 
+        <!-- SOBRE NÓS -->
         <section class="sobre" id="sobre">
             <h2>Sobre Nós</h2>
             <p>
@@ -327,11 +334,13 @@
             </p>
         </section>
 
+        <!-- RODAPÉ -->
         <footer>
             © 2026 LUX — Sensualidade & Sofisticação • Brasil e Europa • Todos os direitos reservados.
         </footer>
     </div>
 
+    <!-- WHATSAPP FLUTUANTE -->
     <a href="https://wa.me/51980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
