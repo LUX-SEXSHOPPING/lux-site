@@ -5,466 +5,390 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUX — Sensualidade & Sofisticação</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600&display=swap');
-
         :root {
-            --neon-rosa: #ff1493;
-            --neon-rosa-claro: #ff69b4;
-            --neon-rosa-forte: #ff0080;
-            --dourado-suave: #b8962c;
-            --dourado-claro: #d4b46a;
-            --texto-claro: #f8f2f5;
-            --texto-suave: #e0d8dc;
-            --texto-cidade: #c9c0c4;
-            --borda-suave: rgba(184, 150, 44, 0.25);
+            --dourado: #ffd700;
+            --dourado-claro: #fff176;
+            --texto-claro: #f0e9ec;
+            --fundo-escuro: rgba(0,0,0,0.65);
+            --neon-dourado: #ffd700;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* ✅ BANNER EM TODA A PÁGINA — VISÍVEL */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body {
-            background:
-                linear-gradient(rgba(8, 5, 10, 0.65), rgba(8, 5, 10, 0.65)),
-                url('banner.jpg') center / cover no-repeat fixed;
-            color: #ddd;
+            background: url('banner.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
             min-height: 100vh;
         }
+        .fundo-tela {
+            background: var(--fundo-escuro);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+        }
+        .conteudo { position: relative; z-index: 1; padding: 15px 25px; max-width: 1100px; margin: 0 auto; }
 
-        /* ✅ Cabeçalho */
+        /* === CABEÇALHO — LUX ESQUERDA SUPERIOR EM NEON === */
         header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 4%;
-            min-height: 100px;
-            background-color: rgba(0, 0, 0, 0.25);
-            box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+            padding: 10px 0 20px;
             flex-wrap: wrap;
-            gap: 1rem;
         }
 
-        /* ✅ LOGO LUX — Neon rosa pulsante */
-        .logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 4.2rem;
-            letter-spacing: 0.7rem;
-            color: #ffffff;
+        /* LUX — LADO ESQUERDO SUPERIOR EM NEON */
+        .logo-lux {
+            font-family: 'Playfair Display', serif;
+            font-size: 46px;
+            font-weight: 800;
+            font-style: italic;
+            color: #fff;
+            letter-spacing: 4px;
             text-shadow:
-                0 0 4px #fff,
-                0 0 12px var(--neon-rosa),
-                0 0 24px var(--neon-rosa),
-                0 0 48px var(--neon-rosa-forte),
-                0 0 96px var(--neon-rosa-forte);
-            animation: brilhoLogo 2s ease-in-out infinite alternate;
-        }
-        @keyframes brilhoLogo {
-            0% { text-shadow: 0 0 4px #fff, 0 0 14px var(--neon-rosa), 0 0 28px var(--neon-rosa), 0 0 56px var(--neon-rosa-forte); }
-            100% { text-shadow: 0 0 6px #fff, 0 0 20px var(--neon-rosa-claro), 0 0 40px var(--neon-rosa), 0 0 80px var(--neon-rosa-forte); }
+                0 0 5px var(--neon-dourado),
+                0 0 10px var(--neon-dourado),
+                0 0 20px var(--neon-dourado),
+                0 0 40px var(--neon-dourado);
         }
 
-        /* ✅ MENU — Ícones neon rosa */
+        /* MENU SUPERIOR — Início, Pré-Cadastro etc */
         nav {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.6rem;
+            gap: 18px;
         }
         nav a {
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
             color: var(--texto-claro);
             text-decoration: none;
-            padding: 0.5rem 0.9rem;
-            border-radius: 4px;
-            letter-spacing: 0.05rem;
-            transition: all .3s ease;
-            border-bottom: 2px solid transparent;
-        }
-        nav a i {
-            margin-right: 0.4rem;
-            color: var(--neon-rosa-claro);
-            text-shadow:
-                0 0 6px var(--neon-rosa),
-                0 0 12px var(--neon-rosa);
-            transition: all .3s ease;
+            padding: 8px 14px;
+            font-size: 15px;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s;
         }
         nav a:hover {
-            color: var(--neon-rosa-claro);
-            border-bottom: 2px solid var(--neon-rosa);
-            background: rgba(255, 20, 147, 0.12);
-        }
-        nav a:hover i {
-            color: #fff;
-            text-shadow:
-                0 0 8px #fff,
-                0 0 16px var(--neon-rosa),
-                0 0 32px var(--neon-rosa-forte);
-            transform: scale(1.15);
-        }
-
-        /* ✅ Conteúdo Principal */
-        main {
-            padding: 3rem 4%;
-            background-color: rgba(0, 0, 0, 0.15);
-            min-height: calc(100vh - 200px);
-        }
-
-        /* ✅ Bem-vindo */
-        .bem-vindo {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .bem-vindo h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            letter-spacing: 0.3rem;
-            color: #fff;
-            margin-bottom: 2rem;
-        }
-
-        /* ✅ Vídeo */
-        .video-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 4rem;
-            height: 500px;
-        }
-        .video-container video {
-            width: 90%;
-            max-width: 850px;
-            height: 100%;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-            border: 1px solid var(--borda-suave);
-            object-fit: cover;
-        }
-
-        /* ✅ Título VIPs */
-        .titulo-vips {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .titulo-vips h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            letter-spacing: 0.25rem;
+            border-bottom: 1px solid var(--dourado);
             color: var(--dourado-claro);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.8rem;
-        }
-        .titulo-vips h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--dourado-suave), transparent);
+            text-shadow: 0 0 6px var(--dourado);
         }
 
-        /* ✅ CARROSSEL VIPs — CAIXA MAIOR (PROPORÇÃO 1:1 COM VÍDEO) */
-        .carrossel-vips {
-            max-width: 1000px;
-            margin: 0 auto 4rem auto;
-            text-align: center;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .caixa-exclusiva {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(15, 11, 18, 0.75);
-            border: 1px solid var(--borda-suave);
-            border-radius: 20px;
-            padding: 1.8rem 1.8rem 2.5rem;
-            box-shadow: 0 12px 50px rgba(0,0,0,0.6);
-            touch-action: pan-y;
-            height: 100%;
-        }
-        .moldura-foto {
-            width: 380px;
-            height: 460px;
-            position: relative;
+        /* === VÍDEO — MAIS LARGO, MENOS ALTURA === */
+        .video-container {
+            max-width: 650px; /* ← Mais largo */
+            width: 90%;
+            margin: 0 auto 25px;
             border-radius: 12px;
             overflow: hidden;
-            background: #000;
-            margin-bottom: 1.2rem;
-            flex-shrink: 0;
+            border: 2px solid rgba(255,215,0,0.4);
+            box-shadow: 0 0 15px rgba(255,215,0,0.15);
         }
-        .moldura-foto img {
-            display: block !important;
-            position: absolute;
+        .video-container video {
             width: 100%;
-            height: 100%;
+            display: block;
+            height: 180px; /* ← Menos altura */
             object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            top: 0;
-            left: 0;
-        }
-        .moldura-foto img.visivel { 
-            opacity: 1 !important;
-            z-index: 10;
         }
 
-        /* ✅ Nome + Idade */
-        .nome-nick {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--dourado-claro);
-            letter-spacing: 0.12rem;
-            margin-bottom: 0.5rem;
-        }
-        /* ✅ Cidade com Ícone */
-        .cidade {
-            font-size: 1rem;
-            color: var(--texto-cidade);
-        }
-        .cidade i {
-            color: var(--neon-rosa-claro);
-            margin-right: 0.4rem;
-        }
-
-        /* ✅ Pontinhos neon */
-        .pontos {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 0.7rem;
-        }
-        .ponto {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.25);
-            border: none;
-            cursor: pointer;
-            transition: all .3s ease;
-        }
-        .ponto.ativo {
-            background: var(--neon-rosa);
-            box-shadow: 0 0 10px var(--neon-rosa), 0 0 20px var(--neon-rosa);
-            transform: scale(1.2);
-        }
-
-        /* ✅ Sobre */
-        .sobre {
-            max-width: 900px;
-            margin: 0 auto;
+        /* === TÍTULO: VIPS EM DESTAQUE === */
+        .titulo-vips {
             text-align: center;
+            margin: 30px 0 18px;
         }
-        .sobre h3 {
+        .titulo-vips h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--dourado-claro);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 26px;
+            color: var(--dourado);
+            font-style: italic;
+            letter-spacing: 2px;
         }
-        .sobre p {
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: var(--texto-suave);
+        .titulo-vips h2::before,
+        .titulo-vips h2::after {
+            content: '✦';
+            color: var(--dourado-claro);
+            font-size: 18px;
+            margin: 0 12px;
         }
 
-        /* ✅ WhatsApp Flutuante */
-        .whatsapp-float {
+        /* === ROLETA — AUMENTADA UM POUCO === */
+        .carrossel {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 360px; /* ← Aumentada */
+        }
+        .carrossel-interno {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .card-vip {
+            min-width: 100%;
+            padding: 10px;
+        }
+        .perfil {
+            background: rgba(0,0,0,0.55);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .disponivel {
+            background: linear-gradient(90deg, #00a86b, #2ecc71);
+            color: white;
+        }
+        .foto-modelo {
+            width: 100%;
+            max-width: 240px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .foto-modelo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255,215,0,0.4);
+        }
+        .perfil h3 {
+            color: var(--dourado-claro);
+            font-size: 19px;
+        }
+        .perfil .idade {
+            font-size: 14px;
+            color: #999;
+            margin-left: 6px;
+        }
+        .perfil .cidade {
+            color: #ccc;
+            font-size: 14px;
+            margin: 6px 0;
+        }
+        .perfil .desc {
+            color: #ddd;
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .dica-clique {
+            color: var(--dourado-claro);
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        /* === BOTÕES DE DESLIZAR === */
+        .botoes-navegacao {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .btn-carrossel {
+            background: rgba(0,0,0,0.6);
+            color: var(--dourado);
+            border: none;
+            font-size: 26px;
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 50%;
+            margin: 0 5px;
+            pointer-events: auto;
+        }
+
+        /* === WHATSAPP FLUTUANTE === */
+        .whatsapp-flutuante {
             position: fixed;
             bottom: 25px;
             right: 25px;
+            background: #25d366;
+            color: white;
             width: 60px;
             height: 60px;
-            background: #25d366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
             font-size: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             z-index: 999;
-            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* ✅ Rodapé */
-        footer {
-            background-color: rgba(0, 0, 0, 0.25);
-            padding: 2rem 4%;
+        /* === SOBRE NÓS === */
+        .sobre {
+            background: rgba(0,0,0,0.55);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 35px 0 25px;
+            border: 1px solid rgba(255,215,0,0.25);
+        }
+        .sobre h2 {
+            color: var(--dourado);
             text-align: center;
-            color: #b0a8ac;
+            margin-bottom: 15px;
         }
-        .logo-pequena {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            color: #fff;
-            margin-bottom: 0.5rem;
+        .sobre p {
+            color: #ddd;
+            line-height: 1.8;
+            font-style: italic;
+            text-align: center;
         }
 
-        /* ✅ Responsivo */
-        @media (max-width: 768px) {
-            header { padding: 1rem; justify-content: center; }
-            .logo { font-size: 3rem; letter-spacing: 0.4rem; }
-            nav a { font-size: 0.8rem; padding: 0.4rem 0.6rem; }
-            .bem-vindo h2, .titulo-vips h3 { font-size: 1.8rem; }
-            .video-container { height: 350px; }
-            .video-container video { width: 100%; }
-            .carrossel-vips { height: 350px; }
-            .moldura-foto { width: 280px; height: 340px; }
+        /* === RODAPÉ === */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,215,0,0.2);
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
+    <div class="fundo-tela"></div>
+    <div class="conteudo">
 
-<!-- ✅ Cabeçalho -->
-<header>
-    <div class="logo">LUX</div>
-    <nav>
-        <a href="termos.html"><i class="fa-solid fa-file-contract"></i> Termos</a>
-        <a href="pre-cadastro.html"><i class="fa-solid fa-user-plus"></i> Cadastro</a>
-        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="catalago.html"><i class="fa-solid fa-user-group"></i> Modelos</a>
-        <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
-    </nav>
-</header>
+        <!-- ✅ LUX ESQUERDA SUPERIOR + MENU SUPERIOR -->
+        <header>
+            <div class="logo-lux">LUX</div>
+            <nav>
+                <a href="index.html">Início</a>
+                <a href="modelos.html">Modelos</a>
+                <a href="#sobre">Sobre Nós</a>
+                <a href="pre-cadastro.html">Pré-Cadastro</a>
+                <a href="lista-espera.html">Lista de Espera</a>
+                <a href="termos.html">Termos</a>
+            </nav>
+        </header>
 
-<!-- ✅ Conteúdo -->
-<main>
-    <section class="bem-vindo">
-        <h2>Bem-vindo à LUX</h2>
+        <!-- ✅ VÍDEO — MAIS LARGO, MENOS ALTURA -->
         <div class="video-container">
-            <video autoplay muted loop playsinline>
-                <source src="videobanner.mp4" type="video/mp4">
-            </video>
+            <video src="videobanner.mp4" autoplay muted loop playsinline></video>
         </div>
-        <p style="font-size: 1.2rem; color: var(--texto-suave); max-width: 700px; margin: 0 auto;">
-            Onde a sofisticação encontra o desejo. Elegância, discrição e exclusividade.
-        </p>
-    </section>
 
-    <div class="titulo-vips">
-        <h3>VIPs</h3>
-    </div>
+        <!-- ✅ TÍTULO EM CIMA DA ROLETA -->
+        <div class="titulo-vips">
+            <h2>Vips em Destaque</h2>
+        </div>
 
-    <!-- ✅ VIPs — Nome + Idade + Cidade -->
-    <section class="carrossel-vips">
-        <div class="caixa-exclusiva" id="areaDeslizar">
-            <div class="moldura-foto" id="moldura">
-                <img src="vip1.png" alt="Eduarda Souza" class="visivel" data-nome="Eduarda Souza" data-idade="21 anos">
-                <img src="vip2.png" alt="Sarah Coutinho" data-nome="Sarah Coutinho" data-idade="27 anos">
-                <img src="vip3.png" alt="Larissa Hoffman" data-nome="Larissa Hoffman" data-idade="20 anos">
-                <img src="vip4.png" alt="Vitoria Amaral" data-nome="Vitoria Amaral" data-idade="24 anos">
+        <!-- ✅ ROLETA AUMENTADA UM POUCO -->
+        <div class="carrossel">
+            <div class="botoes-navegacao">
+                <button class="btn-carrossel" onclick="deslizar(-1)">‹</button>
+                <button class="btn-carrossel" onclick="deslizar(1)">›</button>
             </div>
-            <div class="nome-nick" id="nomeIdade">Eduarda Souza — 21 anos</div>
-            <div class="cidade"><i class="fa-solid fa-location-dot"></i> Gravataí — RS</div>
+
+            <div class="carrossel-interno" id="areaRoleta">
+
+                <!-- VIP 1 — EDUARDA -->
+                <div class="card-vip">
+                    <div class="perfil">
+                        <span class="status disponivel">● DISPONÍVEL</span>
+                        <img src="vip1.png" alt="Eduarda — VIP LUX" class="foto-modelo"
+                             onclick="contratar('Eduarda', '21 anos — Gravataí/RS')">
+                        <h3>Eduarda <span class="idade">21 anos</span></h3>
+                        <p class="cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
+                        <p class="desc">Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.</p>
+                        <span class="dica-clique">👆 Clique na foto para contratar</span>
+                    </div>
+                </div>
+
+                <!-- VIP 2 — SARA -->
+                <div class="card-vip">
+                    <div class="perfil">
+                        <span class="status disponivel">● DISPONÍVEL</span>
+                        <img src="vip2.png" alt="Sarah — VIP LUX" class="foto-modelo"
+                             onclick="contratar('Sarah', '27 anos — Gravataí/RS')">
+                        <h3>Sarah <span class="idade">27 anos</span></h3>
+                        <p class="cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
+                        <p class="desc">Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.</p>
+                        <span class="dica-clique">👆 Clique na foto para contratar</span>
+                    </div>
+                </div>
+
+                <!-- VIP 3 — LARISSA -->
+                <div class="card-vip">
+                    <div class="perfil">
+                        <span class="status disponivel">● DISPONÍVEL</span>
+                        <img src="vip3.png" alt="Larissa — VIP LUX" class="foto-modelo"
+                             onclick="contratar('Larissa', '20 anos — Gravataí/RS')">
+                        <h3>Larissa <span class="idade">20 anos</span></h3>
+                        <p class="cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
+                        <p class="desc">Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.</p>
+                        <span class="dica-clique">👆 Clique na foto para contratar</span>
+                    </div>
+                </div>
+
+                <!-- VIP 4 — VITÓRIA -->
+                <div class="card-vip">
+                    <div class="perfil">
+                        <span class="status disponivel">● DISPONÍVEL</span>
+                        <img src="vip4.png" alt="Vitória — VIP LUX" class="foto-modelo"
+                             onclick="contratar('Vitória', '24 anos — Gravataí/RS')">
+                        <h3>Vitória <span class="idade">24 anos</span></h3>
+                        <p class="cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
+                        <p class="desc">Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.</p>
+                        <span class="dica-clique">👆 Clique na foto para contratar</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="pontos" id="pontos"></div>
-    </section>
 
-    <div class="sobre">
-        <h3>Sobre Nós</h3>
-        <p>Um jardim de prazer e sofisticação. Aqui você encontra o que procura com total discrição e estilo. A LUX é o ponto de encontro entre elegância e desejo, onde cada detalhe foi pensado para sua satisfação.</p>
+        <!-- SOBRE NÓS -->
+        <section class="sobre" id="sobre">
+            <h2>Sobre Nós</h2>
+            <p>
+                O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>
+                Somos a LUX — um espaço de beleza, discrição e sofisticação. Conectamos momentos especiais com pessoas extraordinárias.
+            </p>
+        </section>
+
+        <!-- ✅ RODAPÉ -->
+        <footer>
+            © 2026 LUX — Sensualidade & Sofisticação • Brasil e Europa • Todos os direitos reservados.
+        </footer>
+
     </div>
-</main>
 
-<!-- ✅ WhatsApp -->
-<a href="https://wa.me/5551980612941?text=Olá!%20Vim%20pelo%20site%20LUX%20e%20gostaria%20de%20mais%20informações." target="_blank" class="whatsapp-float">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
+    <!-- BOTÃO WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/51980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<!-- ✅ Rodapé -->
-<footer>
-    <div class="logo-pequena">LUX</div>
-    <p>© 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação</p>
-    <p style="margin-top:.5rem;">
-        <a href="https://wa.me/5551980612941" target="_blank" style="color:var(--dourado-claro); text-decoration:none;">
-            <i class="fa-brands fa-whatsapp"></i> (51) 98061-2941
-        </a>
-    </p>
-</footer>
+    <script>
+        let pagina = 0;
+        const total = 4;
+        const roleta = document.getElementById('areaRoleta');
 
-<!-- ✅ Script: Deslizar + Pontos + Automático -->
-<script>
-window.addEventListener('load', function() {
-    const imagens = document.querySelectorAll('.moldura-foto img');
-    const nomeIdadeEl = document.getElementById('nomeIdade');
-    const caixa = document.getElementById('areaDeslizar');
-    const moldura = document.getElementById('moldura');
-    const pontosEl = document.getElementById('pontos');
-    let atual = 0;
-    const total = imagens.length;
+        // DESLIZA → troca a foto
+        function deslizar(direcao) {
+            pagina += direcao;
+            if (pagina < 0) pagina = total - 1;
+            if (pagina >= total) pagina = 0;
+            roleta.style.transform = `translateX(-${pagina * 100}%)`;
+        }
 
-    console.log('Total de imagens:', total);
-    imagens.forEach((img, i) => {
-        console.log(`Imagem ${i}:`, img.src);
-    });
+        // CLICA NA FOTO → abre WhatsApp
+        function contratar(nome, detalhes) {
+            const mensagem = `💛 *SOLICITAÇÃO — LUX*
+━━━━━━━━━━━━━━━━━━
+Tenho interesse em contratar:
+✨ ${nome}
+📋 ${detalhes}
 
-    // Cria os pontinhos
-    for (let i = 0; i < total; i++) {
-        const p = document.createElement('button');
-        p.classList.add('ponto');
-        if (i === 0) p.classList.add('ativo');
-        p.addEventListener('click', () => irPara(i));
-        pontosEl.appendChild(p);
-    }
-    const pontos = document.querySelectorAll('.ponto');
-
-    function atualizarTela() {
-        imagens.forEach((img, i) => {
-            img.classList.remove('visivel');
-            if (i === atual) {
-                img.classList.add('visivel');
-                console.log('Mostrando:', img.src);
-            }
-        });
-        const imgAtual = imagens[atual];
-        nomeIdadeEl.textContent = `${imgAtual.dataset.nome} — ${imgAtual.dataset.idade}`;
-        pontos.forEach((p, i) => p.classList.toggle('ativo', i === atual));
-    }
-
-    function irPara(n) { 
-        atual = n; 
-        atualizarTela(); 
-    }
-
-    function avancar() { 
-        atual = (atual + 1) % total; 
-        atualizarTela(); 
-    }
-
-    function voltar() { 
-        atual = (atual - 1 + total) % total; 
-        atualizarTela(); 
-    }
-
-    // Inicializa primeira imagem
-    atualizarTela();
-
-    // Deslizar com o dedo
-    let xInicio = null;
-    moldura.addEventListener('touchstart', e => xInicio = e.touches[0].clientX, { passive: true });
-    moldura.addEventListener('touchend', e => {
-        if (xInicio === null) return;
-        const xFim = e.changedTouches[0].clientX;
-        const diff = xInicio - xFim;
-        if (Math.abs(diff) > 40) diff > 0 ? avancar() : voltar();
-        xInicio = null;
-    }, { passive: true });
-
-    // Trocando sozinho
-    setInterval(avancar, 4500);
-});
-</script>
-
+Gostaria de saber disponibilidade e informações.
+━━━━━━━━━━━━━━━━━━`;
+            window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`);
+        }
+    </script>
 </body>
 </html>
