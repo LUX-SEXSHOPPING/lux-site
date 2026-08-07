@@ -132,21 +132,21 @@
             border-radius: 12px;
             pointer-events: none;
             /* vinheta radial: centro mais claro, bordas mais escuras */
-            background: radial-gradient(circle at 50% 40%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.55) 100%);
+            background: radial-gradient(circle at 50% 40%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.32) 100%);
             mix-blend-mode: multiply;
-            opacity: 0.95;
+            opacity: 0.65;
         }
 
-        /* Highlight central: clareia levemente a área onde a mulher/pole está, deixando-a mais \"viva\" no P&B */
+        /* Highlight central: clareia levemente a área onde a mulher/pole está, deixando-a mais "viva" no P&B */
         .container-imagem-ilustrativa::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 12px;
             pointer-events: none;
-            background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.02) 30%, rgba(255,255,255,0) 45%);
+            background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 30%, rgba(255,255,255,0) 45%);
             mix-blend-mode: screen; /* ilumina o centro sem alterar as bordas escuras */
-            opacity: 0.9;
+            opacity: 0.75;
         }
 
         .titulo-vips {
@@ -513,7 +513,7 @@
 
         // ✅ WHATSAPP
         function contratar(nome, detalhes) {
-            const mensagem = `💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de saber mais!`;
+            const mensagem = `💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de sab[...]
             window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`);
         }
     </script>
