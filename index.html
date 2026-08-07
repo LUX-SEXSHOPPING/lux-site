@@ -102,7 +102,6 @@
             margin: 0 12px;
         }
 
-        /* === ROLETA COM DESLIZAR E LOOP === */
         .carrossel {
             position: relative;
             overflow: hidden;
@@ -134,27 +133,36 @@
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .disponivel {
             background: linear-gradient(90deg, #00a86b, #2ecc71);
             color: white;
         }
+
+        /* === FOTOS AJUSTADAS PERFEITAMENTE === */
         .foto-modelo {
             width: 100%;
-            max-width: 240px;
-            border-radius: 12px;
-            margin-bottom: 10px;
+            max-width: 260px; /* ← Um pouquinho maior e elegante */
+            height: 320px; /* ← Altura fixa = todas IGUAIS */
+            object-fit: cover; /* ← CORTA BONITO, NÃO DEFORMA */
+            object-position: center top; /* ← Foca no rosto da modelo */
+            border-radius: 14px; /* ← Cantos suaves */
+            margin-bottom: 14px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            border: 2px solid rgba(255,215,0,0.25);
         }
         .foto-modelo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255,215,0,0.4);
+            transform: scale(1.03); /* ← Aumenta levemente */
+            box-shadow: 0 0 25px rgba(255,215,0,0.35);
+            border-color: rgba(255,215,0,0.6);
         }
+
         .perfil h3 {
             color: var(--dourado-claro);
-            font-size: 19px;
+            font-size: 20px;
+            margin-bottom: 4px;
         }
         .perfil .idade {
             font-size: 14px;
@@ -171,6 +179,7 @@
             font-style: italic;
             font-size: 14px;
             margin-bottom: 8px;
+            line-height: 1.5;
         }
         .dica-clique {
             color: var(--dourado-claro);
@@ -350,8 +359,8 @@
         // ✅ SETAS COM LOOP INFINITO
         function deslizar(direcao) {
             pagina += direcao;
-            if (pagina >= total) pagina = 0; // ← ÚLTIMA → VOLTA PRA PRIMEIRA
-            if (pagina < 0) pagina = total - 1; // ← PRIMEIRA → VOLTA PRA ÚLTIMA
+            if (pagina >= total) pagina = 0;
+            if (pagina < 0) pagina = total - 1;
             roleta.style.transform = `translateX(-${pagina * 100}%)`;
         }
 
@@ -365,7 +374,6 @@
         });
 
         roleta.addEventListener('touchend', () => {
-            if (!arrastando) return;
             arrastando = false;
         });
 
@@ -374,10 +382,10 @@
             const atualX = e.touches[0].clientX;
             const diferenca = inicioX - atualX;
 
-            if (diferenca > 50) { // ← DESLIZOU PRA ESQUERDA → PRÓXIMA
+            if (diferenca > 50) {
                 deslizar(1);
                 arrastando = false;
-            } else if (diferenca < -50) { // ← DESLIZOU PRA DIREITA → ANTERIOR
+            } else if (diferenca < -50) {
                 deslizar(-1);
                 arrastando = false;
             }
