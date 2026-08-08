@@ -332,6 +332,27 @@
             transform: scale(1.1);
         }
 
+        /* NOVO: Botão flutuante para baixar/instalar o app */
+        .baixar-app {
+            position: fixed;
+            bottom: 100px; /* acima do whatsapp */
+            right: 25px;
+            background: linear-gradient(135deg, #ffd700, #ffb700);
+            color: #111;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: none; /* mostrado apenas quando aplicável */
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            z-index: 999;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+            cursor: pointer;
+            transition: transform 0.18s, opacity 0.18s;
+        }
+        .baixar-app:hover { transform: scale(1.05); }
+
         .sobre {
             background: rgba(0,0,0,0.55);
             border-radius: 16px;
@@ -379,6 +400,8 @@
                 object-position: center 45%;
                 filter: grayscale(100%) contrast(1.15) brightness(1.02) saturate(0);
             }
+            .baixar-app { bottom: 95px; right: 18px; }
+            .whatsapp-flutuante { bottom: 25px; right: 18px; }
         }
     </style>
 </head>
@@ -486,6 +509,11 @@
         </footer>
     </div>
 
+    <!-- Botões flutuantes: Baixar App (novo) e WhatsApp -->
+    <a id="baixar-app" class="baixar-app" href="#" title="Baixar App">
+        <i class="fas fa-download"></i>
+    </a>
+
     <a href="https://wa.me/51980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -560,6 +588,59 @@ Tenho interesse em contratar:
 Gostaria de saber mais detalhes e disponibilidade.`;
             window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`, '_blank');
         }
+
+        // === NOVO: LÓGICA PARA O BOTÃO 'BAIXAR APP' ===
+        const baixarBtn = document.getElementById('baixar-app');
+        let deferredPrompt = null;
+
+        // Captura o evento antes da instalação (quando suportado)
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault(); // evita que o browser mostre o prompt automaticamente
+            deferredPrompt = e; // guarda para usar quando o usuário clicar no botão
+            // mostra o botão para o usuário
+            if (baixarBtn) baixarBtn.style.display = 'flex';
+            console.log('Evento beforeinstallprompt capturado — botão de instalação exibido');
+        });
+
+        // Clique no botão: tenta disparar o prompt de instalação, ou usa fallback
+        if (baixarBtn) {
+            baixarBtn.addEventListener('click', async (evt) => {
+                evt.preventDefault();
+                // Se o navegador suportar o prompt PWA
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const choiceResult = await deferredPrompt.userChoice;
+                    console.log('Resultado do prompt de instalação:', choiceResult);
+                    // hide the install button after interaction
+                    baixarBtn.style.display = 'none';
+                    deferredPrompt = null;
+                } else {
+                    // Fallback: gera um arquivo de instruções e inicia o download automático
+                    const instrucoes = `Instruções rápidas para adicionar o app LUX ao seu dispositivo:\n\n` +
+                        `Android (Chrome): abra o menu do navegador e selecione 'Adicionar à tela inicial' ou use a opção 'Instalar'.\n` +
+                        `iPhone (Safari): toque no botão de compartilhamento e escolha 'Adicionar à Tela de Início'.\n\n` +
+                        `Se preferir, acesse este site a partir do seu celular e siga as instruções acima para instalar como PWA.`;
+                    const blob = new Blob([instrucoes], { type: 'text/plain' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'LUX_instrucoes_instalacao.txt';
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    URL.revokeObjectURL(url);
+                    // opcional: dar feedback visual
+                    baixarBtn.style.opacity = '0.6';
+                    setTimeout(() => { baixarBtn.style.opacity = '1'; }, 1000);
+                }
+            });
+        }
+
+        // Se o usuário já instalou/fechou o prompt, escondemos o botão
+        window.addEventListener('appinstalled', () => {
+            console.log('App instalado com sucesso');
+            if (baixarBtn) baixarBtn.style.display = 'none';
+        });
     </script>
 </body>
 </html>
