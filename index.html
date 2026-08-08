@@ -5,7 +5,9 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js');
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('ServiceWorker registrado com escopo:', reg.scope))
+        .catch(err => console.error('Falha ao registrar ServiceWorker:', err));
     });
   }
 </script>
@@ -549,8 +551,14 @@
 
         // ✅ WHATSAPP
         function contratar(nome, detalhes) {
-            const mensagem = `💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de saber mais!`;
-            window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`);
+            const mensagem = `💛 *SOLICITAÇÃO — LUX*
+━━━━━━━━━━━━━━━━━━
+Tenho interesse em contratar:
+✨ ${nome}
+📋 ${detalhes}
+
+Gostaria de saber mais detalhes e disponibilidade.`;
+            window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`, '_blank');
         }
     </script>
 </body>
