@@ -1,646 +1,179 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><link rel="manifest" href="manifest.json">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#c9a227">
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('ServiceWorker registrado com escopo:', reg.scope))
-        .catch(err => console.error('Falha ao registrar ServiceWorker:', err));
-    });
-  }
-</script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUX — Sensualidade & Sofisticação</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <style>
-        :root {
-            --dourado: #ffd700;
-            --dourado-claro: #fff176;
-            --texto-claro: #f0e9ec;
-            --fundo-escuro: rgba(0,0,0,0.65);
-            --neon-dourado: #ffd700;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body {
-            background: url('banner.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            min-height: 100vh;
-        }
-        .fundo-tela {
-            background: var(--fundo-escuro);
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
-        }
-        .conteudo { position: relative; z-index: 1; padding: 15px 25px; max-width: 1100px; margin: 0 auto; }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0 20px;
-            flex-wrap: wrap;
-        }
-        .logo-lux {
-            font-family: 'Playfair Display', serif;
-            font-size: 46px;
-            font-weight: 800;
-            font-style: italic;
-            color: #fff;
-            letter-spacing: 4px;
-            text-shadow:
-                0 0 5px var(--neon-dourado),
-                0 0 10px var(--neon-dourado),
-                0 0 20px var(--neon-dourado),
-                0 0 40px var(--neon-dourado);
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-        }
-        nav a {
-            color: var(--texto-claro);
-            text-decoration: none;
-            padding: 8px 14px;
-            font-size: 15px;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s;
-        }
-        nav a:hover {
-            border-bottom: 1px solid var(--dourado);
-            color: var(--dourado-claro);
-            text-shadow: 0 0 6px var(--dourado);
-        }
-
-        .video-container {
-            max-width: 800px;
-            width: 95%;
-            margin: 0 auto 25px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 2px solid rgba(255,215,0,0.4);
-            box-shadow: 0 0 15px rgba(255,215,0,0.15);
-        }
-        .video-container video {
-            width: 100%;
-            display: block;
-            height: 240px;
-            object-fit: cover;
-        }
-
-        /* === ESTILO DA IMAGEM ILUSTRATIVA === */
-        .container-imagem-ilustrativa {
-            max-width: 800px;
-            width: 95%;
-            margin: 25px auto 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .banner-ilustrativo {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-            /* removidas bordas e fundos que criavam 'marcas' */
-            border: none;
-            box-shadow: none;
-            transition: all 0.4s ease;
-            object-fit: cover;
-            /* centraliza verticalmente o foco (ajuste se necessário) */
-            object-position: center 40%;
-            /* deixa a foto em preto e branco e mais viva (contraste local) */
-            opacity: 0.82; /* mais translúcida conforme solicitado */
-            filter: grayscale(100%) contrast(1.18) brightness(1.02) saturate(0);
-            -webkit-filter: grayscale(100%) contrast(1.18) brightness(1.02) saturate(0);
-            background: transparent;
-        }
-
-        .banner-ilustrativo:hover {
-            opacity: 0.88;
-            transform: scale(1.01);
-            filter: grayscale(100%) contrast(1.22) brightness(1.04) saturate(0);
-            -webkit-filter: grayscale(100%) contrast(1.22) brightness(1.04) saturate(0);
-        }
-
-        /* Overlay: vinheta suave para escurecer as bordas e focar o centro (mulher no pole dance) */
-        .container-imagem-ilustrativa::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 12px;
-            pointer-events: none;
-            /* vinheta radial: centro mais claro, bordas mais escuras */
-            background: radial-gradient(circle at 50% 40%, rgba(0,0,0,0) 20%, rgba(0,0,0,0.32) 100%);
-            mix-blend-mode: multiply;
-            opacity: 0.65;
-        }
-
-        /* Highlight central: clareia levemente a área onde a mulher/pole está, deixando-a mais "viva" no P&B */
-        .container-imagem-ilustrativa::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 12px;
-            pointer-events: none;
-            background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 30%, rgba(255,255,255,0) 45%);
-            mix-blend-mode: screen; /* ilumina o centro sem alterar as bordas escuras */
-            opacity: 0.75;
-        }
-
-        .titulo-vips {
-            text-align: center;
-            margin: 30px 0 18px;
-        }
-        .titulo-vips h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px;
-            color: var(--dourado);
-            font-style: italic;
-            letter-spacing: 2px;
-        }
-        .titulo-vips h2::before,
-        .titulo-vips h2::after {
-            content: '✦';
-            color: var(--dourado-claro);
-            font-size: 18px;
-            margin: 0 12px;
-        }
-
-        /* === ROLETA === */
-        .carrossel {
-            position: relative;
-            overflow: hidden;
-            margin: 0 auto;
-            max-width: 360px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            touch-action: pan-y;
-        }
-        .carrossel-interno {
-            display: flex;
-            transition: transform 0.35s ease-out;
-            flex-wrap: nowrap;
-        }
-        .card-vip {
-            flex: 0 0 100%; /* cada card ocupa exatamente 100% da largura do carrossel */
-            padding: 10px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 100%;
-        }
-        .perfil {
-            background: rgba(0,0,0,0.55);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid rgba(255,215,0,0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        /* === STATUS === */
-        .status {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .disponivel {
-            background: linear-gradient(90deg, #00a86b, #2ecc71);
-            color: white;
-        }
-        .offline {
-            background: linear-gradient(90deg, #555, #777);
-            color: #ccc;
-        }
-
-        /* === FOTOS === */
-        .foto-modelo {
-            display: block;
-            margin: 0 auto 12px;
-            width: 100%;
-            max-width: 240px;
-            height: 320px;
-            object-fit: cover;
-            object-position: center top;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid rgba(255,215,0,0.25);
-        }
-        .foto-modelo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255,215,0,0.4);
-        }
-
-        .perfil h3 {
-            color: var(--dourado-claro);
-            font-size: 19px;
-            margin-bottom: 4px;
-        }
-        .perfil .idade {
-            font-size: 14px;
-            color: #999;
-            margin-left: 6px;
-        }
-        .perfil .cidade {
-            color: #ccc;
-            font-size: 14px;
-            margin: 6px 0;
-        }
-        .perfil .desc {
-            color: #ddd;
-            font-style: italic;
-            font-size: 14px;
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        .dica-clique {
-            color: var(--dourado-claro);
-            font-size: 11px;
-            opacity: 0.8;
-        }
-
-        .botoes-navegacao {
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 10;
-        }
-        .btn-carrossel {
-            background: rgba(0,0,0,0.6);
-            color: var(--dourado);
-            border: none;
-            font-size: 26px;
-            padding: 8px 14px;
-            cursor: pointer;
-            border-radius: 50%;
-            margin: 0 5px;
-            pointer-events: auto;
-            transition: all 0.3s;
-        }
-
-        .btn-carrossel:hover {
-            background: rgba(0,0,0,0.8);
-            box-shadow: 0 0 15px rgba(255,215,0,0.4);
-        }
-
-        .whatsapp-flutuante {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-
-        .whatsapp-flutuante:hover {
-            transform: scale(1.1);
-        }
-
-        /* NOVO: Botão flutuante para baixar/instalar o app */
-        .baixar-app {
-            position: fixed;
-            bottom: 100px; /* acima do whatsapp */
-            right: 25px;
-            background: linear-gradient(135deg, #ffd700, #ffb700);
-            color: #111;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: none; /* mostrado apenas quando aplicável */
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            z-index: 999;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-            cursor: pointer;
-            transition: transform 0.18s, opacity 0.18s;
-        }
-        .baixar-app:hover { transform: scale(1.05); }
-
-        .sobre {
-            background: rgba(0,0,0,0.55);
-            border-radius: 16px;
-            padding: 25px;
-            margin: 35px 0 25px;
-            border: 1px solid rgba(255,215,0,0.25);
-        }
-        .sobre h2 {
-            color: var(--dourado);
-            text-align: center;
-            margin-bottom: 15px;
-        }
-        .sobre p {
-            color: #ddd;
-            line-height: 1.8;
-            font-style: italic;
-            text-align: center;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #888;
-            font-size: 13px;
-            border-top: 1px solid rgba(255,215,0,0.2);
-            margin-top: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .logo-lux {
-                font-size: 32px;
-            }
-            nav {
-                gap: 10px;
-            }
-            nav a {
-                font-size: 12px;
-                padding: 6px 10px;
-            }
-            .titulo-vips h2 {
-                font-size: 20px;
-            }
-            .banner-ilustrativo {
-                opacity: 0.86;
-                object-position: center 45%;
-                filter: grayscale(100%) contrast(1.15) brightness(1.02) saturate(0);
-            }
-            .baixar-app { bottom: 95px; right: 18px; }
-            .whatsapp-flutuante { bottom: 25px; right: 18px; }
-        }
-    </style>
+<meta name="description" content="LUX — Sensualidade & Sofisticação. Conectamos momentos especiais com pessoas extraordinárias.">
+<title>LUX — Sensualidade & Sofisticação</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="dns-prefetch" href="https://wa.me">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap" as="style">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--dourado:#ffd700;--dourado-claro:#fff176;--texto-claro:#f0e9ec;--fundo-escuro:rgba(0,0,0,.65);--neon-dourado:#ffd700}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:url(banner.jpg) no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;background-attachment:fixed}
+.fundo-tela{background:var(--fundo-escuro);position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;will-change:opacity}
+.conteudo{position:relative;z-index:1;padding:15px 25px;max-width:1100px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:center;padding:10px 0 20px;flex-wrap:wrap;gap:20px}
+.logo-lux{font-family:'Playfair Display',serif;font-size:46px;font-weight:800;font-style:italic;color:#fff;letter-spacing:4px;text-shadow:0 0 5px var(--neon-dourado),0 0 10px var(--neon-dourado),0 0 20px var(--neon-dourado),0 0 40px var(--neon-dourado);will-change:text-shadow;flex-shrink:0}
+nav{display:flex;flex-wrap:wrap;gap:18px;flex:1;justify-content:flex-end}
+nav a{color:var(--texto-claro);text-decoration:none;padding:8px 14px;font-size:15px;border-bottom:1px solid transparent;transition:all .3s;will-change:transform}
+nav a:hover{border-bottom:1px solid var(--dourado);color:var(--dourado-claro);text-shadow:0 0 6px var(--dourado)}
+.video-container{max-width:800px;width:95%;margin:0 auto 25px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,215,0,.4);box-shadow:0 0 15px rgba(255,215,0,.15);aspect-ratio:16/9}
+.video-container video{width:100%;display:block;object-fit:cover;height:auto}
+.container-imagem-ilustrativa{max-width:800px;width:95%;margin:25px auto 30px;display:flex;justify-content:center;align-items:center;position:relative;aspect-ratio:auto}
+.banner-ilustrativo{width:100%;max-width:100%;height:auto;display:block;border-radius:12px;border:none;box-shadow:none;transition:all .4s ease;object-fit:cover;object-position:center 40%;opacity:.82;filter:grayscale(100%) contrast(1.18) brightness(1.02) saturate(0);background:transparent;will-change:opacity,transform}
+.banner-ilustrativo:hover{opacity:.88;transform:scale(1.01);filter:grayscale(100%) contrast(1.22) brightness(1.04) saturate(0)}
+.container-imagem-ilustrativa::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(0,0,0,0) 20%,rgba(0,0,0,.32) 100%);mix-blend-mode:multiply;opacity:.65}
+.container-imagem-ilustrativa::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.18) 0%,rgba(255,255,255,.02) 30%,rgba(255,255,255,0) 45%);mix-blend-mode:screen;opacity:.75}
+.titulo-vips{text-align:center;margin:30px 0 18px}
+.titulo-vips h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--dourado);font-style:italic;letter-spacing:2px}
+.titulo-vips h2::before,.titulo-vips h2::after{content:'✦';color:var(--dourado-claro);font-size:18px;margin:0 12px}
+.carrossel{position:relative;overflow:hidden;margin:0 auto;max-width:360px;width:100%;display:flex;justify-content:center;touch-action:pan-y}
+.carrossel-interno{display:flex;transition:transform .35s ease-out;flex-wrap:nowrap;will-change:transform}
+.card-vip{flex:0 0 100%;padding:10px;box-sizing:border-box;display:flex;justify-content:center;align-items:center;min-width:100%}
+.perfil{background:rgba(0,0,0,.55);border-radius:16px;padding:20px;text-align:center;border:1px solid rgba(255,215,0,.3);display:flex;flex-direction:column;align-items:center;width:100%;backdrop-filter:blur(2px)}
+.status{display:inline-block;padding:5px 15px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:12px}
+.disponivel{background:linear-gradient(90deg,#00a86b,#2ecc71);color:#fff}
+.offline{background:linear-gradient(90deg,#555,#777);color:#ccc}
+.foto-modelo{display:block;margin:0 auto 12px;width:100%;max-width:240px;height:320px;object-fit:cover;object-position:center top;border-radius:12px;cursor:pointer;transition:transform .3s,box-shadow .3s;border:2px solid rgba(255,215,0,.25);will-change:transform}
+.foto-modelo:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(255,215,0,.4)}
+.perfil h3{color:var(--dourado-claro);font-size:19px;margin-bottom:4px}
+.perfil .idade{font-size:14px;color:#999;margin-left:6px}
+.perfil .cidade{color:#ccc;font-size:14px;margin:6px 0}
+.perfil .desc{color:#ddd;font-style:italic;font-size:14px;margin-bottom:8px;line-height:1.5}
+.dica-clique{color:var(--dourado-claro);font-size:11px;opacity:.8}
+.botoes-navegacao{display:flex;justify-content:space-between;position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);pointer-events:none;z-index:10}
+.btn-carrossel{background:rgba(0,0,0,.6);color:var(--dourado);border:none;font-size:26px;padding:8px 14px;cursor:pointer;border-radius:50%;margin:0 5px;pointer-events:auto;transition:all .3s;will-change:background,box-shadow}
+.btn-carrossel:hover{background:rgba(0,0,0,.8);box-shadow:0 0 15px rgba(255,215,0,.4)}
+.whatsapp-flutuante{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;z-index:999;box-shadow:0 4px 15px rgba(0,0,0,.3);transition:transform .3s;will-change:transform;text-decoration:none}
+.whatsapp-flutuante:hover{transform:scale(1.1)}
+.baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;z-index:999;box-shadow:0 6px 20px rgba(0,0,0,.35);cursor:pointer;transition:transform .18s,opacity .18s;will-change:transform,opacity;text-decoration:none}
+.baixar-app:hover{transform:scale(1.05)}
+.sobre{background:rgba(0,0,0,.55);border-radius:16px;padding:25px;margin:35px 0 25px;border:1px solid rgba(255,215,0,.25);backdrop-filter:blur(2px)}
+.sobre h2{color:var(--dourado);text-align:center;margin-bottom:15px}
+.sobre p{color:#ddd;line-height:1.8;font-style:italic;text-align:center}
+footer{text-align:center;padding:20px;color:#888;font-size:13px;border-top:1px solid rgba(255,215,0,.2);margin-top:20px}
+@media (max-width:600px){
+.logo-lux{font-size:32px}
+nav{gap:10px;justify-content:flex-start;flex-basis:100%;order:3}
+nav a{font-size:12px;padding:6px 10px}
+.titulo-vips h2{font-size:20px}
+.banner-ilustrativo{opacity:.86;object-position:center 45%;filter:grayscale(100%) contrast(1.15) brightness(1.02) saturate(0)}
+.baixar-app{bottom:95px;right:18px}
+.whatsapp-flutuante{bottom:25px;right:18px}
+header{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+*{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-    <div class="fundo-tela"></div>
-    <div class="conteudo">
+<div class="fundo-tela"></div>
+<div class="conteudo">
+<header>
+<div class="logo-lux">LUX</div>
+<nav>
+<a href="index.html">Início</a>
+<a href="modelos-femininos.html">Femininas</a>
+<a href="modelos-masculinos.html">Masculinos</a>
+<a href="#sobre">Sobre Nós</a>
+<a href="pre-cadastro.html">Pré-Cadastro</a>
+<a href="lista-espera.html">Agendar Horário</a>
+<a href="termos.html">Termos</a>
+</nav>
+</header>
 
-        <header>
-            <div class="logo-lux">LUX</div>
-            <nav>
-                <a href="index.html">Início</a>
-                <a href="modelos-femininos.html">Femininas</a>
-                <a href="modelos-masculinos.html">Masculinos</a>
-                <a href="#sobre">Sobre Nós</a>
-                <a href="pre-cadastro.html">Pré-Cadastro</a>
-                <a href="lista-espera.html">Agendar Horário</a>
-                <a href="termos.html">Termos</a>
-            </nav>
-        </header>
+<div class="video-container">
+<video src="videobanner.mp4" autoplay muted loop playsinline preload="metadata"></video>
+</div>
 
-        <!-- VÍDEO BANNER -->
-        <div class="video-container">
-            <video src="videobanner.mp4" autoplay muted loop playsinline></video>
-        </div>
+<div class="container-imagem-ilustrativa">
+<img src="foto-ilustr.png?t=1722877316" alt="Apresentação LUX - Pole Dance" class="banner-ilustrativo" loading="lazy">
+</div>
 
-        <!-- 📸 IMAGEM ILUSTRATIVA (ENTRE VÍDEO E CARROSSEL) -->
-        <div class="container-imagem-ilustrativa">
-            <img src="foto-ilustr.png?t=1722877316" alt="Apresentação LUX - Pole Dance" class="banner-ilustrativo">
-        </div>
+<div class="titulo-vips">
+<h2>Vips em Destaque</h2>
+</div>
 
-        <!-- TÍTULO DA ROLETA -->
-        <div class="titulo-vips">
-            <h2>Vips em Destaque</h2>
-        </div>
+<div class="carrossel">
+<div class="botoes-navegacao">
+<button class="btn-carrossel" onclick="deslizar(-1)" aria-label="Slide anterior">‹</button>
+<button class="btn-carrossel" onclick="deslizar(1)" aria-label="Próximo slide">›</button>
+</div>
 
-        <!-- ROLETA -->
-        <div class="carrossel">
-            <div class="botoes-navegacao">
-                <button class="btn-carrossel" onclick="deslizar(-1)">‹</button>
-                <button class="btn-carrossel" onclick="deslizar(1)">›</button>
-            </div>
+<div class="carrossel-interno" id="areaRoleta">
+<div class="card-vip">
+<div class="perfil">
+<span class="status disponivel">● DISPONÍVEL</span>
+<img src="vip1.png?t=1722877316" alt="Eduarda — VIP LUX" class="foto-modelo" onclick="contratar('Eduarda', '21 anos — Gravataí/RS')" loading="lazy">
+<h3>Eduarda <span class="idade">21 anos</span></h3>
+<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS</p>
+<p class="desc">Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.</p>
+<span class="dica-clique">👆 Clique na foto para contratar</span>
+</div>
+</div>
 
-            <div class="carrossel-interno" id="areaRoleta">
-                <!-- VIP 1 -->
-                <div class="card-vip">
-                    <div class="perfil">
-                        <span class="status disponivel">● DISPONÍVEL</span>
-                        <img src="vip1.png?t=1722877316" alt="Eduarda — VIP LUX" class="foto-modelo"
-                             onclick="contratar('Eduarda', '21 anos — Gravataí/RS')">
-                        <h3>Eduarda <span class="idade">21 anos</span></h3>
-                        <p class="cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
-                        <p class="desc">Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.</p>
-                        <span class="dica-clique">👆 Clique na foto para contratar</span>
-                    </div>
-                </div>
-                <!-- VIP 2 -->
-                <div class="card-vip">
-                    <div class="perfil">
-                        <span class="status disponivel">● DISPONÍVEL</span>
-                        <img src="vip2.png?t=1722877316" alt="Sarah — VIP LUX" class="foto-modelo"
-                             onclick="contratar('Sarah', '27 anos — Gravataí/RS')">
-                        <h3>Sarah <span class="idade">27 anos</span></h3>
-                        <p class="cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
-                        <p class="desc">Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.</p>
-                        <span class="dica-clique">👆 Clique na foto para contratar</span>
-                    </div>
-                </div>
-                <!-- VIP 3 -->
-                <div class="card-vip">
-                    <div class="perfil">
-                        <span class="status disponivel">● DISPONÍVEL</span>
-                        <img src="vip3.png?t=1722877316" alt="Larissa — VIP LUX" class="foto-modelo"
-                             onclick="contratar('Larissa', '20 anos — Gravataí/RS')">
-                        <h3>Larissa <span class="idade">20 anos</span></h3>
-                        <p class="cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
-                        <p class="desc">Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.</p>
-                        <span class="dica-clique">👆 Clique na foto para contratar</span>
-                    </div>
-                </div>
-                <!-- VIP 4 -->
-                <div class="card-vip">
-                    <div class="perfil">
-                        <span class="status disponivel">● DISPONÍVEL</span>
-                        <img src="vip4.png?t=1722877316" alt="Vitória — VIP LUX" class="foto-modelo"
-                             onclick="contratar('Vitória', '24 anos — Gravataí/RS')">
-                        <h3>Vitória <span class="idade">24 anos</span></h3>
-                        <p class="cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
-                        <p class="desc">Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.</p>
-                        <span class="dica-clique">👆 Clique na foto para contratar</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="card-vip">
+<div class="perfil">
+<span class="status disponivel">● DISPONÍVEL</span>
+<img src="vip2.png?t=1722877316" alt="Sarah — VIP LUX" class="foto-modelo" onclick="contratar('Sarah', '27 anos — Gravataí/RS')" loading="lazy">
+<h3>Sarah <span class="idade">27 anos</span></h3>
+<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS</p>
+<p class="desc">Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.</p>
+<span class="dica-clique">👆 Clique na foto para contratar</span>
+</div>
+</div>
 
-        <section class="sobre" id="sobre">
-            <h2>Sobre Nós</h2>
-            <p>
-                O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>
-                Somos a LUX — um espaço de beleza, discrição e sofisticação. Conectamos momentos especiais com pessoas extraordinárias.
-            </p>
-        </section>
+<div class="card-vip">
+<div class="perfil">
+<span class="status disponivel">● DISPONÍVEL</span>
+<img src="vip3.png?t=1722877316" alt="Larissa — VIP LUX" class="foto-modelo" onclick="contratar('Larissa', '20 anos — Gravataí/RS')" loading="lazy">
+<h3>Larissa <span class="idade">20 anos</span></h3>
+<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS</p>
+<p class="desc">Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.</p>
+<span class="dica-clique">👆 Clique na foto para contratar</span>
+</div>
+</div>
 
-        <footer>
-            © 2026 LUX — Sensualidade & Sofisticação • Brasil e Europa • Todos os direitos reservados.
-        </footer>
-    </div>
+<div class="card-vip">
+<div class="perfil">
+<span class="status disponivel">● DISPONÍVEL</span>
+<img src="vip4.png?t=1722877316" alt="Vitória — VIP LUX" class="foto-modelo" onclick="contratar('Vitória', '24 anos — Gravataí/RS')" loading="lazy">
+<h3>Vitória <span class="idade">24 anos</span></h3>
+<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS</p>
+<p class="desc">Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.</p>
+<span class="dica-clique">👆 Clique na foto para contratar</span>
+</div>
+</div>
+</div>
+</div>
 
-    <!-- Botões flutuantes: Baixar App (novo) e WhatsApp -->
-    <a id="baixar-app" class="baixar-app" href="#" title="Baixar App">
-        <i class="fas fa-download"></i>
-    </a>
+<section class="sobre" id="sobre">
+<h2>Sobre Nós</h2>
+<p>O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>Somos a LUX — um espaço de beleza, discrição e sofisticação. Conectamos momentos especiais com pessoas extraordinárias.</p>
+</section>
 
-    <a href="https://wa.me/51980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<footer>© 2026 LUX — Sensualidade & Sofisticação • Brasil e Europa • Todos os direitos reservados.</footer>
+</div>
 
-    <script>
-        let pagina = 0;
-        const roleta = document.getElementById('areaRoleta');
-        const carrosselContainer = document.querySelector('.carrossel');
-        let total = roleta ? roleta.children.length : 0;
+<a id="baixar-app" class="baixar-app" href="#" title="Baixar App" aria-label="Baixar aplicativo LUX">
+<i class="fas fa-download" aria-hidden="true"></i>
+</a>
 
-        // Calcula a largura necessária baseada no número de slides
-        function atualizarCarrossel() {
-            if (roleta) {
-                const larguraSlide = carrosselContainer.offsetWidth;
-                roleta.style.width = `${total * 100}%`;
-                roleta.style.transform = `translateX(-${pagina * 100}%)`;
-            }
-        }
+<a href="https://wa.me/51980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer" title="Envie uma mensagem no WhatsApp" aria-label="Contato WhatsApp">
+<i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
 
-        // Inicializa o carrossel
-        atualizarCarrossel();
-        window.addEventListener('resize', atualizarCarrossel);
-
-        // ✅ SETAS + LOOP INFINITO
-        function deslizar(direcao) {
-            pagina += direcao;
-            if (pagina >= total) pagina = 0;
-            if (pagina < 0) pagina = total - 1;
-            if (roleta) {
-                roleta.style.transform = `translateX(-${pagina * 100}%)`;
-            }
-        }
-
-        // ✅ DESLIZAR NO CELULAR
-        let inicioX = 0;
-        let arrastando = false;
-
-        if (carrosselContainer) {
-            carrosselContainer.addEventListener('touchstart', (e) => {
-                inicioX = e.touches[0].clientX;
-                arrastando = true;
-            });
-
-            carrosselContainer.addEventListener('touchend', () => {
-                arrastando = false;
-            });
-
-            carrosselContainer.addEventListener('touchmove', (e) => {
-                if (!arrastando) return;
-                const atualX = e.touches[0].clientX;
-                const diferenca = inicioX - atualX;
-
-                if (diferenca > 50) { 
-                    deslizar(1); 
-                    arrastando = false; 
-                }
-                else if (diferenca < -50) { 
-                    deslizar(-1); 
-                    arrastando = false; 
-                }
-            });
-        }
-
-        // ✅ WHATSAPP
-        function contratar(nome, detalhes) {
-            const mensagem = `💛 *SOLICITAÇÃO — LUX*
-━━━━━━━━━━━━━━━━━━
-Tenho interesse em contratar:
-✨ ${nome}
-📋 ${detalhes}
-
-Gostaria de saber mais detalhes e disponibilidade.`;
-            window.open(`https://wa.me/51980612941?text=${encodeURIComponent(mensagem)}`, '_blank');
-        }
-
-        // === NOVO: LÓGICA PARA O BOTÃO 'BAIXAR APP' ===
-        const baixarBtn = document.getElementById('baixar-app');
-        let deferredPrompt = null;
-
-        // Captura o evento antes da instalação (quando suportado)
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault(); // evita que o browser mostre o prompt automaticamente
-            deferredPrompt = e; // guarda para usar quando o usuário clicar no botão
-            // mostra o botão para o usuário
-            if (baixarBtn) baixarBtn.style.display = 'flex';
-            console.log('Evento beforeinstallprompt capturado — botão de instalação exibido');
-        });
-
-        // Clique no botão: tenta disparar o prompt de instalação, ou usa fallback
-        if (baixarBtn) {
-            baixarBtn.addEventListener('click', async (evt) => {
-                evt.preventDefault();
-                // Se o navegador suportar o prompt PWA
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const choiceResult = await deferredPrompt.userChoice;
-                    console.log('Resultado do prompt de instalação:', choiceResult);
-                    // hide the install button after interaction
-                    baixarBtn.style.display = 'none';
-                    deferredPrompt = null;
-                } else {
-                    // Fallback: gera um arquivo de instruções e inicia o download automático
-                    const instrucoes = `Instruções rápidas para adicionar o app LUX ao seu dispositivo:\n\n` +
-                        `Android (Chrome): abra o menu do navegador e selecione 'Adicionar à tela inicial' ou use a opção 'Instalar'.\n` +
-                        `iPhone (Safari): toque no botão de compartilhamento e escolha 'Adicionar à Tela de Início'.\n\n` +
-                        `Se preferir, acesse este site a partir do seu celular e siga as instruções acima para instalar como PWA.`;
-                    const blob = new Blob([instrucoes], { type: 'text/plain' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = 'LUX_instrucoes_instalacao.txt';
-                    document.body.appendChild(a);
-                    a.click();
-                    a.remove();
-                    URL.revokeObjectURL(url);
-                    // opcional: dar feedback visual
-                    baixarBtn.style.opacity = '0.6';
-                    setTimeout(() => { baixarBtn.style.opacity = '1'; }, 1000);
-                }
-            });
-        }
-
-        // Se o usuário já instalou/fechou o prompt, escondemos o botão
-        window.addEventListener('appinstalled', () => {
-            console.log('App instalado com sucesso');
-            if (baixarBtn) baixarBtn.style.display = 'none';
-        });
-    </script>
+<script>
+if('serviceWorker'in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').then(r=>console.log('SW registrado')).catch(e=>console.error('Erro SW:',e))},false)}let pagina=0;const roleta=document.getElementById('areaRoleta');const carrosselContainer=document.querySelector('.carrossel');let total=roleta?roleta.children.length:0;let resizeTimeout;function atualizarCarrossel(){if(roleta){roleta.style.width=`${total*100}%`;roleta.style.transform=`translateX(-${pagina*100}%)`}}atualizarCarrossel();const debouncedResize=()=>{clearTimeout(resizeTimeout);resizeTimeout=setTimeout(atualizarCarrossel,250)};window.addEventListener('resize',debouncedResize,{passive:true});function deslizar(direcao){pagina+=direcao;if(pagina>=total)pagina=0;if(pagina<0)pagina=total-1;if(roleta){roleta.style.transform=`translateX(-${pagina*100}%)`}}let inicioX=0;let arrastando=false;if(carrosselContainer){carrosselContainer.addEventListener('touchstart',(e)=>{inicioX=e.touches[0].clientX;arrastando=true},{passive:true});carrosselContainer.addEventListener('touchend',()=>{arrastando=false},{passive:true});carrosselContainer.addEventListener('touchmove',(e)=>{if(!arrastando)return;const atualX=e.touches[0].clientX;const diferenca=inicioX-atualX;if(diferenca>50){deslizar(1);arrastando=false}else if(diferenca<-50){deslizar(-1);arrastando=false}},{passive:true})}function contratar(nome,detalhes){const msg=`💛 *SOLICITAÇÃO — LUX*\n━━━━━━━━━━━━━━━━━━\nTenho interesse em contratar:\n✨ ${nome}\n📋 ${detalhes}\n\nGostaria de saber mais detalhes e disponibilidade.`;window.open(`https://wa.me/51980612941?text=${encodeURIComponent(msg)}`,'_blank')}const baixarBtn=document.getElementById('baixar-app');let deferredPrompt=null;window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;if(baixarBtn)baixarBtn.style.display='flex';console.log('PWA pronto para instalar')},{once:false});if(baixarBtn){baixarBtn.addEventListener('click',async(e)=>{e.preventDefault();if(deferredPrompt){deferredPrompt.prompt();const choice=await deferredPrompt.userChoice;console.log('Instalação:',choice.outcome);baixarBtn.style.display='none';deferredPrompt=null}else{const txt=`Instruções para adicionar o app LUX:\n\nAndroid: Abra o menu e selecione 'Instalar app' ou 'Adicionar à tela inicial'\niPhone: Toque em compartilhar e escolha 'Adicionar à Tela de Início'`;const blob=new Blob([txt],{type:'text/plain'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='LUX_instalacao.txt';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);baixarBtn.style.opacity='0.6';setTimeout(()=>{baixarBtn.style.opacity='1'},1000)}})}window.addEventListener('appinstalled',()=>{console.log('App instalado');if(baixarBtn)baixarBtn.style.display='none'});
+</script>
 </body>
 </html>
