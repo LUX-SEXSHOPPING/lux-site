@@ -103,18 +103,17 @@
             border-radius: 16px;
             overflow: hidden;
             transition: transform .3s, box-shadow .3s;
+            cursor: pointer;
         }
         .cartao:hover {
             transform: translateY(-6px);
             box-shadow: 0 10px 30px rgba(255, 20, 147, 0.25);
         }
-        /* ✅ FOTO UM POUCO MAIOR */
         .foto-catalogo {
             width: 100%;
-            height: 400px; /* Antes 360px — aumentei */
+            height: 400px;
             object-fit: cover;
             background: rgba(0,0,0,0.3);
-            cursor: pointer; /* 👆 Indica que clica para ampliar */
             transition: opacity .3s;
         }
         .foto-catalogo:hover { opacity: 0.85; }
@@ -142,6 +141,15 @@
             margin-bottom: 1.2rem;
         }
         .desc-cartao em { color: var(--rosa-claro); font-style: normal; }
+        .ver-perfil {
+            display: inline-block;
+            color: var(--dourado-claro);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: color .2s;
+        }
+        .ver-perfil:hover { color: var(--neon-rosa); }
         .botao-whats {
             display: inline-flex;
             align-items: center;
@@ -157,7 +165,6 @@
         }
         .botao-whats:hover { transform: scale(1.05); }
 
-        /* ✅ MODAL — ZOOM DA FOTO AO CLICAR */
         .modal {
             display: none;
             position: fixed;
@@ -229,7 +236,7 @@
 
         @media (max-width: 768px) {
             .grade-catalogo { grid-template-columns: 1fr; }
-            .foto-catalogo { height: 340px; } /* Ajuste no celular */
+            .foto-catalogo { height: 340px; }
             h1 { font-size: 1.8rem; }
         }
     </style>
@@ -244,7 +251,7 @@
         <a href="modelos-femininos.html"><i class="fa-solid fa-venus"></i> Femininos</a>
         <a href="modelos-masculinos.html"><i class="fa-solid fa-mars"></i> Masculinos</a>
         <a href="index.html#cadastro"><i class="fa-solid fa-user-plus"></i> Pré-Cadastro</a>
-        <a href="https://wa.me/+5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
+        <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
     </nav>
 </header>
 
@@ -263,8 +270,8 @@
 
     <div class="grade-catalogo">
         <!-- VIP 1 — Eduarda -->
-        <div class="cartao">
-            <img src="vip1.png" alt="Eduarda Souza" class="foto-catalogo" onclick="abrirModal(this.src, 'Eduarda Souza')">
+        <div class="cartao" onclick="window.location.href='eduarda.html'">
+            <img src="vip1.png" alt="Eduarda Souza" class="foto-catalogo" onclick="event.stopPropagation(); abrirModal(this.src, 'Eduarda Souza')">
             <div class="info-cartao">
                 <h2 class="nome-cartao">Eduarda Souza</h2>
                 <div class="dados-cartao">
@@ -274,15 +281,16 @@
                 <p class="desc-cartao">
                     Uma mulher que carrega o <em>fogo da paixão</em> em cada olhar. Combina doçura e desejo, com presença que envolve e seduz sem esforço.
                 </p>
-                <a href="https://wa.me/+5551980612941?text=Olá!%20Quero%20contatar%20a%20Eduarda%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
+                <span class="ver-perfil">Ver perfil completo →</span>
+                <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Eduarda%20do%20Catálogo%20LUX" target="_blank" class="botao-whats" onclick="event.stopPropagation()">
                     <i class="fa-brands fa-whatsapp"></i> Contatar
                 </a>
             </div>
         </div>
 
         <!-- VIP 3 — Larissa -->
-        <div class="cartao">
-            <img src="vip3.png" alt="Larissa Hoffman" class="foto-catalogo" onclick="abrirModal(this.src, 'Larissa Hoffman')">
+        <div class="cartao" onclick="window.location.href='larissa.html'">
+            <img src="vip3.png" alt="Larissa Hoffman" class="foto-catalogo" onclick="event.stopPropagation(); abrirModal(this.src, 'Larissa Hoffman')">
             <div class="info-cartao">
                 <h2 class="nome-cartao">Larissa Hoffman</h2>
                 <div class="dados-cartao">
@@ -292,7 +300,8 @@
                 <p class="desc-cartao">
                     Jovem, misteriosa e envolvente. Traz o <em>ardor de um amor proibido</em> e leveza de quem sabe encantar. Sorriso que promete segredos.
                 </p>
-                <a href="https://wa.me/+5551980612941?text=Olá!%20Quero%20contatar%20a%20Larissa%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
+                <span class="ver-perfil">Ver perfil completo →</span>
+                <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Larissa%20do%20Catálogo%20LUX" target="_blank" class="botao-whats" onclick="event.stopPropagation()">
                     <i class="fa-brands fa-whatsapp"></i> Contatar
                 </a>
             </div>
@@ -300,14 +309,13 @@
     </div>
 </main>
 
-<!-- ✅ MODAL DE ZOOM -->
 <div id="modalFoto" class="modal">
     <span class="modal-fechar" onclick="fecharModal()">&times;</span>
     <img src="" alt="Ampliada" class="modal-foto" id="fotoAmpliada">
     <div class="modal-nome" id="nomeModal"></div>
 </div>
 
-<a href="https://wa.me/+5551980612941" target="_blank" class="whatsapp-float">
+<a href="https://wa.me/5551980612941" target="_blank" class="whatsapp-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
@@ -316,18 +324,16 @@
 </footer>
 
 <script>
-// ✅ Funções do Modal
 function abrirModal(caminho, nome) {
     document.getElementById('fotoAmpliada').src = caminho;
     document.getElementById('nomeModal').textContent = nome;
     document.getElementById('modalFoto').classList.add('aberto');
-    document.body.style.overflow = 'hidden'; // Trava rolagem de fundo
+    document.body.style.overflow = 'hidden';
 }
 function fecharModal() {
     document.getElementById('modalFoto').classList.remove('aberto');
     document.body.style.overflow = '';
 }
-// Fecha ao clicar fora da foto
 document.getElementById('modalFoto').addEventListener('click', function(e) {
     if (e.target === this) fecharModal();
 });
