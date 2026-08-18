@@ -94,6 +94,16 @@
             border-radius: 8px;
             border-left: 3px solid #d4af37;
         }
+        .aviso-importante {
+            color: #ffd700;
+            font-size: 13px;
+            margin: 10px 0;
+            padding: 12px;
+            background: rgba(212,175,55,0.15);
+            border-radius: 8px;
+            border-left: 3px solid #ffd700;
+            line-height: 1.6;
+        }
         .termo {
             color: #ccc;
             font-size: 13px;
@@ -160,7 +170,12 @@
 
             <div class="lista-arquivos" id="listaArquivos"></div>
 
-            <!-- 🔒 AVISO IMPORTANTE -->
+            <!-- ⚠️ INSTRUÇÃO IMPORTANTE ADICIONADA -->
+            <div class="aviso-importante">
+                ⚠️ <strong>Atenção:</strong> Após clicar em "Enviar", uma conversa no WhatsApp abrirá com seus dados.<br>
+                <strong>Por favor, anexe suas fotos e vídeo diretamente nesta conversa</strong> e envie. O site envia suas informações, mas os arquivos precisam ser anexados por você na conversa do WhatsApp. Obrigada! 💎
+            </div>
+
             <div class="aviso-fotos">
                 🔒 <strong>Suas fotos e vídeo serão enviadas SOMENTE para avaliação.</strong><br>
                 Apenas se aprovadas serão publicadas no site. Ninguém mais terá acesso.
@@ -222,12 +237,13 @@
 📝 Sobre e disponibilidade:
 ${desc}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂 Arquivos enviados para avaliação:
+📂 Arquivos selecionados:
 ${arquivosTexto}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ LEMBRETE: Por favor, anexe suas fotos e vídeo DIRETAMENTE nesta conversa do WhatsApp! Obrigada. 💎
 ⚠️ APENAS APROVADAS SERÃO PUBLICADAS NO SITE!`;
 
-            window.open(`https://wa.me/+5551980612941?text=${encodeURIComponent(texto)}`);
+            window.open(`https://wa.me/5551980612941?text=${encodeURIComponent(texto)}`);
         }
     </script>
 </body>
