@@ -14,6 +14,7 @@
             --rosa-fundo: #4b1b3a;
             --rosa-borda: #9d4b8c;
             --rosa-claro: #d87fc8;
+            --rosa-botao: #ff1493;
             --azul-botao: #1e3a8a;
             --azul-borda: #3b82f6;
             --verde-whats: #25d366;
@@ -31,7 +32,6 @@
             min-height: 100vh;
         }
 
-        /* Cabeçalho */
         header {
             background: rgba(0,0,0,0.4);
             padding: 1rem 4%;
@@ -62,8 +62,8 @@
             font-size: 0.9rem;
         }
         nav a:hover { background: rgba(255,255,255,0.1); }
+        nav a.ativo { color: var(--dourado-claro); border-bottom: 2px solid var(--dourado); }
 
-        /* Título */
         .titulo {
             text-align: center;
             padding: 2rem 4% 1rem;
@@ -76,7 +76,6 @@
         }
         .titulo p { color: var(--texto-suave); }
 
-        /* Botões de seção */
         .botoes-secao {
             display: flex;
             justify-content: center;
@@ -106,7 +105,6 @@
             box-shadow: 0 0 12px rgba(216, 127, 200, 0.4);
         }
 
-        /* Container dos perfis */
         .container-perfis {
             max-width: 1100px;
             margin: 0 auto;
@@ -124,7 +122,6 @@
             font-size: 1.3rem;
         }
 
-        /* Grade dos perfis */
         .grade-perfis {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -132,7 +129,6 @@
             padding: 0 1rem;
         }
 
-        /* Cartão de perfil */
         .cartao {
             background: var(--fundo-card);
             border-radius: 12px;
@@ -140,7 +136,9 @@
             border: 1px solid rgba(157, 75, 140, 0.4);
             display: flex;
             flex-direction: column;
+            transition: transform .3s;
         }
+        .cartao:hover { transform: translateY(-5px); }
         .foto-cartao {
             width: 100%;
             height: 260px;
@@ -149,6 +147,9 @@
         }
         .corpo-cartao {
             padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         .nome-cartao {
             font-family: 'Playfair Display', serif;
@@ -173,8 +174,26 @@
             line-height: 1.5;
             color: #d8d0d4;
             margin-bottom: 1rem;
+            flex-grow: 1;
         }
         .sobre-cartao strong { color: var(--dourado-claro); }
+
+        .btn-perfil {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(90deg, var(--rosa-botao), #ff69b4);
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 4px 12px rgba(255,20,147,0.3);
+        }
+        .btn-perfil:active { transform: scale(0.98); }
+
         .rodape-cartao {
             text-align: center;
         }
@@ -192,7 +211,6 @@
         }
         .btn-contato:hover { transform: translateY(-2px); }
 
-        /* Voltar */
         .voltar {
             text-align: center;
             margin: 1rem 0 2rem;
@@ -205,7 +223,6 @@
             gap: 0.5rem;
         }
 
-        /* Rodapé */
         footer {
             background: rgba(0,0,0,0.4);
             padding: 1.5rem 4%;
@@ -214,7 +231,6 @@
             color: #aaa;
         }
 
-        /* Responsivo */
         @media (max-width: 768px) {
             .grade-perfis { grid-template-columns: 1fr; }
             .foto-cartao { height: 220px; }
@@ -227,9 +243,11 @@
     <div class="logo"><span style="color:var(--dourado);">⬡</span> LUX — Catálogo</div>
     <nav>
         <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
-        <a href="modelos-femininos.html"><i class="fa-solid fa-file-list"></i> Catálogo</a>
-        <a href="#"><i class="fa-solid fa-user-plus"></i> Pré-Cadastro</a>
-        <a href="#"><i class="fa-solid fa-scale-balanced"></i> Termos</a>
+        <a href="catalago.html"><i class="fa-solid fa-images"></i> Catálogo</a>
+        <a href="modelos-femininos.html" class="ativo"><i class="fa-solid fa-venus"></i> Femininos</a>
+        <a href="modelos-masculinos.html"><i class="fa-solid fa-mars"></i> Masculinos</a>
+        <a href="index.html#cadastro"><i class="fa-solid fa-user-plus"></i> Pré-Cadastro</a>
+        <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
     </nav>
 </header>
 
@@ -240,7 +258,7 @@
 
 <section class="botoes-secao">
     <a href="modelos-masculinos.html" class="btn-secao btn-masc">
-        <i class="fa-solid fa-rotate"></i> Modelos Masculinos
+        <i class="fa-solid fa-mars"></i> Modelos Masculinos
     </a>
     <a href="modelos-femininos.html" class="btn-secao btn-fem">
         <i class="fa-solid fa-venus"></i> Modelos Femininos
@@ -252,11 +270,11 @@
 
     <div class="grade-perfis">
 
-        <!-- PERFIL 1 — Eduarda | vip1.png | Gravataí-RS -->
+        <!-- PERFIL 1 — Eduarda Souza -->
         <div class="cartao">
-            <img src="vip1.png" alt="Eduarda" class="foto-cartao">
+            <img src="vip1.png" alt="Eduarda Souza" class="foto-cartao">
             <div class="corpo-cartao">
-                <h3 class="nome-cartao">Eduarda Souza</h3>
+                <h3 class="nome-cartao">💎 Eduarda Souza</h3>
                 <div class="dados-cartao">
                     <span><i class="fa-solid fa-calendar"></i> 21 anos</span>
                     <span><i class="fa-solid fa-location-dot"></i> Gravataí — RS</span>
@@ -264,6 +282,7 @@
                 <div class="sobre-cartao">
                     <strong>Sobre ela:</strong> Uma mulher que carrega o <em>fogo da paixão</em> em cada olhar. Combina doçura e desejo, com presença que envolve e seduz sem esforço. Elegância natural que desperta curiosidade e acende a imaginação — companhia para <em>memória inesquecível</em>.
                 </div>
+                <a href="eduarda.html" class="btn-perfil">👆 VER PERFIL COMPLETO</a>
                 <div class="rodape-cartao">
                     <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20saber%20sobre%20a%20Eduarda%20da%20LUX" target="_blank" class="btn-contato">
                         <i class="fa-brands fa-whatsapp"></i> Contatar
@@ -272,11 +291,11 @@
             </div>
         </div>
 
-        <!-- PERFIL 2 — Larissa | vip3.png | Gravataí-RS -->
+        <!-- PERFIL 2 — Larissa Hoffman -->
         <div class="cartao">
-            <img src="vip3.png" alt="Larissa" class="foto-cartao">
+            <img src="vip3.png" alt="Larissa Hoffman" class="foto-cartao">
             <div class="corpo-cartao">
-                <h3 class="nome-cartao">Larissa Hoffman</h3>
+                <h3 class="nome-cartao">💎 Larissa Hoffman</h3>
                 <div class="dados-cartao">
                     <span><i class="fa-solid fa-calendar"></i> 20 anos</span>
                     <span><i class="fa-solid fa-location-dot"></i> Gravataí — RS</span>
@@ -284,8 +303,30 @@
                 <div class="sobre-cartao">
                     <strong>Sobre ela:</strong> Jovem, misteriosa e envolvente. Traz o <em>ardor de um amor proibido</em> e leveza de quem sabe encantar. Sorriso que promete segredos, olhar que convida ao mergulho — transforma encontro em <em>jornada de prazer</em>.
                 </div>
+                <a href="larissa.html" class="btn-perfil">👆 VER PERFIL COMPLETO</a>
                 <div class="rodape-cartao">
                     <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20saber%20sobre%20a%20Larissa%20da%20LUX" target="_blank" class="btn-contato">
+                        <i class="fa-brands fa-whatsapp"></i> Contatar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PERFIL 3 — Sara Fortuna (Renata) -->
+        <div class="cartao">
+            <img src="renata-foto.png" alt="Sara Fortuna" class="foto-cartao">
+            <div class="corpo-cartao">
+                <h3 class="nome-cartao">💎 Sara Fortuna</h3>
+                <div class="dados-cartao">
+                    <span><i class="fa-solid fa-calendar"></i> 33 anos</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Porto Alegre — BR</span>
+                </div>
+                <div class="sobre-cartao">
+                    <strong>Sobre ela:</strong> Negra, cor de chocolate. Cintura fina, bunda grande. Bonita de corpo e rosto. Voz macia, doce e aguda, pele macia, atlética. <em>Cheirosa e irresistível.</em> Beleza que encanta e presença que marca.
+                </div>
+                <a href="renata.html" class="btn-perfil">👆 VER PERFIL COMPLETO</a>
+                <div class="rodape-cartao">
+                    <a href="https://wa.me/5551982176973?text=Olá!%20Quero%20saber%20sobre%20a%20Sara%20Fortuna%20da%20LUX" target="_blank" class="btn-contato">
                         <i class="fa-brands fa-whatsapp"></i> Contatar
                     </a>
                 </div>
@@ -296,11 +337,11 @@
 </section>
 
 <div class="voltar">
-    <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Início</a>
+    <a href="catalago.html"><i class="fa-solid fa-arrow-left"></i> Voltar ao Catálogo</a>
 </div>
 
 <footer>
-    © 2026 LUX — Proibido para menores de 18 anos. Todos os direitos reservados. Brasil • Europa.
+    © 2026 LUX — Brasil • Europa | Proibido para menores de 18 anos. Todos os direitos reservados.
 </footer>
 
 </body>
