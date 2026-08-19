@@ -3,126 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduarda — VIP LUX</title>
+    <title>Catálogo — LUX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@600&display=swap');
+
+        :root {
+            --dourado: #c9a227;
+            --dourado-claro: #e6c86e;
+            --neon-rosa: #ff1493;
+            --rosa-fundo: #4b1b3a;
+            --rosa-borda: #9d4b8c;
+            --rosa-claro: #ff69b4;
+            --verde-whats: #25d366;
+            --texto-claro: #f3eef0;
+            --texto-suave: #e0d8dc;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
         body {
-            background:
-                linear-gradient(rgba(0,0,0,0.70), rgba(0,0,0,0.70)),
-                url('banner.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            padding: 20px;
+            background: linear-gradient(rgba(8, 5, 10, 0.75), rgba(8, 5, 10, 0.75)),
+                        url('banner.jpg') center / cover no-repeat fixed;
+            color: #ddd;
             min-height: 100vh;
         }
-        .conteudo { position: relative; z-index: 1; max-width: 420px; margin: 0 auto; }
-        .voltar {
-            display: inline-block;
-            color: #d4af37;
-            text-decoration: none;
-            margin-bottom: 20px;
-            font-size: 15px;
-        }
-        .voltar:hover { text-decoration: underline; }
-        .perfil-card {
-            background: rgba(0,0,0,0.6);
-            border-radius: 20px;
-            padding: 25px;
-            border: 1px solid rgba(212,175,55,0.4);
-            text-align: center;
-        }
-        .foto-modelo {
-            width: 100%;
-            max-width: 280px;
-            height: 360px;
-            object-fit: cover;
-            border-radius: 16px;
-            border: 3px solid #d4af37;
-            margin-bottom: 20px;
-        }
-        h1 {
-            color: #d4af37;
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-        .idade-cidade {
-            color: #ccc;
-            font-size: 15px;
-            margin-bottom: 20px;
-        }
-        .disponivel {
-            display: inline-block;
-            background: rgba(0,200,80,0.2);
-            color: #00ff64;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .descricao {
-            color: #eee;
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            text-align: left;
-        }
-        .dados {
+
+        header {
+            background: rgba(0,0,0,0.4);
+            padding: 1rem 4%;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--dourado-claro);
+            text-shadow: 0 0 8px var(--neon-rosa), 0 0 16px #000;
+        }
+        nav { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        nav a {
+            color: var(--texto-claro);
+            text-decoration: none;
+            padding: 0.4rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        nav a.ativo { color: var(--dourado-claro); border-bottom: 2px solid var(--dourado); }
+
+        main { padding: 3rem 4%; max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: var(--dourado-claro);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .subtitulo { text-align: center; color: var(--texto-suave); margin-bottom: 2rem; }
+
+        .navegacao {
+            display: flex;
             justify-content: center;
-            margin-bottom: 25px;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
-        .dados span {
-            background: rgba(212,175,55,0.15);
-            color: #e6c86e;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 14px;
+        .btn-nav {
+            padding: 0.8rem 1.4rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--rosa-fundo); color: #fff; border: 2px solid var(--rosa-claro);
         }
-        .btn-whatsapp {
+        .btn-nav.masc { background: #1e3a8a; border-color: #3b82f6; }
+
+        .grade-catalogo {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .cartao {
+            background: rgba(15, 11, 18, 0.75);
+            border: 2px solid var(--rosa-borda);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        .foto-catalogo {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+        }
+        .info-cartao { padding: 1.5rem; }
+        .nome-cartao {
+            font-family: 'Playfair Display', serif;
+            color: var(--dourado-claro);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .dados-cartao {
+            font-size: 1rem;
+            color: var(--texto-suave);
+            margin-bottom: 1rem;
+        }
+        .dados-cartao i { color: var(--neon-rosa); margin-right: 0.5rem; }
+        .desc-cartao {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .btn-perfil {
             display: block;
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(90deg, #25d366, #128c7e);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 30px;
+            text-align: center;
+            background: linear-gradient(90deg, #ff1493, #ff69b4);
+            color: white;
+            font-size: 1.1rem;
             font-weight: bold;
-            font-size: 16px;
-            transition: transform 0.2s;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(255,20,147,0.4);
         }
-        .btn-whatsapp:hover { transform: scale(1.03); }
+        .btn-perfil:active { transform: scale(0.98); }
+
+        .botao-whats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--verde-whats);
+            color: #fff;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: var(--verde-whats);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 28px;
+            text-decoration: none;
+            z-index: 999;
+        }
+
+        footer {
+            background: rgba(0,0,0,0.4);
+            padding: 1.5rem;
+            text-align: center;
+            color: #aaa;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <div class="conteudo">
-        <a href="catalago.html" class="voltar"><i class="fas fa-chevron-left"></i> ← Voltar ao Catálogo</a>
 
-        <div class="perfil-card">
-            <img src="vip1.png" alt="Eduarda" class="foto-modelo">
+<header>
+    <div class="logo"><span style="color:var(--dourado);">⬡</span> LUX</div>
+    <nav>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+        <a href="catalago.html" class="ativo"><i class="fa-solid fa-images"></i> Catálogo</a>
+        <a href="modelos-femininos.html"><i class="fa-solid fa-venus"></i> Femininos</a>
+        <a href="modelos-masculinos.html"><i class="fa-solid fa-mars"></i> Masculinos</a>
+        <a href="index.html#cadastro"><i class="fa-solid fa-user-plus"></i> Pré-Cadastro</a>
+        <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
+    </nav>
+</header>
 
-            <h1>Eduarda Souza</h1>
-            <p class="idade-cidade"><i class="fas fa-map-marker-alt"></i> Gravataí — RS</p>
-            
-            <span class="disponivel">🟢 Disponível</span>
+<main>
+    <h1>👑 Catálogo de Modelos</h1>
+    <p class="subtitulo">Seleção exclusiva — todas de <strong>Gravataí — RS</strong></p>
 
-            <div class="dados">
-                <span>🎂 21 anos</span>
-                <span>📏 1.68m</span>
+    <div class="navegacao">
+        <a href="modelos-femininos.html" class="btn-nav">
+            <i class="fa-solid fa-venus"></i> Modelos Femininos
+        </a>
+        <a href="modelos-masculinos.html" class="btn-nav masc">
+            <i class="fa-solid fa-mars"></i> Modelos Masculinos
+        </a>
+    </div>
+
+    <div class="grade-catalogo">
+        <!-- VIP 1 — Eduarda -->
+        <div class="cartao">
+            <img src="vip1.png" alt="Eduarda Souza" class="foto-catalogo">
+            <div class="info-cartao">
+                <h2 class="nome-cartao">💎 Eduarda Souza</h2>
+                <div class="dados-cartao">
+                    <p><i class="fa-solid fa-calendar"></i> 21 anos</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Gravataí — RS</p>
+                </div>
+                <p class="desc-cartao">
+                    Uma mulher que carrega o fogo da paixão em cada olhar. Combina doçura e desejo, com presença que envolve e seduz sem esforço.
+                </p>
+                <a href="eduarda.html" class="btn-perfil">👆 VER PERFIL COMPLETO</a>
+                <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Eduarda%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
+                    <i class="fa-brands fa-whatsapp"></i> Contatar pelo WhatsApp
+                </a>
             </div>
+        </div>
 
-            <div class="descricao">
-                💋 <strong>Sensualidade e elegância.</strong><br>
-                Uma mulher que carrega o fogo da paixão em cada olhar. Combina doçura e desejo, com presença que envolve e seduz sem esforço. Doce, carinhosa e muito envolvente.<br><br>
-                ✨ <em>Disponível para momentos especiais.</em>
+        <!-- VIP 3 — Larissa -->
+        <div class="cartao">
+            <img src="vip3.png" alt="Larissa Hoffman" class="foto-catalogo">
+            <div class="info-cartao">
+                <h2 class="nome-cartao">💎 Larissa Hoffman</h2>
+                <div class="dados-cartao">
+                    <p><i class="fa-solid fa-calendar"></i> 20 anos</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Gravataí — RS</p>
+                </div>
+                <p class="desc-cartao">
+                    Jovem, misteriosa e envolvente. Traz o ardor de um amor proibido e leveza de quem sabe encantar. Sorriso que promete segredos.
+                </p>
+                <a href="larissa.html" class="btn-perfil">👆 VER PERFIL COMPLETO</a>
+                <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Larissa%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
+                    <i class="fa-brands fa-whatsapp"></i> Contatar pelo WhatsApp
+                </a>
             </div>
-
-            <a href="https://wa.me/5551980612941?text=💎 Olá! Vim pelo site — Gostaria de agendar com a Eduarda." class="btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
-            </a>
         </div>
     </div>
+</main>
+
+<a href="https://wa.me/5551980612941" target="_blank" class="whatsapp-float">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<footer>
+    © 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação. Proibido para menores de 18 anos.
+</footer>
+
 </body>
 </html>
