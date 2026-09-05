@@ -70,6 +70,26 @@
             color: #fff;
             font-size: 15px;
         }
+        .titulo-secao-form {
+            color: #e6c86e;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 18px 0 4px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(212,175,55,0.2);
+        }
+        .grade-endereco {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 0 12px;
+        }
+        .grade-endereco.metade {
+            grid-template-columns: 1fr 1fr;
+        }
+        @media (max-width: 480px) {
+            .grade-endereco { grid-template-columns: 1fr; }
+        }
         .arquivo-envio {
             border: 2px dashed rgba(212,175,55,0.4);
             border-radius: 10px;
@@ -155,6 +175,20 @@
             <input type="number" id="idadeModela" placeholder="Sua idade" min="18" required>
             <input type="text" id="alturaModela" placeholder="Sua altura (ex: 1.65)" required>
             <input type="text" id="cidadeModela" placeholder="Cidade / Região" required>
+
+            <!-- 📍 ENDEREÇO -->
+            <div class="titulo-secao-form">📍 Endereço</div>
+            <div class="grade-endereco">
+                <input type="text" id="enderecoModela" placeholder="Endereço (rua / avenida)" required>
+                <input type="text" id="numeroModela" placeholder="Número" required>
+            </div>
+            <input type="text" id="bairroModela" placeholder="Bairro" required>
+            <div class="grade-endereco metade">
+                <input type="text" id="cidadeEnderecoModela" placeholder="Cidade" required>
+                <input type="text" id="estadoModela" placeholder="Estado" required>
+            </div>
+            <input type="text" id="paisModela" placeholder="País" value="Brasil" required>
+
             <textarea id="experienciaModela" placeholder="Descreva-se e informe sua disponibilidade" rows="4" required></textarea>
 
             <!-- 📸 ENVIO DE FOTOS E VÍDEO -->
@@ -221,6 +255,12 @@
             const idade = document.getElementById('idadeModela').value;
             const altura = document.getElementById('alturaModela').value;
             const cidade = document.getElementById('cidadeModela').value;
+            const endereco = document.getElementById('enderecoModela').value;
+            const numero = document.getElementById('numeroModela').value;
+            const bairro = document.getElementById('bairroModela').value;
+            const cidadeEndereco = document.getElementById('cidadeEnderecoModela').value;
+            const estado = document.getElementById('estadoModela').value;
+            const pais = document.getElementById('paisModela').value;
             const desc = document.getElementById('experienciaModela').value;
 
             let arquivosTexto = nomesArquivos.length > 0 
@@ -234,6 +274,11 @@
 🎂 Idade: ${idade} anos
 📏 Altura: ${altura}
 📍 Cidade/Região: ${cidade}
+🏠 Endereço: ${endereco}, nº ${numero}
+🏘️ Bairro: ${bairro}
+🌆 Cidade: ${cidadeEndereco}
+🗺️ Estado: ${estado}
+🌎 País: ${pais}
 📝 Sobre e disponibilidade:
 ${desc}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -243,7 +288,7 @@ ${arquivosTexto}
 ⚠️ LEMBRETE: Por favor, anexe suas fotos e vídeo DIRETAMENTE nesta conversa do WhatsApp! Obrigada. 💎
 ⚠️ APENAS APROVADAS SERÃO PUBLICADAS NO SITE!`;
 
-            window.open(`https://wa.me/5551980612941?text=${encodeURIComponent(texto)}`);
+            window.open(`https://wa.me/5551980612041?text=${encodeURIComponent(texto)}`);
         }
     </script>
 </body>
