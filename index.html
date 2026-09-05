@@ -54,17 +54,30 @@ nav a:hover{border-bottom:1px solid var(--dourado);color:var(--dourado-claro);te
 .btn-carrossel:hover{background:rgba(0,0,0,.8);box-shadow:0 0 15px rgba(255,215,0,.4)}
 .btn-catalogo{background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;border:none;padding:12px 32px;font-size:16px;font-weight:600;border-radius:8px;cursor:pointer;transition:all .3s;margin:20px auto;display:block;box-shadow:0 4px 15px rgba(255,215,0,.3)}
 .btn-catalogo:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(255,215,0,.5);background:linear-gradient(135deg,#ffb700,#ffd700)}
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:999;justify-content:center;align-items:center;backdrop-filter:blur(3px)}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:999;justify-content:center;align-items:center;backdrop-filter:blur(3px);overflow-y:auto}
 .modal-overlay.ativo{display:flex}
-.modal-catalogo{background:rgba(0,0,0,.95);border-radius:16px;padding:40px 30px;border:2px solid var(--dourado);max-width:500px;width:90%;text-align:center;box-shadow:0 0 30px rgba(255,215,0,.3);backdrop-filter:blur(10px)}
+.modal-catalogo{background:rgba(0,0,0,.95);border-radius:16px;padding:40px 30px;border:2px solid var(--dourado);max-width:500px;width:90%;text-align:center;box-shadow:0 0 30px rgba(255,215,0,.3);backdrop-filter:blur(10px);margin:20px auto}
 .modal-catalogo h2{font-family:'Playfair Display',serif;font-size:28px;color:var(--dourado);margin-bottom:8px;letter-spacing:2px}
 .modal-catalogo p{color:#ddd;margin-bottom:30px;font-size:15px}
 .opcoes-catalogo{display:flex;flex-direction:column;gap:15px}
 .btn-opcao{background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(255,215,0,.1));border:2px solid var(--dourado);color:var(--dourado-claro);padding:16px 24px;font-size:18px;border-radius:10px;cursor:pointer;transition:all .3s;font-weight:600;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:10px}
 .btn-opcao:hover{background:linear-gradient(135deg,var(--dourado),#ffb700);color:#111;transform:translateX(5px);box-shadow:0 0 20px rgba(255,215,0,.4)}
 .btn-opcao i{font-size:20px}
+.btn-voltar{background:rgba(255,215,0,.1);border:2px solid rgba(255,215,0,.3);color:var(--dourado-claro);padding:10px 20px;border-radius:8px;font-size:14px;cursor:pointer;transition:all .3s;margin-top:20px;font-weight:600}
+.btn-voltar:hover{background:rgba(255,215,0,.2);border-color:var(--dourado)}
 .btn-fechar{background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);color:var(--dourado-claro);padding:10px 20px;border-radius:8px;font-size:14px;cursor:pointer;transition:all .3s;margin-top:20px}
 .btn-fechar:hover{background:rgba(255,215,0,.2);border-color:var(--dourado)}
+.select-regiao{background:rgba(255,215,0,.1);border:2px solid var(--dourado);color:var(--dourado-claro);padding:12px 16px;border-radius:8px;font-size:16px;width:100%;cursor:pointer;transition:all .3s;font-weight:600;margin-bottom:25px}
+.select-regiao:hover{background:rgba(255,215,0,.2);box-shadow:0 0 15px rgba(255,215,0,.3)}
+.select-regiao option{background:#000;color:#fff;border:1px solid var(--dourado)}
+.grid-modelos{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;margin-top:30px}
+.card-modelo{background:rgba(0,0,0,.55);border-radius:12px;overflow:hidden;border:1px solid rgba(255,215,0,.3);transition:all .3s;cursor:pointer;backdrop-filter:blur(5px)}
+.card-modelo:hover{border-color:var(--dourado);box-shadow:0 0 20px rgba(255,215,0,.3);transform:translateY(-5px)}
+.card-modelo img{width:100%;height:280px;object-fit:cover;display:block}
+.card-modelo-info{padding:15px;text-align:center}
+.card-modelo-nome{color:var(--dourado-claro);font-size:16px;font-weight:600;margin-bottom:5px}
+.card-modelo-idade{color:#999;font-size:13px}
+.card-modelo-localizacao{color:#ccc;font-size:12px;margin-top:8px;line-height:1.4}
 .whatsapp-flutuante{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:all .3s;z-index:100}
 .whatsapp-flutuante:hover{transform:scale(1.1)}
 .baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:all .3s;z-index:100;text-decoration:none}
@@ -85,6 +98,7 @@ header{flex-direction:column;align-items:flex-start}
 .modal-catalogo{padding:30px 20px;max-width:90%}
 .modal-catalogo h2{font-size:24px}
 .btn-opcao{font-size:16px;padding:14px 20px}
+.grid-modelos{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:15px}
 }
 @media (prefers-reduced-motion:reduce){
 *{animation:none!important;transition:none!important}
@@ -130,7 +144,7 @@ header{flex-direction:column;align-items:flex-start}
 <span class="status disponivel">● DISPONÍVEL</span>
 <img src="vip1.png?t=1722877316" alt="Eduarda — VIP LUX" class="foto-modelo" onclick="contratar('Eduarda', '21 anos — Gravataí/RS')" loading="lazy">
 <h3>Eduarda <span class="idade">21 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS</p>
+<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS — Brasil</p>
 <p class="desc">Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.</p>
 <span class="dica-clique">👆 Clique na foto para contratar</span>
 </div>
@@ -141,7 +155,7 @@ header{flex-direction:column;align-items:flex-start}
 <span class="status disponivel">● DISPONÍVEL</span>
 <img src="vip2.png?t=1722877316" alt="Sarah — VIP LUX" class="foto-modelo" onclick="contratar('Sarah', '27 anos — Gravataí/RS')" loading="lazy">
 <h3>Sarah <span class="idade">27 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS</p>
+<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS — Brasil</p>
 <p class="desc">Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.</p>
 <span class="dica-clique">👆 Clique na foto para contratar</span>
 </div>
@@ -152,7 +166,7 @@ header{flex-direction:column;align-items:flex-start}
 <span class="status disponivel">● DISPONÍVEL</span>
 <img src="vip3.png?t=1722877316" alt="Larissa — VIP LUX" class="foto-modelo" onclick="contratar('Larissa', '20 anos — Gravataí/RS')" loading="lazy">
 <h3>Larissa <span class="idade">20 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS</p>
+<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS — Brasil</p>
 <p class="desc">Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.</p>
 <span class="dica-clique">👆 Clique na foto para contratar</span>
 </div>
@@ -163,7 +177,7 @@ header{flex-direction:column;align-items:flex-start}
 <span class="status disponivel">● DISPONÍVEL</span>
 <img src="vip4.png?t=1722877316" alt="Vitória — VIP LUX" class="foto-modelo" onclick="contratar('Vitória', '24 anos — Gravataí/RS')" loading="lazy">
 <h3>Vitória <span class="idade">24 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS</p>
+<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí — RS — Brasil</p>
 <p class="desc">Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.</p>
 <span class="dica-clique">👆 Clique na foto para contratar</span>
 </div>
@@ -184,17 +198,46 @@ header{flex-direction:column;align-items:flex-start}
 <!-- Modal do Catálogo -->
 <div class="modal-overlay" id="modalCatalogo" onclick="fecharCatalogo(event)">
 <div class="modal-catalogo" onclick="event.stopPropagation()">
+<!-- Tela 1: Escolher Categoria -->
+<div id="telaPrincipal">
 <h2>Catálogo LUX</h2>
 <p>Escolha uma categoria para explorar nossos modelos:</p>
 <div class="opcoes-catalogo">
-<a href="modelos-femininos.html" class="btn-opcao">
+<button class="btn-opcao" onclick="selecionarCategoria('feminino')">
 <i class="fas fa-venus"></i> Femininas
-</a>
-<a href="modelos-masculinos.html" class="btn-opcao">
+</button>
+<button class="btn-opcao" onclick="selecionarCategoria('masculino')">
 <i class="fas fa-mars"></i> Masculinos
-</a>
+</button>
 </div>
 <button class="btn-fechar" onclick="fecharCatalogo()">Fechar</button>
+</div>
+
+<!-- Tela 2: Selecionar Região -->
+<div id="telaRegiao" style="display:none;">
+<h2>Selecione a Região</h2>
+<p>Escolha a localização desejada:</p>
+<select class="select-regiao" id="seletorRegiao" onchange="filtrarPorRegiao()">
+<option value="">-- Selecione uma região --</option>
+<option value="Gravataí, RS, Brasil">Gravataí — RS — Brasil</option>
+<option value="Porto Alegre, RS, Brasil">Porto Alegre — RS — Brasil</option>
+<option value="Canoas, RS, Brasil">Canoas — RS — Brasil</option>
+<option value="São Leopoldo, RS, Brasil">São Leopoldo — RS — Brasil</option>
+<option value="Curitiba, PR, Brasil">Curitiba — PR — Brasil</option>
+<option value="São Paulo, SP, Brasil">São Paulo — SP — Brasil</option>
+<option value="Rio de Janeiro, RJ, Brasil">Rio de Janeiro — RJ — Brasil</option>
+<option value="Belo Horizonte, MG, Brasil">Belo Horizonte — MG — Brasil</option>
+<option value="Brasília, DF, Brasil">Brasília — DF — Brasil</option>
+<option value="Lisboa, Portugal">Lisboa — Portugal</option>
+<option value="Porto, Portugal">Porto — Portugal</option>
+<option value="Barcelona, Espanha">Barcelona — Espanha</option>
+<option value="Madrid, Espanha">Madrid — Espanha</option>
+<option value="Paris, França">Paris — França</option>
+<option value="Londres, Reino Unido">Londres — Reino Unido</option>
+</select>
+<div class="grid-modelos" id="gridModelos"></div>
+<button class="btn-voltar" onclick="voltarTelaCategoria()">← Voltar</button>
+</div>
 </div>
 </div>
 
@@ -207,13 +250,117 @@ header{flex-direction:column;align-items:flex-start}
 </a>
 
 <script>
+// Base de dados de modelos
+const modelos = {
+  feminino: [
+    { nome: 'Eduarda', idade: 21, localizacao: 'Gravataí, RS, Brasil', foto: 'vip1.png?t=1722877316', desc: 'Sensualidade e paixão' },
+    { nome: 'Sarah', idade: 27, localizacao: 'Gravataí, RS, Brasil', foto: 'vip2.png?t=1722877316', desc: 'Elegância e sofisticação' },
+    { nome: 'Larissa', idade: 20, localizacao: 'Gravataí, RS, Brasil', foto: 'vip3.png?t=1722877316', desc: 'Jovem e intensa' },
+    { nome: 'Vitória', idade: 24, localizacao: 'Gravataí, RS, Brasil', foto: 'vip4.png?t=1722877316', desc: 'Beleza e fogo' },
+    { nome: 'Carolina', idade: 23, localizacao: 'Porto Alegre, RS, Brasil', foto: 'vip1.png?t=1722877316', desc: 'Charme e elegância' },
+    { nome: 'Fernanda', idade: 25, localizacao: 'Curitiba, PR, Brasil', foto: 'vip2.png?t=1722877316', desc: 'Apaixonante e sensual' },
+    { nome: 'Isabella', idade: 22, localizacao: 'São Paulo, SP, Brasil', foto: 'vip3.png?t=1722877316', desc: 'Poesia em movimento' },
+    { nome: 'Beatriz', idade: 26, localizacao: 'Rio de Janeiro, RJ, Brasil', foto: 'vip4.png?t=1722877316', desc: 'Sofisticação pura' },
+    { nome: 'Amelie', idade: 21, localizacao: 'Paris, França', foto: 'vip1.png?t=1722877316', desc: 'Encanto francês' },
+    { nome: 'Sofia', idade: 24, localizacao: 'Barcelona, Espanha', foto: 'vip2.png?t=1722877316', desc: 'Paixão espanhola' },
+  ],
+  masculino: [
+    { nome: 'Diego', idade: 26, localizacao: 'Gravataí, RS, Brasil', foto: 'vip1.png?t=1722877316', desc: 'Charme e virilidade' },
+    { nome: 'Lucas', idade: 24, localizacao: 'Porto Alegre, RS, Brasil', foto: 'vip2.png?t=1722877316', desc: 'Elegância masculina' },
+    { nome: 'Felipe', idade: 25, localizacao: 'Curitiba, PR, Brasil', foto: 'vip3.png?t=1722877316', desc: 'Sofisticação' },
+    { nome: 'André', idade: 27, localizacao: 'São Paulo, SP, Brasil', foto: 'vip4.png?t=1722877316', desc: 'Força e elegância' },
+    { nome: 'Rafael', idade: 23, localizacao: 'Rio de Janeiro, RJ, Brasil', foto: 'vip1.png?t=1722877316', desc: 'Carisma irresistível' },
+    { nome: 'Carlos', idade: 28, localizacao: 'Lisboa, Portugal', foto: 'vip2.png?t=1722877316', desc: 'Sofisticado' },
+    { nome: 'Marco', idade: 25, localizacao: 'Barcelona, Espanha', foto: 'vip3.png?t=1722877316', desc: 'Paixão latina' },
+    { nome: 'Jean', idade: 26, localizacao: 'Paris, França', foto: 'vip4.png?t=1722877316', desc: 'Charme parisiense' },
+  ]
+};
+
+let categoriaAtual = '';
+
 if('serviceWorker'in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').then(r=>console.log('SW registrado')).catch(e=>console.error('Erro SW:',e))},false)}
+
 let posicaoAtual=0;
-function deslizar(direcao){const container=document.getElementById('areaRoleta');const largura=container.parentElement.offsetWidth;posicaoAtual+=direcao;const maxPosicao=container.children.length-1;if(posicaoAtual>maxPosicao)posicaoAtual=0;if(posicaoAtual<0)posicaoAtual=maxPosicao;container.style.transform=`translateX(${-posicaoAtual*largura}px)`}
-function contratar(nome,info){const mensagem=`Olá! Gostaria de contratar ${nome} (${info}). Pode me ajudar?`;window.open(`https://wa.me/+5551980612941?text=${encodeURIComponent(mensagem)}`,'_blank')}
-function abrirCatalogo(){document.getElementById('modalCatalogo').classList.add('ativo')}
-function fecharCatalogo(event){if(event&&event.target.id!=='modalCatalogo')return;document.getElementById('modalCatalogo').classList.remove('ativo')}
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape')fecharCatalogo()})
+
+function deslizar(direcao){
+  const container=document.getElementById('areaRoleta');
+  const largura=container.parentElement.offsetWidth;
+  posicaoAtual+=direcao;
+  const maxPosicao=container.children.length-1;
+  if(posicaoAtual>maxPosicao)posicaoAtual=0;
+  if(posicaoAtual<0)posicaoAtual=maxPosicao;
+  container.style.transform=`translateX(${-posicaoAtual*largura}px)`
+}
+
+function contratar(nome,info){
+  const mensagem=`Olá! Gostaria de contratar ${nome} (${info}). Pode me ajudar?`;
+  window.open(`https://wa.me/+5551980612941?text=${encodeURIComponent(mensagem)}`,'_blank')
+}
+
+function abrirCatalogo(){
+  document.getElementById('modalCatalogo').classList.add('ativo');
+  document.getElementById('telaPrincipal').style.display='block';
+  document.getElementById('telaRegiao').style.display='none';
+}
+
+function fecharCatalogo(event){
+  if(event&&event.target.id!=='modalCatalogo')return;
+  document.getElementById('modalCatalogo').classList.remove('ativo');
+}
+
+function selecionarCategoria(categoria){
+  categoriaAtual = categoria;
+  document.getElementById('telaPrincipal').style.display='none';
+  document.getElementById('telaRegiao').style.display='block';
+  document.getElementById('seletorRegiao').value='';
+  document.getElementById('gridModelos').innerHTML='';
+}
+
+function voltarTelaCategoria(){
+  document.getElementById('telaPrincipal').style.display='block';
+  document.getElementById('telaRegiao').style.display='none';
+  categoriaAtual='';
+}
+
+function filtrarPorRegiao(){
+  const regiao = document.getElementById('seletorRegiao').value;
+  const grid = document.getElementById('gridModelos');
+  grid.innerHTML='';
+
+  if(!regiao){
+    grid.innerHTML='<p style="color:#ddd;grid-column:1/-1;text-align:center;">Selecione uma região para ver os modelos</p>';
+    return;
+  }
+
+  const modelosFiltrados = modelos[categoriaAtual].filter(m => m.localizacao === regiao);
+
+  if(modelosFiltrados.length === 0){
+    grid.innerHTML='<p style="color:#ddd;grid-column:1/-1;text-align:center;">Nenhum modelo disponível nesta região</p>';
+    return;
+  }
+
+  modelosFiltrados.forEach(modelo => {
+    const card = document.createElement('div');
+    card.className = 'card-modelo';
+    card.onclick = () => contratar(modelo.nome, `${modelo.idade} anos — ${modelo.localizacao}`);
+    card.innerHTML = `
+      <img src="${modelo.foto}" alt="${modelo.nome}" loading="lazy">
+      <div class="card-modelo-info">
+        <div class="card-modelo-nome">${modelo.nome}</div>
+        <div class="card-modelo-idade">${modelo.idade} anos</div>
+        <div class="card-modelo-localizacao">
+          <i class="fas fa-map-marker-alt"></i> ${modelo.localizacao}
+        </div>
+        <div style="color:#bbb;font-size:12px;margin-top:6px;font-style:italic">${modelo.desc}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape')fecharCatalogo()
+})
 </script>
 </body>
 </html>
