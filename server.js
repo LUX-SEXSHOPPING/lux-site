@@ -60,7 +60,7 @@ app.use((req, res, next) => {
     if (blocked) return res.sendStatus(404);
     return next();
 });
-app.use(express.static(root, { index: 'index.html', dotfiles: 'deny' }));
+app.use(express.static(path.join(root, 'public'), { index: 'index.html', dotfiles: 'deny' }));
 
 app.post('/api/pre-cadastros', (req, res) => {
     req.uploadId = crypto.randomUUID();
@@ -161,8 +161,12 @@ function isRateLimited(req) {
     return recent.length > 60;
 }
 
-app.get('/media/:id/:filename', (req, res) => {
+app.use('/media', (req, res, next) => {
     if (isRateLimited(req)) return res.status(429).json({ erro: 'Muitas solicitações. Tente novamente.' });
+    return next();
+});
+
+app.get('/media/:id/:filename', (req, res) => {
     const record = readRecords().find((item) => item.id === req.params.id);
     if (!record || record.status !== 'aprovado' || ![...record.fotos, record.video].includes(req.params.filename)) {
         return res.sendStatus(404);
