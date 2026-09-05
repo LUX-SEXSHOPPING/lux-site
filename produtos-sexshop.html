@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUX Store | Produtos Sensuais</title>
+  <meta name="description" content="Loja virtual LUX com produtos sensuais premium, carrinho e checkout completo." />
+  <style>
+    :root{--bg:#0a0a0f;--card:#12121a;--card-2:#181824;--gold:#d4af37;--gold-soft:#f0d98a;--text:#f5f5f7;--muted:#b6b6c4;--danger:#ff5d73;--ok:#34d399;--accent:#8b1e3f;--accent-2:#b32654;--border:rgba(212,175,55,0.25);--shadow:0 10px 30px rgba(0,0,0,.35);--radius:16px}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(1200px 500px at 20% -10%, rgba(179,38,84,.25), transparent 55%),radial-gradient(900px 500px at 110% 10%, rgba(212,175,55,.12), transparent 45%),var(--bg);color:var(--text)}
+    .container{width:min(1200px,92%);margin:0 auto} header{position:sticky;top:0;z-index:50;backdrop-filter: blur(10px);background:rgba(10,10,15,.75);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}.brand{display:flex;align-items:center;gap:10px;font-weight:700}.brand-badge{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#1a1a1a;font-weight:800}
+    .actions{display:flex;gap:10px}.btn{border:none;cursor:pointer;border-radius:12px;padding:10px 14px;font-weight:600}.btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.18)}.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#1a1a1a}
+    .cart-btn{position:relative}.badge{position:absolute;top:-8px;right:-8px;min-width:20px;height:20px;border-radius:999px;display:grid;place-items:center;background:var(--danger);color:#fff;font-size:11px;font-weight:700;padding:0 6px}
+    .hero{padding:56px 0 30px}.hero-wrap{background:linear-gradient(145deg, rgba(212,175,55,.12), rgba(179,38,84,.14));border:1px solid var(--border);border-radius:24px;padding:36px;box-shadow:var(--shadow)}
+    .hero h1{margin:0 0 10px;font-size:clamp(1.8rem,3.4vw,3rem)}.hero p{margin:0;color:var(--muted);max-width:760px}.notice{margin-top:16px;border-left:3px solid var(--gold);background:rgba(212,175,55,.08);padding:12px 14px;border-radius:10px;color:#f6e7b7}
+    .section-title{margin:26px 0 16px;font-size:1.15rem;color:var(--gold-soft)} .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-bottom:40px}
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}} @media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}} @media (max-width:520px){.grid{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .thumb{height:170px;background:linear-gradient(130deg,rgba(212,175,55,.18),rgba(139,30,63,.2));display:grid;place-items:center;font-size:2rem}
+    .card-body{padding:14px}.name{margin:0 0 6px}.desc{margin:0;color:var(--muted);font-size:.92rem;line-height:1.35;min-height:38px}.row{margin-top:12px;display:flex;justify-content:space-between;align-items:center}
+    .price{font-size:1.05rem;font-weight:800;color:var(--gold-soft)} .btn-add{background:transparent;border:1px solid var(--gold);color:var(--gold-soft);border-radius:10px;padding:8px 10px;font-weight:700;cursor:pointer}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:.22s;z-index:80}.overlay.show{opacity:1;visibility:visible}
+    .drawer{position:fixed;top:0;right:-460px;width:min(460px,100%);height:100vh;background:#0f0f17;z-index:90;border-left:1px solid rgba(255,255,255,.08);transition:.28s;display:flex;flex-direction:column}.drawer.show{right:0}
+    .drawer-head{padding:16px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between}.icon-btn{background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;width:34px;height:34px;border-radius:10px;cursor:pointer}
+    .cart-list{padding:12px 16px;overflow:auto;flex:1}.item{border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px;margin-bottom:10px;background:rgba(255,255,255,.02)}
+    .item-top{display:flex;justify-content:space-between}.item-price{color:var(--gold-soft);font-weight:700}.qty{margin-top:8px;display:flex;align-items:center;gap:8px}.qty button{width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;cursor:pointer}
+    .summary{padding:14px 16px;border-top:1px solid rgba(255,255,255,.08);background:#11111a}.sum-line{display:flex;justify-content:space-between;margin-bottom:8px;color:var(--muted)}.sum-total{display:flex;justify-content:space-between;font-weight:800;font-size:1.08rem}
+    .checkout-btn{margin-top:12px;width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#1a1a1a;border:none;border-radius:12px;padding:12px;font-weight:800;cursor:pointer}
+    .checkout{margin:12px 0 60px;background:linear-gradient(180deg,#11111a,#161622);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:20px;box-shadow:var(--shadow)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.full{grid-column:1/-1}@media (max-width:760px){.form-grid{grid-template-columns:1fr}}
+    label{display:block;font-size:.88rem;margin-bottom:6px;color:#d8d8e4} input,select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.16);background:#0e0e16;color:#fff}
+    .pay-box{margin-top:14px;padding:14px;border:1px dashed rgba(212,175,55,.45);border-radius:12px;background:rgba(212,175,55,.07);color:#f6e7b7}.final-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    footer{padding:30px 0 50px;color:var(--muted);font-size:.9rem;text-align:center}
+  </style>
+</head>
+<body>
+<header><div class="container nav"><div class="brand"><div class="brand-badge">L</div><span>LUX Store</span></div><div class="actions"><button class="btn btn-outline" onclick="document.getElementById('checkout').scrollIntoView({behavior:'smooth'})">Checkout</button><button class="btn btn-gold cart-btn" id="openCart">Carrinho <span class="badge" id="cartCount">0</span></button></div></div></header>
+<main class="container">
+<section class="hero"><div class="hero-wrap"><h1>Produtos Sensuais Premium com Discrição e Elegância</h1><p>Escolha seus produtos, finalize no carrinho e conclua o pedido com atendimento humanizado.</p><div class="notice"><strong>Política de confirmação:</strong> para iniciar separação e envio, o pagamento deve ser confirmado primeiro.</div></div></section>
+<h3 class="section-title">Catálogo em destaque</h3><section class="grid" id="productsGrid"></section>
+<section class="checkout" id="checkout"><h2>Finalizar pedido</h2><form id="checkoutForm"><div class="form-grid">
+<div class="full"><label>Nome completo</label><input type="text" id="nome" required /></div>
+<div><label>CPF</label><input type="text" id="cpf" maxlength="14" required /></div>
+<div><label>E-mail</label><input type="email" id="email" required /></div>
+<div><label>Telefone (WhatsApp)</label><input type="tel" id="telefone" required /></div>
+<div><label>CEP</label><input type="text" id="cep" maxlength="9" required /></div>
+<div><label>Endereço</label><input type="text" id="endereco" required /></div>
+<div><label>Número</label><input type="text" id="numero" required /></div>
+<div><label>Complemento</label><input type="text" id="complemento" /></div>
+<div><label>Bairro</label><input type="text" id="bairro" required /></div>
+<div><label>Cidade</label><input type="text" id="cidade" required /></div>
+<div><label>Estado (UF)</label><input type="text" id="estado" maxlength="2" required /></div>
+<div><label>Forma de pagamento</label><select id="pagamento" required><option>PIX</option><option>Cartão</option><option>Boleto</option></select></div>
+</div><div class="pay-box"><strong>Importante:</strong> o pedido é liberado para separação após confirmação do pagamento.</div><div class="final-row"><button type="submit" class="btn btn-gold">Enviar pedido no WhatsApp</button></div></form></section>
+</main>
+<div class="overlay" id="overlay"></div><aside class="drawer" id="drawer"><div class="drawer-head"><h4>Seu carrinho</h4><button class="icon-btn" id="closeCart">✕</button></div><div class="cart-list" id="cartList"></div><div class="summary"><div class="sum-line"><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div><div class="sum-total"><span>Total</span><span id="total">R$ 0,00</span></div><button class="checkout-btn" onclick="goCheckout()">Ir para checkout</button></div></aside>
+<footer>© 2026 LUX Store — Atendimento discreto, elegante e profissional.</footer>
+<script>
+const whatsappNumber="5511987654321";
+const products=[
+{id:1,name:"Vibrador Bullet Recarregável",price:79.9,emoji:"💫",desc:"Compacto e silencioso."},
+{id:2,name:"Vibrador Rabbit Premium",price:249.9,emoji:"🐇",desc:"Estimulação dupla com modos intensos."},
+{id:3,name:"Sugador Clitoriano Lux",price:219.9,emoji:"💖",desc:"Tecnologia de pulsação a vácuo."},
+{id:4,name:"Plug Anal em Silicone P",price:69.9,emoji:"🔹",desc:"Toque suave para iniciantes."},
+{id:5,name:"Plug Anal em Silicone M",price:89.9,emoji:"🔷",desc:"Conforto com base segura."},
+{id:6,name:"Cinta com Vibro",price:329.9,emoji:"⚡",desc:"Desempenho e ajuste confortável."},
+{id:7,name:"Gel Excitante Térmico",price:49.9,emoji:"🔥",desc:"Aquecimento suave e prazeroso."},
+{id:8,name:"Lubrificante à Base d'Água 200ml",price:39.9,emoji:"💧",desc:"Textura leve e alta durabilidade."},
+{id:9,name:"Lubrificante Siliconado 100ml",price:59.9,emoji:"🫧",desc:"Deslize prolongado premium."},
+{id:10,name:"Algema Acolchoada",price:89.9,emoji:"⛓️",desc:"Confortável e resistente."},
+{id:11,name:"Venda de Cetim",price:29.9,emoji:"🎀",desc:"Toque delicado e elegante."},
+{id:12,name:"Chicote Soft Touch",price:69.9,emoji:"🖤",desc:"Material flexível com acabamento fino."},
+{id:13,name:"Dado Erótico Deluxe",price:34.9,emoji:"🎲",desc:"Brincadeira divertida para casal."},
+{id:14,name:"Lingerie Body Rendado",price:119.9,emoji:"👗",desc:"Modelagem sensual premium."},
+{id:15,name:"Fantasia Sensual Premium",price:149.9,emoji:"✨",desc:"Visual marcante para ocasiões especiais."},
+{id:16,name:"Vela para Massagem 120g",price:74.9,emoji:"🕯️",desc:"Aroma sofisticado e toque quente."},
+{id:17,name:"Óleo Corporal Afrodisíaco",price:64.9,emoji:"🌹",desc:"Massagem envolvente e perfumada."},
+{id:18,name:"Kit Casal Iniciante",price:159.9,emoji:"🎁",desc:"Seleção completa para começar."},
+{id:19,name:"Kit Casal Intensidade",price:249.9,emoji:"💎",desc:"Experiência premium a dois."},
+{id:20,name:"Masturbador Masculino Soft",price:139.9,emoji:"🔺",desc:"Textura interna macia e realista."}
+];
+let cart=[];const productsGrid=document.getElementById("productsGrid"),cartList=document.getElementById("cartList"),cartCount=document.getElementById("cartCount"),subtotalEl=document.getElementById("subtotal"),totalEl=document.getElementById("total");
+function brl(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+function renderProducts(){productsGrid.innerHTML=products.map(p=>`<article class='card'><div class='thumb'>${p.emoji}</div><div class='card-body'><h4 class='name'>${p.name}</h4><p class='desc'>${p.desc}</p><div class='row'><span class='price'>${brl(p.price)}</span><button class='btn-add' onclick='addToCart(${p.id})'>Adicionar</button></div></div></article>`).join("")}
+function addToCart(id){const f=cart.find(i=>i.id===id);if(f)f.qty++;else{const p=products.find(x=>x.id===id);cart.push({...p,qty:1})}renderCart();openCart()}
+function changeQty(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)cart=cart.filter(x=>x.id!==id);renderCart()}
+function cartSubtotal(){return cart.reduce((a,i)=>a+i.price*i.qty,0)}
+function renderCart(){cartCount.textContent=cart.reduce((a,i)=>a+i.qty,0);cartList.innerHTML=cart.length?cart.map(i=>`<div class='item'><div class='item-top'><span>${i.name}</span><span class='item-price'>${brl(i.price*i.qty)}</span></div><div class='qty'><button onclick='changeQty(${i.id},-1)'>−</button><span>${i.qty}</span><button onclick='changeQty(${i.id},1)'>+</button></div></div>`).join(""):"<p style='color:var(--muted)'>Seu carrinho está vazio.</p>";const s=cartSubtotal();subtotalEl.textContent=brl(s);totalEl.textContent=brl(s)}
+const overlay=document.getElementById("overlay"),drawer=document.getElementById("drawer");document.getElementById("openCart").onclick=openCart;document.getElementById("closeCart").onclick=closeCart;overlay.onclick=closeCart;
+function openCart(){overlay.classList.add("show");drawer.classList.add("show")} function closeCart(){overlay.classList.remove("show");drawer.classList.remove("show")} function goCheckout(){closeCart();document.getElementById('checkout').scrollIntoView({behavior:'smooth'})}
+function formData(){return{nome:nome.value.trim(),cpf:cpf.value.trim(),email:email.value.trim(),telefone:telefone.value.trim(),cep:cep.value.trim(),endereco:endereco.value.trim(),numero:numero.value.trim(),complemento:complemento.value.trim(),bairro:bairro.value.trim(),cidade:cidade.value.trim(),estado:estado.value.trim().toUpperCase(),pagamento:pagamento.value}}
+function valid(d){return ["nome","cpf","email","telefone","cep","endereco","numero","bairro","cidade","estado","pagamento"].every(k=>d[k])&&cart.length>0}
+function build(d){const itens=cart.map(i=>`- ${i.name} x${i.qty} (${brl(i.price*i.qty)})`).join('\n');return `🛍️ *Novo Pedido - LUX Store*\n\n*Itens:*\n${itens}\n\n*Total:* ${brl(cartSubtotal())}\n*Pagamento:* ${d.pagamento}\n\n*Cliente:*\nNome: ${d.nome}\nCPF: ${d.cpf}\nE-mail: ${d.email}\nTelefone: ${d.telefone}\n\n*Entrega:*\nCEP: ${d.cep}\nEndereço: ${d.endereco}, Nº ${d.numero}\nComplemento: ${d.complemento||'Não informado'}\nBairro: ${d.bairro}\nCidade/UF: ${d.cidade}/${d.estado}\n\nConfirmação: pagamento deve ser confirmado para liberação do envio.`}
+checkoutForm.addEventListener('submit',e=>{e.preventDefault();const d=formData();if(!valid(d))return alert('Preencha os campos obrigatórios e adicione itens ao carrinho.');window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(build(d))}`,'_blank')});
+renderProducts();renderCart();
+</script>
+</body>
+</html>
