@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lux-app-v1';
+const CACHE_NAME = 'lux-app-v2';
 const ARQUIVOS = [
   './',
   './index.html',

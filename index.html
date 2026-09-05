@@ -4,170 +4,282 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#c9a227">
-<meta name="description" content="LUX — Sensualidade & Sofisticação. Conectamos momentos especiais com pessoas extraordinárias.">
-<title>LUX — Sensualidade & Sofisticação</title>
+<meta name="description" content="LUX — Sensualidade &amp; Sofisticação. Conectamos momentos especiais com pessoas extraordinárias.">
+<title>LUX — Sensualidade &amp; Sofisticação</title>
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="dns-prefetch" href="https://wa.me">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700;1,800&amp;display=swap" as="style">
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700;1,800&amp;display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root{--dourado:#ffd700;--dourado-claro:#fff176;--texto-claro:#f0e9ec;--fundo-escuro:rgba(0,0,0,.65);--neon-dourado:#ffd700}
+:root{
+  --dourado:#c9a227;
+  --dourado-claro:#f0d878;
+  --champanhe:#f5e6c8;
+  --texto-claro:#efe7dd;
+  --texto-suave:#cbbfaf;
+  --vinho:#6e0f2e;
+  --fundo:#0c0809;
+  --painel:rgba(255,255,255,.045);
+  --borda-dourada:rgba(201,162,39,.28);
+}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:url(banner.jpg) no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;background-attachment:fixed}
-.fundo-tela{background:var(--fundo-escuro);position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;will-change:opacity}
-.conteudo{position:relative;z-index:1;padding:15px 25px;max-width:1100px;margin:0 auto}
-header{display:flex;justify-content:space-between;align-items:center;padding:10px 0 20px;flex-wrap:wrap;gap:20px}
-.logo-lux{font-family:'Playfair Display',serif;font-size:46px;font-weight:800;font-style:italic;color:#fff;letter-spacing:4px;text-shadow:0 0 5px var(--neon-dourado),0 0 10px var(--neon-dourado),0 0 15px var(--neon-dourado)}
-nav{display:flex;flex-wrap:wrap;gap:18px;flex:1;justify-content:flex-end}
-nav a{color:var(--texto-claro);text-decoration:none;padding:8px 14px;font-size:15px;border-bottom:1px solid transparent;transition:all .3s;will-change:transform}
-nav a:hover{border-bottom:1px solid var(--dourado);color:var(--dourado-claro);text-shadow:0 0 6px var(--dourado)}
-.video-container{max-width:800px;width:95%;margin:0 auto 25px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,215,0,.4);box-shadow:0 0 15px rgba(255,215,0,.15);aspect-ratio:16/9}
-.video-container video{width:100%;display:block;object-fit:cover;height:auto}
-.container-imagem-ilustrativa{max-width:800px;width:95%;margin:25px auto 30px;display:flex;justify-content:center;align-items:center;position:relative;aspect-ratio:auto}
-.banner-ilustrativo{width:100%;max-width:100%;height:auto;display:block;border-radius:12px;border:none;box-shadow:none;transition:all .4s ease;object-fit:cover;object-position:center 40%;opacity:.86}
-.banner-ilustrativo:hover{opacity:.88;transform:scale(1.01);filter:grayscale(100%) contrast(1.22) brightness(1.04) saturate(0)}
-.container-imagem-ilustrativa::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(0,0,0,0) 2%,rgba(0,0,0,.25))}
-.container-imagem-ilustrativa::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 70%)}
-.titulo-vips{text-align:center;margin:30px 0 18px}
-.titulo-vips h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--dourado);font-style:italic;letter-spacing:2px}
-.titulo-vips h2::before,.titulo-vips h2::after{content:'✦';color:var(--dourado-claro);font-size:18px;margin:0 12px}
-.carrossel{position:relative;overflow:hidden;margin:0 auto;max-width:360px;width:100%;display:flex;justify-content:center;touch-action:pan-y}
-.carrossel-interno{display:flex;transition:transform .35s ease-out;flex-wrap:nowrap;will-change:transform}
-.card-vip{flex:0 0 100%;padding:10px;box-sizing:border-box;display:flex;justify-content:center;align-items:center;min-width:100%}
-.perfil{background:rgba(0,0,0,.55);border-radius:16px;padding:20px;text-align:center;border:1px solid rgba(255,215,0,.3);display:flex;flex-direction:column;align-items:center;width:100%;backdrop-filter:blur(5px)}
-.status{display:inline-block;padding:5px 15px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:12px}
-.disponivel{background:linear-gradient(90deg,#00a86b,#2ecc71);color:#fff}
-.offline{background:linear-gradient(90deg,#555,#777);color:#ccc}
-.foto-modelo{display:block;margin:0 auto 12px;width:100%;max-width:240px;height:320px;object-fit:cover;object-position:center top;border-radius:12px;cursor:pointer;transition:transform .3s,box-shadow .3s}
-.foto-modelo:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(255,215,0,.4)}
-.perfil h3{color:var(--dourado-claro);font-size:19px;margin-bottom:4px}
-.perfil .idade{font-size:14px;color:#999;margin-left:6px}
-.perfil .cidade{color:#ccc;font-size:14px;margin:6px 0}
-.perfil .desc{color:#ddd;font-style:italic;font-size:14px;margin-bottom:8px;line-height:1.5}
-.dica-clique{color:var(--dourado-claro);font-size:11px;opacity:.8}
-.botoes-navegacao{display:flex;justify-content:space-between;position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);pointer-events:none;z-index:10}
-.btn-carrossel{background:rgba(0,0,0,.6);color:var(--dourado);border:none;font-size:26px;padding:8px 14px;cursor:pointer;border-radius:50%;margin:0 5px;pointer-events:auto;transition:all .3s;will-change:transform}
-.btn-carrossel:hover{background:rgba(0,0,0,.8);box-shadow:0 0 15px rgba(255,215,0,.4)}
-.btn-catalogo{background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;border:none;padding:12px 32px;font-size:16px;font-weight:600;border-radius:8px;cursor:pointer;transition:all .3s;margin:20px auto;display:block}
-.btn-catalogo:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(255,215,0,.5);background:linear-gradient(135deg,#ffb700,#ffd700)}
-.sobre{background:rgba(0,0,0,.55);border-radius:16px;padding:25px;margin:35px 0 25px;border:1px solid rgba(255,215,0,.25);backdrop-filter:blur(2px)}
-.sobre h2{color:var(--dourado);text-align:center;margin-bottom:15px}
-.sobre p{color:#ddd;line-height:1.8;font-style:italic;text-align:center}
-footer{text-align:center;padding:20px;color:#888;font-size:13px;border-top:1px solid rgba(255,215,0,.2);margin-top:20px}
+html{scroll-behavior:smooth}
+body{
+  color:var(--texto-claro);
+  min-height:100vh;
+  background:
+    radial-gradient(900px 520px at 82% -12%, rgba(110,15,46,.38), transparent 60%),
+    radial-gradient(760px 420px at 8% 112%, rgba(201,162,39,.14), transparent 62%),
+    var(--fundo);
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg, transparent 42%, rgba(201,162,39,.05) 48%, transparent 54%),
+    linear-gradient(-115deg, transparent 62%, rgba(110,15,46,.09) 70%, transparent 78%);
+}
+.serif{font-family:'Playfair Display',serif}
+.conteudo{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* ── Header / Navegação ── */
+header{display:flex;justify-content:space-between;align-items:center;padding:24px 0;flex-wrap:wrap;gap:16px}
+.logo-lux{font-family:'Playfair Display',serif;font-size:40px;font-weight:800;font-style:italic;letter-spacing:6px;color:var(--champanhe);text-shadow:0 0 24px rgba(201,162,39,.4);position:relative}
+.logo-lux::after{content:'';position:absolute;left:2px;right:14px;bottom:-7px;height:1px;background:linear-gradient(90deg,var(--dourado),transparent)}
+nav{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+nav a{color:var(--texto-suave);text-decoration:none;padding:9px 14px;font-size:14px;letter-spacing:.6px;border:1px solid transparent;border-radius:999px;transition:all .3s}
+nav a:hover,nav a.ativo{color:var(--dourado-claro);border-color:var(--borda-dourada);background:rgba(201,162,39,.08)}
+
+/* ── Hero ── */
+.hero{text-align:center;padding:54px 10px 64px}
+.hero .selo{display:inline-block;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--dourado-claro);border:1px solid var(--borda-dourada);border-radius:999px;padding:7px 20px;background:rgba(201,162,39,.08);margin-bottom:26px}
+.hero h1{font-family:'Playfair Display',serif;font-size:min(92px,17vw);font-style:italic;font-weight:800;line-height:.95;letter-spacing:10px;padding-left:10px;background:linear-gradient(180deg,#fdf3d0 0%,var(--dourado-claro) 45%,var(--dourado) 78%,#8a6d14 100%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 80px rgba(201,162,39,.28)}
+.hero .slogan{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2.6vw,24px);color:var(--champanhe);margin-top:10px;letter-spacing:1px}
+.hero .descricao{max-width:620px;margin:22px auto 0;color:var(--texto-suave);font-size:15px;line-height:1.8}
+.hero .acoes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none;letter-spacing:.5px;transition:all .3s;cursor:pointer;border:1px solid transparent}
+.btn-ouro{background:linear-gradient(135deg,#f0d878,#c9a227 60%,#8a6d14);color:#1a1206;box-shadow:0 8px 28px rgba(201,162,39,.3)}
+.btn-ouro:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(201,162,39,.45)}
+.btn-contorno{color:var(--dourado-claro);border-color:var(--borda-dourada);background:rgba(201,162,39,.06)}
+.btn-contorno:hover{background:rgba(201,162,39,.14);transform:translateY(-2px)}
+
+/* ── Diferenciais ── */
+.diferenciais{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:6px 0 10px}
+.diferencial{background:var(--painel);border:1px solid var(--borda-dourada);border-radius:18px;padding:26px 20px;text-align:center;backdrop-filter:blur(6px);transition:all .3s}
+.diferencial:hover{transform:translateY(-4px);border-color:rgba(201,162,39,.5)}
+.diferencial i{font-size:26px;color:var(--dourado-claro);margin-bottom:12px}
+.diferencial h3{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--champanhe);margin-bottom:8px}
+.diferencial p{font-size:13px;color:var(--texto-suave);line-height:1.6}
+
+/* ── Títulos de seção ── */
+.titulo-secao{text-align:center;margin:66px 0 30px}
+.titulo-secao .pequeno{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--dourado-claro);opacity:.85}
+.titulo-secao h2{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,4.5vw,36px);color:var(--champanhe);margin-top:8px;letter-spacing:1px}
+.titulo-secao h2::before,.titulo-secao h2::after{content:'✦';color:var(--dourado);font-size:.55em;margin:0 14px;vertical-align:middle}
+
+/* ── Modelos Exclusivas (Plano Premium) ── */
+.modelos-exclusivas{
+  position:relative;border-radius:26px;padding:2px;
+  background:linear-gradient(135deg,rgba(201,162,39,.65),rgba(110,15,46,.4),rgba(201,162,39,.65));
+  box-shadow:0 24px 70px rgba(0,0,0,.5);
+}
+.modelos-exclusivas .interno{background:rgba(12,8,9,.92);border-radius:24px;padding:44px 26px 40px;backdrop-filter:blur(8px)}
+.coroa{font-size:34px;color:var(--dourado-claro);text-align:center;display:block;margin-bottom:6px;text-shadow:0 0 26px rgba(201,162,39,.55)}
+.sub-exclusivas{text-align:center;color:var(--texto-suave);font-size:14px;max-width:560px;margin:12px auto 32px;line-height:1.7}
+.grade-modelos{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:20px}
+.modelo{position:relative;background:rgba(255,255,255,.04);border:1px solid var(--borda-dourada);border-radius:18px;overflow:hidden;text-align:center;padding-bottom:20px;transition:all .35s}
+.modelo:hover{transform:translateY(-6px);border-color:rgba(201,162,39,.55);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.modelo .moldura{position:relative;overflow:hidden;aspect-ratio:3/4;background:#171013}
+.modelo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s}
+.modelo:hover img{transform:scale(1.06)}
+.modelo .moldura::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,8,9,.85))}
+.modelo h3{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--champanhe);margin:16px 0 2px}
+.modelo .idade{font-size:13px;color:var(--dourado-claro);font-family:'Segoe UI',sans-serif;font-style:normal;margin-left:5px}
+.modelo .cidade{font-size:12px;color:var(--texto-suave);margin:6px 0 14px}
+.selo-premium{position:absolute;top:12px;left:12px;z-index:2;background:linear-gradient(135deg,#f0d878,#c9a227);color:#1a1206;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:5px 11px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.selo-status{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0,0,.55);color:#7ce8a8;font-size:10px;letter-spacing:1px;padding:5px 10px;border-radius:999px;border:1px solid rgba(124,232,168,.35)}
+.btn-ver{display:inline-block;font-size:12px;font-weight:600;letter-spacing:1.5px;color:var(--dourado-claro);text-decoration:none;border:1px solid var(--borda-dourada);border-radius:999px;padding:9px 20px;transition:all .3s}
+.btn-ver:hover{background:rgba(201,162,39,.16);color:#fff}
+.cta-premium{text-align:center;margin-top:34px}
+.cta-premium p{font-size:13px;color:var(--texto-suave);margin-bottom:14px}
+
+/* ── Menu de acesso ── */
+.grade-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.item-menu{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--painel);border:1px solid var(--borda-dourada);border-radius:16px;padding:24px 12px;text-decoration:none;color:var(--texto-claro);font-size:14px;letter-spacing:.5px;transition:all .3s}
+.item-menu i{font-size:22px;color:var(--dourado-claro)}
+.item-menu:hover{transform:translateY(-4px);background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.5);color:#fff}
+
+/* ── Sobre ── */
+.sobre{max-width:760px;margin:0 auto;text-align:center;background:var(--painel);border:1px solid var(--borda-dourada);border-radius:22px;padding:40px 30px;backdrop-filter:blur(6px)}
+.sobre p{color:var(--texto-suave);line-height:1.9;font-style:italic;font-size:15px;margin-top:14px}
+
+footer{text-align:center;padding:30px 0 26px;color:#8b8073;font-size:13px;border-top:1px solid rgba(201,162,39,.18);margin-top:70px}
+
 .whatsapp-flutuante{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 .whatsapp-flutuante:hover{transform:scale(1.1)}
-.baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,#f0d878,#c9a227);color:#1a1206;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 .baixar-app:hover{transform:scale(1.05)}
-@media (max-width:600px){
-.logo-lux{font-size:32px}
-nav{gap:10px;justify-content:flex-start;flex-basis:100%;order:3}
-nav a{font-size:12px;padding:6px 10px}
-.titulo-vips h2{font-size:20px}
-.banner-ilustrativo{opacity:.86;object-position:center 45%;filter:grayscale(100%) contrast(1.15) brightness(1.02) saturate(0)}
-.baixar-app{bottom:95px;right:18px}
-.whatsapp-flutuante{bottom:25px;right:18px}
-header{flex-direction:column;align-items:flex-start}
+
+@media (max-width:640px){
+  .conteudo{padding:0 16px}
+  .logo-lux{font-size:30px}
+  header{flex-direction:column;align-items:center;text-align:center}
+  nav{justify-content:center}
+  nav a{font-size:12px;padding:7px 11px}
+  .hero{padding:38px 4px 48px}
+  .modelos-exclusivas .interno{padding:32px 16px}
+  .baixar-app{bottom:95px;right:18px}
+  .whatsapp-flutuante{bottom:25px;right:18px}
 }
 @media (prefers-reduced-motion:reduce){
-*{animation:none!important;transition:none!important}
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
 <body>
-<div class="fundo-tela"></div>
 <div class="conteudo">
+
 <header>
-<div class="logo-lux">LUX</div>
-<nav>
-<a href="index.html">Início</a>
-<a href="catalago.html">Catálogo</a>
-<a href="#sobre">Sobre Nós</a>
-<a href="pre-cadastro.html">Pré-Cadastro</a>
-<a href="lista-espera.html">Agendar Horário</a>
-<a href="termos.html">Termos</a>
-</nav>
+  <div class="logo-lux">LUX</div>
+  <nav>
+    <a href="index.html" class="ativo">Início</a>
+    <a href="catalago.html">Catálogo</a>
+    <a href="modelos-femininos.html">Femininos</a>
+    <a href="modelos-masculinos.html">Masculinos</a>
+    <a href="pre-cadastro.html">Pré-Cadastro</a>
+    <a href="lista-espera.html">Agendar</a>
+    <a href="#sobre">Sobre</a>
+    <a href="termos.html">Termos</a>
+  </nav>
 </header>
 
-<div class="video-container">
-<video src="videobanner.mp4" autoplay muted loop playsinline preload="metadata"></video>
-</div>
-
-<div class="container-imagem-ilustrativa">
-<img src="foto-ilustr.png?t=1722877316" alt="Apresentação LUX - Pole Dance" class="banner-ilustrativo" loading="lazy">
-</div>
-
-<div class="titulo-vips">
-<h2>Vips em Destaque</h2>
-</div>
-
-<div class="carrossel">
-<div class="botoes-navegacao">
-<button class="btn-carrossel" onclick="deslizar(-1)" aria-label="Slide anterior">‹</button>
-<button class="btn-carrossel" onclick="deslizar(1)" aria-label="Próximo slide">›</button>
-</div>
-
-<div class="carrossel-interno" id="areaRoleta">
-<div class="card-vip">
-<div class="perfil">
-<span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip1.png?t=1722877316" alt="Eduarda — VIP LUX" class="foto-modelo" loading="lazy">
-<h3>Eduarda <span class="idade">21 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-<p class="desc">Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.</p>
-<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
-</div>
-</div>
-
-<div class="card-vip">
-<div class="perfil">
-<span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip2.png?t=1722877316" alt="Sarah — VIP LUX" class="foto-modelo" loading="lazy">
-<h3>Sarah <span class="idade">27 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-<p class="desc">Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.</p>
-<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
-</div>
-</div>
-
-<div class="card-vip">
-<div class="perfil">
-<span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip3.png?t=1722877316" alt="Larissa — VIP LUX" class="foto-modelo" loading="lazy">
-<h3>Larissa <span class="idade">20 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-<p class="desc">Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.</p>
-<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
-</div>
-</div>
-
-<div class="card-vip">
-<div class="perfil">
-<span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip4.png?t=1722877316" alt="Vitória — VIP LUX" class="foto-modelo" loading="lazy">
-<h3>Vitória <span class="idade">24 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-<p class="desc">Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.</p>
-<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
-</div>
-</div>
-</div>
-</div>
-
-<a href="catalago.html" class="btn-catalogo">📂 Catálogo Completo</a>
-
-<section class="sobre" id="sobre">
-<h2>Sobre Nós</h2>
-<p>O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>Somos a LUX — um espaço de beleza, discrição e sofisticação. Cada momento é precioso, cada pessoa é única e querida.</p>
+<section class="hero">
+  <span class="selo">✦ Seleção Premium ✦</span>
+  <h1>LUX</h1>
+  <p class="slogan">Sensualidade &amp; Sofisticação</p>
+  <p class="descricao">Conectamos momentos especiais com pessoas extraordinárias. Um universo de beleza, discrição e prazer — criado para quem exige o melhor.</p>
+  <div class="acoes">
+    <a href="catalago.html" class="btn btn-ouro"><i class="fas fa-gem"></i> Ver Catálogo</a>
+    <a href="pre-cadastro.html" class="btn btn-contorno"><i class="fas fa-crown"></i> Seja uma VIP</a>
+  </div>
 </section>
 
-<footer>© 2026 LUX — Sensualidade & Sofisticação • Brasil e Europa • Todos os direitos reservados.</footer>
+<section class="diferenciais">
+  <div class="diferencial">
+    <i class="fas fa-gem" aria-hidden="true"></i>
+    <h3>Exclusividade</h3>
+    <p>Seleção criteriosa de modelos para encontros verdadeiramente únicos.</p>
+  </div>
+  <div class="diferencial">
+    <i class="fas fa-lock" aria-hidden="true"></i>
+    <h3>Discrição</h3>
+    <p>Privacidade absoluta em cada contato, do início ao fim.</p>
+  </div>
+  <div class="diferencial">
+    <i class="fas fa-crown" aria-hidden="true"></i>
+    <h3>Premium</h3>
+    <p>Experiências sofisticadas, pensadas para momentos inesquecíveis.</p>
+  </div>
+</section>
+
+<section class="titulo-secao" id="exclusivas">
+  <p class="pequeno">Plano Premium</p>
+  <h2>Modelos Exclusivas</h2>
+</section>
+
+<section class="modelos-exclusivas">
+  <div class="interno">
+    <span class="coroa">👑</span>
+    <p class="sub-exclusivas">As modelos que assinam o <strong style="color:var(--dourado-claro)">Plano Premium</strong> recebem destaque absoluto na LUX — as primeiras a serem vistas, as primeiras a serem desejadas.</p>
+
+    <div class="grade-modelos">
+      <article class="modelo">
+        <span class="selo-premium">★ PREMIUM</span>
+        <span class="selo-status">● Disponível</span>
+        <div class="moldura">
+          <img src="vip1.png" alt="Eduarda — Modelo Premium LUX" loading="lazy">
+        </div>
+        <h3>Eduarda<span class="idade">• 21</span></h3>
+        <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
+        <a href="eduarda.html" class="btn-ver">Ver Perfil</a>
+      </article>
+
+      <article class="modelo">
+        <span class="selo-premium">★ PREMIUM</span>
+        <span class="selo-status">● Disponível</span>
+        <div class="moldura">
+          <img src="vip2.png" alt="Sarah — Modelo Premium LUX" loading="lazy">
+        </div>
+        <h3>Sarah<span class="idade">• 27</span></h3>
+        <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
+        <a href="catalago.html" class="btn-ver">Ver Catálogo</a>
+      </article>
+
+      <article class="modelo">
+        <span class="selo-premium">★ PREMIUM</span>
+        <span class="selo-status">● Disponível</span>
+        <div class="moldura">
+          <img src="vip3.png" alt="Larissa — Modelo Premium LUX" loading="lazy">
+        </div>
+        <h3>Larissa<span class="idade">• 20</span></h3>
+        <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
+        <a href="larissa.html" class="btn-ver">Ver Perfil</a>
+      </article>
+
+      <article class="modelo">
+        <span class="selo-premium">★ PREMIUM</span>
+        <span class="selo-status">● Disponível</span>
+        <div class="moldura">
+          <img src="vip4.png" alt="Vitória — Modelo Premium LUX" loading="lazy">
+        </div>
+        <h3>Vitória<span class="idade">• 24</span></h3>
+        <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
+        <a href="catalago.html" class="btn-ver">Ver Catálogo</a>
+      </article>
+    </div>
+
+    <div class="cta-premium">
+      <p>✨ Quer seu perfil em destaque absoluto? Assine o Plano Premium da LUX.</p>
+      <a href="pre-cadastro.html" class="btn btn-ouro"><i class="fas fa-crown"></i> Quero ser Exclusiva</a>
+    </div>
+  </div>
+</section>
+
+<section class="titulo-secao">
+  <p class="pequeno">Navegue</p>
+  <h2>Menu</h2>
+</section>
+
+<nav class="grade-menu" aria-label="Menu principal">
+  <a href="catalago.html" class="item-menu"><i class="fas fa-images"></i> Catálogo</a>
+  <a href="modelos-femininos.html" class="item-menu"><i class="fas fa-venus"></i> Femininos</a>
+  <a href="modelos-masculinos.html" class="item-menu"><i class="fas fa-mars"></i> Masculinos</a>
+  <a href="pre-cadastro.html" class="item-menu"><i class="fas fa-user-plus"></i> Pré-Cadastro</a>
+  <a href="lista-espera.html" class="item-menu"><i class="fas fa-calendar-check"></i> Agendar</a>
+  <a href="termos.html" class="item-menu"><i class="fas fa-file-contract"></i> Termos</a>
+  <a href="https://wa.me/5551980612941?text=Olá!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20a%20LUX." target="_blank" rel="noopener noreferrer" class="item-menu"><i class="fab fa-whatsapp"></i> Contato</a>
+</nav>
+
+<section class="titulo-secao" id="sobre">
+  <p class="pequeno">A LUX</p>
+  <h2>Sobre Nós</h2>
+</section>
+
+<section class="sobre">
+  <p>O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>Somos a LUX — um espaço de beleza, discrição e sofisticação. Cada momento é precioso, cada pessoa é única e querida.</p>
+</section>
+
+<footer>© 2026 LUX — Sensualidade &amp; Sofisticação • Brasil e Europa • Todos os direitos reservados. • Proibido para menores de 18 anos.</footer>
 </div>
 
-<a href="https://wa.me/+5551980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer" title="Envie uma mensagem no WhatsApp">
+<a href="https://wa.me/5551980612941?text=Olá!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20a%20LUX." class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer" title="Envie uma mensagem no WhatsApp" aria-label="Contato pelo WhatsApp">
 <i class="fab fa-whatsapp" aria-hidden="true"></i>
 </a>
 
@@ -178,20 +290,26 @@ header{flex-direction:column;align-items:flex-start}
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").then(r => console.log("SW registrado")).catch(e => console.error("Erro SW:", e));
+    navigator.serviceWorker.register("sw.js").then(r => console.log("SW registrado")).catch(e => console.error("Erro SW:", e));
   }, false);
 }
 
-let posicaoAtual = 0;
-function deslizar(direcao) {
-  const container = document.getElementById("areaRoleta");
-  const largura = container.parentElement.offsetWidth;
-  posicaoAtual += direcao;
-  const maxPosicao = container.children.length - 1;
-  if (posicaoAtual > maxPosicao) posicaoAtual = 0;
-  if (posicaoAtual < 0) posicaoAtual = maxPosicao;
-  container.style.transform = "translateX(" + (-posicaoAtual * largura) + "px)";
-}
+// Instalação do app (PWA)
+let eventoInstalacao;
+const botaoApp = document.getElementById("baixar-app");
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  eventoInstalacao = e;
+  botaoApp.style.display = "flex";
+});
+botaoApp.addEventListener("click", async (e) => {
+  e.preventDefault();
+  if (!eventoInstalacao) return;
+  eventoInstalacao.prompt();
+  await eventoInstalacao.userChoice;
+  eventoInstalacao = null;
+  botaoApp.style.display = "none";
+});
 </script>
 </body>
 </html>
