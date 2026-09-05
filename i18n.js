@@ -54,7 +54,8 @@
   };
 
   function supportedLanguage() {
-    var stored = localStorage.getItem('lux-language');
+    var stored = '';
+    try { stored = localStorage.getItem('lux-language'); } catch (error) {}
     if (languages[stored]) return stored;
     var browser = (navigator.language || 'pt-BR').toLowerCase();
     if (browser.indexOf('pt') === 0) return 'pt-BR';
@@ -81,7 +82,9 @@
     }
     var selected = document.querySelector('#lux-language select');
     if (selected) selected.value = language;
-    localStorage.setItem('lux-language', language);
+    var country = document.querySelector('#lux-country');
+    if (country) country.textContent = 'Atendimento: ' + languages[language].country;
+    try { localStorage.setItem('lux-language', language); } catch (error) {}
   }
 
   var selector = document.createElement('aside');
@@ -103,6 +106,5 @@
     translate(this.value);
   });
   var language = supportedLanguage();
-  selector.querySelector('#lux-country').textContent = 'Atendimento: ' + languages[language].country;
   translate(language);
 })();
