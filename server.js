@@ -55,8 +55,12 @@ const upload = multer({
 });
 
 app.use(express.json({ limit: '50kb' }));
-app.use('/data', (req, res) => res.sendStatus(404));
-app.use(express.static(root, { index: 'index.html' }));
+app.use((req, res, next) => {
+    const blocked = /(^|\/)(data|server\.js|package(?:-lock)?\.json)(\/|$)/i.test(req.path);
+    if (blocked) return res.sendStatus(404);
+    return next();
+});
+app.use(express.static(root, { index: 'index.html', dotfiles: 'deny' }));
 
 app.post('/api/pre-cadastros', (req, res) => {
     req.uploadId = crypto.randomUUID();
@@ -147,7 +151,18 @@ app.get('/api/pre-cadastros', (req, res) => {
     })));
 });
 
+const accessLog = new Map();
+function isRateLimited(req) {
+    const now = Date.now();
+    const key = req.ip;
+    const recent = (accessLog.get(key) || []).filter((time) => now - time < 60_000);
+    recent.push(now);
+    accessLog.set(key, recent);
+    return recent.length > 60;
+}
+
 app.get('/media/:id/:filename', (req, res) => {
+    if (isRateLimited(req)) return res.status(429).json({ erro: 'Muitas solicitações. Tente novamente.' });
     const record = readRecords().find((item) => item.id === req.params.id);
     if (!record || record.status !== 'aprovado' || ![...record.fotos, record.video].includes(req.params.filename)) {
         return res.sendStatus(404);
