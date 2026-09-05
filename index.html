@@ -21,7 +21,7 @@ body{background:url(banner.jpg) no-repeat center center fixed;background-size:co
 .fundo-tela{background:var(--fundo-escuro);position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;will-change:opacity}
 .conteudo{position:relative;z-index:1;padding:15px 25px;max-width:1100px;margin:0 auto}
 header{display:flex;justify-content:space-between;align-items:center;padding:10px 0 20px;flex-wrap:wrap;gap:20px}
-.logo-lux{font-family:'Playfair Display',serif;font-size:46px;font-weight:800;font-style:italic;color:#fff;letter-spacing:4px;text-shadow:0 0 5px var(--neon-dourado),0 0 10px var(--neon-dourado),0 0 15px var(--neon-dourado);cursor:pointer}
+.logo-lux{font-family:'Playfair Display',serif;font-size:46px;font-weight:800;font-style:italic;color:#fff;letter-spacing:4px;text-shadow:0 0 5px var(--neon-dourado),0 0 10px var(--neon-dourado),0 0 15px var(--neon-dourado)}
 nav{display:flex;flex-wrap:wrap;gap:18px;flex:1;justify-content:flex-end}
 nav a{color:var(--texto-claro);text-decoration:none;padding:8px 14px;font-size:15px;border-bottom:1px solid transparent;transition:all .3s;will-change:transform}
 nav a:hover{border-bottom:1px solid var(--dourado);color:var(--dourado-claro);text-shadow:0 0 6px var(--dourado)}
@@ -30,8 +30,8 @@ nav a:hover{border-bottom:1px solid var(--dourado);color:var(--dourado-claro);te
 .container-imagem-ilustrativa{max-width:800px;width:95%;margin:25px auto 30px;display:flex;justify-content:center;align-items:center;position:relative;aspect-ratio:auto}
 .banner-ilustrativo{width:100%;max-width:100%;height:auto;display:block;border-radius:12px;border:none;box-shadow:none;transition:all .4s ease;object-fit:cover;object-position:center 40%;opacity:.86}
 .banner-ilustrativo:hover{opacity:.88;transform:scale(1.01);filter:grayscale(100%) contrast(1.22) brightness(1.04) saturate(0)}
-.container-imagem-ilustrativa::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(0,0,0,0) 2%,rgba(0,0,0,.3) 100%)}
-.container-imagem-ilustrativa::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.05) 0%,transparent 50%)}
+.container-imagem-ilustrativa::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(0,0,0,0) 2%,rgba(0,0,0,.25))}
+.container-imagem-ilustrativa::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 70%)}
 .titulo-vips{text-align:center;margin:30px 0 18px}
 .titulo-vips h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--dourado);font-style:italic;letter-spacing:2px}
 .titulo-vips h2::before,.titulo-vips h2::after{content:'✦';color:var(--dourado-claro);font-size:18px;margin:0 12px}
@@ -52,44 +52,16 @@ nav a:hover{border-bottom:1px solid var(--dourado);color:var(--dourado-claro);te
 .botoes-navegacao{display:flex;justify-content:space-between;position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);pointer-events:none;z-index:10}
 .btn-carrossel{background:rgba(0,0,0,.6);color:var(--dourado);border:none;font-size:26px;padding:8px 14px;cursor:pointer;border-radius:50%;margin:0 5px;pointer-events:auto;transition:all .3s;will-change:transform}
 .btn-carrossel:hover{background:rgba(0,0,0,.8);box-shadow:0 0 15px rgba(255,215,0,.4)}
-.btn-catalogo{background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;border:none;padding:12px 32px;font-size:16px;font-weight:600;border-radius:8px;cursor:pointer;transition:all .3s;margin:20px auto;display:block;box-shadow:0 4px 15px rgba(255,215,0,.3)}
+.btn-catalogo{background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;border:none;padding:12px 32px;font-size:16px;font-weight:600;border-radius:8px;cursor:pointer;transition:all .3s;margin:20px auto;display:block}
 .btn-catalogo:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(255,215,0,.5);background:linear-gradient(135deg,#ffb700,#ffd700)}
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:999;justify-content:center;align-items:center;overflow-y:auto;backdrop-filter:blur(3px);padding:20px 0}
-.modal-overlay.ativo{display:flex}
-.modal-catalogo{background:rgba(0,0,0,.95);border-radius:16px;padding:40px 30px;border:2px solid var(--dourado);max-width:700px;width:90%;text-align:center;box-shadow:0 0 30px rgba(255,215,0,.3);backdrop-filter:blur(10px);margin:auto}
-.modal-catalogo h2{font-family:'Playfair Display',serif;font-size:28px;color:var(--dourado);margin-bottom:8px;letter-spacing:2px}
-.modal-catalogo p{color:#ddd;margin-bottom:20px;font-size:15px}
-.opcoes-catalogo{display:flex;flex-direction:column;gap:15px;margin-bottom:20px}
-.btn-opcao{background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(255,215,0,.1));border:2px solid var(--dourado);color:var(--dourado-claro);padding:16px 24px;font-size:18px;border-radius:10px;cursor:pointer;transition:all .3s;font-weight:600;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:10px}
-.btn-opcao:hover{background:linear-gradient(135deg,var(--dourado),#ffb700);color:#111;transform:translateX(5px);box-shadow:0 0 20px rgba(255,215,0,.4)}
-.btn-opcao i{font-size:20px}
-.filtro-regiao{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.3);border-radius:10px;padding:20px;margin:20px 0}
-.select-regiao{width:100%;padding:12px;background:rgba(0,0,0,.5);border:1px solid var(--dourado);color:var(--dourado-claro);border-radius:8px;font-size:16px;cursor:pointer;transition:all .3s;margin-bottom:15px}
-.select-regiao:hover{border-color:#fff;box-shadow:0 0 10px rgba(255,215,0,.2)}
-.select-regiao:focus{outline:none;box-shadow:0 0 15px rgba(255,215,0,.4)}
-.grid-modelos{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:15px;margin-top:20px}
-.card-modelo{background:rgba(0,0,0,.55);border-radius:12px;overflow:hidden;border:1px solid rgba(255,215,0,.3);transition:all .3s;cursor:pointer}
-.card-modelo:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(255,215,0,.2);border-color:var(--dourado)}
-.card-modelo img{width:100%;height:220px;object-fit:cover;display:block}
-.card-modelo-info{padding:12px;text-align:center}
-.card-modelo-info h4{color:var(--dourado-claro);margin-bottom:3px;font-size:15px}
-.card-modelo-info .localizacao{color:#999;font-size:11px;margin:5px 0;display:block;line-height:1.3}
-.card-modelo-info p{color:#bbb;font-size:12px;margin:5px 0;line-height:1.3;font-style:italic}
-.btn-contratar-modelo{background:linear-gradient(135deg,#00a86b,#2ecc71);color:#fff;border:none;padding:8px 14px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .3s;margin-top:8px;width:100%}
-.btn-contratar-modelo:hover{transform:scale(1.05);box-shadow:0 0 10px rgba(46,204,113,.4)}
-.msg-vazio{color:#999;text-align:center;padding:30px;font-style:italic;grid-column:1/-1}
-.btn-voltar{background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);color:var(--dourado-claro);padding:10px 20px;border-radius:8px;font-size:14px;cursor:pointer;transition:all .3s;margin-top:15px;width:100%}
-.btn-voltar:hover{background:rgba(255,215,0,.2);border-color:var(--dourado)}
-.btn-fechar{background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);color:var(--dourado-claro);padding:10px 20px;border-radius:8px;font-size:14px;cursor:pointer;transition:all .3s;margin-top:15px;width:100%}
-.btn-fechar:hover{background:rgba(255,215,0,.2);border-color:var(--dourado)}
-.whatsapp-flutuante{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:all .3s;z-index:100}
-.whatsapp-flutuante:hover{transform:scale(1.1)}
-.baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:all .3s;z-index:100;text-decoration:none}
-.baixar-app:hover{transform:scale(1.05)}
 .sobre{background:rgba(0,0,0,.55);border-radius:16px;padding:25px;margin:35px 0 25px;border:1px solid rgba(255,215,0,.25);backdrop-filter:blur(2px)}
 .sobre h2{color:var(--dourado);text-align:center;margin-bottom:15px}
 .sobre p{color:#ddd;line-height:1.8;font-style:italic;text-align:center}
 footer{text-align:center;padding:20px;color:#888;font-size:13px;border-top:1px solid rgba(255,215,0,.2);margin-top:20px}
+.whatsapp-flutuante{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.whatsapp-flutuante:hover{transform:scale(1.1)}
+.baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.baixar-app:hover{transform:scale(1.05)}
 @media (max-width:600px){
 .logo-lux{font-size:32px}
 nav{gap:10px;justify-content:flex-start;flex-basis:100%;order:3}
@@ -99,10 +71,6 @@ nav a{font-size:12px;padding:6px 10px}
 .baixar-app{bottom:95px;right:18px}
 .whatsapp-flutuante{bottom:25px;right:18px}
 header{flex-direction:column;align-items:flex-start}
-.modal-catalogo{padding:30px 20px;max-width:95%}
-.modal-catalogo h2{font-size:22px}
-.btn-opcao{font-size:16px;padding:12px 18px}
-.grid-modelos{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
 }
 @media (prefers-reduced-motion:reduce){
 *{animation:none!important;transition:none!important}
@@ -116,12 +84,11 @@ header{flex-direction:column;align-items:flex-start}
 <div class="logo-lux">LUX</div>
 <nav>
 <a href="index.html">Início</a>
-<a href="#" onclick="abrirCatalogo(); return false;">Catálogo</a>
+<a href="catalago.html">Catálogo</a>
 <a href="#sobre">Sobre Nós</a>
 <a href="pre-cadastro.html">Pré-Cadastro</a>
 <a href="lista-espera.html">Agendar Horário</a>
 <a href="termos.html">Termos</a>
-<a href="catalago.html">modelos</a>
 </nav>
 </header>
 
@@ -147,225 +114,68 @@ header{flex-direction:column;align-items:flex-start}
 <div class="card-vip">
 <div class="perfil">
 <span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip1.png?t=1722877316" alt="Eduarda — VIP LUX" class="foto-modelo" onclick="contratar('Eduarda', '21 anos — Gravataí, RS — Brasil')" loading="lazy">
+<img src="vip1.png?t=1722877316" alt="Eduarda — VIP LUX" class="foto-modelo" loading="lazy">
 <h3>Eduarda <span class="idade">21 anos</span></h3>
 <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
 <p class="desc">Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.</p>
-<span class="dica-clique">👆 Clique na foto para contratar</span>
+<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
 </div>
 </div>
 
 <div class="card-vip">
 <div class="perfil">
 <span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip2.png?t=1722877316" alt="Sarah — VIP LUX" class="foto-modelo" onclick="contratar('Sarah', '27 anos — Gravataí, RS — Brasil')" loading="lazy">
+<img src="vip2.png?t=1722877316" alt="Sarah — VIP LUX" class="foto-modelo" loading="lazy">
 <h3>Sarah <span class="idade">27 anos</span></h3>
 <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
 <p class="desc">Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.</p>
-<span class="dica-clique">👆 Clique na foto para contratar</span>
+<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
 </div>
 </div>
 
 <div class="card-vip">
 <div class="perfil">
 <span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip3.png?t=1722877316" alt="Larissa — VIP LUX" class="foto-modelo" onclick="contratar('Larissa', '20 anos — Gravataí, RS — Brasil')" loading="lazy">
+<img src="vip3.png?t=1722877316" alt="Larissa — VIP LUX" class="foto-modelo" loading="lazy">
 <h3>Larissa <span class="idade">20 anos</span></h3>
 <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
 <p class="desc">Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.</p>
-<span class="dica-clique">👆 Clique na foto para contratar</span>
+<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
 </div>
 </div>
 
 <div class="card-vip">
 <div class="perfil">
 <span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip4.png?t=1722877316" alt="Vitória — VIP LUX" class="foto-modelo" onclick="contratar('Vitória', '24 anos — Gravataí, RS — Brasil')" loading="lazy">
+<img src="vip4.png?t=1722877316" alt="Vitória — VIP LUX" class="foto-modelo" loading="lazy">
 <h3>Vitória <span class="idade">24 anos</span></h3>
 <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
 <p class="desc">Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.</p>
-<span class="dica-clique">👆 Clique na foto para contratar</span>
+<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
 </div>
 </div>
 </div>
 </div>
 
-<button class="btn-catalogo" onclick="abrirCatalogo()">📂 Catálogo Completo</button>
+<a href="catalago.html" class="btn-catalogo">📂 Catálogo Completo</a>
 
 <section class="sobre" id="sobre">
 <h2>Sobre Nós</h2>
-<p>O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>Somos a LUX — um espaço de beleza, discrição e sofisticação. Cada profissional é cuidadosamente selecionado(a), trazendo elegância, autenticidade e um toque de magia em cada interação. Acreditamos que experiências memoráveis nascem do respeito e da qualidade.<br><br>Conectamos pessoas extraordinárias em momentos especiais — momentos que marcam, que inspiram e que ficam na memória para sempre. 💫</p>
+<p>O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>Somos a LUX — um espaço de beleza, discrição e sofisticação. Cada momento é precioso, cada pessoa é única e querida.</p>
 </section>
 
 <footer>© 2026 LUX — Sensualidade & Sofisticação • Brasil e Europa • Todos os direitos reservados.</footer>
 </div>
 
-<!-- Modal do Catálogo -->
-<div class="modal-overlay" id="modalCatalogo" onclick="fecharCatalogo(event)">
-<div class="modal-catalogo" onclick="event.stopPropagation()">
-
-<!-- Tela 1: Seleção de Gênero -->
-<div id="telaPrincipal">
-<h2>Catálogo LUX</h2>
-<p>Escolha uma categoria para explorar nossos modelos:</p>
-<div class="opcoes-catalogo">
-<button class="btn-opcao" onclick="selecionarGenero('feminino')">
-<i class="fas fa-venus"></i> Femininas
-</button>
-<button class="btn-opcao" onclick="selecionarGenero('masculino')">
-<i class="fas fa-mars"></i> Masculinos
-</button>
-</div>
-<button class="btn-fechar" onclick="fecharCatalogo()">Fechar</button>
-</div>
-
-<!-- Tela 2: Seleção de Região -->
-<div id="telaRegiao" style="display:none;">
-<h2 id="tituloCatalogo">Modelos Femininas</h2>
-<p>Selecione uma região para ver os modelos disponíveis:</p>
-<div class="filtro-regiao">
-<select class="select-regiao" id="selectRegiao" onchange="filtrarModelos()">
-<option value="">-- Escolha uma região --</option>
-<option value="gravataí">Gravataí, RS — Brasil</option>
-<option value="portoalegre">Porto Alegre, RS — Brasil</option>
-<option value="canoas">Canoas, RS — Brasil</option>
-<option value="saopaulo">São Paulo, SP — Brasil</option>
-<option value="riodejaneiro">Rio de Janeiro, RJ — Brasil</option>
-<option value="curitiba">Curitiba, PR — Brasil</option>
-<option value="belohorizonte">Belo Horizonte, MG — Brasil</option>
-<option value="brasilia">Brasília, DF — Brasil</option>
-<option value="lisboa">Lisboa — Portugal</option>
-<option value="porto">Porto — Portugal</option>
-<option value="barcelona">Barcelona — Espanha</option>
-<option value="madrid">Madrid — Espanha</option>
-<option value="paris">Paris — França</option>
-<option value="londres">Londres — Reino Unido</option>
-</select>
-</div>
-
-<!-- Grid de Modelos -->
-<div class="grid-modelos" id="gridModelos"></div>
-
-<button class="btn-voltar" onclick="voltarTelaPrincipal()">← Voltar</button>
-</div>
-
-</div>
-</div>
+<a href="https://wa.me/+5551980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer" title="Envie uma mensagem no WhatsApp">
+<i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
 
 <a id="baixar-app" class="baixar-app" href="#" title="Baixar App" aria-label="Baixar aplicativo LUX">
 <i class="fas fa-download" aria-hidden="true"></i>
 </a>
 
-<a href="https://wa.me/+5551980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer" title="Envie uma mensagem no WhatsApp">
-<i class="fab fa-whatsapp" aria-hidden="true"></i>
-</a>
-
 <script>
-// BASE DE DADOS DE MODELOS
-const modelos = {
-  feminino: [
-    {id: 1, nome: "Eduarda", idade: "21 anos", regiao: "gravataí", descricao: "Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.", foto: "vip1.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
-    {id: 2, nome: "Sarah", idade: "27 anos", regiao: "gravataí", descricao: "Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.", foto: "vip2.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
-    {id: 3, nome: "Larissa", idade: "20 anos", regiao: "gravataí", descricao: "Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.", foto: "vip3.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
-    {id: 4, nome: "Vitória", idade: "24 anos", regiao: "gravataí", descricao: "Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.", foto: "vip4.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
-    {id: 5, nome: "Bianca", idade: "23 anos", regiao: "portoalegre", descricao: "Sofisticada e encantadora. Um encontro que marca para sempre.", foto: "vip1.png?t=1722877316", localizacao: "Porto Alegre, RS — Brasil"},
-    {id: 6, nome: "Valentina", idade: "25 anos", regiao: "saopaulo", descricao: "Charme e sensualidade em uma mulher extraordinária.", foto: "vip2.png?t=1722877316", localizacao: "São Paulo, SP — Brasil"},
-    {id: 7, nome: "Isabela", idade: "22 anos", regiao: "riodejaneiro", descricao: "Beleza tropical e paixão ardente em cada encontro.", foto: "vip3.png?t=1722877316", localizacao: "Rio de Janeiro, RJ — Brasil"},
-    {id: 8, nome: "Camila", idade: "26 anos", regiao: "curitiba", descricao: "Elegância refinada e sensualidade pura.", foto: "vip4.png?t=1722877316", localizacao: "Curitiba, PR — Brasil"},
-    {id: 9, nome: "Amélie", idade: "21 anos", regiao: "lisboa", descricao: "Encanto francês com toque português. Sofisticação europeia.", foto: "vip1.png?t=1722877316", localizacao: "Lisboa — Portugal"},
-    {id: 10, nome: "Sofia", idade: "24 anos", regiao: "barcelona", descricao: "Paixão e sensualidade espanhola em sua máxima expressão.", foto: "vip2.png?t=1722877316", localizacao: "Barcelona — Espanha"},
-    {id: 11, nome: "Carla", idade: "28 anos", regiao: "madrid", descricao: "Mulher madura, misteriosa e absolutamente irresistível.", foto: "vip3.png?t=1722877316", localizacao: "Madrid — Espanha"},
-    {id: 12, nome: "Marie", idade: "23 anos", regiao: "paris", descricao: "Elegância parisiense com um toque de romance e mistério.", foto: "vip4.png?t=1722877316", localizacao: "Paris — França"}
-  ],
-  masculino: [
-    {id: 101, nome: "Carlos", idade: "28 anos", regiao: "gravataí", descricao: "Confiante e atraente. Masculinidade envolvente e charmosa.", foto: "vip1.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
-    {id: 102, nome: "Rafael", idade: "30 anos", regiao: "portoalegre", descricao: "Charmoso e sofisticado. Uma presença verdadeiramente magnética.", foto: "vip2.png?t=1722877316", localizacao: "Porto Alegre, RS — Brasil"},
-    {id: 103, nome: "Lucas", idade: "26 anos", regiao: "saopaulo", descricao: "Jovem dinâmico e sedutor. Energia e paixão vibrante.", foto: "vip3.png?t=1722877316", localizacao: "São Paulo, SP — Brasil"},
-    {id: 104, nome: "Diego", idade: "32 anos", regiao: "riodejaneiro", descricao: "Experiente e irresistível. Sensualidade masculina refinada.", foto: "vip4.png?t=1722877316", localizacao: "Rio de Janeiro, RJ — Brasil"},
-    {id: 105, nome: "Felipe", idade: "25 anos", regiao: "curitiba", descricao: "Sofisticado e elegante. Um homem de verdadeira classe.", foto: "vip1.png?t=1722877316", localizacao: "Curitiba, PR — Brasil"},
-    {id: 106, nome: "André", idade: "27 anos", regiao: "belohorizonte", descricao: "Força e elegância em perfeita harmonia. Magnetismo puro.", foto: "vip2.png?t=1722877316", localizacao: "Belo Horizonte, MG — Brasil"},
-    {id: 107, nome: "Miguel", idade: "29 anos", regiao: "lisboa", descricao: "Europeu elegante e apaixonante. Sofisticação portuguesa.", foto: "vip3.png?t=1722877316", localizacao: "Lisboa — Portugal"},
-    {id: 108, nome: "Paulo", idade: "27 anos", regiao: "barcelona", descricao: "Atraente e cheio de personalidade. Charme latino irresistível.", foto: "vip4.png?t=1722877316", localizacao: "Barcelona — Espanha"},
-    {id: 109, nome: "Jean", idade: "31 anos", regiao: "paris", descricao: "Parisiense elegante com aura de romance e sofisticação.", foto: "vip1.png?t=1722877316", localizacao: "Paris — França"}
-  ]
-};
-
-let generoSelecionado = null;
-
-function selecionarGenero(genero) {
-  generoSelecionado = genero;
-  const titulo = genero === "feminino" ? "Modelos Femininas" : "Modelos Masculinos";
-  document.getElementById("tituloCatalogo").textContent = titulo;
-  document.getElementById("telaPrincipal").style.display = "none";
-  document.getElementById("telaRegiao").style.display = "block";
-  document.getElementById("selectRegiao").value = "";
-  document.getElementById("gridModelos").innerHTML = "";
-}
-
-function filtrarModelos() {
-  const regiao = document.getElementById("selectRegiao").value;
-  const grid = document.getElementById("gridModelos");
-  
-  if (!regiao) {
-    grid.innerHTML = "";
-    return;
-  }
-
-  const modelosFiltrados = modelos[generoSelecionado].filter(m => m.regiao === regiao);
-  
-  if (modelosFiltrados.length === 0) {
-    grid.innerHTML = '<p class="msg-vazio">Nenhum modelo disponível para esta região no momento.</p>';
-    return;
-  }
-
-  grid.innerHTML = modelosFiltrados.map(modelo => {
-    const htmlEscaped = {
-      nome: modelo.nome.replace(/"/g, "&quot;"),
-      idade: modelo.idade.replace(/"/g, "&quot;"),
-      localizacao: modelo.localizacao.replace(/"/g, "&quot;")
-    };
-    return `
-      <div class="card-modelo">
-        <img src="${modelo.foto}" alt="${htmlEscaped.nome}" loading="lazy">
-        <div class="card-modelo-info">
-          <h4>${htmlEscaped.nome}</h4>
-          <span class="localizacao"><i class="fas fa-map-marker-alt"></i> ${htmlEscaped.localizacao}</span>
-          <span class="localizacao">${htmlEscaped.idade}</span>
-          <p>${modelo.descricao}</p>
-          <button class="btn-contratar-modelo" onclick="contratar('${htmlEscaped.nome}', '${htmlEscaped.idade} — ${htmlEscaped.localizacao}')">Contratar</button>
-        </div>
-      </div>
-    `;
-  }).join("");
-}
-
-function voltarTelaPrincipal() {
-  generoSelecionado = null;
-  document.getElementById("telaPrincipal").style.display = "block";
-  document.getElementById("telaRegiao").style.display = "none";
-  document.getElementById("selectRegiao").value = "";
-  document.getElementById("gridModelos").innerHTML = "";
-}
-
-function abrirCatalogo() {
-  document.getElementById("modalCatalogo").classList.add("ativo");
-  voltarTelaPrincipal();
-}
-
-function fecharCatalogo(event) {
-  if (event && event.target.id !== "modalCatalogo") return;
-  document.getElementById("modalCatalogo").classList.remove("ativo");
-}
-
-function contratar(nome, info) {
-  const mensagem = "Olá! Gostaria de contratar " + nome + " (" + info + "). Pode me ajudar?";
-  window.open("https://wa.me/+5551980612941?text=" + encodeURIComponent(mensagem), "_blank");
-}
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") fecharCatalogo();
-});
-
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("/sw.js").then(r => console.log("SW registrado")).catch(e => console.error("Erro SW:", e));
