@@ -298,7 +298,7 @@ nav a.ativo{
 
 /* MODAL PIX */
 #pixModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
-#pixModal .pix-card{width:100%;max-width:420px;background:linear-gradient(135deg,#1a1206,#120d0f);border:1px solid rgba(201,162,39,.35);border-radius:16px;padding:18px;color:#efe7dd;box-shadow:0 8px 36px rgba(0,0,0,.6)}
+#pixModal .pix-card{width:100%;max-width:420px;background:linear-gradient(135deg,#1a1206,#120d0f);border:1px solid rgba(201,162,39,.35);border-radius:16px;padding:18px;color:#efe7dd;box-shadow:0 8px 30px rgba(0,0,0,.5)}
 #pixModal select,#pixModal input,#pixModal textarea{width:100%;padding:10px;border-radius:10px;margin-bottom:10px;background:rgba(255,255,255,.08);border:1px solid rgba(201,162,39,.2);color:#efe7dd}
 #pixModal select:focus,#pixModal input:focus,#pixModal textarea:focus{outline:none;border-color:rgba(201,162,39,.5);background:rgba(255,255,255,.12)}
 
@@ -357,7 +357,7 @@ nav a.ativo{
   <nav>
     <a href="index.html" class="ativo">Início</a>
     <a href="loja.html">Loja</a>
-    <a href="catalago.html">Catálogo</a>
+    <a href="catalogo.html">Catálogo</a>
     <a href="pre-cadastro.html">Pré-Cadastro</a>
     <a href="lista-espera.html">Agendar</a>
     <a href="#sobre">Sobre</a>
@@ -370,7 +370,7 @@ nav a.ativo{
   <p class="slogan">Sensualidade &amp; Sofisticação</p>
   <p class="descricao">Conectamos momentos especiais com pessoas extraordinárias.</p>
   <div class="acoes">
-    <a href="catalago.html" class="btn btn-ouro"><i class="fas fa-gem"></i>Ver Catálogo</a>
+    <a href="catalogo.html" class="btn btn-ouro"><i class="fas fa-gem"></i>Ver Catálogo</a>
     <a href="pre-cadastro.html" class="btn btn-contorno"><i class="fas fa-crown"></i>Seja uma VIP</a>
     <button type="button" id="btnDoarPix" class="btn btn-pix"><i class="fas fa-qrcode"></i>Doar via PIX</button>
   </div>
@@ -416,9 +416,7 @@ if(!btnDoarPix)return;
 btnDoarPix.addEventListener('click',()=>{pixModal.style.display='flex';pixTexto.value='';});
 pixValor.addEventListener('change',()=>{pixValorCustom.style.display=pixValor.value==='custom'?'block':'none';});
 gerarPixBtn.addEventListener('click',()=>{
- let valor=pixValor.value==='custom'?parseFloat((pixValorCustom.value||'').replace(',','.')):parseFloat(pixValor.value);
- if(!valor||valor<0.5){alert('Informe um valor válido (mínimo R$ 0,50).');return;}
- pixTexto.value=`PIX\nChave: ${chavePix}\nValor: R$ ${valor.toFixed(2)}\nDescrição: Doação`;
+ pixTexto.value=chavePix;
 });
 copiarPixBtn.addEventListener('click',async()=>{
  if(!pixTexto.value.trim()){alert('Gere o PIX antes de copiar.');return;}
