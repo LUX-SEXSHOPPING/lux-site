@@ -59,6 +59,18 @@ body::before{
   background:
     linear-gradient(115deg, transparent 42%, rgba(201,162,39,.05) 48%, transparent 54%),
     linear-gradient(-115deg, transparent 62%, rgba(110,15,46,.09) 70%, transparent 78%);
+  z-index:0;
+}
+
+/* FUNDO COM LOGO4 */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:url('logo4.png') center/contain no-repeat;
+  opacity:0.08;
+  pointer-events:none;
+  z-index:0;
 }
 
 .serif{
@@ -81,7 +93,9 @@ header{
   align-items:center;
   padding:24px 0;
   flex-wrap:wrap;
-  gap:16px
+  gap:16px;
+  position:relative;
+  z-index:10;
 }
 
 .logo-lux{
@@ -92,7 +106,8 @@ header{
   letter-spacing:6px;
   color:var(--champanhe);
   text-shadow:0 0 24px rgba(201,162,39,.4);
-  position:relative
+  position:relative;
+  z-index:11;
 }
 
 .logo-lux::after{
@@ -109,7 +124,9 @@ nav{
   display:flex;
   flex-wrap:wrap;
   gap:4px;
-  justify-content:flex-end
+  justify-content:flex-end;
+  position:relative;
+  z-index:11;
 }
 
 nav a{
@@ -120,21 +137,26 @@ nav a{
   letter-spacing:.6px;
   border:1px solid transparent;
   border-radius:999px;
-  transition:all .3s
+  transition:all .3s;
+  background:rgba(12,8,9,.6);
+  backdrop-filter:blur(4px);
 }
 
 nav a:hover,
 nav a.ativo{
   color:var(--dourado-claro);
   border-color:var(--borda-dourada);
-  background:rgba(201,162,39,.08)
+  background:rgba(201,162,39,.12);
+  box-shadow:0 0 16px rgba(201,162,39,.2);
 }
 
 /* HERO */
 
 .hero{
   text-align:center;
-  padding:54px 10px 64px
+  padding:54px 10px 64px;
+  position:relative;
+  z-index:2;
 }
 
 .hero .selo{
@@ -147,7 +169,8 @@ nav a.ativo{
   border-radius:999px;
   padding:7px 20px;
   background:rgba(201,162,39,.08);
-  margin-bottom:26px
+  margin-bottom:26px;
+  backdrop-filter:blur(6px);
 }
 
 .hero h1{
@@ -168,7 +191,8 @@ nav a.ativo{
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
-  filter:drop-shadow(0 0 26px rgba(201,162,39,.3))
+  filter:drop-shadow(0 0 26px rgba(201,162,39,.3));
+  text-shadow:0 0 40px rgba(201,162,39,.2);
 }
 
 .hero .slogan{
@@ -177,7 +201,8 @@ nav a.ativo{
   font-size:clamp(17px,2.6vw,24px);
   color:var(--champanhe);
   margin-top:10px;
-  letter-spacing:1px
+  letter-spacing:1px;
+  text-shadow:0 2px 12px rgba(0,0,0,.8);
 }
 
 .hero .descricao{
@@ -185,7 +210,8 @@ nav a.ativo{
   margin:22px auto 0;
   color:var(--texto-suave);
   font-size:15px;
-  line-height:1.8
+  line-height:1.8;
+  text-shadow:0 1px 6px rgba(0,0,0,.6);
 }
 
 .hero .acoes{
@@ -193,7 +219,9 @@ nav a.ativo{
   gap:14px;
   justify-content:center;
   flex-wrap:wrap;
-  margin-top:34px
+  margin-top:34px;
+  position:relative;
+  z-index:5;
 }
 
 .btn{
@@ -208,7 +236,9 @@ nav a.ativo{
   letter-spacing:.5px;
   transition:all .3s;
   cursor:pointer;
-  border:1px solid transparent
+  border:1px solid transparent;
+  position:relative;
+  z-index:5;
 }
 
 .btn-ouro{
@@ -230,12 +260,14 @@ nav a.ativo{
 .btn-contorno{
   color:var(--dourado-claro);
   border-color:var(--borda-dourada);
-  background:rgba(201,162,39,.06)
+  background:rgba(201,162,39,.06);
+  backdrop-filter:blur(4px);
 }
 
 .btn-contorno:hover{
   background:rgba(201,162,39,.14);
-  transform:translateY(-2px)
+  transform:translateY(-2px);
+  box-shadow:0 0 16px rgba(201,162,39,.2);
 }
 
 /* BOTÃO PIX */
@@ -261,12 +293,14 @@ nav a.ativo{
   margin-top:12px;
   color:var(--texto-suave);
   font-size:12px;
+  text-shadow:0 1px 4px rgba(0,0,0,.6);
 }
 
 /* MODAL PIX */
-#pixModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;padding:16px}
-#pixModal .pix-card{width:100%;max-width:420px;background:#120d0f;border:1px solid rgba(201,162,39,.35);border-radius:16px;padding:18px;color:#efe7dd}
-#pixModal select,#pixModal input,#pixModal textarea{width:100%;padding:10px;border-radius:10px;margin-bottom:10px}
+#pixModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
+#pixModal .pix-card{width:100%;max-width:420px;background:linear-gradient(135deg,#1a1206,#120d0f);border:1px solid rgba(201,162,39,.35);border-radius:16px;padding:18px;color:#efe7dd;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#pixModal select,#pixModal input,#pixModal textarea{width:100%;padding:10px;border-radius:10px;margin-bottom:10px;background:rgba(255,255,255,.08);border:1px solid rgba(201,162,39,.2);color:#efe7dd}
+#pixModal select:focus,#pixModal input:focus,#pixModal textarea:focus{outline:none;border-color:rgba(201,162,39,.5);background:rgba(255,255,255,.12)}
 
 /* DIFERENCIAIS */
 
@@ -274,7 +308,9 @@ nav a.ativo{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:16px;
-  padding:6px 0 10px
+  padding:6px 0 10px;
+  position:relative;
+  z-index:2;
 }
 
 .diferencial{
@@ -289,7 +325,8 @@ nav a.ativo{
 
 .diferencial:hover{
   transform:translateY(-4px);
-  border-color:rgba(201,162,39,.5)
+  border-color:rgba(201,162,39,.5);
+  box-shadow:0 8px 24px rgba(201,162,39,.15);
 }
 
 .diferencial i{
