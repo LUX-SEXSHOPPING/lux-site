@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const rateLimit = require('express-rate-limit');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -151,22 +152,14 @@ app.get('/api/pre-cadastros', (req, res) => {
     })));
 });
 
-const accessLog = new Map();
-function isRateLimited(req) {
-    const now = Date.now();
-    const key = req.ip;
-    const recent = (accessLog.get(key) || []).filter((time) => now - time < 60_000);
-    recent.push(now);
-    accessLog.set(key, recent);
-    return recent.length > 60;
-}
-
-app.use('/media', (req, res, next) => {
-    if (isRateLimited(req)) return res.status(429).json({ erro: 'Muitas solicitações. Tente novamente.' });
-    return next();
+const mediaRateLimit = rateLimit({
+    windowMs: 60 * 1000,
+    limit: 60,
+    standardHeaders: 'draft-7',
+    legacyHeaders: false
 });
 
-app.get('/media/:id/:filename', (req, res) => {
+app.get('/media/:id/:filename', mediaRateLimit, (req, res) => {
     const record = readRecords().find((item) => item.id === req.params.id);
     if (!record || record.status !== 'aprovado' || ![...record.fotos, record.video].includes(req.params.filename)) {
         return res.sendStatus(404);
