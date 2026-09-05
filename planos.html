@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos LUX</title>
+    <style>
+        :root { --ouro: #f0d878; --fundo: #0c0809; --painel: #1b1215; --texto: #efe7dd; }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; min-height: 100vh; padding: 28px 18px; color: var(--texto);
+            background: radial-gradient(circle at top, #351526, var(--fundo) 65%);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        main { max-width: 980px; margin: auto; }
+        .voltar { color: var(--ouro); text-decoration: none; }
+        h1 { color: var(--ouro); text-align: center; margin: 48px 0 8px; }
+        .intro { color: #cbbfaf; text-align: center; margin: 0 auto 30px; }
+        .planos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+        .plano {
+            background: rgba(27, 18, 21, .94); border: 1px solid #8a6d14;
+            border-radius: 16px; padding: 24px; text-align: center;
+        }
+        .plano.destaque { border: 2px solid var(--ouro); box-shadow: 0 0 22px #c9a22733; }
+        h2 { color: var(--ouro); margin-top: 0; }
+        .plano p { color: #cbbfaf; line-height: 1.6; min-height: 78px; }
+        .contratar {
+            display: inline-block; padding: 11px 18px; border-radius: 999px;
+            background: var(--ouro); color: #1a1206; font-weight: bold; text-decoration: none;
+        }
+        .aviso { text-align: center; color: #aaa; margin: 28px 0 0; font-size: .9rem; }
+    </style>
+</head>
+<body>
+<main>
+    <a class="voltar" href="index.html">← Voltar ao início</a>
+    <h1>Planos pagos LUX</h1>
+    <p class="intro">Escolha o plano que combina com sua experiência. Fale com a equipe para consultar valores e disponibilidade.</p>
+    <section class="planos" aria-label="Planos pagos">
+        <article class="plano">
+            <h2>LUX Essencial</h2>
+            <p>Para quem deseja conhecer a seleção LUX com praticidade e atendimento personalizado.</p>
+            <a class="contratar" href="https://wa.me/5551980612041?text=Olá!%20Quero%20conhecer%20o%20plano%20LUX%20Essencial." target="_blank" rel="noopener">Consultar</a>
+        </article>
+        <article class="plano destaque">
+            <h2>LUX Premium</h2>
+            <p>Mais benefícios, prioridade no atendimento e uma experiência ainda mais exclusiva.</p>
+            <a class="contratar" href="https://wa.me/5551980612041?text=Olá!%20Quero%20conhecer%20o%20plano%20LUX%20Premium." target="_blank" rel="noopener">Consultar</a>
+        </article>
+        <article class="plano">
+            <h2>LUX Exclusivo</h2>
+            <p>Atendimento diferenciado para quem busca a experiência completa e personalizada da LUX.</p>
+            <a class="contratar" href="https://wa.me/5551980612041?text=Olá!%20Quero%20conhecer%20o%20plano%20LUX%20Exclusivo." target="_blank" rel="noopener">Consultar</a>
+        </article>
+    </section>
+    <p class="aviso">Os valores e condições são informados diretamente pela equipe LUX.</p>
+</main>
+</body>
+</html>
