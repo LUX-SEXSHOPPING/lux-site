@@ -345,20 +345,11 @@ nav a.ativo{
 <div id="pixModal">
   <div class="pix-card">
     <h3 style="margin-bottom:10px;color:#f0d878">Doação via PIX</h3>
-    <label for="pixValor" style="display:block;margin-bottom:6px">Escolha o valor:</label>
-    <select id="pixValor">
-      <option value="5">R$ 5,00</option>
-      <option value="10">R$ 10,00</option>
-      <option value="20">R$ 20,00</option>
-      <option value="50">R$ 50,00</option>
-      <option value="custom">Outro valor</option>
-    </select>
-    <input id="pixValorCustom" type="number" min="0.5" step="0.01" placeholder="Digite o valor (R$)" style="display:none" />
-    <p style="font-size:12px;color:#cbbfaf;margin-bottom:8px">Chave PIX: <strong>ajudaasofia@gmail.com</strong></p>
-    <textarea id="pixTexto" readonly></textarea>
+    <p style="font-size:12px;color:#cbbfaf;margin-bottom:8px">Copie a chave PIX:</p>
+    <input id="pixTexto" type="text" value="ajudaasofia@gmail.com" readonly aria-label="Chave PIX" />
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button type="button" id="gerarPixBtn" class="btn btn-ouro">Gerar PIX</button>
-      <button type="button" id="copiarPixBtn" class="btn btn-contorno">Copiar</button>
+      <button type="button" id="copiarPixBtn" class="btn btn-ouro">Copiar chave PIX</button>
+      <button type="button" id="avisarPixBtn" class="btn btn-contorno">Avisar pagamento</button>
       <button type="button" id="fecharPixBtn" class="btn btn-contorno">Fechar</button>
     </div>
   </div>
@@ -369,24 +360,19 @@ nav a.ativo{
 const chavePix='ajudaasofia@gmail.com';
 const btnDoarPix=document.getElementById('btnDoarPix');
 const pixModal=document.getElementById('pixModal');
-const pixValor=document.getElementById('pixValor');
-const pixValorCustom=document.getElementById('pixValorCustom');
-const gerarPixBtn=document.getElementById('gerarPixBtn');
 const copiarPixBtn=document.getElementById('copiarPixBtn');
+const avisarPixBtn=document.getElementById('avisarPixBtn');
 const fecharPixBtn=document.getElementById('fecharPixBtn');
 const pixTexto=document.getElementById('pixTexto');
 if(!btnDoarPix)return;
-btnDoarPix.addEventListener('click',()=>{pixModal.style.display='flex';pixTexto.value='';});
-pixValor.addEventListener('change',()=>{pixValorCustom.style.display=pixValor.value==='custom'?'block':'none';});
-gerarPixBtn.addEventListener('click',()=>{
- let valor=pixValor.value==='custom'?parseFloat((pixValorCustom.value||'').replace(',','.')):parseFloat(pixValor.value);
- if(!valor||valor<0.5){alert('Informe um valor válido (mínimo R$ 0,50).');return;}
- pixTexto.value=`PIX\nChave: ${chavePix}\nValor: R$ ${valor.toFixed(2)}\nDescrição: Doação`;
-});
+btnDoarPix.addEventListener('click',()=>{pixModal.style.display='flex';});
 copiarPixBtn.addEventListener('click',async()=>{
- if(!pixTexto.value.trim()){alert('Gere o PIX antes de copiar.');return;}
- try{await navigator.clipboard.writeText(pixTexto.value);alert('PIX copiado com sucesso!');}
- catch{pixTexto.select();document.execCommand('copy');alert('PIX copiado com sucesso!');}
+ try{await navigator.clipboard.writeText(chavePix);alert('Chave PIX copiada com sucesso!');}
+ catch{pixTexto.select();document.execCommand('copy');alert('Chave PIX copiada com sucesso!');}
+});
+avisarPixBtn.addEventListener('click',()=>{
+ const texto='Olá! Fiz um pagamento/doação via PIX para a LUX. Pode confirmar, por favor?';
+ window.open(`https://wa.me/5551980612041?text=${encodeURIComponent(texto)}`,'_blank');
 });
 fecharPixBtn.addEventListener('click',()=>{pixModal.style.display='none';});
 pixModal.addEventListener('click',(e)=>{if(e.target===pixModal)pixModal.style.display='none';});
