@@ -6,14 +6,18 @@
 <meta name="theme-color" content="#c9a227">
 <meta name="description" content="LUX — Sensualidade &amp; Sofisticação. Conectamos momentos especiais com pessoas extraordinárias.">
 <title>LUX — Sensualidade &amp; Sofisticação</title>
+
 <link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="dns-prefetch" href="https://wa.me">
+
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700;1,800&amp;display=swap" as="style">
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700;1,800&amp;display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
 :root{
   --dourado:#c9a227;
@@ -26,8 +30,18 @@
   --painel:rgba(255,255,255,.045);
   --borda-dourada:rgba(201,162,39,.28);
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-html{scroll-behavior:smooth}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif
+}
+
+html{
+  scroll-behavior:smooth
+}
+
 body{
   color:var(--texto-claro);
   min-height:100vh;
@@ -36,6 +50,7 @@ body{
     radial-gradient(760px 420px at 8% 112%, rgba(201,162,39,.14), transparent 62%),
     var(--fundo);
 }
+
 body::before{
   content:'';
   position:fixed;
@@ -45,109 +60,688 @@ body::before{
     linear-gradient(115deg, transparent 42%, rgba(201,162,39,.05) 48%, transparent 54%),
     linear-gradient(-115deg, transparent 62%, rgba(110,15,46,.09) 70%, transparent 78%);
 }
-.serif{font-family:'Playfair Display',serif}
-.conteudo{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 22px}
 
-/* ── Header / Navegação ── */
-header{display:flex;justify-content:space-between;align-items:center;padding:24px 0;flex-wrap:wrap;gap:16px}
-.logo-lux{font-family:'Playfair Display',serif;font-size:40px;font-weight:800;font-style:italic;letter-spacing:6px;color:var(--champanhe);text-shadow:0 0 24px rgba(201,162,39,.4);position:relative}
-.logo-lux::after{content:'';position:absolute;left:2px;right:14px;bottom:-7px;height:1px;background:linear-gradient(90deg,var(--dourado),transparent)}
-nav{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
-nav a{color:var(--texto-suave);text-decoration:none;padding:9px 14px;font-size:14px;letter-spacing:.6px;border:1px solid transparent;border-radius:999px;transition:all .3s}
-nav a:hover,nav a.ativo{color:var(--dourado-claro);border-color:var(--borda-dourada);background:rgba(201,162,39,.08)}
-
-/* ── Hero ── */
-.hero{text-align:center;padding:54px 10px 64px}
-.hero .selo{display:inline-block;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--dourado-claro);border:1px solid var(--borda-dourada);border-radius:999px;padding:7px 20px;background:rgba(201,162,39,.08);margin-bottom:26px}
-.hero h1{font-family:'Playfair Display',serif;font-size:min(92px,17vw);font-style:italic;font-weight:800;line-height:.95;letter-spacing:10px;padding-left:10px;background:linear-gradient(180deg,#fdf3d0 0%,var(--dourado-claro) 45%,var(--dourado) 78%,#8a6d14 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 26px rgba(201,162,39,.3))}
-.hero .slogan{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2.6vw,24px);color:var(--champanhe);margin-top:10px;letter-spacing:1px}
-.hero .descricao{max-width:620px;margin:22px auto 0;color:var(--texto-suave);font-size:15px;line-height:1.8}
-.hero .acoes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none;letter-spacing:.5px;transition:all .3s;cursor:pointer;border:1px solid transparent}
-.btn-ouro{background:linear-gradient(135deg,#f0d878,#c9a227 60%,#8a6d14);color:#1a1206;box-shadow:0 8px 28px rgba(201,162,39,.3)}
-.btn-ouro:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(201,162,39,.45)}
-.btn-contorno{color:var(--dourado-claro);border-color:var(--borda-dourada);background:rgba(201,162,39,.06)}
-.btn-contorno:hover{background:rgba(201,162,39,.14);transform:translateY(-2px)}
-
-/* ── Diferenciais ── */
-.diferenciais{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:6px 0 10px}
-.diferencial{background:var(--painel);border:1px solid var(--borda-dourada);border-radius:18px;padding:26px 20px;text-align:center;backdrop-filter:blur(6px);transition:all .3s}
-.diferencial:hover{transform:translateY(-4px);border-color:rgba(201,162,39,.5)}
-.diferencial i{font-size:26px;color:var(--dourado-claro);margin-bottom:12px}
-.diferencial h3{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--champanhe);margin-bottom:8px}
-.diferencial p{font-size:13px;color:var(--texto-suave);line-height:1.6}
-
-/* ── Títulos de seção ── */
-.titulo-secao{text-align:center;margin:66px 0 30px}
-.titulo-secao .pequeno{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--dourado-claro);opacity:.85}
-.titulo-secao h2{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(26px,4.5vw,36px);color:var(--champanhe);margin-top:8px;letter-spacing:1px}
-.titulo-secao h2::before,.titulo-secao h2::after{content:'✦';color:var(--dourado);font-size:.55em;margin:0 14px;vertical-align:middle}
-
-/* ── Modelos Exclusivas (Plano Premium) ── */
-.modelos-exclusivas{
-  position:relative;border-radius:26px;padding:2px;
-  background:linear-gradient(135deg,rgba(201,162,39,.65),rgba(110,15,46,.4),rgba(201,162,39,.65));
-  box-shadow:0 24px 70px rgba(0,0,0,.5);
+.serif{
+  font-family:'Playfair Display',serif
 }
-.modelos-exclusivas .interno{background:rgba(12,8,9,.92);border-radius:24px;padding:44px 26px 40px;backdrop-filter:blur(8px)}
-.coroa{font-size:34px;color:var(--dourado-claro);text-align:center;display:block;margin-bottom:6px;text-shadow:0 0 26px rgba(201,162,39,.55)}
-.sub-exclusivas{text-align:center;color:var(--texto-suave);font-size:14px;max-width:560px;margin:12px auto 32px;line-height:1.7}
-.grade-modelos{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:20px}
-.modelo{position:relative;background:rgba(255,255,255,.04);border:1px solid var(--borda-dourada);border-radius:18px;overflow:hidden;text-align:center;padding-bottom:20px;transition:all .35s}
-.modelo:hover{transform:translateY(-6px);border-color:rgba(201,162,39,.55);box-shadow:0 16px 40px rgba(0,0,0,.5)}
-.modelo .moldura{position:relative;overflow:hidden;aspect-ratio:3/4;background:#171013}
-.modelo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s}
-.modelo:hover img{transform:scale(1.06)}
-.modelo .moldura::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,8,9,.85))}
-.modelo h3{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--champanhe);margin:16px 0 2px}
-.modelo .idade{font-size:13px;color:var(--dourado-claro);font-family:'Segoe UI',sans-serif;font-style:normal;margin-left:5px}
-.modelo .cidade{font-size:12px;color:var(--texto-suave);margin:6px 0 14px}
-.selo-premium{position:absolute;top:12px;left:12px;z-index:2;background:linear-gradient(135deg,#f0d878,#c9a227);color:#1a1206;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:5px 11px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.4)}
-.selo-status{position:absolute;top:12px;right:12px;z-index:2;background:rgba(0,0,0,.55);color:#7ce8a8;font-size:10px;letter-spacing:1px;padding:5px 10px;border-radius:999px;border:1px solid rgba(124,232,168,.35)}
-.btn-ver{display:inline-block;font-size:12px;font-weight:600;letter-spacing:1.5px;color:var(--dourado-claro);text-decoration:none;border:1px solid var(--borda-dourada);border-radius:999px;padding:9px 20px;transition:all .3s}
-.btn-ver:hover{background:rgba(201,162,39,.16);color:#fff}
-.cta-premium{text-align:center;margin-top:34px}
-.cta-premium p{font-size:13px;color:var(--texto-suave);margin-bottom:14px}
 
-/* ── Menu de acesso ── */
-.grade-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
-.item-menu{display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--painel);border:1px solid var(--borda-dourada);border-radius:16px;padding:24px 12px;text-decoration:none;color:var(--texto-claro);font-size:14px;letter-spacing:.5px;transition:all .3s}
-.item-menu i{font-size:22px;color:var(--dourado-claro)}
-.item-menu:hover{transform:translateY(-4px);background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.5);color:#fff}
+.conteudo{
+  position:relative;
+  z-index:1;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 22px
+}
 
-/* ── Sobre ── */
-.sobre{max-width:760px;margin:0 auto;text-align:center;background:var(--painel);border:1px solid var(--borda-dourada);border-radius:22px;padding:40px 30px;backdrop-filter:blur(6px)}
-.sobre p{color:var(--texto-suave);line-height:1.9;font-style:italic;font-size:15px;margin-top:14px}
+/* HEADER */
 
-footer{text-align:center;padding:30px 0 26px;color:#8b8073;font-size:13px;border-top:1px solid rgba(201,162,39,.18);margin-top:70px}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:24px 0;
+  flex-wrap:wrap;
+  gap:16px
+}
 
-.whatsapp-flutuante{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
-.whatsapp-flutuante:hover{transform:scale(1.1)}
-.baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,#f0d878,#c9a227);color:#1a1206;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
-.baixar-app:hover{transform:scale(1.05)}
+.logo-lux{
+  font-family:'Playfair Display',serif;
+  font-size:40px;
+  font-weight:800;
+  font-style:italic;
+  letter-spacing:6px;
+  color:var(--champanhe);
+  text-shadow:0 0 24px rgba(201,162,39,.4);
+  position:relative
+}
+
+.logo-lux::after{
+  content:'';
+  position:absolute;
+  left:2px;
+  right:14px;
+  bottom:-7px;
+  height:1px;
+  background:linear-gradient(90deg,var(--dourado),transparent)
+}
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  justify-content:flex-end
+}
+
+nav a{
+  color:var(--texto-suave);
+  text-decoration:none;
+  padding:9px 14px;
+  font-size:14px;
+  letter-spacing:.6px;
+  border:1px solid transparent;
+  border-radius:999px;
+  transition:all .3s
+}
+
+nav a:hover,
+nav a.ativo{
+  color:var(--dourado-claro);
+  border-color:var(--borda-dourada);
+  background:rgba(201,162,39,.08)
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  padding:54px 10px 64px
+}
+
+.hero .selo{
+  display:inline-block;
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--dourado-claro);
+  border:1px solid var(--borda-dourada);
+  border-radius:999px;
+  padding:7px 20px;
+  background:rgba(201,162,39,.08);
+  margin-bottom:26px
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:min(92px,17vw);
+  font-style:italic;
+  font-weight:800;
+  line-height:.95;
+  letter-spacing:10px;
+  padding-left:10px;
+  background:linear-gradient(
+    180deg,
+    #fdf3d0 0%,
+    var(--dourado-claro) 45%,
+    var(--dourado) 78%,
+    #8a6d14 100%
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  filter:drop-shadow(0 0 26px rgba(201,162,39,.3))
+}
+
+.hero .slogan{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(17px,2.6vw,24px);
+  color:var(--champanhe);
+  margin-top:10px;
+  letter-spacing:1px
+}
+
+.hero .descricao{
+  max-width:620px;
+  margin:22px auto 0;
+  color:var(--texto-suave);
+  font-size:15px;
+  line-height:1.8
+}
+
+.hero .acoes{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:34px
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:14px 30px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:600;
+  text-decoration:none;
+  letter-spacing:.5px;
+  transition:all .3s;
+  cursor:pointer;
+  border:1px solid transparent
+}
+
+.btn-ouro{
+  background:linear-gradient(
+    135deg,
+    #f0d878,
+    #c9a227 60%,
+    #8a6d14
+  );
+  color:#1a1206;
+  box-shadow:0 8px 28px rgba(201,162,39,.3)
+}
+
+.btn-ouro:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 34px rgba(201,162,39,.45)
+}
+
+.btn-contorno{
+  color:var(--dourado-claro);
+  border-color:var(--borda-dourada);
+  background:rgba(201,162,39,.06)
+}
+
+.btn-contorno:hover{
+  background:rgba(201,162,39,.14);
+  transform:translateY(-2px)
+}
+
+/* BOTÃO PIX */
+
+.btn-pix{
+  background:linear-gradient(
+    135deg,
+    #f0d878,
+    #c9a227 55%,
+    #8a6d14
+  );
+  color:#1a1206;
+  box-shadow:0 8px 30px rgba(201,162,39,.35);
+  font-weight:700;
+}
+
+.btn-pix:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 38px rgba(201,162,39,.5);
+}
+
+.pix-info{
+  margin-top:12px;
+  color:var(--texto-suave);
+  font-size:12px;
+}
+
+/* DIFERENCIAIS */
+
+.diferenciais{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  padding:6px 0 10px
+}
+
+.diferencial{
+  background:var(--painel);
+  border:1px solid var(--borda-dourada);
+  border-radius:18px;
+  padding:26px 20px;
+  text-align:center;
+  backdrop-filter:blur(6px);
+  transition:all .3s
+}
+
+.diferencial:hover{
+  transform:translateY(-4px);
+  border-color:rgba(201,162,39,.5)
+}
+
+.diferencial i{
+  font-size:26px;
+  color:var(--dourado-claro);
+  margin-bottom:12px
+}
+
+.diferencial h3{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:18px;
+  color:var(--champanhe);
+  margin-bottom:8px
+}
+
+.diferencial p{
+  font-size:13px;
+  color:var(--texto-suave);
+  line-height:1.6
+}
+
+/* TÍTULOS */
+
+.titulo-secao{
+  text-align:center;
+  margin:66px 0 30px
+}
+
+.titulo-secao .pequeno{
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--dourado-claro);
+  opacity:.85
+}
+
+.titulo-secao h2{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(26px,4.5vw,36px);
+  color:var(--champanhe);
+  margin-top:8px;
+  letter-spacing:1px
+}
+
+.titulo-secao h2::before,
+.titulo-secao h2::after{
+  content:'✦';
+  color:var(--dourado);
+  font-size:.55em;
+  margin:0 14px;
+  vertical-align:middle
+}
+
+/* MODELOS */
+
+.modelos-exclusivas{
+  position:relative;
+  border-radius:26px;
+  padding:2px;
+  background:linear-gradient(
+    135deg,
+    rgba(201,162,39,.65),
+    rgba(110,15,46,.4),
+    rgba(201,162,39,.65)
+  );
+  box-shadow:0 24px 70px rgba(0,0,0,.5)
+}
+
+.modelos-exclusivas .interno{
+  background:rgba(12,8,9,.92);
+  border-radius:24px;
+  padding:44px 26px 40px;
+  backdrop-filter:blur(8px)
+}
+
+.coroa{
+  font-size:34px;
+  color:var(--dourado-claro);
+  text-align:center;
+  display:block;
+  margin-bottom:6px;
+  text-shadow:0 0 26px rgba(201,162,39,.55)
+}
+
+.sub-exclusivas{
+  text-align:center;
+  color:var(--texto-suave);
+  font-size:14px;
+  max-width:560px;
+  margin:12px auto 32px;
+  line-height:1.7
+}
+
+.grade-modelos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:20px
+}
+
+.modelo{
+  position:relative;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--borda-dourada);
+  border-radius:18px;
+  overflow:hidden;
+  text-align:center;
+  padding-bottom:20px;
+  transition:all .35s
+}
+
+.modelo:hover{
+  transform:translateY(-6px);
+  border-color:rgba(201,162,39,.55);
+  box-shadow:0 16px 40px rgba(0,0,0,.5)
+}
+
+.modelo .moldura{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:3/4;
+  background:#171013
+}
+
+.modelo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+  transition:transform .5s
+}
+
+.modelo:hover img{
+  transform:scale(1.06)
+}
+
+.modelo .moldura::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(12,8,9,.85)
+  )
+}
+
+.modelo h3{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:20px;
+  color:var(--champanhe);
+  margin:16px 0 2px
+}
+
+.modelo .idade{
+  font-size:13px;
+  color:var(--dourado-claro);
+  font-family:'Segoe UI',sans-serif;
+  font-style:normal;
+  margin-left:5px
+}
+
+.modelo .cidade{
+  font-size:12px;
+  color:var(--texto-suave);
+  margin:6px 0 14px
+}
+
+.selo-premium{
+  position:absolute;
+  top:12px;
+  left:12px;
+  z-index:2;
+  background:linear-gradient(135deg,#f0d878,#c9a227);
+  color:#1a1206;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  padding:5px 11px;
+  border-radius:999px;
+  box-shadow:0 4px 14px rgba(0,0,0,.4)
+}
+
+.selo-status{
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:2;
+  background:rgba(0,0,0,.55);
+  color:#7ce8a8;
+  font-size:10px;
+  letter-spacing:1px;
+  padding:5px 10px;
+  border-radius:999px;
+  border:1px solid rgba(124,232,168,.35)
+}
+
+.btn-ver{
+  display:inline-block;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:1.5px;
+  color:var(--dourado-claro);
+  text-decoration:none;
+  border:1px solid var(--borda-dourada);
+  border-radius:999px;
+  padding:9px 20px;
+  transition:all .3s
+}
+
+.btn-ver:hover{
+  background:rgba(201,162,39,.16);
+  color:#fff
+}
+
+.cta-premium{
+  text-align:center;
+  margin-top:34px
+}
+
+.cta-premium p{
+  font-size:13px;
+  color:var(--texto-suave);
+  margin-bottom:14px
+}
+
+/* MENU */
+
+.grade-menu{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:14px
+}
+
+.item-menu{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  background:var(--painel);
+  border:1px solid var(--borda-dourada);
+  border-radius:16px;
+  padding:24px 12px;
+  text-decoration:none;
+  color:var(--texto-claro);
+  font-size:14px;
+  letter-spacing:.5px;
+  transition:all .3s
+}
+
+.item-menu i{
+  font-size:22px;
+  color:var(--dourado-claro)
+}
+
+.item-menu:hover{
+  transform:translateY(-4px);
+  background:rgba(201,162,39,.1);
+  border-color:rgba(201,162,39,.5);
+  color:#fff
+}
+
+/* SOBRE */
+
+.sobre{
+  max-width:760px;
+  margin:0 auto;
+  text-align:center;
+  background:var(--painel);
+  border:1px solid var(--borda-dourada);
+  border-radius:22px;
+  padding:40px 30px;
+  backdrop-filter:blur(6px)
+}
+
+.sobre p{
+  color:var(--texto-suave);
+  line-height:1.9;
+  font-style:italic;
+  font-size:15px;
+  margin-top:14px
+}
+
+/* RODAPÉ */
+
+footer{
+  text-align:center;
+  padding:30px 0 26px;
+  color:#8b8073;
+  font-size:13px;
+  border-top:1px solid rgba(201,162,39,.18);
+  margin-top:70px
+}
+
+/* WHATSAPP */
+
+.whatsapp-flutuante{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25d366;
+  color:#fff;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  text-decoration:none;
+  z-index:999;
+  transition:transform .3s;
+  box-shadow:0 4px 12px rgba(0,0,0,.3)
+}
+
+.whatsapp-flutuante:hover{
+  transform:scale(1.1)
+}
+
+/* BOTÃO PIX FLUTUANTE */
+
+.pix-flutuante{
+  position:fixed;
+  bottom:95px;
+  right:25px;
+  background:linear-gradient(135deg,#f0d878,#c9a227);
+  color:#1a1206;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  text-decoration:none;
+  z-index:999;
+  transition:transform .3s;
+  box-shadow:0 4px 14px rgba(0,0,0,.35);
+  cursor:pointer
+}
+
+.pix-flutuante:hover{
+  transform:scale(1.08)
+}
+
+/* APP */
+
+.baixar-app{
+  position:fixed;
+  bottom:165px;
+  right:25px;
+  background:linear-gradient(135deg,#f0d878,#c9a227);
+  color:#1a1206;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  text-decoration:none;
+  z-index:999;
+  transition:transform .3s;
+  box-shadow:0 4px 12px rgba(0,0,0,.3)
+}
+
+.baixar-app:hover{
+  transform:scale(1.05)
+}
+
+/* RESPONSIVO */
 
 @media (max-width:640px){
-  .conteudo{padding:0 16px}
-  .logo-lux{font-size:30px}
-  header{flex-direction:column;align-items:center;text-align:center}
-  nav{justify-content:center}
-  nav a{font-size:12px;padding:7px 11px}
-  .hero{padding:38px 4px 48px}
-  .modelos-exclusivas .interno{padding:32px 16px}
-  .baixar-app{bottom:95px;right:18px}
-  .whatsapp-flutuante{bottom:25px;right:18px}
+
+  .conteudo{
+    padding:0 16px
+  }
+
+  .logo-lux{
+    font-size:30px
+  }
+
+  header{
+    flex-direction:column;
+    align-items:center;
+    text-align:center
+  }
+
+  nav{
+    justify-content:center
+  }
+
+  nav a{
+    font-size:12px;
+    padding:7px 11px
+  }
+
+  .hero{
+    padding:38px 4px 48px
+  }
+
+  .hero .acoes{
+    flex-direction:column;
+    align-items:center
+  }
+
+  .hero .acoes .btn{
+    width:100%;
+    max-width:320px;
+    justify-content:center
+  }
+
+  .modelos-exclusivas .interno{
+    padding:32px 16px
+  }
+
+  .baixar-app{
+    bottom:165px;
+    right:18px
+  }
+
+  .pix-flutuante{
+    bottom:95px;
+    right:18px
+  }
+
+  .whatsapp-flutuante{
+    bottom:25px;
+    right:18px
+  }
 }
+
 @media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  html{scroll-behavior:auto}
+
+  *{
+    animation:none!important;
+    transition:none!important
+  }
+
+  html{
+    scroll-behavior:auto
+  }
 }
 </style>
 </head>
+
 <body>
+
 <div class="conteudo">
 
 <header>
+
   <div class="logo-lux">LUX</div>
+
   <nav>
     <a href="index.html" class="ativo">Início</a>
     <a href="catalago.html">Catálogo</a>
@@ -158,158 +752,460 @@ footer{text-align:center;padding:30px 0 26px;color:#8b8073;font-size:13px;border
     <a href="#sobre">Sobre</a>
     <a href="termos.html">Termos</a>
   </nav>
+
 </header>
 
 <section class="hero">
+
   <span class="selo">✦ Seleção Premium ✦</span>
+
   <h1>LUX</h1>
-  <p class="slogan">Sensualidade &amp; Sofisticação</p>
-  <p class="descricao">Conectamos momentos especiais com pessoas extraordinárias. Um universo de beleza, discrição e prazer — criado para quem exige o melhor.</p>
+
+  <p class="slogan">
+    Sensualidade &amp; Sofisticação
+  </p>
+
+  <p class="descricao">
+    Conectamos momentos especiais com pessoas extraordinárias.
+    Um universo de beleza, discrição e prazer — criado para quem exige o melhor.
+  </p>
+
   <div class="acoes">
-    <a href="catalago.html" class="btn btn-ouro"><i class="fas fa-gem"></i> Ver Catálogo</a>
-    <a href="pre-cadastro.html" class="btn btn-contorno"><i class="fas fa-crown"></i> Seja uma VIP</a>
+
+    <a href="catalago.html" class="btn btn-ouro">
+      <i class="fas fa-gem"></i>
+      Ver Catálogo
+    </a>
+
+    <a href="pre-cadastro.html" class="btn btn-contorno">
+      <i class="fas fa-crown"></i>
+      Seja uma VIP
+    </a>
+
+    <!-- BOTÃO PIX -->
+    <button onclick="doarPix()" class="btn btn-pix">
+      <i class="fas fa-qrcode"></i>
+      Doar via PIX
+    </button>
+
   </div>
+
+  <p class="pix-info">
+    Contribuição voluntária a partir de R$ 0,50
+  </p>
+
 </section>
 
 <section class="diferenciais">
+
   <div class="diferencial">
     <i class="fas fa-gem" aria-hidden="true"></i>
     <h3>Exclusividade</h3>
-    <p>Seleção criteriosa de modelos para encontros verdadeiramente únicos.</p>
+    <p>
+      Seleção criteriosa de modelos para encontros verdadeiramente únicos.
+    </p>
   </div>
+
   <div class="diferencial">
     <i class="fas fa-lock" aria-hidden="true"></i>
     <h3>Discrição</h3>
-    <p>Privacidade absoluta em cada contato, do início ao fim.</p>
+    <p>
+      Privacidade absoluta em cada contato, do início ao fim.
+    </p>
   </div>
+
   <div class="diferencial">
     <i class="fas fa-crown" aria-hidden="true"></i>
     <h3>Premium</h3>
-    <p>Experiências sofisticadas, pensadas para momentos inesquecíveis.</p>
+    <p>
+      Experiências sofisticadas, pensadas para momentos inesquecíveis.
+    </p>
   </div>
+
 </section>
 
 <section class="titulo-secao" id="exclusivas">
+
   <p class="pequeno">Plano Premium</p>
+
   <h2>Modelos Exclusivas</h2>
+
 </section>
 
 <section class="modelos-exclusivas">
+
   <div class="interno">
+
     <span class="coroa">👑</span>
-    <p class="sub-exclusivas">As modelos que assinam o <strong style="color:var(--dourado-claro)">Plano Premium</strong> recebem destaque absoluto na LUX — as primeiras a serem vistas, as primeiras a serem desejadas.</p>
+
+    <p class="sub-exclusivas">
+      As modelos que assinam o
+      <strong style="color:var(--dourado-claro)">
+        Plano Premium
+      </strong>
+      recebem destaque absoluto na LUX — as primeiras a serem vistas,
+      as primeiras a serem desejadas.
+    </p>
 
     <div class="grade-modelos">
+
       <article class="modelo">
+
         <span class="selo-premium">★ PREMIUM</span>
+
         <span class="selo-status">● Disponível</span>
+
         <div class="moldura">
-          <img src="vip1.png" alt="Eduarda — Modelo Premium LUX" loading="lazy">
+          <img
+            src="vip1.png"
+            alt="Eduarda — Modelo Premium LUX"
+            loading="lazy"
+          >
         </div>
-        <h3>Eduarda<span class="idade">• 21</span></h3>
-        <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-        <a href="eduarda.html" class="btn-ver">Ver Perfil</a>
+
+        <h3>
+          Eduarda<span class="idade">• 21</span>
+        </h3>
+
+        <p class="cidade">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          Gravataí, RS — Brasil
+        </p>
+
+        <a href="eduarda.html" class="btn-ver">
+          Ver Perfil
+        </a>
+
       </article>
 
       <article class="modelo">
+
         <span class="selo-premium">★ PREMIUM</span>
+
         <span class="selo-status">● Disponível</span>
+
         <div class="moldura">
-          <img src="vip2.png" alt="Sarah — Modelo Premium LUX" loading="lazy">
+          <img
+            src="vip2.png"
+            alt="Sarah — Modelo Premium LUX"
+            loading="lazy"
+          >
         </div>
-        <h3>Sarah<span class="idade">• 27</span></h3>
-        <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-        <a href="catalago.html" class="btn-ver">Ver Catálogo</a>
+
+        <h3>
+          Sarah<span class="idade">• 27</span>
+        </h3>
+
+        <p class="cidade">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          Gravataí, RS — Brasil
+        </p>
+
+        <a href="catalago.html" class="btn-ver">
+          Ver Catálogo
+        </a>
+
       </article>
 
       <article class="modelo">
+
         <span class="selo-premium">★ PREMIUM</span>
+
         <span class="selo-status">● Disponível</span>
+
         <div class="moldura">
-          <img src="vip3.png" alt="Larissa — Modelo Premium LUX" loading="lazy">
+          <img
+            src="vip3.png"
+            alt="Larissa — Modelo Premium LUX"
+            loading="lazy"
+          >
         </div>
-        <h3>Larissa<span class="idade">• 20</span></h3>
-        <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-        <a href="larissa.html" class="btn-ver">Ver Perfil</a>
+
+        <h3>
+          Larissa<span class="idade">• 20</span>
+        </h3>
+
+        <p class="cidade">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          Gravataí, RS — Brasil
+        </p>
+
+        <a href="larissa.html" class="btn-ver">
+          Ver Perfil
+        </a>
+
       </article>
 
       <article class="modelo">
+
         <span class="selo-premium">★ PREMIUM</span>
+
         <span class="selo-status">● Disponível</span>
+
         <div class="moldura">
-          <img src="vip4.png" alt="Vitória — Modelo Premium LUX" loading="lazy">
+          <img
+            src="vip4.png"
+            alt="Vitória — Modelo Premium LUX"
+            loading="lazy"
+          >
         </div>
-        <h3>Vitória<span class="idade">• 24</span></h3>
-        <p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-        <a href="catalago.html" class="btn-ver">Ver Catálogo</a>
+
+        <h3>
+          Vitória<span class="idade">• 24</span>
+        </h3>
+
+        <p class="cidade">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          Gravataí, RS — Brasil
+        </p>
+
+        <a href="catalago.html" class="btn-ver">
+          Ver Catálogo
+        </a>
+
       </article>
+
     </div>
 
     <div class="cta-premium">
-      <p>✨ Quer seu perfil em destaque absoluto? Assine o Plano Premium da LUX.</p>
-      <a href="pre-cadastro.html" class="btn btn-ouro"><i class="fas fa-crown"></i> Quero ser Exclusiva</a>
+
+      <p>
+        ✨ Quer seu perfil em destaque absoluto?
+        Assine o Plano Premium da LUX.
+      </p>
+
+      <a href="pre-cadastro.html" class="btn btn-ouro">
+        <i class="fas fa-crown"></i>
+        Quero ser Exclusiva
+      </a>
+
     </div>
+
   </div>
+
 </section>
 
 <section class="titulo-secao">
+
   <p class="pequeno">Navegue</p>
+
   <h2>Menu</h2>
+
 </section>
 
 <nav class="grade-menu" aria-label="Menu principal">
-  <a href="catalago.html" class="item-menu"><i class="fas fa-images"></i> Catálogo</a>
-  <a href="modelos-femininos.html" class="item-menu"><i class="fas fa-venus"></i> Femininos</a>
-  <a href="modelos-masculinos.html" class="item-menu"><i class="fas fa-mars"></i> Masculinos</a>
-  <a href="pre-cadastro.html" class="item-menu"><i class="fas fa-user-plus"></i> Pré-Cadastro</a>
-  <a href="lista-espera.html" class="item-menu"><i class="fas fa-calendar-check"></i> Agendar</a>
-  <a href="termos.html" class="item-menu"><i class="fas fa-file-contract"></i> Termos</a>
-  <a href="https://wa.me/5551980612041?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20a%20LUX." target="_blank" rel="noopener noreferrer" class="item-menu"><i class="fab fa-whatsapp"></i> Contato</a>
+
+  <a href="catalago.html" class="item-menu">
+    <i class="fas fa-images"></i>
+    Catálogo
+  </a>
+
+  <a href="modelos-femininos.html" class="item-menu">
+    <i class="fas fa-venus"></i>
+    Femininos
+  </a>
+
+  <a href="modelos-masculinos.html" class="item-menu">
+    <i class="fas fa-mars"></i>
+    Masculinos
+  </a>
+
+  <a href="pre-cadastro.html" class="item-menu">
+    <i class="fas fa-user-plus"></i>
+    Pré-Cadastro
+  </a>
+
+  <a href="lista-espera.html" class="item-menu">
+    <i class="fas fa-calendar-check"></i>
+    Agendar
+  </a>
+
+  <a href="termos.html" class="item-menu">
+    <i class="fas fa-file-contract"></i>
+    Termos
+  </a>
+
+  <!-- DOAÇÃO PIX NO MENU -->
+
+  <a href="javascript:void(0)" onclick="doarPix()" class="item-menu">
+    <i class="fas fa-qrcode"></i>
+    Doar via PIX
+  </a>
+
+  <a
+    href="https://wa.me/5551980612041?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20a%20LUX."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="item-menu"
+  >
+    <i class="fab fa-whatsapp"></i>
+    Contato
+  </a>
+
 </nav>
 
 <section class="titulo-secao" id="sobre">
+
   <p class="pequeno">A LUX</p>
+
   <h2>Sobre Nós</h2>
+
 </section>
 
 <section class="sobre">
-  <p>O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>Somos a LUX — um espaço de beleza, discrição e sofisticação. Cada momento é precioso, cada pessoa é única e querida.</p>
+
+  <p>
+    O que você procura está aqui. Um jardim de encantos,
+    onde cada olhar é poesia e cada encontro é uma obra de arte.
+    <br><br>
+    Somos a LUX — um espaço de beleza, discrição e sofisticação.
+    Cada momento é precioso, cada pessoa é única e querida.
+  </p>
+
 </section>
 
-<footer>© 2026 LUX — Sensualidade &amp; Sofisticação • Brasil e Europa • Todos os direitos reservados. • Proibido para menores de 18 anos.</footer>
+<footer>
+  © 2026 LUX — Sensualidade &amp; Sofisticação • Brasil e Europa •
+  Todos os direitos reservados. • Proibido para menores de 18 anos.
+</footer>
+
 </div>
 
-<a href="https://wa.me/5551980612041?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20a%20LUX." class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer" title="Envie uma mensagem no WhatsApp" aria-label="Contato pelo WhatsApp">
-<i class="fab fa-whatsapp" aria-hidden="true"></i>
+<!-- BOTÃO PIX FLUTUANTE -->
+
+<a
+  href="javascript:void(0)"
+  onclick="doarPix()"
+  class="pix-flutuante"
+  title="Doar via PIX"
+  aria-label="Doar via PIX"
+>
+  <i class="fas fa-qrcode" aria-hidden="true"></i>
 </a>
 
-<a id="baixar-app" class="baixar-app" href="#" title="Baixar App" aria-label="Baixar aplicativo LUX">
-<i class="fas fa-download" aria-hidden="true"></i>
+<!-- WHATSAPP -->
+
+<a
+  href="https://wa.me/5551980612041?text=Ol%C3%A1!%20Tenho%20interesse%20em%20saber%20mais%20sobre%20a%20LUX."
+  class="whatsapp-flutuante"
+  target="_blank"
+  rel="noopener noreferrer"
+  title="Envie uma mensagem no WhatsApp"
+  aria-label="Contato pelo WhatsApp"
+>
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<!-- BOTÃO INSTALAR APP -->
+
+<a
+  id="baixar-app"
+  class="baixar-app"
+  href="#"
+  title="Baixar App"
+  aria-label="Baixar aplicativo LUX"
+>
+  <i class="fas fa-download" aria-hidden="true"></i>
 </a>
 
 <script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").then(r => console.log("SW registrado")).catch(e => console.error("Erro SW:", e));
-  }, false);
+
+/* =====================================================
+   CONFIGURAÇÃO DO PIX
+   ===================================================== */
+
+const CHAVE_PIX = "99e20273-d6bb-4c32-a76a-4677fce7b1b8";
+
+/* =====================================================
+   FUNÇÃO DOAÇÃO PIX
+   ===================================================== */
+
+async function doarPix(){
+
+  try{
+
+    await navigator.clipboard.writeText(CHAVE_PIX);
+
+    alert(
+      "💚 PIX COPIADO!\n\n" +
+      "Chave PIX:\n" +
+      CHAVE_PIX +
+      "\n\n" +
+      "Valor mínimo sugerido: R$ 0,50\n\n" +
+      "Abra o aplicativo do seu banco, escolha PIX, " +
+      "cole a chave e faça sua contribuição."
+    );
+
+  }catch(error){
+
+    prompt(
+      "Copie sua chave PIX abaixo:",
+      CHAVE_PIX
+    );
+
+  }
+
 }
 
-// Instalação do app (PWA)
+/* =====================================================
+   SERVICE WORKER
+   ===================================================== */
+
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener("load", () => {
+
+    navigator.serviceWorker
+      .register("sw.js")
+      .then(r => console.log("SW registrado"))
+      .catch(e => console.error("Erro SW:", e));
+
+  }, false);
+
+}
+
+/* =====================================================
+   INSTALAÇÃO DO APP - PWA
+   ===================================================== */
+
 let eventoInstalacao;
-const botaoApp = document.getElementById("baixar-app");
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  eventoInstalacao = e;
-  botaoApp.style.display = "flex";
-});
-botaoApp.addEventListener("click", async (e) => {
-  e.preventDefault();
-  if (!eventoInstalacao) return;
-  eventoInstalacao.prompt();
-  await eventoInstalacao.userChoice;
-  eventoInstalacao = null;
-  botaoApp.style.display = "none";
-});
+
+const botaoApp =
+  document.getElementById("baixar-app");
+
+window.addEventListener(
+  "beforeinstallprompt",
+  (e) => {
+
+    e.preventDefault();
+
+    eventoInstalacao = e;
+
+    botaoApp.style.display = "flex";
+
+  }
+);
+
+botaoApp.addEventListener(
+  "click",
+  async (e) => {
+
+    e.preventDefault();
+
+    if (!eventoInstalacao) return;
+
+    eventoInstalacao.prompt();
+
+    await eventoInstalacao.userChoice;
+
+    eventoInstalacao = null;
+
+    botaoApp.style.display = "none";
+
+  }
+);
+
 </script>
+
 </body>
 </html>
