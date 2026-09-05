@@ -152,6 +152,12 @@
             color: #999;
             text-align: left;
         }
+        .status-envio {
+            margin-top: 12px;
+            text-align: center;
+            color: #e6c86e;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -194,20 +200,18 @@
             <!-- 📸 ENVIO DE FOTOS E VÍDEO -->
             <div class="arquivo-envio">
                 <label>📸 Fotos de apresentação</label>
-                <input type="file" id="fotosApresentacao" accept="image/*" multiple onchange="atualizarListaArquivos()">
+                <input type="file" id="fotosApresentacao" name="fotos" accept="image/*" multiple onchange="atualizarListaArquivos()">
             </div>
 
             <div class="arquivo-envio">
                 <label>🎬 Vídeo de apresentação (opcional)</label>
-                <input type="file" id="videoApresentacao" accept="video/*" onchange="atualizarListaArquivos()">
+                <input type="file" id="videoApresentacao" name="video" accept="video/*" onchange="atualizarListaArquivos()">
             </div>
 
             <div class="lista-arquivos" id="listaArquivos"></div>
 
-            <!-- ⚠️ INSTRUÇÃO IMPORTANTE ADICIONADA -->
             <div class="aviso-importante">
-                ⚠️ <strong>Atenção:</strong> Após clicar em "Enviar", uma conversa no WhatsApp abrirá com seus dados.<br>
-                <strong>Por favor, anexe suas fotos e vídeo diretamente nesta conversa</strong> e envie. O site envia suas informações, mas os arquivos precisam ser anexados por você na conversa do WhatsApp. Obrigada! 💎
+                ⚠️ <strong>Atenção:</strong> Envie no máximo 2 fotos e 1 vídeo. Os arquivos serão armazenados em área privada até a avaliação.
             </div>
 
             <div class="aviso-fotos">
@@ -221,6 +225,7 @@
             </label>
 
             <button type="submit">💌 Enviar Pré-Cadastro</button>
+            <div class="status-envio" id="statusEnvio" role="status"></div>
         </form>
     </div>
 
@@ -235,6 +240,11 @@
             nomesArquivos = [];
             let html = '';
 
+            if (fotos.length > 2) {
+                document.getElementById('fotosApresentacao').value = '';
+                document.getElementById('statusEnvio').textContent = 'Selecione no máximo 2 fotos.';
+                return atualizarListaArquivos();
+            }
             if (fotos.length > 0) {
                 html += '<div>📸 ' + fotos.length + ' foto(s) selecionada(s)</div>';
                 for (let i = 0; i < fotos.length; i++) {
@@ -248,47 +258,36 @@
             lista.innerHTML = html;
         }
 
-        function enviarPreCadastro(e) {
+        async function enviarPreCadastro(e) {
             e.preventDefault();
-            const nome = document.getElementById('nomeModela').value;
-            const tel = document.getElementById('telefoneModela').value;
-            const idade = document.getElementById('idadeModela').value;
-            const altura = document.getElementById('alturaModela').value;
-            const cidade = document.getElementById('cidadeModela').value;
-            const endereco = document.getElementById('enderecoModela').value;
-            const numero = document.getElementById('numeroModela').value;
-            const bairro = document.getElementById('bairroModela').value;
-            const cidadeEndereco = document.getElementById('cidadeEnderecoModela').value;
-            const estado = document.getElementById('estadoModela').value;
-            const pais = document.getElementById('paisModela').value;
-            const desc = document.getElementById('experienciaModela').value;
-
-            let arquivosTexto = nomesArquivos.length > 0 
-                ? nomesArquivos.join('\n') 
-                : 'Nenhum arquivo anexado';
-
-            const texto = `💎 *PRÉ-CADASTRO — NOVA VIP LUX*
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-👤 Nome/Apelido: ${nome}
-📱 WhatsApp: ${tel}
-🎂 Idade: ${idade} anos
-📏 Altura: ${altura}
-📍 Cidade/Região: ${cidade}
-🏠 Endereço: ${endereco}, nº ${numero}
-🏘️ Bairro: ${bairro}
-🌆 Cidade: ${cidadeEndereco}
-🗺️ Estado: ${estado}
-🌎 País: ${pais}
-📝 Sobre e disponibilidade:
-${desc}
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-📂 Arquivos selecionados:
-${arquivosTexto}
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚠️ LEMBRETE: Por favor, anexe suas fotos e vídeo DIRETAMENTE nesta conversa do WhatsApp! Obrigada. 💎
-⚠️ APENAS APROVADAS SERÃO PUBLICADAS NO SITE!`;
-
-            window.open(`https://wa.me/5551980612041?text=${encodeURIComponent(texto)}`);
+            const fotos = document.getElementById('fotosApresentacao').files;
+            const status = document.getElementById('statusEnvio');
+            if (fotos.length > 2) {
+                status.textContent = 'Selecione no máximo 2 fotos.';
+                return;
+            }
+            const dados = new FormData();
+            const campos = {
+                nome: 'nomeModela', telefone: 'telefoneModela', idade: 'idadeModela',
+                altura: 'alturaModela', cidade: 'cidadeModela', endereco: 'enderecoModela',
+                numero: 'numeroModela', bairro: 'bairroModela', cidadeEndereco: 'cidadeEnderecoModela',
+                estado: 'estadoModela', pais: 'paisModela', descricao: 'experienciaModela'
+            };
+            Object.entries(campos).forEach(([nome, id]) => dados.append(nome, document.getElementById(id).value));
+            Array.from(fotos).forEach((foto) => dados.append('fotos', foto));
+            const video = document.getElementById('videoApresentacao').files[0];
+            if (video) dados.append('video', video);
+            status.textContent = 'Enviando seus arquivos com segurança...';
+            try {
+                const resposta = await fetch('/api/pre-cadastros', { method: 'POST', body: dados });
+                const resultado = await resposta.json();
+                if (!resposta.ok) throw new Error(resultado.erro || 'Não foi possível enviar.');
+                status.textContent = 'Pré-cadastro recebido! Aguarde o contato da equipe LUX.';
+                document.getElementById('formCadastro').reset();
+                document.getElementById('listaArquivos').textContent = '';
+            } catch (erro) {
+                status.textContent = erro.message;
+            }
         }
     </script>
 </body>

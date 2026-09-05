@@ -344,5 +344,46 @@
     © 2026 LUX — Brasil • Europa | Proibido para menores de 18 anos. Todos os direitos reservados.
 </footer>
 
+<script>
+    async function carregarModelosAprovados() {
+        try {
+            const resposta = await fetch('/api/catalogo');
+            if (!resposta.ok) return;
+            const modelos = await resposta.json();
+            const grade = document.querySelector('.grade-perfis');
+            modelos.forEach((modelo) => {
+                const cartao = document.createElement('div');
+                cartao.className = 'cartao';
+                const foto = document.createElement('img');
+                foto.className = 'foto-cartao';
+                foto.src = modelo.fotos[0] || 'foto-ilustr.png';
+                foto.alt = modelo.nome;
+                const corpo = document.createElement('div');
+                corpo.className = 'corpo-cartao';
+                const nome = document.createElement('h3');
+                nome.className = 'nome-cartao';
+                nome.textContent = `💎 ${modelo.nome}`;
+                const dados = document.createElement('div');
+                dados.className = 'dados-cartao';
+                dados.textContent = `${modelo.idade} anos • ${modelo.cidade}`;
+                const sobre = document.createElement('div');
+                sobre.className = 'sobre-cartao';
+                sobre.textContent = modelo.descricao || 'Perfil aprovado pela equipe LUX.';
+                const contato = document.createElement('a');
+                contato.className = 'btn-contato';
+                contato.target = '_blank';
+                contato.href = `https://wa.me/5551980612041?text=${encodeURIComponent(`Olá! Quero saber sobre ${modelo.nome} da LUX`)}`;
+                contato.textContent = '💬 Contatar';
+                corpo.append(nome, dados, sobre, contato);
+                cartao.append(foto, corpo);
+                grade.appendChild(cartao);
+            });
+        } catch (erro) {
+            console.warn('Catálogo dinâmico indisponível.', erro);
+        }
+    }
+    carregarModelosAprovados();
+</script>
+
 </body>
 </html>
