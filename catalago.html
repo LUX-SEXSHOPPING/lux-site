@@ -541,6 +541,14 @@
 
 <script>
     // CARROSSEL DE IMAGENS
+    // Esconde setas e indicadores quando o cartão tem apenas uma foto
+    document.querySelectorAll('.carrossel-container').forEach(container => {
+        const fotos = container.querySelectorAll('.foto-catalogo');
+        if (fotos.length <= 1) {
+            container.querySelectorAll('.btn-carrossel, .indicadores').forEach(el => el.style.display = 'none');
+        }
+    });
+
     function trocarImagemProxima(botao) {
         const container = botao.parentElement;
         const wrapper = container.querySelector('.carrossel-wrapper');
