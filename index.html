@@ -62,15 +62,16 @@ body::before{
   z-index:0;
 }
 
-/* FUNDO COM LOGO4 */
+/* FUNDO COM LOGO3 - MAIS VISÍVEL */
 body::after{
   content:'';
   position:fixed;
   inset:0;
-  background:url('logo4.png') center/contain no-repeat;
-  opacity:0.2;
+  background:url('logo3.png') center/contain no-repeat;
+  opacity:0.35;
   pointer-events:none;
   z-index:0;
+  filter:brightness(1.2) saturate(1.3);
 }
 
 .serif{
@@ -96,6 +97,26 @@ header{
   gap:16px;
   position:relative;
   z-index:10;
+}
+
+.logo-header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  align-items:center;
+}
+
+.logo-img{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+  filter:brightness(1.3) saturate(1.4) drop-shadow(0 0 12px rgba(201,162,39,.5));
+  transition:all .3s;
+}
+
+.logo-img:hover{
+  filter:brightness(1.5) saturate(1.6) drop-shadow(0 0 20px rgba(201,162,39,.8));
+  transform:scale(1.08);
 }
 
 .logo-lux{
@@ -298,8 +319,10 @@ nav a.ativo{
 
 /* MODAL PIX */
 #pixModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
-#pixModal .pix-card{width:100%;max-width:420px;background:linear-gradient(135deg,#1a1206,#120d0f);border:1px solid rgba(201,162,39,.35);border-radius:16px;padding:18px;color:#efe7dd;box-shadow:0 8px 30px rgba(0,0,0,.5)}
-#pixModal select,#pixModal input,#pixModal textarea{width:100%;padding:10px;border-radius:10px;margin-bottom:10px;background:rgba(255,255,255,.08);border:1px solid rgba(201,162,39,.2);color:#efe7dd}
+#pixModal .pix-card{width:100%;max-width:420px;background:linear-gradient(135deg,#1a1206,#120d0f);border:1px solid rgba(201,162,39,.35);border-radius:16px;padding:18px;color:#efe7dd;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+#pixModal h3{font-family:'Playfair Display',serif;font-size:20px}
+#pixModal label{color:#d4c5a9;font-size:13px;font-weight:600}
+#pixModal select,#pixModal input,#pixModal textarea{width:100%;padding:10px;border-radius:10px;margin-bottom:10px;background:rgba(255,255,255,.08);border:1px solid rgba(201,162,39,.2);color:#efe7dd;font-family:'Segoe UI',sans-serif}
 #pixModal select:focus,#pixModal input:focus,#pixModal textarea:focus{outline:none;border-color:rgba(201,162,39,.5);background:rgba(255,255,255,.12)}
 
 /* DIFERENCIAIS */
@@ -348,12 +371,25 @@ nav a.ativo{
   color:var(--texto-suave);
   line-height:1.6
 }
+
+@media (max-width: 768px) {
+  .logo-img{
+    width:60px;
+    height:60px;
+  }
+  .logo-lux{
+    font-size:28px;
+  }
+}
 </style>
 </head>
 <body>
 <div class="conteudo">
 <header>
-  <div class="logo-lux">LUX</div>
+  <div class="logo-header">
+    <img src="logo3.png" alt="LUX Logo" class="logo-img">
+    <div class="logo-lux">LUX</div>
+  </div>
   <nav>
     <a href="index.html" class="ativo">Início</a>
     <a href="loja.html">Loja</a>
