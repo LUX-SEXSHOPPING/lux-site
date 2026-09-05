@@ -86,6 +86,72 @@
         }
         .btn-nav.masc { background: #1e3a8a; border-color: #3b82f6; }
 
+        /* FILTROS */
+        .frase-filtro {
+            text-align: center;
+            color: var(--dourado-claro);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 2rem 0 1.5rem 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container-filtros {
+            background: rgba(15, 11, 18, 0.5);
+            border: 2px solid var(--rosa-borda);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grupo-filtro {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .grupo-filtro label {
+            color: var(--dourado-claro);
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grupo-filtro select {
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 2px solid var(--rosa-borda);
+            background: rgba(75, 27, 58, 0.8);
+            color: var(--texto-claro);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .grupo-filtro select:hover {
+            border-color: var(--rosa-claro);
+            background: rgba(75, 27, 58, 1);
+        }
+
+        .grupo-filtro select:focus {
+            outline: none;
+            border-color: var(--dourado-claro);
+            box-shadow: 0 0 10px rgba(230, 200, 110, 0.3);
+        }
+
+        .grupo-filtro select option {
+            background: rgba(8, 5, 10, 0.95);
+            color: var(--texto-claro);
+            padding: 0.5rem;
+        }
+
+        /* GRADE E CARTÕES */
         .grade-catalogo {
             display: grid;
             grid-template-columns: 1fr;
@@ -97,12 +163,101 @@
             border: 2px solid var(--rosa-borda);
             border-radius: 16px;
             overflow: hidden;
+            display: none;
         }
+
+        .cartao.visivel {
+            display: block;
+        }
+
+        /* CARROSSEL DE IMAGENS */
+        .carrossel-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .carrossel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
         .foto-catalogo {
             width: 100%;
             height: 380px;
             object-fit: cover;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
         }
+
+        .foto-catalogo.ativa {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .btn-carrossel {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 20, 147, 0.7);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-carrossel:hover {
+            background: rgba(255, 20, 147, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .btn-carrossel.prev {
+            left: 10px;
+        }
+
+        .btn-carrossel.next {
+            right: 10px;
+        }
+
+        .indicadores {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .indicador {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicador.ativo {
+            background: var(--dourado-claro);
+            transform: scale(1.3);
+        }
+
         .info-cartao { padding: 1.5rem; }
         .nome-cartao {
             font-family: 'Playfair Display', serif;
@@ -136,6 +291,7 @@
             text-decoration: none;
             margin-bottom: 1rem;
             box-shadow: 0 4px 15px rgba(255,20,147,0.4);
+            transition: transform 0.2s ease;
         }
         .btn-perfil:active { transform: scale(0.98); }
 
@@ -151,6 +307,11 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .botao-whats:hover {
+            transform: scale(1.05);
         }
 
         .whatsapp-float {
@@ -168,6 +329,23 @@
             font-size: 28px;
             text-decoration: none;
             z-index: 999;
+            transition: transform 0.2s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .mensagem-vazia {
+            text-align: center;
+            color: var(--texto-suave);
+            font-size: 1.1rem;
+            padding: 2rem;
+            display: none;
+        }
+
+        .mensagem-vazia.visivel {
+            display: block;
         }
 
         footer {
@@ -177,6 +355,12 @@
             color: #aaa;
             margin-top: 3rem;
             font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container-filtros {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -190,7 +374,7 @@
         <a href="modelos-femininos.html"><i class="fa-solid fa-venus"></i> Femininos</a>
         <a href="modelos-masculinos.html"><i class="fa-solid fa-mars"></i> Masculinos</a>
         <a href="index.html#cadastro"><i class="fa-solid fa-user-plus"></i> Pré-Cadastro</a>
-        <a href="https://wa.me/5551980612941" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
+        <a href="https://wa.me/5585987654321" target="_blank"><i class="fa-solid fa-comment-dots"></i> Contato</a>
     </nav>
 </header>
 
@@ -207,10 +391,64 @@
         </a>
     </div>
 
-    <div class="grade-catalogo">
+    <div class="frase-filtro">✨ Selecione para encontrar sua acompanhante certa</div>
+
+    <div class="container-filtros">
+        <div class="grupo-filtro">
+            <label for="filtro-genero">
+                <i class="fa-solid fa-person"></i> Gênero
+            </label>
+            <select id="filtro-genero">
+                <option value="">Todos os gêneros</option>
+                <option value="feminino">Feminino</option>
+                <option value="masculino">Masculino</option>
+            </select>
+        </div>
+
+        <div class="grupo-filtro">
+            <label for="filtro-regiao">
+                <i class="fa-solid fa-map-location-dot"></i> Região
+            </label>
+            <select id="filtro-regiao">
+                <option value="">Todas as regiões</option>
+                <option value="Gravataí — RS">Gravataí — RS</option>
+            </select>
+        </div>
+
+        <div class="grupo-filtro">
+            <label for="filtro-idade">
+                <i class="fa-solid fa-calendar"></i> Faixa Etária
+            </label>
+            <select id="filtro-idade">
+                <option value="">Todas as idades</option>
+                <option value="18-21">18-21 anos</option>
+                <option value="22-25">22-25 anos</option>
+                <option value="26+">26+ anos</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="grade-catalogo" id="grade-catalogo">
         <!-- VIP 1 — Eduarda -->
-        <div class="cartao">
-            <img src="vip1.png" alt="Eduarda Souza" class="foto-catalogo">
+        <div class="cartao visivel" data-genero="feminino" data-regiao="Gravataí — RS" data-idade="21">
+            <div class="carrossel-container">
+                <div class="carrossel-wrapper" id="carrossel-eduarda">
+                    <img src="eduarda-1.png" alt="Eduarda Souza" class="foto-catalogo ativa">
+                    <img src="eduarda-2.png" alt="Eduarda Souza" class="foto-catalogo">
+                    <img src="eduarda-3.png" alt="Eduarda Souza" class="foto-catalogo">
+                </div>
+                <button class="btn-carrossel prev" onclick="trocarImagemAnterior(this)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="btn-carrossel next" onclick="trocarImagemProxima(this)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <div class="indicadores" id="indicadores-eduarda">
+                    <span class="indicador ativo" onclick="irParaImagem(0, this)"></span>
+                    <span class="indicador" onclick="irParaImagem(1, this)"></span>
+                    <span class="indicador" onclick="irParaImagem(2, this)"></span>
+                </div>
+            </div>
             <div class="info-cartao">
                 <h2 class="nome-cartao">💎 Eduarda Souza</h2>
                 <div class="dados-cartao">
@@ -221,15 +459,32 @@
                     Uma mulher que carrega o fogo da paixão em cada olhar. Combina doçura e desejo, com presença que envolve e seduz sem esforço.
                 </p>
                 <a href="eduarda.html" class="btn-perfil">👆 VER PERFIL COMPLETO</a>
-                <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Eduarda%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
+                <a href="https://wa.me/5585987654321?text=Olá!%20Quero%20contatar%20a%20Eduarda%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
                     <i class="fa-brands fa-whatsapp"></i> Contatar pelo WhatsApp
                 </a>
             </div>
         </div>
 
         <!-- VIP 3 — Larissa -->
-        <div class="cartao">
-            <img src="vip3.png" alt="Larissa Hoffman" class="foto-catalogo">
+        <div class="cartao visivel" data-genero="feminino" data-regiao="Gravataí — RS" data-idade="20">
+            <div class="carrossel-container">
+                <div class="carrossel-wrapper" id="carrossel-larissa">
+                    <img src="larissa-1.png" alt="Larissa Hoffman" class="foto-catalogo ativa">
+                    <img src="larissa-2.png" alt="Larissa Hoffman" class="foto-catalogo">
+                    <img src="larissa-3.png" alt="Larissa Hoffman" class="foto-catalogo">
+                </div>
+                <button class="btn-carrossel prev" onclick="trocarImagemAnterior(this)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="btn-carrossel next" onclick="trocarImagemProxima(this)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <div class="indicadores" id="indicadores-larissa">
+                    <span class="indicador ativo" onclick="irParaImagem(0, this)"></span>
+                    <span class="indicador" onclick="irParaImagem(1, this)"></span>
+                    <span class="indicador" onclick="irParaImagem(2, this)"></span>
+                </div>
+            </div>
             <div class="info-cartao">
                 <h2 class="nome-cartao">💎 Larissa Hoffman</h2>
                 <div class="dados-cartao">
@@ -240,14 +495,32 @@
                     Jovem, misteriosa e envolvente. Traz o ardor de um amor proibido e leveza de quem sabe encantar. Sorriso que promete segredos.
                 </p>
                 <a href="larissa.html" class="btn-perfil">👆 VER PERFIL COMPLETO</a>
-                <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Larissa%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
+                <a href="https://wa.me/5585987654321?text=Olá!%20Quero%20contatar%20a%20Larissa%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
                     <i class="fa-brands fa-whatsapp"></i> Contatar pelo WhatsApp
                 </a>
             </div>
         </div>
-           <!-- VIP — Renata -->
-        <div class="cartao">
-            <img src="renata-foto.png" alt="Renata" class="foto-catalogo">
+
+        <!-- VIP — Renata -->
+        <div class="cartao visivel" data-genero="feminino" data-regiao="Gravataí — RS" data-idade="23">
+            <div class="carrossel-container">
+                <div class="carrossel-wrapper" id="carrossel-renata">
+                    <img src="renata-1.png" alt="Renata" class="foto-catalogo ativa">
+                    <img src="renata-2.png" alt="Renata" class="foto-catalogo">
+                    <img src="renata-3.png" alt="Renata" class="foto-catalogo">
+                </div>
+                <button class="btn-carrossel prev" onclick="trocarImagemAnterior(this)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="btn-carrossel next" onclick="trocarImagemProxima(this)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <div class="indicadores" id="indicadores-renata">
+                    <span class="indicador ativo" onclick="irParaImagem(0, this)"></span>
+                    <span class="indicador" onclick="irParaImagem(1, this)"></span>
+                    <span class="indicador" onclick="irParaImagem(2, this)"></span>
+                </div>
+            </div>
             <div class="info-cartao">
                 <h2 class="nome-cartao">💎 Renata</h2>
                 <div class="dados-cartao">
@@ -258,22 +531,125 @@
                     Charme e intensidade. Elegante, divertida e profundamente envolvente. Com vídeo de apresentação! 🎥
                 </p>
                 <a href="renata.html" class="btn-perfil">👆 VER PERFIL COMPLETO</a>
-                <a href="https://wa.me/5551980612941?text=Olá!%20Quero%20contatar%20a%20Renata%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
+                <a href="https://wa.me/5585987654321?text=Olá!%20Quero%20contatar%20a%20Renata%20do%20Catálogo%20LUX" target="_blank" class="botao-whats">
                     <i class="fa-brands fa-whatsapp"></i> Contatar pelo WhatsApp
                 </a>
             </div>
         </div>
+    </div>
 
+    <div class="mensagem-vazia" id="mensagem-vazia">
+        <p>😔 Nenhuma acompanhante encontrada com os filtros selecionados. Tente novamente!</p>
     </div>
 </main>
 
-<a href="https://wa.me/5551980612941" target="_blank" class="whatsapp-float">
+<a href="https://wa.me/5585987654321" target="_blank" class="whatsapp-float">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <footer>
     © 2026 LUX — Brasil • Europa | Elegância, discrição e sofisticação. Proibido para menores de 18 anos.
 </footer>
+
+<script>
+    // CARROSSEL DE IMAGENS
+    function trocarImagemProxima(botao) {
+        const container = botao.parentElement;
+        const wrapper = container.querySelector('.carrossel-wrapper');
+        const fotos = wrapper.querySelectorAll('.foto-catalogo');
+        const indicadores = container.querySelectorAll('.indicador');
+
+        let indiceAtual = Array.from(fotos).findIndex(f => f.classList.contains('ativa'));
+        let proximoIndice = (indiceAtual + 1) % fotos.length;
+
+        fotos[indiceAtual].classList.remove('ativa');
+        fotos[proximoIndice].classList.add('ativa');
+
+        indicadores[indiceAtual].classList.remove('ativo');
+        indicadores[proximoIndice].classList.add('ativo');
+    }
+
+    function trocarImagemAnterior(botao) {
+        const container = botao.parentElement;
+        const wrapper = container.querySelector('.carrossel-wrapper');
+        const fotos = wrapper.querySelectorAll('.foto-catalogo');
+        const indicadores = container.querySelectorAll('.indicador');
+
+        let indiceAtual = Array.from(fotos).findIndex(f => f.classList.contains('ativa'));
+        let anteriorIndice = (indiceAtual - 1 + fotos.length) % fotos.length;
+
+        fotos[indiceAtual].classList.remove('ativa');
+        fotos[anteriorIndice].classList.add('ativa');
+
+        indicadores[indiceAtual].classList.remove('ativo');
+        indicadores[anteriorIndice].classList.add('ativo');
+    }
+
+    function irParaImagem(indice, indicador) {
+        const container = indicador.closest('.carrossel-container');
+        const wrapper = container.querySelector('.carrossel-wrapper');
+        const fotos = wrapper.querySelectorAll('.foto-catalogo');
+        const indicadores = container.querySelectorAll('.indicador');
+
+        let indiceAtual = Array.from(fotos).findIndex(f => f.classList.contains('ativa'));
+
+        fotos[indiceAtual].classList.remove('ativa');
+        fotos[indice].classList.add('ativa');
+
+        indicadores[indiceAtual].classList.remove('ativo');
+        indicadores[indice].classList.add('ativo');
+    }
+
+    // FILTROS
+    const filtroGenero = document.getElementById('filtro-genero');
+    const filtroRegiao = document.getElementById('filtro-regiao');
+    const filtroIdade = document.getElementById('filtro-idade');
+    const cartoes = document.querySelectorAll('.cartao');
+    const mensagemVazia = document.getElementById('mensagem-vazia');
+
+    function aplicarFiltros() {
+        const genero = filtroGenero.value;
+        const regiao = filtroRegiao.value;
+        const idade = filtroIdade.value;
+        let temVisivel = false;
+
+        cartoes.forEach(cartao => {
+            const dataGenero = cartao.getAttribute('data-genero');
+            const dataRegiao = cartao.getAttribute('data-regiao');
+            const dataIdade = parseInt(cartao.getAttribute('data-idade'));
+
+            let mostra = true;
+
+            if (genero && dataGenero !== genero) {
+                mostra = false;
+            }
+
+            if (regiao && dataRegiao !== regiao) {
+                mostra = false;
+            }
+
+            if (idade) {
+                const [min, max] = idade === '26+' ? [26, 200] : idade.split('-').map(Number);
+                if (dataIdade < min || dataIdade > max) {
+                    mostra = false;
+                }
+            }
+
+            if (mostra) {
+                cartao.classList.add('visivel');
+                temVisivel = true;
+            } else {
+                cartao.classList.remove('visivel');
+            }
+        });
+
+        mensagemVazia.classList.toggle('visivel', !temVisivel);
+    }
+
+    filtroGenero.addEventListener('change', aplicarFiltros);
+    filtroRegiao.addEventListener('change', aplicarFiltros);
+    filtroIdade.addEventListener('change', aplicarFiltros);
+</script>
 
 </body>
 </html>
