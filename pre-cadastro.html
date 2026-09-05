@@ -70,6 +70,20 @@
             color: #fff;
             font-size: 15px;
         }
+        .campo-endereco label {
+            display: block;
+            color: #e6c86e;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+        .endereco-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 10px;
+        }
+        @media (max-width: 420px) {
+            .endereco-grid { grid-template-columns: 1fr; }
+        }
         .arquivo-envio {
             border: 2px dashed rgba(212,175,55,0.4);
             border-radius: 10px;
@@ -154,7 +168,32 @@
             <input type="tel" id="telefoneModela" placeholder="Seu WhatsApp com DDD" required>
             <input type="number" id="idadeModela" placeholder="Sua idade" min="18" required>
             <input type="text" id="alturaModela" placeholder="Sua altura (ex: 1.65)" required>
-            <input type="text" id="cidadeModela" placeholder="Cidade / Região" required>
+            <div class="campo-endereco">
+                <label for="enderecoModela">Endereço</label>
+                <input type="text" id="enderecoModela" placeholder="Rua ou avenida" required>
+            </div>
+            <div class="endereco-grid">
+                <div class="campo-endereco">
+                    <label for="numeroModela">Número</label>
+                    <input type="text" id="numeroModela" placeholder="Número ou s/n" required>
+                </div>
+                <div class="campo-endereco">
+                    <label for="bairroModela">Bairro</label>
+                    <input type="text" id="bairroModela" placeholder="Seu bairro" required>
+                </div>
+                <div class="campo-endereco">
+                    <label for="cidadeModela">Cidade</label>
+                    <input type="text" id="cidadeModela" placeholder="Sua cidade" required>
+                </div>
+                <div class="campo-endereco">
+                    <label for="estadoModela">Estado</label>
+                    <input type="text" id="estadoModela" placeholder="Ex.: RS" required>
+                </div>
+                <div class="campo-endereco">
+                    <label for="paisModela">País</label>
+                    <input type="text" id="paisModela" value="Brasil" required>
+                </div>
+            </div>
             <textarea id="experienciaModela" placeholder="Descreva-se e informe sua disponibilidade" rows="4" required></textarea>
 
             <!-- 📸 ENVIO DE FOTOS E VÍDEO -->
@@ -220,7 +259,12 @@
             const tel = document.getElementById('telefoneModela').value;
             const idade = document.getElementById('idadeModela').value;
             const altura = document.getElementById('alturaModela').value;
+            const endereco = document.getElementById('enderecoModela').value;
+            const numero = document.getElementById('numeroModela').value;
+            const bairro = document.getElementById('bairroModela').value;
             const cidade = document.getElementById('cidadeModela').value;
+            const estado = document.getElementById('estadoModela').value;
+            const pais = document.getElementById('paisModela').value;
             const desc = document.getElementById('experienciaModela').value;
 
             let arquivosTexto = nomesArquivos.length > 0 
@@ -233,7 +277,11 @@
 📱 WhatsApp: ${tel}
 🎂 Idade: ${idade} anos
 📏 Altura: ${altura}
-📍 Cidade/Região: ${cidade}
+📍 Endereço: ${endereco}, ${numero}
+🏘️ Bairro: ${bairro}
+🏙️ Cidade: ${cidade}
+🗺️ Estado: ${estado}
+🌎 País: ${pais}
 📝 Sobre e disponibilidade:
 ${desc}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
