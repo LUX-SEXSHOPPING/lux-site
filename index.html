@@ -10,161 +10,463 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="dns-prefetch" href="https://wa.me">
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap" as="style">
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700;1,800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-:root{--dourado:#ffd700;--dourado-claro:#fff176;--texto-claro:#f0e9ec;--fundo-escuro:rgba(0,0,0,.65);--neon-dourado:#ffd700}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:url(banner.jpg) no-repeat center center fixed;background-size:cover;color:#fff;min-height:100vh;background-attachment:fixed}
-.fundo-tela{background:var(--fundo-escuro);position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;will-change:opacity}
-.conteudo{position:relative;z-index:1;padding:15px 25px;max-width:1100px;margin:0 auto}
-header{display:flex;justify-content:space-between;align-items:center;padding:10px 0 20px;flex-wrap:wrap;gap:20px}
-.logo-lux{font-family:'Playfair Display',serif;font-size:46px;font-weight:800;font-style:italic;color:#fff;letter-spacing:4px;text-shadow:0 0 5px var(--neon-dourado),0 0 10px var(--neon-dourado),0 0 15px var(--neon-dourado)}
-nav{display:flex;flex-wrap:wrap;gap:18px;flex:1;justify-content:flex-end}
-nav a{color:var(--texto-claro);text-decoration:none;padding:8px 14px;font-size:15px;border-bottom:1px solid transparent;transition:all .3s;will-change:transform}
-nav a:hover{border-bottom:1px solid var(--dourado);color:var(--dourado-claro);text-shadow:0 0 6px var(--dourado)}
-.video-container{max-width:800px;width:95%;margin:0 auto 25px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,215,0,.4);box-shadow:0 0 15px rgba(255,215,0,.15);aspect-ratio:16/9}
-.video-container video{width:100%;display:block;object-fit:cover;height:auto}
-.container-imagem-ilustrativa{max-width:800px;width:95%;margin:25px auto 30px;display:flex;justify-content:center;align-items:center;position:relative;aspect-ratio:auto}
-.banner-ilustrativo{width:100%;max-width:100%;height:auto;display:block;border-radius:12px;border:none;box-shadow:none;transition:all .4s ease;object-fit:cover;object-position:center 40%;opacity:.86}
-.banner-ilustrativo:hover{opacity:.88;transform:scale(1.01);filter:grayscale(100%) contrast(1.22) brightness(1.04) saturate(0)}
-.container-imagem-ilustrativa::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(0,0,0,0) 2%,rgba(0,0,0,.25))}
-.container-imagem-ilustrativa::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:12px;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 70%)}
-.titulo-vips{text-align:center;margin:30px 0 18px}
-.titulo-vips h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--dourado);font-style:italic;letter-spacing:2px}
-.titulo-vips h2::before,.titulo-vips h2::after{content:'✦';color:var(--dourado-claro);font-size:18px;margin:0 12px}
-.carrossel{position:relative;overflow:hidden;margin:0 auto;max-width:360px;width:100%;display:flex;justify-content:center;touch-action:pan-y}
-.carrossel-interno{display:flex;transition:transform .35s ease-out;flex-wrap:nowrap;will-change:transform}
-.card-vip{flex:0 0 100%;padding:10px;box-sizing:border-box;display:flex;justify-content:center;align-items:center;min-width:100%}
-.perfil{background:rgba(0,0,0,.55);border-radius:16px;padding:20px;text-align:center;border:1px solid rgba(255,215,0,.3);display:flex;flex-direction:column;align-items:center;width:100%;backdrop-filter:blur(5px)}
-.status{display:inline-block;padding:5px 15px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:12px}
-.disponivel{background:linear-gradient(90deg,#00a86b,#2ecc71);color:#fff}
-.offline{background:linear-gradient(90deg,#555,#777);color:#ccc}
-.foto-modelo{display:block;margin:0 auto 12px;width:100%;max-width:240px;height:320px;object-fit:cover;object-position:center top;border-radius:12px;cursor:pointer;transition:transform .3s,box-shadow .3s}
-.foto-modelo:hover{transform:scale(1.05);box-shadow:0 0 20px rgba(255,215,0,.4)}
-.perfil h3{color:var(--dourado-claro);font-size:19px;margin-bottom:4px}
-.perfil .idade{font-size:14px;color:#999;margin-left:6px}
-.perfil .cidade{color:#ccc;font-size:14px;margin:6px 0}
-.perfil .desc{color:#ddd;font-style:italic;font-size:14px;margin-bottom:8px;line-height:1.5}
-.dica-clique{color:var(--dourado-claro);font-size:11px;opacity:.8}
-.botoes-navegacao{display:flex;justify-content:space-between;position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);pointer-events:none;z-index:10}
-.btn-carrossel{background:rgba(0,0,0,.6);color:var(--dourado);border:none;font-size:26px;padding:8px 14px;cursor:pointer;border-radius:50%;margin:0 5px;pointer-events:auto;transition:all .3s;will-change:transform}
-.btn-carrossel:hover{background:rgba(0,0,0,.8);box-shadow:0 0 15px rgba(255,215,0,.4)}
-.btn-catalogo{background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;border:none;padding:12px 32px;font-size:16px;font-weight:600;border-radius:8px;cursor:pointer;transition:all .3s;margin:20px auto;display:block}
-.btn-catalogo:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(255,215,0,.5);background:linear-gradient(135deg,#ffb700,#ffd700)}
-.sobre{background:rgba(0,0,0,.55);border-radius:16px;padding:25px;margin:35px 0 25px;border:1px solid rgba(255,215,0,.25);backdrop-filter:blur(2px)}
-.sobre h2{color:var(--dourado);text-align:center;margin-bottom:15px}
-.sobre p{color:#ddd;line-height:1.8;font-style:italic;text-align:center}
-footer{text-align:center;padding:20px;color:#888;font-size:13px;border-top:1px solid rgba(255,215,0,.2);margin-top:20px}
-.whatsapp-flutuante{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+:root{
+  --ouro:#d4af37;
+  --ouro-claro:#f3d98b;
+  --ouro-profundo:#b8860b;
+  --vinho:#5c0a2e;
+  --vinho-claro:#a3125b;
+  --rosa:#e0218a;
+  --preto:#0a0508;
+  --texto:#f5eef2;
+  --texto-suave:#cbb8c4;
+  --vidro:rgba(255,255,255,.04);
+  --borda-ouro:rgba(212,175,55,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter','Segoe UI',sans-serif;
+  color:var(--texto);
+  min-height:100vh;
+  background:
+    radial-gradient(1100px 550px at 85% -10%,rgba(224,33,138,.20),transparent 60%),
+    radial-gradient(900px 500px at -10% 35%,rgba(212,175,55,.14),transparent 60%),
+    radial-gradient(700px 700px at 50% 115%,rgba(92,10,46,.55),transparent 65%),
+    linear-gradient(160deg,#150710 0%,#0a0508 45%,#1a0712 100%);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%);
+}
+.conteudo{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- Header ---------- */
+header{
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:22px 0;position:sticky;top:0;z-index:100;
+  background:linear-gradient(180deg,rgba(10,5,8,.92),rgba(10,5,8,.75));
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(212,175,55,.18);
+  margin:0 -24px;padding-left:24px;padding-right:24px;
+}
+.logo-lux{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:800;
+  font-size:44px;letter-spacing:6px;line-height:1;text-decoration:none;
+  background:linear-gradient(120deg,var(--ouro-claro) 10%,var(--ouro) 45%,#fff3c4 60%,var(--ouro-profundo) 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 14px rgba(212,175,55,.45));
+}
+.logo-lux small{display:block;font-size:10px;letter-spacing:7px;font-style:normal;font-weight:600;color:var(--texto-suave);-webkit-text-fill-color:var(--texto-suave);margin-top:4px;text-transform:uppercase}
+nav{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+nav a{
+  color:var(--texto-suave);text-decoration:none;font-size:14px;font-weight:500;
+  letter-spacing:.6px;padding:9px 15px;border-radius:999px;
+  border:1px solid transparent;transition:all .3s ease;position:relative;
+}
+nav a:hover{color:var(--ouro-claro);border-color:var(--borda-ouro);background:var(--vidro);text-shadow:0 0 10px rgba(212,175,55,.6)}
+nav a.destaque-menu{
+  color:#1a0d12;font-weight:600;
+  background:linear-gradient(135deg,var(--ouro-claro),var(--ouro) 55%,var(--ouro-profundo));
+  box-shadow:0 4px 18px rgba(212,175,55,.35);
+}
+nav a.destaque-menu:hover{color:#000;transform:translateY(-1px);box-shadow:0 6px 24px rgba(212,175,55,.55);text-shadow:none}
+
+/* ---------- Hero ---------- */
+.hero{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;
+  padding:80px 0 70px;
+}
+.hero-texto .selo{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--ouro-claro);border:1px solid var(--borda-ouro);
+  padding:7px 16px;border-radius:999px;background:var(--vidro);margin-bottom:26px;
+}
+.hero-texto h1{
+  font-family:'Playfair Display',serif;font-weight:800;font-style:italic;
+  font-size:clamp(42px,6.2vw,74px);line-height:1.08;letter-spacing:1px;margin-bottom:22px;
+}
+.hero-texto h1 em{
+  font-style:italic;
+  background:linear-gradient(120deg,var(--ouro-claro),var(--ouro) 50%,var(--rosa));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 18px rgba(212,175,55,.35));
+}
+.hero-texto p{
+  font-size:17px;font-weight:300;line-height:1.8;color:var(--texto-suave);
+  max-width:520px;margin-bottom:34px;
+}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  padding:15px 32px;border-radius:999px;font-size:15px;font-weight:600;letter-spacing:.5px;
+  transition:all .35s ease;cursor:pointer;border:none;
+}
+.btn-ouro{
+  color:#1a0d12;
+  background:linear-gradient(135deg,var(--ouro-claro),var(--ouro) 55%,var(--ouro-profundo));
+  box-shadow:0 8px 30px rgba(212,175,55,.4);
+}
+.btn-ouro:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 40px rgba(212,175,55,.6)}
+.btn-contorno{
+  color:var(--ouro-claro);background:var(--vidro);
+  border:1px solid var(--borda-ouro);
+}
+.btn-contorno:hover{background:rgba(212,175,55,.12);transform:translateY(-3px);box-shadow:0 8px 26px rgba(212,175,55,.25)}
+.hero-logo{
+  display:flex;align-items:center;justify-content:center;position:relative;min-height:340px;
+}
+.hero-logo::before{
+  content:'';position:absolute;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.22) 0%,rgba(224,33,138,.12) 45%,transparent 70%);
+  filter:blur(10px);
+}
+.hero-logo::after{
+  content:'';position:absolute;width:300px;height:300px;border-radius:50%;
+  border:1px solid var(--borda-ouro);
+  box-shadow:0 0 60px rgba(212,175,55,.18) inset,0 0 80px rgba(224,33,138,.10);
+}
+.hero-logo span{
+  position:relative;z-index:2;font-family:'Playfair Display',serif;font-style:italic;font-weight:800;
+  font-size:clamp(90px,11vw,150px);letter-spacing:10px;
+  background:linear-gradient(160deg,#fff3c4 5%,var(--ouro) 45%,var(--ouro-profundo) 75%,var(--ouro-claro));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 26px rgba(212,175,55,.55)) drop-shadow(0 6px 30px rgba(0,0,0,.6));
+}
+
+/* ---------- Seções ---------- */
+.secao{padding:64px 0}
+.cabecalho-secao{text-align:center;margin-bottom:46px}
+.cabecalho-secao .sobre-titulo{
+  font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--rosa);font-weight:600;margin-bottom:12px;display:block;
+}
+.cabecalho-secao h2{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:700;
+  font-size:clamp(28px,4vw,42px);letter-spacing:1px;color:var(--texto);
+}
+.cabecalho-secao h2::after{
+  content:'';display:block;width:80px;height:2px;margin:18px auto 0;
+  background:linear-gradient(90deg,transparent,var(--ouro),transparent);
+}
+.divisor{
+  height:1px;max-width:1180px;margin:0 auto;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.35),transparent);
+}
+
+/* ---------- Modelos Exclusivas Premium ---------- */
+.premium{position:relative}
+.premium .moldura{
+  border:1px solid var(--borda-ouro);border-radius:28px;
+  background:linear-gradient(160deg,rgba(92,10,46,.30),rgba(10,5,8,.55) 55%,rgba(212,175,55,.08));
+  padding:56px 40px;position:relative;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(212,175,55,.06) inset;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.premium .moldura::before{
+  content:'';position:absolute;top:-120px;right:-120px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(224,33,138,.22),transparent 70%);pointer-events:none;
+}
+.premium .moldura::after{
+  content:'';position:absolute;bottom:-140px;left:-140px;width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,175,55,.16),transparent 70%);pointer-events:none;
+}
+.selo-premium{
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;color:#1a0d12;
+  background:linear-gradient(135deg,var(--ouro-claro),var(--ouro));
+  padding:8px 18px;border-radius:999px;margin-bottom:18px;
+  box-shadow:0 4px 20px rgba(212,175,55,.45);
+}
+.grade-modelos{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:36px;position:relative;z-index:2}
+.card-modelo{
+  position:relative;border-radius:20px;overflow:hidden;text-decoration:none;color:var(--texto);
+  background:rgba(0,0,0,.4);border:1px solid rgba(212,175,55,.22);
+  transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;display:block;
+}
+.card-modelo:hover{
+  transform:translateY(-8px);border-color:var(--ouro);
+  box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 34px rgba(212,175,55,.3);
+}
+.card-modelo .foto{position:relative;aspect-ratio:3/4;overflow:hidden}
+.card-modelo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .6s ease}
+.card-modelo:hover img{transform:scale(1.07)}
+.card-modelo .foto::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(10,5,8,.92) 100%);
+}
+.selo-vip{
+  position:absolute;top:12px;left:12px;z-index:3;font-size:10px;font-weight:700;letter-spacing:2px;
+  color:#1a0d12;background:linear-gradient(135deg,var(--ouro-claro),var(--ouro));
+  padding:5px 12px;border-radius:999px;box-shadow:0 2px 12px rgba(212,175,55,.5);
+}
+.status-online{
+  position:absolute;top:12px;right:12px;z-index:3;font-size:10px;font-weight:600;letter-spacing:1px;
+  color:#0f2;background:rgba(0,0,0,.55);border:1px solid rgba(0,255,100,.4);
+  padding:5px 10px;border-radius:999px;backdrop-filter:blur(4px);
+}
+.info-modelo{position:absolute;bottom:0;left:0;right:0;padding:18px;z-index:2}
+.info-modelo h3{font-family:'Playfair Display',serif;font-style:italic;font-size:21px;color:var(--ouro-claro);letter-spacing:.5px}
+.info-modelo h3 span{font-family:'Inter',sans-serif;font-style:normal;font-size:12px;color:var(--texto-suave);font-weight:400;margin-left:6px}
+.info-modelo p{font-size:12px;color:var(--texto-suave);margin-top:4px}
+.info-modelo p i{color:var(--rosa);margin-right:5px;font-size:11px}
+.cta-premium{text-align:center;margin-top:44px;position:relative;z-index:2}
+.cta-premium p{color:var(--texto-suave);font-size:14px;margin-bottom:20px;font-style:italic}
+
+/* ---------- Atalhos ---------- */
+.grade-atalhos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.atalho{
+  background:var(--vidro);border:1px solid rgba(212,175,55,.18);border-radius:18px;
+  padding:30px 22px;text-align:center;text-decoration:none;color:var(--texto);
+  transition:all .35s ease;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.atalho:hover{
+  transform:translateY(-6px);border-color:var(--borda-ouro);
+  background:rgba(212,175,55,.07);box-shadow:0 16px 40px rgba(0,0,0,.45),0 0 24px rgba(212,175,55,.15);
+}
+.atalho i{
+  font-size:26px;margin-bottom:14px;display:inline-block;
+  background:linear-gradient(135deg,var(--ouro-claro),var(--rosa));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.atalho h3{font-size:16px;font-weight:600;letter-spacing:.5px;margin-bottom:8px}
+.atalho p{font-size:13px;color:var(--texto-suave);line-height:1.6;font-weight:300}
+
+/* ---------- Sobre ---------- */
+.sobre{
+  border:1px solid rgba(212,175,55,.22);border-radius:24px;
+  background:linear-gradient(150deg,rgba(92,10,46,.25),rgba(10,5,8,.5));
+  padding:50px 44px;text-align:center;
+  box-shadow:0 24px 60px rgba(0,0,0,.45);
+}
+.sobre p{color:var(--texto-suave);line-height:2;font-size:16px;font-weight:300;max-width:760px;margin:0 auto;font-style:italic}
+.sobre p strong{color:var(--ouro-claro);font-style:normal}
+
+/* ---------- Contato ---------- */
+.contato{text-align:center}
+.contato .botoes-contato{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.btn-whats{
+  color:#fff;background:linear-gradient(135deg,#2bd06c,#1da851);
+  box-shadow:0 8px 30px rgba(37,211,102,.35);
+}
+.btn-whats:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 40px rgba(37,211,102,.55)}
+
+/* ---------- Footer ---------- */
+footer{
+  text-align:center;padding:34px 20px;color:#8a7a83;font-size:13px;font-weight:300;
+  border-top:1px solid rgba(212,175,55,.16);margin-top:30px;letter-spacing:.5px;
+}
+footer .logo-rodape{
+  font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:22px;letter-spacing:4px;
+  color:var(--ouro);display:block;margin-bottom:10px;
+  filter:drop-shadow(0 0 8px rgba(212,175,55,.4));
+}
+
+/* ---------- Flutuantes ---------- */
+.whatsapp-flutuante{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 18px rgba(37,211,102,.45)}
 .whatsapp-flutuante:hover{transform:scale(1.1)}
-.baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,#ffd700,#ffb700);color:#111;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.baixar-app{position:fixed;bottom:100px;right:25px;background:linear-gradient(135deg,var(--ouro-claro),var(--ouro-profundo));color:#111;width:60px;height:60px;border-radius:50%;display:none;align-items:center;justify-content:center;font-size:24px;text-decoration:none;z-index:999;transition:transform .3s;box-shadow:0 4px 18px rgba(212,175,55,.45)}
 .baixar-app:hover{transform:scale(1.05)}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:56px 0 50px;gap:36px}
+  .hero-texto p{margin-left:auto;margin-right:auto}
+  .hero-ctas{justify-content:center}
+  .hero-logo{min-height:260px}
+  .hero-logo::before{width:270px;height:270px}
+  .hero-logo::after{width:240px;height:240px}
+  .grade-modelos{grid-template-columns:repeat(2,1fr)}
+  .grade-atalhos{grid-template-columns:repeat(2,1fr)}
+}
 @media (max-width:600px){
-.logo-lux{font-size:32px}
-nav{gap:10px;justify-content:flex-start;flex-basis:100%;order:3}
-nav a{font-size:12px;padding:6px 10px}
-.titulo-vips h2{font-size:20px}
-.banner-ilustrativo{opacity:.86;object-position:center 45%;filter:grayscale(100%) contrast(1.15) brightness(1.02) saturate(0)}
-.baixar-app{bottom:95px;right:18px}
-.whatsapp-flutuante{bottom:25px;right:18px}
-header{flex-direction:column;align-items:flex-start}
+  header{justify-content:center;text-align:center}
+  .logo-lux{font-size:36px}
+  nav{justify-content:center;gap:4px}
+  nav a{font-size:12px;padding:7px 11px}
+  .premium .moldura{padding:36px 20px;border-radius:22px}
+  .grade-modelos{grid-template-columns:1fr 1fr;gap:14px}
+  .info-modelo h3{font-size:17px}
+  .grade-atalhos{grid-template-columns:1fr 1fr;gap:12px}
+  .atalho{padding:22px 14px}
+  .sobre{padding:36px 22px}
+  .baixar-app{bottom:95px;right:18px}
+  .whatsapp-flutuante{bottom:25px;right:18px}
 }
 @media (prefers-reduced-motion:reduce){
-*{animation:none!important;transition:none!important}
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
 <body>
-<div class="fundo-tela"></div>
 <div class="conteudo">
+
 <header>
-<div class="logo-lux">LUX</div>
-<nav>
-<a href="index.html">Início</a>
-<a href="catalago.html">Catálogo</a>
-<a href="#sobre">Sobre Nós</a>
-<a href="pre-cadastro.html">Pré-Cadastro</a>
-<a href="lista-espera.html">Agendar Horário</a>
-<a href="termos.html">Termos</a>
-</nav>
+  <a href="index.html" class="logo-lux" aria-label="LUX — Página inicial">LUX<small>Sensualidade &amp; Sofisticação</small></a>
+  <nav aria-label="Menu principal">
+    <a href="index.html">Início</a>
+    <a href="catalago.html">Catálogo</a>
+    <a href="#premium">Modelos Exclusivas</a>
+    <a href="#sobre">Sobre Nós</a>
+    <a href="pre-cadastro.html">Pré-Cadastro</a>
+    <a href="lista-espera.html">Agendar Horário</a>
+    <a href="termos.html">Termos</a>
+    <a href="https://wa.me/+5551980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." target="_blank" rel="noopener noreferrer" class="destaque-menu"><i class="fab fa-whatsapp" aria-hidden="true"></i> Contato</a>
+  </nav>
 </header>
 
-<div class="video-container">
-<video src="videobanner.mp4" autoplay muted loop playsinline preload="metadata"></video>
-</div>
-
-<div class="container-imagem-ilustrativa">
-<img src="foto-ilustr.png?t=1722877316" alt="Apresentação LUX - Pole Dance" class="banner-ilustrativo" loading="lazy">
-</div>
-
-<div class="titulo-vips">
-<h2>Vips em Destaque</h2>
-</div>
-
-<div class="carrossel">
-<div class="botoes-navegacao">
-<button class="btn-carrossel" onclick="deslizar(-1)" aria-label="Slide anterior">‹</button>
-<button class="btn-carrossel" onclick="deslizar(1)" aria-label="Próximo slide">›</button>
-</div>
-
-<div class="carrossel-interno" id="areaRoleta">
-<div class="card-vip">
-<div class="perfil">
-<span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip1.png?t=1722877316" alt="Eduarda — VIP LUX" class="foto-modelo" loading="lazy">
-<h3>Eduarda <span class="idade">21 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-<p class="desc">Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.</p>
-<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
-</div>
-</div>
-
-<div class="card-vip">
-<div class="perfil">
-<span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip2.png?t=1722877316" alt="Sarah — VIP LUX" class="foto-modelo" loading="lazy">
-<h3>Sarah <span class="idade">27 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-<p class="desc">Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.</p>
-<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
-</div>
-</div>
-
-<div class="card-vip">
-<div class="perfil">
-<span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip3.png?t=1722877316" alt="Larissa — VIP LUX" class="foto-modelo" loading="lazy">
-<h3>Larissa <span class="idade">20 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-<p class="desc">Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.</p>
-<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
-</div>
-</div>
-
-<div class="card-vip">
-<div class="perfil">
-<span class="status disponivel">● DISPONÍVEL</span>
-<img src="vip4.png?t=1722877316" alt="Vitória — VIP LUX" class="foto-modelo" loading="lazy">
-<h3>Vitória <span class="idade">24 anos</span></h3>
-<p class="cidade"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
-<p class="desc">Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.</p>
-<span class="dica-clique">👆 Clique em Catálogo para contratar</span>
-</div>
-</div>
-</div>
-</div>
-
-<a href="catalago.html" class="btn-catalogo">📂 Catálogo Completo</a>
-
-<section class="sobre" id="sobre">
-<h2>Sobre Nós</h2>
-<p>O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>Somos a LUX — um espaço de beleza, discrição e sofisticação. Cada momento é precioso, cada pessoa é única e querida.</p>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-texto">
+    <span class="selo"><i class="fas fa-gem" aria-hidden="true"></i> Experiência Premium</span>
+    <h1>Desejo, elegância e <em>exclusividade</em> em cada encontro.</h1>
+    <p>A LUX é o espaço onde a sofisticação encontra a sensualidade. Modelos selecionadas, atendimento discreto e momentos criados para serem inesquecíveis — no Brasil e na Europa.</p>
+    <div class="hero-ctas">
+      <a href="catalago.html" class="btn btn-ouro"><i class="fas fa-gem" aria-hidden="true"></i> Explorar Catálogo</a>
+      <a href="#premium" class="btn btn-contorno"><i class="fas fa-crown" aria-hidden="true"></i> Modelos Exclusivas</a>
+    </div>
+  </div>
+  <div class="hero-logo" aria-hidden="true">
+    <span>LUX</span>
+  </div>
 </section>
 
-<footer>© 2026 LUX — Sensualidade & Sofisticação • Brasil e Europa • Todos os direitos reservados.</footer>
+<div class="divisor" role="presentation"></div>
+
+<!-- MODELOS EXCLUSIVAS / PLANO PREMIUM -->
+<section class="secao premium" id="premium">
+  <div class="moldura">
+    <div class="cabecalho-secao">
+      <span class="selo-premium"><i class="fas fa-crown" aria-hidden="true"></i> Plano Premium</span>
+      <h2>Modelos Exclusivas</h2>
+    </div>
+
+    <div class="grade-modelos">
+      <a class="card-modelo" href="catalago.html" title="Ver Eduarda no catálogo">
+        <div class="foto">
+          <span class="selo-vip">VIP</span>
+          <span class="status-online">● ONLINE</span>
+          <img src="vip1.png" alt="Eduarda — Modelo Exclusiva Premium LUX" loading="lazy">
+        </div>
+        <div class="info-modelo">
+          <h3>Eduarda <span>21 anos</span></h3>
+          <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
+        </div>
+      </a>
+
+      <a class="card-modelo" href="catalago.html" title="Ver Sarah no catálogo">
+        <div class="foto">
+          <span class="selo-vip">VIP</span>
+          <span class="status-online">● ONLINE</span>
+          <img src="vip2.png" alt="Sarah — Modelo Exclusiva Premium LUX" loading="lazy">
+        </div>
+        <div class="info-modelo">
+          <h3>Sarah <span>27 anos</span></h3>
+          <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
+        </div>
+      </a>
+
+      <a class="card-modelo" href="catalago.html" title="Ver Larissa no catálogo">
+        <div class="foto">
+          <span class="selo-vip">VIP</span>
+          <span class="status-online">● ONLINE</span>
+          <img src="vip3.png" alt="Larissa — Modelo Exclusiva Premium LUX" loading="lazy">
+        </div>
+        <div class="info-modelo">
+          <h3>Larissa <span>20 anos</span></h3>
+          <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
+        </div>
+      </a>
+
+      <a class="card-modelo" href="catalago.html" title="Ver Vitória no catálogo">
+        <div class="foto">
+          <span class="selo-vip">VIP</span>
+          <span class="status-online">● ONLINE</span>
+          <img src="vip4.png" alt="Vitória — Modelo Exclusiva Premium LUX" loading="lazy">
+        </div>
+        <div class="info-modelo">
+          <h3>Vitória <span>24 anos</span></h3>
+          <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Gravataí, RS — Brasil</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="cta-premium">
+      <p>Modelos que assinam o plano premium — disponíveis apenas para membros selecionados.</p>
+      <a href="catalago.html" class="btn btn-ouro"><i class="fas fa-gem" aria-hidden="true"></i> Ver Catálogo Completo</a>
+    </div>
+  </div>
+</section>
+
+<div class="divisor" role="presentation"></div>
+
+<!-- ATALHOS -->
+<section class="secao" id="atalhos">
+  <div class="cabecalho-secao">
+    <span class="sobre-titulo">Navegação</span>
+    <h2>Tudo o que você procura</h2>
+  </div>
+  <div class="grade-atalhos">
+    <a class="atalho" href="catalago.html">
+      <i class="fas fa-gem" aria-hidden="true"></i>
+      <h3>Catálogo</h3>
+      <p>Conheça todas as modelos disponíveis na LUX.</p>
+    </a>
+    <a class="atalho" href="pre-cadastro.html">
+      <i class="fas fa-user-plus" aria-hidden="true"></i>
+      <h3>Pré-Cadastro</h3>
+      <p>Cadastre-se com discrição e agilize seu atendimento.</p>
+    </a>
+    <a class="atalho" href="lista-espera.html">
+      <i class="fas fa-calendar-check" aria-hidden="true"></i>
+      <h3>Agendar Horário</h3>
+      <p>Reserve seu momento especial com antecedência.</p>
+    </a>
+    <a class="atalho" href="termos.html">
+      <i class="fas fa-file-contract" aria-hidden="true"></i>
+      <h3>Termos</h3>
+      <p>Transparência, regras e condições de uso.</p>
+    </a>
+  </div>
+</section>
+
+<div class="divisor" role="presentation"></div>
+
+<!-- SOBRE -->
+<section class="secao" id="sobre">
+  <div class="cabecalho-secao">
+    <span class="sobre-titulo">A Marca</span>
+    <h2>Sobre a LUX</h2>
+  </div>
+  <div class="sobre">
+    <p>O que você procura está aqui. Um jardim de encantos, onde cada olhar é poesia e cada encontro é uma obra de arte.<br><br>Somos a <strong>LUX</strong> — um espaço de beleza, discrição e sofisticação. Cada momento é precioso, cada pessoa é única e querida.</p>
+  </div>
+</section>
+
+<div class="divisor" role="presentation"></div>
+
+<!-- CONTATO -->
+<section class="secao contato" id="contato">
+  <div class="cabecalho-secao">
+    <span class="sobre-titulo">Fale Conosco</span>
+    <h2>Atendimento Exclusivo</h2>
+  </div>
+  <div class="botoes-contato">
+    <a href="https://wa.me/+5551980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." target="_blank" rel="noopener noreferrer" class="btn btn-whats"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+    <a href="lista-espera.html" class="btn btn-contorno"><i class="fas fa-calendar-check" aria-hidden="true"></i> Agendar Horário</a>
+  </div>
+</section>
+
+<footer>
+  <span class="logo-rodape">LUX</span>
+  © 2026 LUX — Sensualidade &amp; Sofisticação • Brasil e Europa • Todos os direitos reservados.
+</footer>
 </div>
 
 <a href="https://wa.me/+5551980612941?text=Olá! Tenho interesse em saber mais sobre a LUX." class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer" title="Envie uma mensagem no WhatsApp">
@@ -180,17 +482,6 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("/sw.js").then(r => console.log("SW registrado")).catch(e => console.error("Erro SW:", e));
   }, false);
-}
-
-let posicaoAtual = 0;
-function deslizar(direcao) {
-  const container = document.getElementById("areaRoleta");
-  const largura = container.parentElement.offsetWidth;
-  posicaoAtual += direcao;
-  const maxPosicao = container.children.length - 1;
-  if (posicaoAtual > maxPosicao) posicaoAtual = 0;
-  if (posicaoAtual < 0) posicaoAtual = maxPosicao;
-  container.style.transform = "translateX(" + (-posicaoAtual * largura) + "px)";
 }
 </script>
 </body>
