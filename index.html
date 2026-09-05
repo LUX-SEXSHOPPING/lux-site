@@ -225,20 +225,20 @@ header{flex-direction:column;align-items:flex-start}
 <div class="filtro-regiao">
 <select class="select-regiao" id="selectRegiao" onchange="filtrarModelos()">
 <option value="">-- Escolha uma região --</option>
-<option value="Gravataí, RS, Brasil">Gravataí, RS — Brasil</option>
-<option value="Porto Alegre, RS, Brasil">Porto Alegre, RS — Brasil</option>
-<option value="Canoas, RS, Brasil">Canoas, RS — Brasil</option>
-<option value="São Paulo, SP, Brasil">São Paulo, SP — Brasil</option>
-<option value="Rio de Janeiro, RJ, Brasil">Rio de Janeiro, RJ — Brasil</option>
-<option value="Curitiba, PR, Brasil">Curitiba, PR — Brasil</option>
-<option value="Belo Horizonte, MG, Brasil">Belo Horizonte, MG — Brasil</option>
-<option value="Brasília, DF, Brasil">Brasília, DF — Brasil</option>
-<option value="Lisboa, Portugal">Lisboa — Portugal</option>
-<option value="Porto, Portugal">Porto — Portugal</option>
-<option value="Barcelona, Espanha">Barcelona — Espanha</option>
-<option value="Madrid, Espanha">Madrid — Espanha</option>
-<option value="Paris, França">Paris — França</option>
-<option value="Londres, Reino Unido">Londres — Reino Unido</option>
+<option value="gravataí">Gravataí, RS — Brasil</option>
+<option value="portoalegre">Porto Alegre, RS — Brasil</option>
+<option value="canoas">Canoas, RS — Brasil</option>
+<option value="saopaulo">São Paulo, SP — Brasil</option>
+<option value="riodejaneiro">Rio de Janeiro, RJ — Brasil</option>
+<option value="curitiba">Curitiba, PR — Brasil</option>
+<option value="belohorizonte">Belo Horizonte, MG — Brasil</option>
+<option value="brasilia">Brasília, DF — Brasil</option>
+<option value="lisboa">Lisboa — Portugal</option>
+<option value="porto">Porto — Portugal</option>
+<option value="barcelona">Barcelona — Espanha</option>
+<option value="madrid">Madrid — Espanha</option>
+<option value="paris">Paris — França</option>
+<option value="londres">Londres — Reino Unido</option>
 </select>
 </div>
 
@@ -263,29 +263,29 @@ header{flex-direction:column;align-items:flex-start}
 // BASE DE DADOS DE MODELOS
 const modelos = {
   feminino: [
-    {nome: 'Eduarda', idade: '21 anos', regiao: 'Gravataí, RS, Brasil', descricao: 'Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.', foto: 'vip1.png?t=1722877316'},
-    {nome: 'Sarah', idade: '27 anos', regiao: 'Gravataí, RS, Brasil', descricao: 'Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.', foto: 'vip2.png?t=1722877316'},
-    {nome: 'Larissa', idade: '20 anos', regiao: 'Gravataí, RS, Brasil', descricao: 'Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.', foto: 'vip3.png?t=1722877316'},
-    {nome: 'Vitória', idade: '24 anos', regiao: 'Gravataí, RS, Brasil', descricao: 'Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.', foto: 'vip4.png?t=1722877316'},
-    {nome: 'Bianca', idade: '23 anos', regiao: 'Porto Alegre, RS, Brasil', descricao: 'Sofisticada e encantadora. Um encontro que marca para sempre.', foto: 'vip1.png?t=1722877316'},
-    {nome: 'Valentina', idade: '25 anos', regiao: 'São Paulo, SP, Brasil', descricao: 'Charme e sensualidade em uma mulher extraordinária.', foto: 'vip2.png?t=1722877316'},
-    {nome: 'Isabela', idade: '22 anos', regiao: 'Rio de Janeiro, RJ, Brasil', descricao: 'Beleza tropical e paixão ardente em cada encontro.', foto: 'vip3.png?t=1722877316'},
-    {nome: 'Camila', idade: '26 anos', regiao: 'Curitiba, PR, Brasil', descricao: 'Elegância refinada e sensualidade pura.', foto: 'vip4.png?t=1722877316'},
-    {nome: 'Amélie', idade: '21 anos', regiao: 'Lisboa, Portugal', descricao: 'Encanto francês com toque português. Sofisticação europeia.', foto: 'vip1.png?t=1722877316'},
-    {nome: 'Sofia', idade: '24 anos', regiao: 'Barcelona, Espanha', descricao: 'Paixão e sensualidade espanhola em sua máxima expressão.', foto: 'vip2.png?t=1722877316'},
-    {nome: 'Carla', idade: '28 anos', regiao: 'Madrid, Espanha', descricao: 'Mulher madura, misteriosa e absolutamente irresistível.', foto: 'vip3.png?t=1722877316'},
-    {nome: 'Marie', idade: '23 anos', regiao: 'Paris, França', descricao: 'Elegância parisiense com um toque de romance e mistério.', foto: 'vip4.png?t=1722877316'},
+    {id: 1, nome: "Eduarda", idade: "21 anos", regiao: "gravataí", descricao: "Sensualidade e paixão em cada olhar. Uma experiência única e inesquecível.", foto: "vip1.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
+    {id: 2, nome: "Sarah", idade: "27 anos", regiao: "gravataí", descricao: "Elegância e paixão que envolvem. Feita para momentos verdadeiramente especiais.", foto: "vip2.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
+    {id: 3, nome: "Larissa", idade: "20 anos", regiao: "gravataí", descricao: "Jovem, doce e intensa. Paixão que desperta os melhores sentimentos.", foto: "vip3.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
+    {id: 4, nome: "Vitória", idade: "24 anos", regiao: "gravataí", descricao: "Beleza e fogo em perfeita harmonia. Uma experiência apaixonante.", foto: "vip4.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
+    {id: 5, nome: "Bianca", idade: "23 anos", regiao: "portoalegre", descricao: "Sofisticada e encantadora. Um encontro que marca para sempre.", foto: "vip1.png?t=1722877316", localizacao: "Porto Alegre, RS — Brasil"},
+    {id: 6, nome: "Valentina", idade: "25 anos", regiao: "saopaulo", descricao: "Charme e sensualidade em uma mulher extraordinária.", foto: "vip2.png?t=1722877316", localizacao: "São Paulo, SP — Brasil"},
+    {id: 7, nome: "Isabela", idade: "22 anos", regiao: "riodejaneiro", descricao: "Beleza tropical e paixão ardente em cada encontro.", foto: "vip3.png?t=1722877316", localizacao: "Rio de Janeiro, RJ — Brasil"},
+    {id: 8, nome: "Camila", idade: "26 anos", regiao: "curitiba", descricao: "Elegância refinada e sensualidade pura.", foto: "vip4.png?t=1722877316", localizacao: "Curitiba, PR — Brasil"},
+    {id: 9, nome: "Amélie", idade: "21 anos", regiao: "lisboa", descricao: "Encanto francês com toque português. Sofisticação europeia.", foto: "vip1.png?t=1722877316", localizacao: "Lisboa — Portugal"},
+    {id: 10, nome: "Sofia", idade: "24 anos", regiao: "barcelona", descricao: "Paixão e sensualidade espanhola em sua máxima expressão.", foto: "vip2.png?t=1722877316", localizacao: "Barcelona — Espanha"},
+    {id: 11, nome: "Carla", idade: "28 anos", regiao: "madrid", descricao: "Mulher madura, misteriosa e absolutamente irresistível.", foto: "vip3.png?t=1722877316", localizacao: "Madrid — Espanha"},
+    {id: 12, nome: "Marie", idade: "23 anos", regiao: "paris", descricao: "Elegância parisiense com um toque de romance e mistério.", foto: "vip4.png?t=1722877316", localizacao: "Paris — França"}
   ],
   masculino: [
-    {nome: 'Carlos', idade: '28 anos', regiao: 'Gravataí, RS, Brasil', descricao: 'Confiante e atraente. Masculinidade envolvente e charmosa.', foto: 'vip1.png?t=1722877316'},
-    {nome: 'Rafael', idade: '30 anos', regiao: 'Porto Alegre, RS, Brasil', descricao: 'Charmoso e sofisticado. Uma presença verdadeiramente magnética.', foto: 'vip2.png?t=1722877316'},
-    {nome: 'Lucas', idade: '26 anos', regiao: 'São Paulo, SP, Brasil', descricao: 'Jovem dinâmico e sedutor. Energia e paixão vibrante.', foto: 'vip3.png?t=1722877316'},
-    {nome: 'Diego', idade: '32 anos', regiao: 'Rio de Janeiro, RJ, Brasil', descricao: 'Experiente e irresistível. Sensualidade masculina refinada.', foto: 'vip4.png?t=1722877316'},
-    {nome: 'Felipe', idade: '25 anos', regiao: 'Curitiba, PR, Brasil', descricao: 'Sofisticado e elegante. Um homem de verdadeira classe.', foto: 'vip1.png?t=1722877316'},
-    {nome: 'André', idade: '27 anos', regiao: 'Belo Horizonte, MG, Brasil', descricao: 'Força e elegância em perfeita harmonia. Magnetismo puro.', foto: 'vip2.png?t=1722877316'},
-    {nome: 'Miguel', idade: '29 anos', regiao: 'Lisboa, Portugal', descricao: 'Europeu elegante e apaixonante. Sofisticação portuguesa.', foto: 'vip3.png?t=1722877316'},
-    {nome: 'Paulo', idade: '27 anos', regiao: 'Barcelona, Espanha', descricao: 'Atraente e cheio de personalidade. Charme latino irresistível.', foto: 'vip4.png?t=1722877316'},
-    {nome: 'Jean', idade: '31 anos', regiao: 'Paris, França', descricao: 'Parisiense elegante com aura de romance e sofisticação.', foto: 'vip1.png?t=1722877316'},
+    {id: 101, nome: "Carlos", idade: "28 anos", regiao: "gravataí", descricao: "Confiante e atraente. Masculinidade envolvente e charmosa.", foto: "vip1.png?t=1722877316", localizacao: "Gravataí, RS — Brasil"},
+    {id: 102, nome: "Rafael", idade: "30 anos", regiao: "portoalegre", descricao: "Charmoso e sofisticado. Uma presença verdadeiramente magnética.", foto: "vip2.png?t=1722877316", localizacao: "Porto Alegre, RS — Brasil"},
+    {id: 103, nome: "Lucas", idade: "26 anos", regiao: "saopaulo", descricao: "Jovem dinâmico e sedutor. Energia e paixão vibrante.", foto: "vip3.png?t=1722877316", localizacao: "São Paulo, SP — Brasil"},
+    {id: 104, nome: "Diego", idade: "32 anos", regiao: "riodejaneiro", descricao: "Experiente e irresistível. Sensualidade masculina refinada.", foto: "vip4.png?t=1722877316", localizacao: "Rio de Janeiro, RJ — Brasil"},
+    {id: 105, nome: "Felipe", idade: "25 anos", regiao: "curitiba", descricao: "Sofisticado e elegante. Um homem de verdadeira classe.", foto: "vip1.png?t=1722877316", localizacao: "Curitiba, PR — Brasil"},
+    {id: 106, nome: "André", idade: "27 anos", regiao: "belohorizonte", descricao: "Força e elegância em perfeita harmonia. Magnetismo puro.", foto: "vip2.png?t=1722877316", localizacao: "Belo Horizonte, MG — Brasil"},
+    {id: 107, nome: "Miguel", idade: "29 anos", regiao: "lisboa", descricao: "Europeu elegante e apaixonante. Sofisticação portuguesa.", foto: "vip3.png?t=1722877316", localizacao: "Lisboa — Portugal"},
+    {id: 108, nome: "Paulo", idade: "27 anos", regiao: "barcelona", descricao: "Atraente e cheio de personalidade. Charme latino irresistível.", foto: "vip4.png?t=1722877316", localizacao: "Barcelona — Espanha"},
+    {id: 109, nome: "Jean", idade: "31 anos", regiao: "paris", descricao: "Parisiense elegante com aura de romance e sofisticação.", foto: "vip1.png?t=1722877316", localizacao: "Paris — França"}
   ]
 };
 
@@ -293,20 +293,20 @@ let generoSelecionado = null;
 
 function selecionarGenero(genero) {
   generoSelecionado = genero;
-  const titulo = genero === 'feminino' ? 'Modelos Femininas' : 'Modelos Masculinos';
-  document.getElementById('tituloCatalogo').textContent = titulo;
-  document.getElementById('telaPrincipal').style.display = 'none';
-  document.getElementById('telaRegiao').style.display = 'block';
-  document.getElementById('selectRegiao').value = '';
-  document.getElementById('gridModelos').innerHTML = '';
+  const titulo = genero === "feminino" ? "Modelos Femininas" : "Modelos Masculinos";
+  document.getElementById("tituloCatalogo").textContent = titulo;
+  document.getElementById("telaPrincipal").style.display = "none";
+  document.getElementById("telaRegiao").style.display = "block";
+  document.getElementById("selectRegiao").value = "";
+  document.getElementById("gridModelos").innerHTML = "";
 }
 
 function filtrarModelos() {
-  const regiao = document.getElementById('selectRegiao').value;
-  const grid = document.getElementById('gridModelos');
+  const regiao = document.getElementById("selectRegiao").value;
+  const grid = document.getElementById("gridModelos");
   
   if (!regiao) {
-    grid.innerHTML = '';
+    grid.innerHTML = "";
     return;
   }
 
@@ -317,62 +317,69 @@ function filtrarModelos() {
     return;
   }
 
-  grid.innerHTML = modelosFiltrados.map(modelo => `
-    <div class="card-modelo" onclick="contratar('${modelo.nome}', '${modelo.idade} — ${modelo.regiao}')">
-      <img src="${modelo.foto}" alt="${modelo.nome}" loading="lazy">
-      <div class="card-modelo-info">
-        <h4>${modelo.nome}</h4>
-        <span class="localizacao"><i class="fas fa-map-marker-alt"></i> ${modelo.regiao}</span>
-        <span class="localizacao">${modelo.idade}</span>
-        <p>${modelo.descricao}</p>
-        <button class="btn-contratar-modelo" onclick="event.stopPropagation(); contratar('${modelo.nome}', '${modelo.idade} — ${modelo.regiao}')">Contratar</button>
+  grid.innerHTML = modelosFiltrados.map(modelo => {
+    const htmlEscaped = {
+      nome: modelo.nome.replace(/"/g, "&quot;"),
+      idade: modelo.idade.replace(/"/g, "&quot;"),
+      localizacao: modelo.localizacao.replace(/"/g, "&quot;")
+    };
+    return `
+      <div class="card-modelo">
+        <img src="${modelo.foto}" alt="${htmlEscaped.nome}" loading="lazy">
+        <div class="card-modelo-info">
+          <h4>${htmlEscaped.nome}</h4>
+          <span class="localizacao"><i class="fas fa-map-marker-alt"></i> ${htmlEscaped.localizacao}</span>
+          <span class="localizacao">${htmlEscaped.idade}</span>
+          <p>${modelo.descricao}</p>
+          <button class="btn-contratar-modelo" onclick="contratar('${htmlEscaped.nome}', '${htmlEscaped.idade} — ${htmlEscaped.localizacao}')">Contratar</button>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join("");
 }
 
 function voltarTelaPrincipal() {
   generoSelecionado = null;
-  document.getElementById('telaPrincipal').style.display = 'block';
-  document.getElementById('telaRegiao').style.display = 'none';
-  document.getElementById('selectRegiao').value = '';
-  document.getElementById('gridModelos').innerHTML = '';
+  document.getElementById("telaPrincipal").style.display = "block";
+  document.getElementById("telaRegiao").style.display = "none";
+  document.getElementById("selectRegiao").value = "";
+  document.getElementById("gridModelos").innerHTML = "";
 }
 
 function abrirCatalogo() {
-  document.getElementById('modalCatalogo').classList.add('ativo');
+  document.getElementById("modalCatalogo").classList.add("ativo");
   voltarTelaPrincipal();
 }
 
 function fecharCatalogo(event) {
-  if (event && event.target.id !== 'modalCatalogo') return;
-  document.getElementById('modalCatalogo').classList.remove('ativo');
+  if (event && event.target.id !== "modalCatalogo") return;
+  document.getElementById("modalCatalogo").classList.remove("ativo");
 }
 
 function contratar(nome, info) {
-  const mensagem = `Olá! Gostaria de contratar ${nome} (${info}). Pode me ajudar?`;
-  window.open(`https://wa.me/+5551980612941?text=${encodeURIComponent(mensagem)}`, '_blank');
+  const mensagem = "Olá! Gostaria de contratar " + nome + " (" + info + "). Pode me ajudar?";
+  window.open("https://wa.me/+5551980612941?text=" + encodeURIComponent(mensagem), "_blank");
 }
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') fecharCatalogo();
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") fecharCatalogo();
 });
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then(r => console.log('SW registrado')).catch(e => console.error('Erro SW:', e));
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").then(r => console.log("SW registrado")).catch(e => console.error("Erro SW:", e));
   }, false);
 }
 
 let posicaoAtual = 0;
 function deslizar(direcao) {
-  const container = document.getElementById('areaRoleta');
+  const container = document.getElementById("areaRoleta");
   const largura = container.parentElement.offsetWidth;
   posicaoAtual += direcao;
   const maxPosicao = container.children.length - 1;
   if (posicaoAtual > maxPosicao) posicaoAtual = 0;
   if (posicaoAtual < 0) posicaoAtual = maxPosicao;
-  container.style.transform = `translateX(${-posicaoAtual * largura}px)`;
+  container.style.transform = "translateX(" + (-posicaoAtual * largura) + "px)";
 }
 </script>
 </body>
