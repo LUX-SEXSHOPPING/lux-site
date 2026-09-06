@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LUX Pagamentos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root{
       --bg:#0b0608;
@@ -29,6 +30,29 @@
       align-items:center;
       justify-content:center;
       padding:24px;
+      position:relative;
+    }
+    .btn-voltar {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, var(--accent2), var(--gold));
+      color: #1a0710;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.3s;
+      z-index: 100;
+    }
+    .btn-voltar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255,77,166,.3);
     }
     .wrap{
       width:min(920px,100%);
@@ -105,6 +129,13 @@
       border-radius:16px;
       background:linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
       border:1px solid rgba(255,255,255,.08);
+      cursor:pointer;
+      transition: all 0.3s;
+    }
+    .plano:hover {
+      background:linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border-color:var(--accent);
+      box-shadow: 0 8px 20px rgba(255,77,166,.15);
     }
     .plano .nome{font-weight:800; letter-spacing:.06em}
     .plano .desc{display:block; color:var(--muted); font-size:.84rem; margin-top:4px}
@@ -114,13 +145,52 @@
       white-space:nowrap;
     }
     .grátis{color:#8ef0bc}
+    
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #2d9f3f, #38c853);
+      color: white;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      display: none;
+      z-index: 1000;
+      animation: slideIn 0.3s ease-out;
+      box-shadow: 0 8px 20px rgba(45, 159, 63, 0.3);
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .toast.show {
+      display: block;
+    }
+    
     @media (max-width:520px){
       .plano{flex-direction:column; align-items:flex-start}
       .preco{align-self:flex-end}
+      .btn-voltar {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
+  <a href="index.html" class="btn-voltar">
+    <i class="fa-solid fa-arrow-left"></i> Voltar
+  </a>
+
   <main class="wrap">
     <span class="badge">Planos exclusivos</span>
     <h1>Escolha o plano ideal</h1>
@@ -133,35 +203,35 @@
         <button class="close" id="fecharPlanos" aria-label="Fechar">×</button>
       </div>
       <div class="grid">
-        <div class="plano">
+        <div class="plano" data-plano="ESSENCE" data-preco="Grátis" onclick="copiarPix('ESSENCE', 'Grátis')">
           <div>
             <div class="nome">ESSENCE</div>
             <span class="desc">Plano grátis</span>
           </div>
           <div class="preco grátis">Grátis</div>
         </div>
-        <div class="plano">
+        <div class="plano" data-plano="DESFIRE" data-preco="R$ 29,90" onclick="copiarPix('DESFIRE', 'R$ 29,90')">
           <div>
             <div class="nome">DESFIRE</div>
             <span class="desc">Acesso premium inicial</span>
           </div>
           <div class="preco">R$ 29,90</div>
         </div>
-        <div class="plano">
+        <div class="plano" data-plano="ELITE" data-preco="R$ 59,90" onclick="copiarPix('ELITE', 'R$ 59,90')">
           <div>
             <div class="nome">ELITE</div>
             <span class="desc">Mais benefícios e presença</span>
           </div>
           <div class="preco">R$ 59,90</div>
         </div>
-        <div class="plano">
+        <div class="plano" data-plano="ROYAL" data-preco="R$ 99,90" onclick="copiarPix('ROYAL', 'R$ 99,90')">
           <div>
             <div class="nome">ROYAL</div>
             <span class="desc">Experiência sofisticada</span>
           </div>
           <div class="preco">R$ 99,90</div>
         </div>
-        <div class="plano">
+        <div class="plano" data-plano="DIAMOND" data-preco="R$ 149,90" onclick="copiarPix('DIAMOND', 'R$ 149,90')">
           <div>
             <div class="nome">DIAMOND</div>
             <span class="desc">Plano máximo e exclusivo</span>
@@ -172,10 +242,13 @@
     </section>
   </main>
 
+  <div class="toast" id="toast"></div>
+
   <script>
     const btn = document.getElementById('btnPlanos');
     const box = document.getElementById('boxPlanos');
     const closeBtn = document.getElementById('fecharPlanos');
+    const toast = document.getElementById('toast');
 
     btn.addEventListener('click', () => {
       const aberto = box.style.display === 'block';
@@ -187,6 +260,38 @@
       box.style.display = 'none';
       box.setAttribute('aria-hidden', 'true');
     });
+
+    function mostrarToast(mensagem) {
+      toast.textContent = mensagem;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function copiarPix(plano, preco) {
+      if (plano === 'ESSENCE') {
+        mostrarToast('✨ Plano ESSENCE é grátis! Entre em contato conosco.');
+        return;
+      }
+
+      // Simular PIX chave aleatória ou genérica
+      const pixKey = '5551980612941@lux.com.br'; // PIX associado ao número da loja
+      const mensagem = `Plano ${plano} - ${preco}`;
+      
+      // Copiar para clipboard
+      navigator.clipboard.writeText(pixKey).then(() => {
+        mostrarToast(`✓ PIX copiado! Plano ${plano} (${preco})`);
+      }).catch(() => {
+        mostrarToast(`Erro ao copiar. Tente novamente.`);
+      });
+
+      // Enviar para WhatsApp também
+      setTimeout(() => {
+        const textoWhatsApp = `Olá! Tenho interesse no plano ${plano} (${preco}). Já copiei a chave PIX.`;
+        window.open(`https://wa.me/5551980612941?text=${encodeURIComponent(textoWhatsApp)}`, '_blank');
+      }, 500);
+    }
   </script>
 </body>
 </html>
