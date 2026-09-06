@@ -263,6 +263,53 @@ nav a.ativo{
   font-size:12px;
 }
 
+.destaque-planos-pix{
+  max-width:620px;
+  margin:0 auto 18px;
+  padding:18px;
+  text-align:center;
+  background:var(--painel);
+  border:1px solid var(--borda-dourada);
+  border-radius:16px;
+}
+
+.destaque-planos-pix h2{
+  font-family:'Playfair Display',serif;
+  color:var(--dourado-claro);
+  font-size:21px;
+  margin-bottom:8px;
+}
+
+.destaque-planos-pix p{
+  color:var(--texto-suave);
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+.pix-chave-visivel{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.pix-chave-visivel code{
+  padding:10px 12px;
+  border-radius:8px;
+  color:var(--champanhe);
+  background:rgba(0,0,0,.35);
+}
+
+.btn-copiar-chave{
+  border:1px solid var(--borda-dourada);
+  border-radius:999px;
+  padding:10px 15px;
+  color:var(--dourado-claro);
+  background:transparent;
+  cursor:pointer;
+}
+
 /* MODAL PIX */
 #pixModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;align-items:center;justify-content:center;padding:16px}
 #pixModal .pix-card{width:100%;max-width:420px;background:#120d0f;border:1px solid rgba(201,162,39,.35);border-radius:16px;padding:18px;color:#efe7dd}
@@ -337,10 +384,20 @@ nav a.ativo{
   <p class="descricao">Conectamos momentos especiais com pessoas extraordinárias.</p>
   <div class="acoes">
     <a href="catalago.html" class="btn btn-ouro"><i class="fas fa-gem"></i>Ver Catálogo</a>
+    <a href="planos.html" class="btn btn-contorno"><i class="fas fa-star"></i>Ver Planos</a>
     <a href="pre-cadastro.html" class="btn btn-contorno"><i class="fas fa-crown"></i>Seja uma VIP</a>
     <button type="button" id="btnDoarPix" class="btn btn-pix"><i class="fas fa-qrcode"></i>Doar via PIX</button>
   </div>
   <p class="pix-info">Contribuição voluntária a partir de R$ 0,50</p>
+</section>
+<section class="destaque-planos-pix" aria-label="Planos e pagamento PIX">
+  <h2>Planos pagos LUX</h2>
+  <p>Veja os planos disponíveis e, para realizar o pagamento, copie nossa chave PIX:</p>
+  <div class="pix-chave-visivel">
+    <code id="chavePixVisivel">ajudaasofia@gmail.com</code>
+    <button type="button" class="btn-copiar-chave" id="copiarChavePix">Copiar chave PIX</button>
+  </div>
+  <p id="statusChavePix" class="pix-info" role="status" aria-live="polite"></p>
 </section>
 </div>
 
@@ -377,7 +434,23 @@ const gerarPixBtn=document.getElementById('gerarPixBtn');
 const copiarPixBtn=document.getElementById('copiarPixBtn');
 const fecharPixBtn=document.getElementById('fecharPixBtn');
 const pixTexto=document.getElementById('pixTexto');
+const copiarChavePix=document.getElementById('copiarChavePix');
+const statusChavePix=document.getElementById('statusChavePix');
 if(!btnDoarPix)return;
+copiarChavePix.addEventListener('click',async()=>{
+ try{
+  await navigator.clipboard.writeText(chavePix);
+  statusChavePix.textContent='Chave PIX copiada com sucesso!';
+ }catch{
+  const campo=document.createElement('textarea');
+  campo.value=chavePix;
+  document.body.appendChild(campo);
+  campo.select();
+  document.execCommand('copy');
+  campo.remove();
+  statusChavePix.textContent='Chave PIX copiada com sucesso!';
+ }
+});
 btnDoarPix.addEventListener('click',()=>{pixModal.style.display='flex';pixTexto.value='';});
 pixValor.addEventListener('change',()=>{pixValorCustom.style.display=pixValor.value==='custom'?'block':'none';});
 gerarPixBtn.addEventListener('click',()=>{
