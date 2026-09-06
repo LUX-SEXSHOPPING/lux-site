@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUX Pagamentos</title>
+  <style>
+    :root{
+      --bg:#0b0608;
+      --card:rgba(22,10,14,.72);
+      --line:rgba(255,255,255,.10);
+      --txt:#fff6fb;
+      --muted:#d7b8c7;
+      --accent:#ff4da6;
+      --accent2:#ff8ac8;
+      --gold:#f8d58a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(circle at top, rgba(255,77,166,.24), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(248,213,138,.14), transparent 30%),
+        linear-gradient(135deg, #050305, #14080d 55%, #0a0608);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .wrap{
+      width:min(920px,100%);
+      text-align:center;
+    }
+    .badge{
+      display:inline-block;
+      padding:8px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      color:var(--gold);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:12px;
+      background:rgba(255,255,255,.04);
+      backdrop-filter:blur(8px);
+    }
+    h1{
+      margin:18px 0 10px;
+      font-size:clamp(2rem,4vw,3.6rem);
+      line-height:1.05;
+      text-shadow:0 8px 30px rgba(255,77,166,.25);
+    }
+    p{margin:0 auto 22px; max-width:620px; color:var(--muted); font-size:1rem}
+    .btn-planos{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      padding:14px 22px;
+      border-radius:14px;
+      font-weight:700;
+      color:#1a0710;
+      background:linear-gradient(135deg, var(--accent2), var(--gold));
+      box-shadow:0 10px 30px rgba(255,77,166,.28);
+      transition:.25s transform,.25s box-shadow;
+    }
+    .btn-planos:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(255,77,166,.38)}
+    .planos-box{
+      display:none;
+      margin:18px auto 0;
+      width:min(560px,100%);
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:var(--card);
+      backdrop-filter:blur(14px);
+      box-shadow:0 24px 60px rgba(0,0,0,.34);
+      text-align:left;
+    }
+    .planos-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .planos-top strong{font-size:1.05rem; letter-spacing:.04em}
+    .close{
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      font-size:1.3rem;
+      cursor:pointer;
+    }
+    .grid{
+      display:grid;
+      gap:10px;
+    }
+    .plano{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .plano .nome{font-weight:800; letter-spacing:.06em}
+    .plano .desc{display:block; color:var(--muted); font-size:.84rem; margin-top:4px}
+    .preco{
+      font-weight:900;
+      color:#ffd7ea;
+      white-space:nowrap;
+    }
+    .grátis{color:#8ef0bc}
+    @media (max-width:520px){
+      .plano{flex-direction:column; align-items:flex-start}
+      .preco{align-self:flex-end}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <span class="badge">Planos exclusivos</span>
+    <h1>Escolha o plano ideal</h1>
+    <p>Um toque elegante, discreto e chamativo para destacar seus planos na página inicial sem ocupar muito espaço.</p>
+    <button class="btn-planos" id="btnPlanos">Planos</button>
+
+    <section class="planos-box" id="boxPlanos" aria-hidden="true">
+      <div class="planos-top">
+        <strong>Planos disponíveis</strong>
+        <button class="close" id="fecharPlanos" aria-label="Fechar">×</button>
+      </div>
+      <div class="grid">
+        <div class="plano">
+          <div>
+            <div class="nome">ESSENCE</div>
+            <span class="desc">Plano grátis</span>
+          </div>
+          <div class="preco grátis">Grátis</div>
+        </div>
+        <div class="plano">
+          <div>
+            <div class="nome">DESFIRE</div>
+            <span class="desc">Acesso premium inicial</span>
+          </div>
+          <div class="preco">R$ 29,90</div>
+        </div>
+        <div class="plano">
+          <div>
+            <div class="nome">ELITE</div>
+            <span class="desc">Mais benefícios e presença</span>
+          </div>
+          <div class="preco">R$ 59,90</div>
+        </div>
+        <div class="plano">
+          <div>
+            <div class="nome">ROYAL</div>
+            <span class="desc">Experiência sofisticada</span>
+          </div>
+          <div class="preco">R$ 99,90</div>
+        </div>
+        <div class="plano">
+          <div>
+            <div class="nome">DIAMOND</div>
+            <span class="desc">Plano máximo e exclusivo</span>
+          </div>
+          <div class="preco">R$ 149,90</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const btn = document.getElementById('btnPlanos');
+    const box = document.getElementById('boxPlanos');
+    const closeBtn = document.getElementById('fecharPlanos');
+
+    btn.addEventListener('click', () => {
+      const aberto = box.style.display === 'block';
+      box.style.display = aberto ? 'none' : 'block';
+      box.setAttribute('aria-hidden', aberto ? 'true' : 'false');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      box.style.display = 'none';
+      box.setAttribute('aria-hidden', 'true');
+    });
+  </script>
+</body>
+</html>
