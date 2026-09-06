@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#c9a227">
+<meta name="description" content="Planos e Assinaturas VIP LUX — Escolha o plano ideal para você com benefícios exclusivos, discrição e sofisticação.">
+<title>Planos VIP — LUX</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="dns-prefetch" href="https://wa.me">
+
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700;1,800&display=swap" as="style">
+<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700;1,800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --dourado:#c9a227;
+  --dourado-claro:#f0d878;
+  --champanhe:#f5e6c8;
+  --texto-claro:#efe7dd;
+  --texto-suave:#cbbfaf;
+  --vinho:#6e0f2e;
+  --fundo:#0a0709;
+  --painel:rgba(20, 14, 18, 0.72);
+  --borda-dourada:rgba(201,162,39,.3);
+  --verde-whats:#25d366;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  color:var(--texto-claro);
+  min-height:100vh;
+  position:relative;
+  background-color:var(--fundo);
+}
+
+/* FUNDO INTEIRO COM LOGO4 */
+.fundo-logo-full{
+  position:fixed;
+  inset:0;
+  background-image:url('logo4.png');
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  opacity:0.28;
+  filter:brightness(1.15) contrast(1.1);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* SOBREPOSIÇÃO DE DEGRADÊ PARA PROFUNDIDADE E LEITURA */
+.fundo-overlay{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(110,15,46,.32), transparent 70%),
+    radial-gradient(circle at 80% 85%, rgba(201,162,39,.18), transparent 60%),
+    linear-gradient(180deg, rgba(10,7,9,.82) 0%, rgba(10,7,9,.65) 45%, rgba(10,7,9,.90) 100%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.conteudo{
+  position:relative;
+  z-index:2;
+  max-width:1160px;
+  margin:0 auto;
+  padding:0 22px 60px;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:24px 0;
+  flex-wrap:wrap;
+  gap:16px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(10,7,9,.75);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(201,162,39,.15);
+  margin-bottom:20px;
+}
+
+.logo-header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+}
+
+.logo-img{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  filter:brightness(1.3) saturate(1.4) drop-shadow(0 0 12px rgba(201,162,39,.5));
+  transition:all .3s;
+}
+
+.logo-img:hover{
+  filter:brightness(1.5) saturate(1.6) drop-shadow(0 0 20px rgba(201,162,39,.8));
+  transform:scale(1.06);
+}
+
+.logo-lux{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  font-weight:800;
+  font-style:italic;
+  letter-spacing:6px;
+  color:var(--champanhe);
+  text-shadow:0 0 24px rgba(201,162,39,.4);
+  position:relative;
+}
+
+.logo-lux::after{
+  content:'';
+  position:absolute;
+  left:2px;
+  right:14px;
+  bottom:-6px;
+  height:1px;
+  background:linear-gradient(90deg,var(--dourado),transparent);
+}
+
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  justify-content:flex-end;
+}
+
+nav a{
+  color:var(--texto-suave);
+  text-decoration:none;
+  padding:9px 14px;
+  font-size:14px;
+  letter-spacing:.6px;
+  border:1px solid transparent;
+  border-radius:999px;
+  transition:all .3s;
+  background:rgba(12,8,9,.6);
+  backdrop-filter:blur(4px);
+}
+
+nav a:hover,
+nav a.ativo{
+  color:var(--dourado-claro);
+  border-color:var(--borda-dourada);
+  background:rgba(201,162,39,.14);
+  box-shadow:0 0 16px rgba(201,162,39,.25);
+}
+
+/* HERO DA PÁGINA */
+.secao-hero{
+  text-align:center;
+  padding:36px 12px 28px;
+}
+
+.selo{
+  display:inline-block;
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--dourado-claro);
+  border:1px solid var(--borda-dourada);
+  border-radius:999px;
+  padding:7px 22px;
+  background:rgba(201,162,39,.10);
+  margin-bottom:20px;
+  backdrop-filter:blur(6px);
+}
+
+.secao-hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px, 5vw, 56px);
+  font-style:italic;
+  font-weight:800;
+  color:var(--champanhe);
+  letter-spacing:2px;
+  margin-bottom:12px;
+  text-shadow:0 0 30px rgba(201,162,39,.35);
+}
+
+.secao-hero .subtitulo{
+  max-width:680px;
+  margin:0 auto;
+  color:var(--texto-suave);
+  font-size:16px;
+  line-height:1.7;
+}
+
+/* CARDS DE PLANOS */
+.grade-planos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:24px;
+  margin:40px 0 50px;
+}
+
+.card-plano{
+  background:var(--painel);
+  border:1px solid var(--borda-dourada);
+  border-radius:24px;
+  padding:34px 26px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  transition:all .35s ease;
+  backdrop-filter:blur(12px);
+  box-shadow:0 12px 36px rgba(0,0,0,.5);
+}
+
+.card-plano:hover{
+  transform:translateY(-8px);
+  border-color:rgba(240,216,120,.6);
+  box-shadow:0 20px 48px rgba(201,162,39,.25);
+}
+
+.card-plano.destaque{
+  background:linear-gradient(165deg, rgba(110,15,46,.45), rgba(20,14,18,.88));
+  border:2px solid var(--dourado);
+  box-shadow:0 16px 42px rgba(201,162,39,.28);
+}
+
+.badge-destaque{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(135deg, #f0d878, #c9a227 60%, #8a6d14);
+  color:#1a1206;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:6px 18px;
+  border-radius:999px;
+  box-shadow:0 4px 16px rgba(201,162,39,.5);
+}
+
+.icone-plano{
+  font-size:38px;
+  color:var(--dourado-claro);
+  margin-bottom:16px;
+  display:inline-block;
+  text-shadow:0 0 16px rgba(201,162,39,.5);
+}
+
+.nome-plano{
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  font-style:italic;
+  color:var(--champanhe);
+  margin-bottom:8px;
+}
+
+.desc-plano{
+  color:var(--texto-suave);
+  font-size:14px;
+  min-height:42px;
+  margin-bottom:20px;
+  line-height:1.5;
+}
+
+.preco-box{
+  margin:10px 0 24px;
+  padding:16px 0;
+  border-top:1px solid rgba(201,162,39,.2);
+  border-bottom:1px solid rgba(201,162,39,.2);
+}
+
+.preco-valor{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  font-weight:800;
+  color:var(--dourado-claro);
+}
+
+.preco-periodo{
+  font-size:13px;
+  color:var(--texto-suave);
+  margin-left:4px;
+}
+
+.beneficios-lista{
+  list-style:none;
+  margin-bottom:30px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.beneficios-lista li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:14px;
+  color:#e4dcce;
+  line-height:1.5;
+}
+
+.beneficios-lista li i{
+  color:var(--dourado-claro);
+  margin-top:3px;
+  font-size:14px;
+}
+
+.btn-assinar{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  padding:14px 20px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:700;
+  text-decoration:none;
+  letter-spacing:.5px;
+  transition:all .3s ease;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+
+.btn-ouro{
+  background:linear-gradient(135deg, #f0d878, #c9a227 60%, #8a6d14);
+  color:#1a1206;
+  box-shadow:0 8px 24px rgba(201,162,39,.35);
+}
+
+.btn-ouro:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(201,162,39,.55);
+}
+
+.btn-contorno{
+  color:var(--dourado-claro);
+  border-color:var(--borda-dourada);
+  background:rgba(201,162,39,.08);
+}
+
+.btn-contorno:hover{
+  background:rgba(201,162,39,.18);
+  border-color:var(--dourado-claro);
+  transform:translateY(-2px);
+}
+
+/* SEÇÃO DE DIFERENCIAIS */
+.secao-vantagens{
+  background:rgba(18,12,16,.75);
+  border:1px solid var(--borda-dourada);
+  border-radius:24px;
+  padding:36px 28px;
+  margin-top:20px;
+  backdrop-filter:blur(10px);
+}
+
+.secao-vantagens h2{
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  font-style:italic;
+  text-align:center;
+  color:var(--champanhe);
+  margin-bottom:28px;
+}
+
+.grid-vantagens{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:22px;
+}
+
+.item-vantagem{
+  text-align:center;
+  padding:16px;
+}
+
+.item-vantagem i{
+  font-size:30px;
+  color:var(--dourado-claro);
+  margin-bottom:12px;
+}
+
+.item-vantagem h3{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  color:var(--champanhe);
+  margin-bottom:8px;
+}
+
+.item-vantagem p{
+  font-size:13px;
+  color:var(--texto-suave);
+  line-height:1.6;
+}
+
+/* BOTÃO FLUTUANTE WHATSAPP */
+.whatsapp-float{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  width:60px;
+  height:60px;
+  background:var(--verde-whats);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:28px;
+  text-decoration:none;
+  z-index:999;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+  transition:all .3s ease;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.1);
+  box-shadow:0 8px 24px rgba(37,211,102,.5);
+  color:#fff;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px 10px;
+  color:var(--texto-suave);
+  font-size:13px;
+  border-top:1px solid rgba(201,162,39,.15);
+  margin-top:40px;
+}
+
+@media (max-width: 768px){
+  .logo-img{width:56px;height:56px;}
+  .logo-lux{font-size:26px;}
+  header{padding:16px 0;}
+  .card-plano{padding:26px 20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="fundo-logo-full"></div>
+<div class="fundo-overlay"></div>
+
+<div class="conteudo">
+<header>
+  <a href="index.html" class="logo-header">
+    <img src="logo3.png" alt="LUX Logo" class="logo-img">
+    <div class="logo-lux">LUX</div>
+  </a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="loja.html">Loja</a>
+    <a href="catalago.html">Catálogo</a>
+    <a href="pre-cadastro.html">Pré-Cadastro</a>
+    <a href="plano.html" class="ativo">Planos</a>
+    <a href="lista-espera.html">Agendar</a>
+    <a href="index.html#sobre">Sobre</a>
+    <a href="termos.html">Termos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="secao-hero">
+    <span class="selo">✦ Experiência Exclusiva ✦</span>
+    <h1>Planos & Assinaturas VIP</h1>
+    <p class="subtitulo">Acesso privilegiado a conteúdos exclusivos, atendimento prioritário e máxima discrição na experiência LUX.</p>
+  </section>
+
+  <section class="grade-planos">
+    <!-- PLANO SILVER -->
+    <div class="card-plano">
+      <div class="icone-plano"><i class="fas fa-gem"></i></div>
+      <h2 class="nome-plano">Plano Silver</h2>
+      <p class="desc-plano">Ideal para conhecer os benefícios exclusivos do catálogo premium.</p>
+      <div class="preco-box">
+        <span class="preco-valor">R$ 49</span>
+        <span class="preco-periodo">/ mês</span>
+      </div>
+      <ul class="beneficios-lista">
+        <li><i class="fas fa-check-circle"></i> Acesso total ao Catálogo VIP</li>
+        <li><i class="fas fa-check-circle"></i> Fotos em alta definição</li>
+        <li><i class="fas fa-check-circle"></i> Contato direto via WhatsApp</li>
+        <li><i class="fas fa-check-circle"></i> Sigilo e discrição garantidos</li>
+      </ul>
+      <a href="https://wa.me/5551980612041?text=Olá!%20Gostaria%20de%20assinar%20o%20Plano%20Silver%20da%20LUX." target="_blank" class="btn-assinar btn-contorno">
+        <i class="fab fa-whatsapp"></i> Assinar Silver
+      </a>
+    </div>
+
+    <!-- PLANO GOLD (DESTAQUE) -->
+    <div class="card-plano destaque">
+      <span class="badge-destaque">✦ Mais Escolhido ✦</span>
+      <div class="icone-plano"><i class="fas fa-crown"></i></div>
+      <h2 class="nome-plano">Plano Gold VIP</h2>
+      <p class="desc-plano">Acesso completo e atendimento prioritário com prévias de lançamentos.</p>
+      <div class="preco-box">
+        <span class="preco-valor">R$ 99</span>
+        <span class="preco-periodo">/ mês</span>
+      </div>
+      <ul class="beneficios-lista">
+        <li><i class="fas fa-check-circle"></i> Todos os benefícios do Silver</li>
+        <li><i class="fas fa-check-circle"></i> Vídeos e mídias exclusivas das modelos</li>
+        <li><i class="fas fa-check-circle"></i> Atendimento e suporte prioritário</li>
+        <li><i class="fas fa-check-circle"></i> Prévias de novos perfis VIP</li>
+        <li><i class="fas fa-check-circle"></i> Descontos especiais na Loja LUX</li>
+      </ul>
+      <a href="https://wa.me/5551980612041?text=Olá!%20Gostaria%20de%20assinar%20o%20Plano%20Gold%20VIP%20da%20LUX." target="_blank" class="btn-assinar btn-ouro">
+        <i class="fab fa-whatsapp"></i> Assinar Gold VIP
+      </a>
+    </div>
+
+    <!-- PLANO BLACK DIAMOND -->
+    <div class="card-plano">
+      <div class="icone-plano"><i class="fas fa-certificate"></i></div>
+      <h2 class="nome-plano">Black Diamond</h2>
+      <p class="desc-plano">Para quem exige o mais alto padrão em exclusividade e consultoria.</p>
+      <div class="preco-box">
+        <span class="preco-valor">R$ 199</span>
+        <span class="preco-periodo">/ mês</span>
+      </div>
+      <ul class="beneficios-lista">
+        <li><i class="fas fa-check-circle"></i> Todos os benefícios do Gold VIP</li>
+        <li><i class="fas fa-check-circle"></i> Concierge privativo e agendamento direto</li>
+        <li><i class="fas fa-check-circle"></i> Acesso antecipado a todos os lançamentos</li>
+        <li><i class="fas fa-check-circle"></i> Canal exclusivo e confidencialidade total</li>
+      </ul>
+      <a href="https://wa.me/5551980612041?text=Olá!%20Gostaria%20de%20assinar%20o%20Plano%20Black%20Diamond%20da%20LUX." target="_blank" class="btn-assinar btn-contorno">
+        <i class="fab fa-whatsapp"></i> Assinar Black Diamond
+      </a>
+    </div>
+  </section>
+
+  <section class="secao-vantagens">
+    <h2>Por que escolher a LUX?</h2>
+    <div class="grid-vantagens">
+      <div class="item-vantagem">
+        <i class="fas fa-user-shield"></i>
+        <h3>100% Sigiloso</h3>
+        <p>Sua privacidade e discrição são tratados com o mais absoluto rigor.</p>
+      </div>
+      <div class="item-vantagem">
+        <i class="fas fa-star"></i>
+        <h3>Perfis Selecionados</h3>
+        <p>Modelos verificadas com autenticidade, elegância e sofisticação.</p>
+      </div>
+      <div class="item-vantagem">
+        <i class="fas fa-headset"></i>
+        <h3>Atendimento Rápido</h3>
+        <p>Canal direto via WhatsApp oficial para agilidade e comodidade.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 LUX — Sensualidade & Sofisticação. Todos os direitos reservados.</p>
+</footer>
+</div>
+
+<a href="https://wa.me/5551980612041?text=Olá!%20Gostaria%20de%20tirar%20dúvidas%20sobre%20os%20planos%20LUX." class="whatsapp-float" target="_blank" title="Fale Conosco no WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>

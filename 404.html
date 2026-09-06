@@ -152,6 +152,8 @@ nav a:hover{
   var path = window.location.pathname.toLowerCase();
   if(path.indexOf('catal') !== -1){
     window.location.replace('catalago.html');
+  } else if(path.indexOf('plano') !== -1){
+    window.location.replace('plano.html');
   } else if(path.indexOf('loja') !== -1 || path.indexOf('store') !== -1){
     window.location.replace('loja.html');
   } else if(path.indexOf('cadastro') !== -1){
@@ -175,6 +177,7 @@ nav a:hover{
     <a href="index.html">Início</a>
     <a href="loja.html">Loja</a>
     <a href="catalago.html">Catálogo</a>
+    <a href="plano.html">Planos</a>
     <a href="pre-cadastro.html">Pré-Cadastro</a>
     <a href="lista-espera.html">Agendar</a>
     <a href="index.html#sobre">Sobre</a>
